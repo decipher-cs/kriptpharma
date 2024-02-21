@@ -1,9 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import Home from './Home'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-        <Home />
+        <div style={{ display: 'grid', placeItems: 'center' }}>
+            <h1>kriptpharma is down for maintenance</h1>
+            <h2>info@kriptpharma.com</h2>
+            <h2> (+91) 857-191-3753</h2>
+        </div>
     </React.StrictMode>,
 )
