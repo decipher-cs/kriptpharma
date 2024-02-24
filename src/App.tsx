@@ -8,20 +8,39 @@ import ProductHowItWorks from './modules/views/ProductHowItWorks'
 import ProductCTA from './modules/views/ProductCTA'
 import AppAppBar from './modules/views/AppAppBar'
 import withRoot from './modules/withRoot'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { AllProducts } from './modules/views/AllProducts'
+import { Item } from './modules/views/Item'
 
 function Index() {
     return (
         <React.Fragment>
             <AppAppBar />
-            <ProductHero />
-            <ProductValues />
-            <ProductCategories />
-            <ProductHowItWorks />
-            <ProductCTA />
-            <ProductSmokingHero />
+
+            <BrowserRouter future={{ v7_startTransition: true }} basename='premium-themes/onepirate/'>
+                <Routes>
+                    <Route path='' element={<Home />} />
+                    <Route path='products' element={<AllProducts />} />
+                    <Route path='products/:id' element={<Item />} />
+                </Routes>
+            </BrowserRouter>
+
             <AppFooter />
         </React.Fragment>
     )
 }
 
 export default withRoot(Index)
+
+const Home = () => {
+    return (
+        <>
+            <ProductHero />
+            <ProductValues />
+            <ProductCategories />
+            <ProductHowItWorks />
+            <ProductCTA />
+            <ProductSmokingHero />
+        </>
+    )
+}
