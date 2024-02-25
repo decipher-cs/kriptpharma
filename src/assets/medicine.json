@@ -1,7 +1,8 @@
 [
     {
         "index": 1,
-        "name": "Acloript™ 200",
+        "name": "Acloript\u2122 200",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Aceclofenac 200 mg SR",
         "packingType": "10*10 Alu-Alu",
@@ -11,7 +12,8 @@
     },
     {
         "index": 2,
-        "name": "Acloript™ TC",
+        "name": "Acloript\u2122 TC",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Aceclofenac & Trypsin Chymotrypsin 50,000 IU",
         "packingType": "10*10 Alu-Alu",
@@ -21,7 +23,8 @@
     },
     {
         "index": 3,
-        "name": "Acloript™ P",
+        "name": "Acloript\u2122 P",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Aceclofenac I.P. 100 mg+Paracetamol I.P.325mg",
         "packingType": "20*10 Blister",
@@ -31,7 +34,8 @@
     },
     {
         "index": 4,
-        "name": "Acloript™ SP",
+        "name": "Acloript\u2122 SP",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Aceclofenac I.P. 100 mg + Paracetamol I.P. 325 mg +Serratiopeptidase I.P. 15 mg",
         "packingType": "10*10 Alu-Alu",
@@ -41,7 +45,8 @@
     },
     {
         "index": 5,
-        "name": "Acloript™TH4",
+        "name": "Acloript\u2122TH4",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Aceclofenac I.P 100 Mg+ Thicolchicoside 4 Mg",
         "packingType": "10*10 Alu-Alu",
@@ -51,7 +56,8 @@
     },
     {
         "index": 6,
-        "name": "Acloript™TH8",
+        "name": "Acloript\u2122TH8",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Aceclofenac I.P 100 Mg+ Thicolchicoside 8 Mg",
         "packingType": "10*10 Alu-Alu",
@@ -61,7 +67,8 @@
     },
     {
         "index": 7,
-        "name": "Acloript™MR",
+        "name": "Acloript\u2122MR",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Aceclofenac I.P. 100 mg +\nParacetamol I.P. 325 mg + Chlorzoxazone IP 250MG",
         "packingType": "10*10 Alu-Alu",
@@ -71,7 +78,8 @@
     },
     {
         "index": 8,
-        "name": "KRIROX™ 250",
+        "name": "KRIROX\u2122 250",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Cefuroxime 250mg Tablets",
         "packingType": "10x10 Alu Alu",
@@ -81,7 +89,8 @@
     },
     {
         "index": 9,
-        "name": "KRIROX™ 500",
+        "name": "KRIROX\u2122 500",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Cefuroxime 500 mg",
         "packingType": "10*1*6 Alu Strip",
@@ -91,17 +100,19 @@
     },
     {
         "index": 10,
-        "name": "Krip-cef™-200",
+        "name": "Krip-cef\u2122-200 ",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Cefixime Trihydrate I.P 200mg",
         "packingType": "10*10 Alu-Alu",
         "MRP": 1050,
         "status": "AVAILABLE",
-        "oldUrl": ""
+        "oldUrl": null
     },
     {
         "index": 11,
-        "name": "Krip-cef™ CV",
+        "name": "Krip-cef\u2122 CV",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Cefixime 200mg + Clavulanic Acid125mg",
         "packingType": "10*1*6 Alu-Alu",
@@ -111,17 +122,19 @@
     },
     {
         "index": 12,
-        "name": "Krip-cef™-O",
+        "name": "Krip-cef\u2122-O",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Cefixime Trihydrate I.P. 200 mg + Ofloxacin I.P. 200 mg",
         "packingType": "10*10 Alu-Alu",
         "MRP": 2136,
         "status": "AVAILABLE",
-        "oldUrl": ""
+        "oldUrl": null
     },
     {
         "index": 13,
         "name": "CITIRIPT P 800",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Citicoline 500 mg+piracetam 800 mg",
         "packingType": "10*10 Alu-Alu",
@@ -132,6 +145,7 @@
     {
         "index": 14,
         "name": "CITIRIPT P 400",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Citicoline 500 mg+piracetam400mg",
         "packingType": "10*10 Alu-Alu",
@@ -141,7 +155,8 @@
     },
     {
         "index": 15,
-        "name": "DECORIPT™-BR",
+        "name": "DECORIPT\u2122-BR",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Trypsin 48mg + Bromelain 90mg + Rutoside Trihydrate 100mg +Diclofenac 50mg",
         "packingType": "10*10 Alu-Alu",
@@ -151,7 +166,8 @@
     },
     {
         "index": 16,
-        "name": "DECORIPT™-K",
+        "name": "DECORIPT\u2122-K",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Diclofenac 50 mg + Serratiopeptidase 10 mg Round Tablet",
         "packingType": "10*10 Blister",
@@ -161,7 +177,8 @@
     },
     {
         "index": 17,
-        "name": "DECORIPT™-T",
+        "name": "DECORIPT\u2122-T",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Diclofenac (100 mg) + Tolperisone(450 mg)",
         "packingType": "10*10 Alu-Alu",
@@ -171,7 +188,8 @@
     },
     {
         "index": 18,
-        "name": "DECORIPT™-MR",
+        "name": "DECORIPT\u2122-MR",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Diclofenac Sodium 50mg +Paracetamol 325 +Chlorzoxazone 250 mg",
         "packingType": "10*10 Blister",
@@ -181,7 +199,8 @@
     },
     {
         "index": 19,
-        "name": "DECORIPT™-P",
+        "name": "DECORIPT\u2122-P",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Diclofenac Potassium B.P. 50 mg + PCM I.P 325 mg",
         "packingType": "20*10 Blister",
@@ -191,7 +210,8 @@
     },
     {
         "index": 20,
-        "name": "Decoript™ TC",
+        "name": "Decoript\u2122 TC",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "trypsin Chymotrypsin 50000 IU + Diclofenac Potassium 50MG + Paracetamol IP 325MG",
         "packingType": "10*10 Blister",
@@ -201,7 +221,8 @@
     },
     {
         "index": 21,
-        "name": "DECORIPT™-SP",
+        "name": "DECORIPT\u2122-SP",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Diclofenac Potassium B.P. 50 mg + PCM I.P 325 mg + Serratiopeptidase I.P 10 mg",
         "packingType": "10*10 Alu-Alu",
@@ -211,7 +232,8 @@
     },
     {
         "index": 22,
-        "name": "Deflaript™ 6MG",
+        "name": "Deflaript\u2122 6MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Deflazacort 6mg",
         "packingType": "10*10 Alu-Alu",
@@ -221,7 +243,8 @@
     },
     {
         "index": 23,
-        "name": "Dotaript™M",
+        "name": "Dotaript\u2122M",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "DROTAVERINE HYDROCHORIDE 80 MG + MEFENAMIC ACID 250 MG",
         "packingType": "10*10 Alu-Alu",
@@ -232,6 +255,7 @@
     {
         "index": 24,
         "name": "Doxoript M",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Doxofylline 400mg + Montelukast 10MG",
         "packingType": "10*10 Blister",
@@ -242,6 +266,7 @@
     {
         "index": 25,
         "name": "Doxoript 400",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Doxofylline 400mg",
         "packingType": "10*10 BLISTER",
@@ -252,6 +277,7 @@
     {
         "index": 26,
         "name": "DOXYRIPT P",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Doxylamine 10 mg + Pyridoxine 10\nmg + Folic Acid 2.5mg",
         "packingType": "10*10 Alu-Alu",
@@ -262,6 +288,7 @@
     {
         "index": 27,
         "name": "KRI-ESOL 40",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Esomeprazole 40 mg",
         "packingType": "10*10 Alu-Alu",
@@ -271,7 +298,8 @@
     },
     {
         "index": 28,
-        "name": "Fexoript™120",
+        "name": "Fexoript\u2122120",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Fexofenadine 120 mg",
         "packingType": "10*10 Alu-Alu",
@@ -281,7 +309,8 @@
     },
     {
         "index": 29,
-        "name": "Fexoript™180",
+        "name": "Fexoript\u2122180",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Fexofenadine 180 mg",
         "packingType": "10*10 Alu-Alu",
@@ -292,6 +321,7 @@
     {
         "index": 30,
         "name": "Betaript 8MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Betahistine 8mg",
         "packingType": "10*10 Alu-Alu",
@@ -302,6 +332,7 @@
     {
         "index": 31,
         "name": "Betaript 16MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Betahistine 16 mg",
         "packingType": "10*10 Alu-Alu",
@@ -312,6 +343,7 @@
     {
         "index": 32,
         "name": "Flukaript 200MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Fluconazole 200MG",
         "packingType": "20*1 Blister",
@@ -322,6 +354,7 @@
     {
         "index": 33,
         "name": "Flukaript 150 MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Fluconazole 150 mg",
         "packingType": "20*1 Blister",
@@ -332,6 +365,7 @@
     {
         "index": 34,
         "name": "Gabaript G",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Gabapentin 300 & methycobalamin 500mcg",
         "packingType": "10*10 Alu-Alu",
@@ -342,6 +376,7 @@
     {
         "index": 35,
         "name": "Gabaript NT",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Gabapentin 400mg +Nortriptyline Hydrochloride 10mg tab",
         "packingType": "10*10 Alu-Alu",
@@ -352,6 +387,7 @@
     {
         "index": 36,
         "name": "Letroript 5MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Letrozole 5 mg",
         "packingType": "10*10 Blister",
@@ -362,6 +398,7 @@
     {
         "index": 37,
         "name": "Levoript 5",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Levocetirizine Dihydrochloride I.P 5mg",
         "packingType": "20*10 Alu-Alu",
@@ -372,6 +409,7 @@
     {
         "index": 38,
         "name": "LINZORIPT-600",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Linezolid 600mg",
         "packingType": "10*1*10 Alu-Alu",
@@ -381,7 +419,8 @@
     },
     {
         "index": 39,
-        "name": "Krypsin",
+        "name": "Krypsin ",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Trypsin 48 mg, Bromelain 90mg,\nRutoside trihydrate 100mg",
         "packingType": "10*10 Alu-Alu",
@@ -391,7 +430,8 @@
     },
     {
         "index": 40,
-        "name": "Monteript™FX",
+        "name": "Monteript\u2122FX",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Montelukast 10mg + Fexofenadine 120mg Chewable Tablet",
         "packingType": "10*10 Alu-Alu",
@@ -401,7 +441,8 @@
     },
     {
         "index": 41,
-        "name": "Monteript™LC",
+        "name": "Monteript\u2122LC",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Levocetirizine I.P 5 mg + Montelukast\nSodium I.P 10 mg",
         "packingType": "10*10 Alu-Alu",
@@ -412,6 +453,7 @@
     {
         "index": 42,
         "name": "AMOXYRIPT 625 cv",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Amoxycillin 500MG Capsules+ Calvulanate Potassium I.P. 125mg",
         "packingType": "10*10 Alu-Alu",
@@ -422,6 +464,7 @@
     {
         "index": 43,
         "name": "AMOXYRIPT-CV 625 LB",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Amoxycillin I.P. 500 mg + Calvulanate Potassium I.P. 125mg with Lactic Acid Basicullus Film Coated Tablet",
         "packingType": "10*1*10 Alu-Alu",
@@ -431,27 +474,30 @@
     },
     {
         "index": 44,
-        "name": "Nurokript™ Forte",
+        "name": "Nurokript\u2122 Forte",
+        "division": "critiskill",
         "type": "General",
-        "saltComposition": "Methylcobalamin+vitamin B+ zinc + Folic acid + chromium +calcium D Pantothenate",
+        "saltComposition": "\nMethylcobalamin+vitamin B+ zinc + Folic acid + chromium +calcium D Pantothenate",
         "packingType": "10*10 Alu-Alu",
         "MRP": 1790,
         "status": "HOLD",
-        "oldUrl": ""
+        "oldUrl": null
     },
     {
         "index": 45,
-        "name": "Nurokript™ NP",
+        "name": "Nurokript\u2122 NP",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Pregabalin 75mg + Nortriptyline 10mg + Methylcobalamin 1500mcg",
         "packingType": "10*10 Alu-Alu",
         "MRP": 1990,
         "status": "AVAILABLE",
-        "oldUrl": ""
+        "oldUrl": null
     },
     {
         "index": 46,
-        "name": "Nurokript™ XT",
+        "name": "Nurokript\u2122 XT",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Methylcobalamin 1500mg+L- Methylfolate 1gm+Pyridoxal 5 -\nPhosphate 0.5mg Tables",
         "packingType": "10*10 Alu-Alu",
@@ -462,6 +508,7 @@
     {
         "index": 47,
         "name": "KRIFLOX 750",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "LEVOFLOXACIN 750",
         "packingType": "10*10 Alu-Alu",
@@ -472,16 +519,18 @@
     {
         "index": 48,
         "name": "KRIFLOX 500",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "LEVOFLOXACIN 500MG TABLET",
         "packingType": "10*10 Alu-Alu",
         "MRP": 904,
         "status": "AVAILABLE",
-        "oldUrl": ""
+        "oldUrl": null
     },
     {
         "index": 49,
         "name": "Methyript 4MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Methylpredinosolone 4 mg",
         "packingType": "10*10 Alu-Alu",
@@ -491,7 +540,8 @@
     },
     {
         "index": 50,
-        "name": "Pantoript™40MG",
+        "name": "Pantoript\u212240MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Pantoprazole Sodium I.P 40 mg",
         "packingType": "10*10 Alu-Alu",
@@ -501,7 +551,8 @@
     },
     {
         "index": 51,
-        "name": "Pantoript™D",
+        "name": "Pantoript\u2122D",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "PANTOPRAZOLE SODIUM 40MG + DOMPERIDONE 10MG",
         "packingType": "10*10 Alu-Alu",
@@ -511,7 +562,8 @@
     },
     {
         "index": 52,
-        "name": "parakript™ 650",
+        "name": "parakript\u2122 650",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Paracetamol 650mg",
         "packingType": "20*10 Blister",
@@ -521,17 +573,19 @@
     },
     {
         "index": 53,
-        "name": "Rabiript™ 20MG",
+        "name": "Rabiript\u2122 20MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "RABEPRAZOLE I.P 20 MG",
         "packingType": "10*10 Alu-Alu",
         "MRP": 1120,
         "status": "AVAILABLE",
-        "oldUrl": "Rabiript™ 20 MG – Kript Pharmaceuticals"
+        "oldUrl": "Rabiript\u2122 20 MG \u2013 Kript Pharmaceuticals"
     },
     {
         "index": 54,
         "name": "Tamuript F",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Tamsulosin 0.4 mg Modified Release+ finasteride 5MG",
         "packingType": "10*10 Alu-Alu",
@@ -542,6 +596,7 @@
     {
         "index": 55,
         "name": "TERBORIPT 250",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Terbinafine 250mg",
         "packingType": "10*10 Blister",
@@ -551,7 +606,8 @@
     },
     {
         "index": 56,
-        "name": "Udoript™300MG",
+        "name": "Udoript\u2122300MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Ursodeoxycholic Acid 300mg",
         "packingType": "10*10 Alu-Alu",
@@ -562,6 +618,7 @@
     {
         "index": 57,
         "name": "Ofloxoript 200Mg",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Ofloxacin I.P 200 mg",
         "packingType": "10*10 Alu-Alu",
@@ -572,6 +629,7 @@
     {
         "index": 58,
         "name": "Ofloxoript OZ",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Ofloxacin I.P 200 mg + Ornidazole I.P 500 mg",
         "packingType": "10*10 Blister",
@@ -582,6 +640,7 @@
     {
         "index": 59,
         "name": "Mefnaript Spas",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Mefnamic 10mg + Dicyclomine 250mg",
         "packingType": "10*10 Blister",
@@ -592,6 +651,7 @@
     {
         "index": 60,
         "name": "ONDARIPT 4MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Onsansteron 4 mg mouth dissolving",
         "packingType": "10*10 Alu-Alu",
@@ -602,6 +662,7 @@
     {
         "index": 61,
         "name": "ONDARIPT 8MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Onsansteron 8 mg mouth dissolving",
         "packingType": "10*10 Alu-Alu",
@@ -611,7 +672,8 @@
     },
     {
         "index": 62,
-        "name": "Albendaript",
+        "name": "Albendaript ",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Albendazole 400mg",
         "packingType": "10*5 Blister",
@@ -622,6 +684,7 @@
     {
         "index": 63,
         "name": "Albendaript IV",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Albendazole 400mg+Ivermectin 6mg\ntab",
         "packingType": "10*5 Blister",
@@ -631,7 +694,8 @@
     },
     {
         "index": 64,
-        "name": "AZEERIPT™ 250MG",
+        "name": "AZEERIPT\u2122 250MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Azithromycin Dihydrate I.P. 250mg",
         "packingType": "10*6 Blister",
@@ -641,7 +705,8 @@
     },
     {
         "index": 65,
-        "name": "AZEERIPT™ 500MG",
+        "name": " AZEERIPT\u2122 500MG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "Azithromycin Dihydrate I.P. 500mg",
         "packingType": "10*5 Blister",
@@ -651,7 +716,8 @@
     },
     {
         "index": 66,
-        "name": "RABIRIPT™ DSR",
+        "name": "RABIRIPT\u2122 DSR",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "RABEPRAZOLE 20MG+ DOMPERIDONE 30MG",
         "packingType": "10*10",
@@ -661,7 +727,8 @@
     },
     {
         "index": 67,
-        "name": "NUROKRIPT® PG",
+        "name": "NUROKRIPT\u00ae PG",
+        "division": "critiskill",
         "type": "General",
         "saltComposition": "NORTRIPTYLINE + PREGABALIN",
         "packingType": "10*10 ALU ALU",
@@ -671,7 +738,8 @@
     },
     {
         "index": 68,
-        "name": "KRIP-CEF™ S1GM",
+        "name": "KRIP-CEF\u2122 S1GM",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Cefoperazone I.P. 500 mg + Sulbactam U.S.P. 500 mg",
         "packingType": "VIAL+ WATER",
@@ -681,7 +749,8 @@
     },
     {
         "index": 69,
-        "name": "KRIP-CEF™ S1.5GM",
+        "name": "KRIP-CEF\u2122 S1.5GM",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Cefoperazone I.P. 1000 mg +Sulbactam U.S.P. 500 mg",
         "packingType": "VIAL+ WATER",
@@ -691,7 +760,8 @@
     },
     {
         "index": 70,
-        "name": "Pipraript® 4.5",
+        "name": "Pipraript\u00ae 4.5",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Piperacillin 4GM + Tazobactam 0.5MG",
         "packingType": "VIAL+ WATER +\nTray",
@@ -702,6 +772,7 @@
     {
         "index": 71,
         "name": "CETRORIPT TZ",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "CEFTRIAXONE 250MG +TAZOBACTUM31.25MG/VIAL",
         "packingType": "VIAL+ WATER",
@@ -712,6 +783,7 @@
     {
         "index": 72,
         "name": "CITIRIPT 250",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Citicoline 250mg/ml Injection",
         "packingType": "2 ml with Tray",
@@ -722,8 +794,9 @@
     {
         "index": 73,
         "name": "Clindaript 300",
+        "division": "critiskill",
         "type": "Injections & Infusion",
-        "saltComposition": "Clindamycin 300mg",
+        "saltComposition": "Clindamycin 300mg ",
         "packingType": "Tray pack",
         "MRP": 231,
         "status": "AVAILABLE",
@@ -732,8 +805,9 @@
     {
         "index": 74,
         "name": "Clindaript 600",
+        "division": "critiskill",
         "type": "Injections & Infusion",
-        "saltComposition": "Clindamycin 600mg",
+        "saltComposition": "Clindamycin 600mg ",
         "packingType": "Tray pack",
         "MRP": 417,
         "status": "AVAILABLE",
@@ -742,6 +816,7 @@
     {
         "index": 75,
         "name": "Dicloript 75",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Diclofenac Sodium B.P. 75 mg (Tray Pack) Aqueous Base PainlessInjection",
         "packingType": "10*1 ml",
@@ -752,6 +827,7 @@
     {
         "index": 76,
         "name": "KRIPRO 250",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Hydroxyprogesteron 250 mg Injection",
         "packingType": "2ml Dispo Pack",
@@ -762,6 +838,7 @@
     {
         "index": 77,
         "name": "KRIPRO 500",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Hydroxyprogesteron 500 mg Injection",
         "packingType": "2ml Dispo Pack",
@@ -771,7 +848,8 @@
     },
     {
         "index": 78,
-        "name": "PANTORIPT™ 40",
+        "name": "PANTORIPT\u2122 40",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Pantoprazole Sodium I.P. 40 mg",
         "packingType": "VIAL+ WATER",
@@ -781,7 +859,8 @@
     },
     {
         "index": 79,
-        "name": "Rabiript™ 20",
+        "name": "Rabiript\u2122 20 ",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "RABEPRAZOLE I.P 20 MG",
         "packingType": "VIAL+ WATER",
@@ -792,6 +871,7 @@
     {
         "index": 80,
         "name": "AMOXYRIPT 1.2",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "AMOXYCILLIN AND POTASSIUM CLAVULANATE IP",
         "packingType": "vial +water",
@@ -802,6 +882,7 @@
     {
         "index": 81,
         "name": "Cetroript 1GM",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Ceftriaxone Injection IP 1gm",
         "packingType": "vial +water",
@@ -812,6 +893,7 @@
     {
         "index": 82,
         "name": "Cetroript 2GM",
+        "division": "critiskill",
         "type": "Injections & Infusion",
         "saltComposition": "Ceftriaxone Injection IP 2gm",
         "packingType": "vial +water",
@@ -821,7 +903,8 @@
     },
     {
         "index": 83,
-        "name": "CALZORIPT™ D3 SHOT",
+        "name": "CALZORIPT\u2122 D3 SHOT",
+        "division": "critiskill",
         "type": "Powder / Sachet/Granuals/Nano Shot",
         "saltComposition": "Vitamin D3 U.S.P . 60,000 IU Nano\nShots Butter Scotch Flavour",
         "packingType": "4*5 ml",
@@ -831,7 +914,8 @@
     },
     {
         "index": 84,
-        "name": "CALZORIPT™ D3 SACHET",
+        "name": "CALZORIPT\u2122 D3 SACHET",
+        "division": "critiskill",
         "type": "Powder / Sachet/Granuals/Nano Shot",
         "saltComposition": "Vitamin D3 U.S.P . 60,000 IU Sachet",
         "packingType": "20*1gm",
@@ -842,6 +926,7 @@
     {
         "index": 85,
         "name": "Krimax PRO CHOCO",
+        "division": "critiskill",
         "type": "Powder / Sachet/Granuals/Nano Shot",
         "saltComposition": "Choco Flavour ( Plastic Long Jar)",
         "packingType": "200 Gm",
@@ -852,6 +937,7 @@
     {
         "index": 86,
         "name": "Krimax PRO",
+        "division": "critiskill",
         "type": "Powder / Sachet/Granuals/Nano Shot",
         "saltComposition": "Protein Powder Sugar Free with DHA (Vanila Flavour)\nSuperior Plastic Jar with Silver line",
         "packingType": "200 gm",
@@ -862,6 +948,7 @@
     {
         "index": 87,
         "name": "Krimax G9",
+        "division": "critiskill",
         "type": "Powder / Sachet/Granuals/Nano Shot",
         "saltComposition": "L-ARGININE, PROANTHOCYANIDINS Sachet",
         "packingType": "10*10 gm",
@@ -871,7 +958,8 @@
     },
     {
         "index": 88,
-        "name": "Decoript™Gel",
+        "name": "Decoript\u2122Gel",
+        "division": "critiskill",
         "type": "OINTMENTS/SHAMPOO/DERMA/TOPICAL PREPERATION",
         "saltComposition": "DICLOFENAC DIETHYLAMINE1.16% w/w + LINSEED OIL 3% w/w + METHYLSALICYLATE 10% w/w + MENTHOL 5% w/w+BENZYL ALCOHOL GEL",
         "packingType": "30 GM",
@@ -882,6 +970,7 @@
     {
         "index": 89,
         "name": "Luript Cream",
+        "division": "critiskill",
         "type": "OINTMENTS/SHAMPOO/DERMA/TOPICAL PREPERATION",
         "saltComposition": "Luliconazole 1% W/W",
         "packingType": "15 GM",
@@ -892,6 +981,7 @@
     {
         "index": 90,
         "name": "Nasript",
+        "division": "critiskill",
         "type": "EYE/EAR/NASAL RANGE",
         "saltComposition": "Xylometazoline 0.1% Nasal Spary &\nDrop in Spray Bottle",
         "packingType": "10 ML",
@@ -902,6 +992,7 @@
     {
         "index": 91,
         "name": "Nasript P",
+        "division": "critiskill",
         "type": "EYE/EAR/NASAL RANGE",
         "saltComposition": "Xylometazoline 0.05% Nasal Spary & Drop in Spray Bottle",
         "packingType": "10 ML",
@@ -912,6 +1003,7 @@
     {
         "index": 92,
         "name": "Citraript",
+        "division": "critiskill",
         "type": "EYE/EAR/NASAL RANGE",
         "saltComposition": "Disodium Hydrogen Citrate 1.53 Gm",
         "packingType": "100ml",
@@ -921,7 +1013,8 @@
     },
     {
         "index": 93,
-        "name": "Calzoript™D3",
+        "name": "Calzoript\u2122D3",
+        "division": "critiskill",
         "type": "Syrup",
         "saltComposition": "Calcium Carbonate 625 mg + Magnesium 180 mg + Zinc 14 mg +Vit. D3 200 IU",
         "packingType": "200 ml",
@@ -931,7 +1024,8 @@
     },
     {
         "index": 94,
-        "name": "Onziript™ 3",
+        "name": "Onziript\u2122 3",
+        "division": "critiskill",
         "type": "Syrup",
         "saltComposition": "Omega 3 & Combination Syrup",
         "packingType": "200 ml",
@@ -941,17 +1035,19 @@
     },
     {
         "index": 95,
-        "name": "NUROKRIPT™ PLUS",
+        "name": "NUROKRIPT\u2122 PLUS",
+        "division": "critiskill",
         "type": "Syrup",
         "saltComposition": "Methylcobalamin And Combination Syrup",
         "packingType": "200 ml",
-        "MRP": "",
+        "MRP": null,
         "status": "PENDING",
         "oldUrl": "https://www.kriptpharma.com/product/nurokript-plus/"
     },
     {
         "index": 96,
         "name": "CUFFRIPT-AM",
+        "division": "critiskill",
         "type": "Syrup",
         "saltComposition": "Ambroxol I.P.15 mg + TerbutalineI.P.1.25 mg+Guaiphenesin I.P.50 mg + Menthol 2.5 mg (Dome Bottle)",
         "packingType": "100 ml",
@@ -961,7 +1057,8 @@
     },
     {
         "index": 97,
-        "name": "PICORIPT",
+        "name": "PICORIPT ",
+        "division": "critiskill",
         "type": "Syrup",
         "saltComposition": "Sodium Picosulphate 5mg",
         "packingType": "100 ml",
@@ -972,16 +1069,18 @@
     {
         "index": 98,
         "name": "TBD",
+        "division": "critiskill",
         "type": "Syrup",
         "saltComposition": "DEXTROMETYORPHAN HYDROBROMIDE 10MG+ CHLORPHENIRAMINE MALEATE 2MG + PHENYLEPHRINE HCL 5MG",
         "packingType": "100ML WITH CARTON",
         "MRP": "-",
         "status": "UNDER PRODUCTION",
-        "oldUrl": ""
+        "oldUrl": null
     },
     {
         "index": 99,
-        "name": "Calziript™ PLUS",
+        "name": "Calziript\u2122 PLUS",
+        "division": "critiskill",
         "type": "Softgel",
         "saltComposition": "Calcitriol 0.25 mcg+Calcium Carbonate 500 mg+zinc 7.5 mg + Megnesium Softgel",
         "packingType": "10*1*10 Blister",
@@ -991,7 +1090,8 @@
     },
     {
         "index": 100,
-        "name": "Calzoript™ CT",
+        "name": "Calzoript\u2122 CT",
+        "division": "critiskill",
         "type": "Softgel",
         "saltComposition": "Calcitriol 0.25 mcg+Calcium Carbonate 500 mg+zinc 7.5 mg",
         "packingType": "10*1*10 Blister",
@@ -1001,7 +1101,8 @@
     },
     {
         "index": 101,
-        "name": "Calzoript® D3",
+        "name": "Calzoript\u00ae D3",
+        "division": "critiskill",
         "type": "Softgel",
         "saltComposition": "Vitamin D3 U.S.P. 60,000 IU Softgel",
         "packingType": "10*1*4 Blister",
@@ -1011,7 +1112,8 @@
     },
     {
         "index": 102,
-        "name": "Nurokript™ OD",
+        "name": "Nurokript\u2122 OD",
+        "division": "critiskill",
         "type": "Softgel",
         "saltComposition": "Methylcobalamin 1500 mcg + Alpha Lipoic Acid 100 mg + Pyridoxine Hydrochloride 3 mg + Folic Acid 1.5 mg",
         "packingType": "10*1*10 Blister",
@@ -1022,8 +1124,9 @@
     {
         "index": 103,
         "name": "Multiript",
+        "division": "critiskill",
         "type": "Softgel",
-        "saltComposition": "Antioxidants+Ginseng+ Multivitamin+Multimineral+Antioxidants",
+        "saltComposition": " Antioxidants+Ginseng+ Multivitamin+Multimineral+Antioxidants",
         "packingType": "10*1*10 Blister",
         "MRP": 1290,
         "status": "AVAILABLE",
@@ -1031,7 +1134,8 @@
     },
     {
         "index": 104,
-        "name": "Onziript™D3",
+        "name": "Onziript\u2122D3",
+        "division": "critiskill",
         "type": "Softgel",
         "saltComposition": "Omega 3-6-9 Softgel Capsules",
         "packingType": "10*1*10 Blister",
@@ -1042,6 +1146,7 @@
     {
         "index": 105,
         "name": "ITRARIPT-100 CAPS",
+        "division": "critiskill",
         "type": "CAPSULES",
         "saltComposition": "ITRACONAZOLE 100 MG",
         "packingType": "10*10 ALU ALU",
@@ -1052,6 +1157,7 @@
     {
         "index": 106,
         "name": "ITRARIPT-200 CAPS",
+        "division": "critiskill",
         "type": "CAPSULES",
         "saltComposition": "ITRACONAZOLE 200 MG",
         "packingType": "10*10 ALU ALU",
@@ -1062,6 +1168,7 @@
     {
         "index": 107,
         "name": "CLINDARIPT CAPS",
+        "division": "critiskill",
         "type": "CAPSULES",
         "saltComposition": "CLINDAMYCIN HCL 300 MG",
         "packingType": "10*10 ALU ALU",
@@ -1072,6 +1179,7 @@
     {
         "index": 108,
         "name": "NUROKRIPT M",
+        "division": "critiskill",
         "type": "CAPSULES",
         "saltComposition": "methylcobalmin 10MG + METHYLCOBALMIN 750 MG",
         "packingType": "10*10",
@@ -1082,8 +1190,31 @@
     {
         "index": 109,
         "name": "AMOXYRIPT 500",
+        "division": "critiskill",
         "type": "CAPSULES",
         "saltComposition": "Amoxycillin 500MG Capsules",
+        "packingType": "10*10 Alu-Alu",
+        "MRP": 728,
+        "status": "AVAILABLE",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-500/"
+    },
+    {
+        "index": 110,
+        "name": "Parth-ript",
+        "division": "cardiac plus",
+        "type": "CAPSULES",
+        "saltComposition": "Sodium + H20",
+        "packingType": "10*10 Alu-Alu",
+        "MRP": 728,
+        "status": "AVAILABLE",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-500/"
+    },
+    {
+        "index": 111,
+        "name": "Arpit-ript",
+        "division": "Surgiript",
+        "type": "CAPSULES",
+        "saltComposition": "Sodium + H20",
         "packingType": "10*10 Alu-Alu",
         "MRP": 728,
         "status": "AVAILABLE",
