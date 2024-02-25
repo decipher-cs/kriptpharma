@@ -19,16 +19,35 @@ function Index() {
         <React.Fragment>
             <AppAppBar />
 
-            <Box sx={{ px: 3, py: 4 }}>
-                <BrowserRouter future={{ v7_startTransition: true }}>
-                    <Routes>
-                        <Route path='' element={<Home />} />
-                        <Route path='products' element={<AllProducts />} />
-                        <Route path='products/:id' element={<Item />} />
-                        <Route path='*' element={<PageNotFound />} />
-                    </Routes>
-                </BrowserRouter>
-            </Box>
+            <BrowserRouter future={{ v7_startTransition: true }}>
+                <Routes>
+                    <Route path='' element={<Home />} />
+                    <Route
+                        path='products'
+                        element={
+                            <PaddedPage>
+                                <AllProducts />
+                            </PaddedPage>
+                        }
+                    />
+                    <Route
+                        path='products/:id'
+                        element={
+                            <PaddedPage>
+                                <Item />
+                            </PaddedPage>
+                        }
+                    />
+                    <Route
+                        path='*'
+                        element={
+                            <PaddedPage>
+                                <PageNotFound />
+                            </PaddedPage>
+                        }
+                    />
+                </Routes>
+            </BrowserRouter>
 
             <AppFooter />
         </React.Fragment>
@@ -47,5 +66,20 @@ const Home = () => {
             <ProductCTA />
             <ProductSmokingHero />
         </>
+    )
+}
+
+const PaddedPage = ({ children }: React.PropsWithChildren) => {
+    return (
+        <Box
+            sx={{
+                px: 3,
+                py: 4,
+                minHeight: '100svh',
+                minWidth: '100vw',
+            }}
+        >
+            {children}
+        </Box>
     )
 }
