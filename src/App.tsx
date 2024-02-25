@@ -12,20 +12,23 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { AllProducts } from './modules/views/AllProducts'
 import { Item } from './modules/views/Item'
 import { PageNotFound } from './modules/views/PageNotFound'
+import { Box } from '@mui/system'
 
 function Index() {
     return (
         <React.Fragment>
             <AppAppBar />
 
-            <BrowserRouter future={{ v7_startTransition: true }}>
-                <Routes>
-                    <Route path='' element={<Home />} />
-                    <Route path='products' element={<AllProducts />} />
-                    <Route path='products/:id' element={<Item />} />
-                    <Route path='*' element={<PageNotFound />} />
-                </Routes>
-            </BrowserRouter>
+            <Box sx={{ px: 3, py: 4 }}>
+                <BrowserRouter future={{ v7_startTransition: true }}>
+                    <Routes>
+                        <Route path='' element={<Home />} />
+                        <Route path='products' element={<AllProducts />} />
+                        <Route path='products/:id' element={<Item />} />
+                        <Route path='*' element={<PageNotFound />} />
+                    </Routes>
+                </BrowserRouter>
+            </Box>
 
             <AppFooter />
         </React.Fragment>
