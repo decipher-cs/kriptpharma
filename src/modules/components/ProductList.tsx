@@ -19,7 +19,6 @@ export const ProductList = memo((props: { products: typeof medicineInfo }) => {
                 gridAutoRows: '1fr',
                 gridTemplateColumns: isScreenSmall ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)',
                 gap: 4,
-                justifyContent: 'space-around',
             }}
         >
             {products.map(item => (

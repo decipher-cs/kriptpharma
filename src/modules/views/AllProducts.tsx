@@ -41,10 +41,13 @@ export const AllProducts = () => {
     const [params, setParams] = useSearchParams()
 
     const instantFilter = (val: string, filter: string[]) => {
-        const result = fuse
-            .search('arpit')
-            .map(item => item.item)
-            .filter(item => filter.includes(item.type) || filter.includes(item.division))
+        const result =
+            val.length >= 1
+                ? fuse
+                      .search(val)
+                      .map(item => item.item)
+                      .filter(item => filter.includes(item.type) || filter.includes(item.division))
+                : medicineInfo.filter(item => filter.includes(item.type) || filter.includes(item.division))
         setProducts(result)
     }
 
@@ -77,7 +80,7 @@ export const AllProducts = () => {
                                                     ? [...filter, fil]
                                                     : filter.filter(item => item !== fil)
                                                 setFilter(newFilters)
-                                                instantFilter(value.length ? value : ' ', newFilters)
+                                                instantFilter(value, newFilters)
                                             }}
                                         />
                                     }
