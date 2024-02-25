@@ -46,9 +46,9 @@ export default function ProductHeroLayout(props: React.HTMLAttributes<HTMLDivEle
                 }}
             >
                 <img
-                    src='https://logos-world.net/wp-content/uploads/2021/03/Lamborghini-Logo.png'
+                    src='https://www.kriptpharma.com/wp-content/uploads/2021/10/kript-pharma-logo-white-260x81.png'
                     alt='wonder'
-                    width='147'
+                    width='260'
                     height='80'
                 />
                 {children}

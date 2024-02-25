@@ -18,7 +18,7 @@ export default function ProductHero() {
             <img style={{ display: 'none' }} src={backgroundImage} alt='increase priority' />
 
             <Typography color='inherit' align='center' variant='h2' marked='center'>
-                Kript4 mama
+                Kriptpharma
             </Typography>
             <Typography color='inherit' align='center' variant='h5' sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}>
                 Enjoy Medicine

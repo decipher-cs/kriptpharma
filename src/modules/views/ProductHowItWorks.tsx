@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Button from '../components/Button'
 import Typography from '../components/Typography'
+import { useNavigate } from 'react-router-dom'
 
 const item: SxProps<Theme> = {
     display: 'flex',
@@ -65,7 +66,7 @@ function ProductHowItWorks() {
                                     sx={image}
                                 />
                                 <Typography variant='h5' align='center'>
-                                    Find what you need
+                                    Go through our catelog
                                 </Typography>
                             </Box>
                         </Grid>
@@ -79,7 +80,7 @@ function ProductHowItWorks() {
                                     sx={image}
                                 />
                                 <Typography variant='h5' align='center'>
-                                    Get in touch with us
+                                    Find what you need
                                 </Typography>
                             </Box>
                         </Grid>
@@ -93,21 +94,14 @@ function ProductHowItWorks() {
                                     sx={image}
                                 />
                                 <Typography variant='h5' align='center'>
-                                    {'we will touch back'}
+                                    Get in touch with us
                                 </Typography>
                             </Box>
                         </Grid>
                     </Grid>
                 </div>
-                <Button
-                    color='secondary'
-                    size='large'
-                    variant='contained'
-                    component='a'
-                    href='/premium-themes/onepirate/sign-up/'
-                    sx={{ mt: 8 }}
-                >
-                    Get touching
+                <Button color='secondary' size='large' variant='contained' component='a' href='#contact' sx={{ mt: 8 }}>
+                    Get In Touch
                 </Button>
             </Container>
         </Box>

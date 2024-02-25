@@ -22,6 +22,7 @@ function AppAppBar() {
                         href='/premium-themes/onepirate/'
                         sx={{ fontSize: 24 }}
                     >
+
                         {'kript'}
                     </Link>
                     <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
