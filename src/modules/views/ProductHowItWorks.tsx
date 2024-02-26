@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 import Button from '../components/Button'
 import Typography from '../components/Typography'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const item: SxProps<Theme> = {
     display: 'flex',
@@ -55,7 +55,7 @@ function ProductHowItWorks() {
                     How it works
                 </Typography>
                 <div>
-                    <Grid container spacing={5}>
+                    <Grid container spacing={7}>
                         <Grid item xs={12} md={4}>
                             <Box sx={item}>
                                 <Box sx={number}>1.</Box>
@@ -66,7 +66,7 @@ function ProductHowItWorks() {
                                     sx={image}
                                 />
                                 <Typography variant='h5' align='center'>
-                                    Go through our catelog
+                                    See our catelog
                                 </Typography>
                             </Box>
                         </Grid>

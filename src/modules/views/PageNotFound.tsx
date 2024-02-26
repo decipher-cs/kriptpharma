@@ -7,14 +7,14 @@ import { CircularProgress } from '@mui/material'
 export const PageNotFound = () => {
     const [progress, setProgress] = useState(0)
     const navigate = useNavigate()
+    const timeout = 5
 
     useEffect(() => {
-        const timeout = 4000
         const intervalId = setInterval(() => {
-            if (progress >= 100) {
+            if (progress >= timeout) {
                 navigate('/')
                 setProgress(0)
-            } else setProgress(p => p + 100 * (1000 / timeout))
+            } else setProgress(progress + 1)
         }, 1000)
 
         return () => {
@@ -25,8 +25,8 @@ export const PageNotFound = () => {
         <Box sx={{ display: 'grid', width: '100%', height: '100%', justifyItems: 'center', p: 10, gap: 5 }}>
             <Typography variant='h1'>404</Typography>
             <Typography variant='h5'>This page doesn't exist</Typography>
-            <Typography variant='body2'>You will be redirected in {progress}...</Typography>
-            <CircularProgress variant='determinate' value={progress} />
+            <Typography variant='body2'>You will be redirected in {timeout - progress}...</Typography>
+            <CircularProgress />
         </Box>
     )
 }

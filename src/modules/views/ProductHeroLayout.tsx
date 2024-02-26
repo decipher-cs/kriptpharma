@@ -3,6 +3,7 @@ import { Theme, styled } from '@mui/material/styles'
 import { SxProps } from '@mui/system'
 import Container from '@mui/material/Container'
 import Box from '@mui/material/Box'
+import { ArrowDownwardRounded } from '@mui/icons-material'
 
 const ProductHeroLayoutRoot = styled('section')(({ theme }) => ({
     color: theme.palette.common.white,
@@ -65,14 +66,9 @@ export default function ProductHeroLayout(props: React.HTMLAttributes<HTMLDivEle
                     }}
                 />
                 <Background sx={sxBackground} />
-                <Box
-                    component='img'
-                    src='https://www.pngmart.com/files/15/Arrow-Down-PNG-Free-Download.png'
-                    height='30px'
-                    width='30px'
-                    alt='arrow down'
-                    sx={{ position: 'absolute', bottom: 32 }}
-                />
+                <Box height='20px' width='30px' sx={{ position: 'absolute', bottom: 32 }}>
+                    <ArrowDownwardRounded />
+                </Box>
             </Container>
         </ProductHeroLayoutRoot>
     )

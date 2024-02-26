@@ -28,7 +28,7 @@ export default function ProductHero() {
                 variant='contained'
                 size='large'
                 component='a'
-                href='/premium-themes/onepirate/sign-up/'
+                href='/products'
                 sx={{ minWidth: 200 }}
             >
                 Catalog

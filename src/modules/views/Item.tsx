@@ -1,10 +1,11 @@
-import { Box } from '@mui/system'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Box, useTheme } from '@mui/system'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Typography from '../components/Typography'
 import medicineInfo from '../../assets/medicine.json'
 import { Accordion, AccordionDetails, AccordionSummary, Chip, IconButton } from '@mui/material'
 import { useEffect, useState } from 'react'
 import { NavigateBeforeRounded, ExpandMore, NavigateNextRounded, ExpandMoreRounded } from '@mui/icons-material'
+import customTheme from '../theme'
 
 const images = [
     {
@@ -21,18 +22,16 @@ const images = [
 export const Item = () => {
     const { id } = useParams()
 
+    const theme = useTheme(customTheme)
+
     const navigate = useNavigate()
 
-    if (!id) {
-        navigate('/')
-        throw new Error('Incorrect URL parameter when viewing product')
-    }
+    const product = medicineInfo.find(item => item.index === parseInt(id ?? ''))
 
-    const product = medicineInfo.find(item => item.index === Number(id))
-
-    if (!product) {
-        navigate('/')
-        throw new Error('No product')
+    if (!id || !product) {
+        return <div>not here</div>
+        // navigate('/pageNotFound')
+        // import.meta.env.DEV? throw new Error('No product with this id'): <Link>
     }
 
     const { name, MRP, type, status, packingType, saltComposition, oldUrl } = product
@@ -41,35 +40,57 @@ export const Item = () => {
         <>
             <Box
                 sx={{
-                    display: 'grid',
-                    gridTemplateAreas: `'image name'
-                                        'image type'
-                                        'image status'
-                                        'image packing'
-                                        'image salt'`,
+                    display: 'flex',
+                    gap: 3,
+                    // gridTemplateColumns: '1fr 2fr',
+                    // gridAutoFlow: 'column',
+
+                    // gridTemplateAreas: `'image name'
+                    //                     'image status'
+                    //                     'image salt'
+                    //                     'image packing'`,
+                    // background: theme.palette.secondary.contrastText
                 }}
             >
-                <Box sx={{ width: '50vw', height: '300px', border: 'solid black 3px', gridArea: 'image', p: 1 }}>
+                <Box
+                    sx={{
+                        aspectRatio: '20/15',
+                        width: '40vw',
+                        // height: '300px',
+                        border: 'solid 3px ' + theme.palette.background.placeholder,
+                        gridArea: 'image',
+                        p: 1,
+                    }}
+                >
                     <Carousel />
                 </Box>
-                <Typography variant='h4' sx={{ gridArea: 'name' }}>
-                    {name}
-                </Typography>
-                <Typography variant='body1' sx={{ gridArea: 'type' }}>
-                    {type}
-                </Typography>
-                <Typography variant='caption' sx={{ gridArea: 'status' }}>
-                    <Chip label={status} />
-                </Typography>
-                <Typography variant='subtitle1' sx={{ gridArea: 'packing' }}>
-                    {packingType}
-                </Typography>
-                <Typography variant='subtitle2' sx={{ gridArea: 'salt' }}>
-                    {saltComposition}
-                </Typography>
+                <Box sx={{ display: 'grid', alignContent: 'flex-start', gap: 3, mt: 2 }}>
+                    <Typography variant='h4' sx={{}}>
+                        {name}
+                    </Typography>
+                    <Typography variant='caption' sx={{}}>
+                        <Chip label={status} sx={{ mr: 2 }} />
+                        <Chip label={type} />
+                    </Typography>
+                    <Typography variant='subtitle1' sx={{}}>
+                        Salt: {saltComposition}
+                    </Typography>
+                    <Typography variant='subtitle2' sx={{}}>
+                        Packing: {packingType}
+                    </Typography>
+                </Box>
             </Box>
-            <Box sx={{ background: 'grey' }}>
-                <Accordion>
+
+            <Box
+                sx={{
+                    display: 'grid',
+                    gap: 2,
+                    mt: 10,
+                    // background: theme.palette.primary.dark,
+                    // border: 'solid 3px ' + theme.palette.grey[400],
+                }}
+            >
+                <Accordion defaultExpanded sx={{ background: 'white' }} elevation={0}>
                     <AccordionSummary expandIcon={<ExpandMoreRounded />}>Description</AccordionSummary>
                     <AccordionDetails>
                         Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad
@@ -82,7 +103,7 @@ export const Item = () => {
                         ullamco ut ea consectetur et est culpa et culpa duis.
                     </AccordionDetails>
                 </Accordion>
-                <Accordion>
+                <Accordion sx={{ background: 'white' }} elevation={0}>
                     <AccordionSummary expandIcon={<ExpandMoreRounded />}>Uses</AccordionSummary>
                     <AccordionDetails>
                         Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad
@@ -95,7 +116,7 @@ export const Item = () => {
                         ullamco ut ea consectetur et est culpa et culpa duis.
                     </AccordionDetails>
                 </Accordion>
-                <Accordion>
+                <Accordion sx={{ background: 'white' }} elevation={0}>
                     <AccordionSummary expandIcon={<ExpandMoreRounded />}>Side-Effects</AccordionSummary>
                     <AccordionDetails>
                         Lorem ipsum dolor sit amet, officia excepteur ex fugiat reprehenderit enim labore culpa sint ad
@@ -149,10 +170,9 @@ const Carousel = (props: { autoScroll?: boolean; autoScrollInterval?: number }) 
                     width: maxSlides * 100 + '%',
                     height: '100%',
 
-                    background: 'red',
                     display: 'flex',
                     translate: '-' + (100 / maxSlides) * trans + '%',
-                    transition: 'translate 0.1s linear',
+                    transition: 'translate 0.2s linear',
                 }}
             >
                 {images.map((img, i) => (
@@ -161,7 +181,13 @@ const Carousel = (props: { autoScroll?: boolean; autoScrollInterval?: number }) 
                             src={img.url}
                             height='100%'
                             width='100%'
-                            style={{ objectFit: 'cover', objectPosition: 'center' }}
+                            style={{
+                                // aspectRatio: '1/1',
+                                objectFit: 'cover',
+                                objectPosition: 'center',
+                                display: 'block',
+                                marginInline: 'auto',
+                            }}
                         />
                     </Box>
                 ))}
