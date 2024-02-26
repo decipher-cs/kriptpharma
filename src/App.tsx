@@ -17,9 +17,9 @@ import { Box } from '@mui/system'
 function Index() {
     return (
         <React.Fragment>
-            <AppAppBar />
-
             <BrowserRouter future={{ v7_startTransition: true }}>
+                <AppAppBar />
+
                 <Routes>
                     <Route path='' element={<Home />} />
                     <Route
@@ -47,9 +47,9 @@ function Index() {
                         }
                     />
                 </Routes>
-            </BrowserRouter>
 
-            <AppFooter />
+                <AppFooter />
+            </BrowserRouter>
         </React.Fragment>
     )
 }
