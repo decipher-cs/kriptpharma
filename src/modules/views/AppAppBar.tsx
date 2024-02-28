@@ -20,8 +20,8 @@ function AppAppBar() {
         <div>
             <AppBar position='fixed'>
                 <Toolbar sx={{ justifyContent: 'space-between' }}>
-                    <Box component={'img'} src={logo}></Box>
                     <Box sx={{ flex: 1 }} />
+                    <Box component={'img'} src={logo} sx={{ mr: 2 }} />
                     <Link variant='h6' underline='none' color='inherit' href='/' sx={{ fontSize: 24 }}>
                         {'kript'}
                     </Link>
@@ -38,11 +38,7 @@ function AppAppBar() {
                     >
                         {'pharma'}
                     </Link>
-                    <Box sx={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-                        <IconButton sx={{ color: 'white' }}>
-                            <DarkModeRounded />
-                        </IconButton>
-                    </Box>
+                    <Box sx={{ flex: 1 }} />
                 </Toolbar>
             </AppBar>
             <Toolbar />
