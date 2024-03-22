@@ -1,17 +1,5 @@
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
-// import { lazy } from 'react'
-
-// const TanStackRouterDevtools =
-//     import.meta.env.NODE_ENV === 'production'
-//         ? () => null // Render nothing in production
-//         : lazy(() =>
-//               // Lazy load in development
-//               import('@tanstack/router-devtools').then((res) => ({
-//                   default: res.TanStackRouterDevtools,
-//                   // For Embedded Mode
-//                   // default: res.TanStackRouterDevtoolsPanel
-//               }))
-//           )
+import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 
 export const Route = createRootRoute({
     component: () => (
@@ -21,16 +9,19 @@ export const Route = createRootRoute({
                 <Outlet />
             </div>
             <Footer />
-            {/* <TanStackRouterDevtools /> */}
+            <TanStackRouterDevtools />
         </>
     ),
+    notFoundComponent: () => <ErrorPage />,
 })
 
 const Navbar = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
-                <a className="btn btn-ghost text-xl">Kriptpharma</a>
+                <Link to="/" className="btn btn-ghost text-xl">
+                    Kriptpharma
+                </Link>
             </div>
             <div className="flex-none">
                 <ul className="menu menu-horizontal px-1 gap-1">
@@ -45,7 +36,7 @@ const Navbar = () => {
                     ].map((path) => (
                         <li key={path}>
                             <Link
-                                to={'/' + path}
+                                to={'/' + path.replace(' ', '')}
                                 className="[&.active]:font-bold"
                             >
                                 {path}
@@ -111,5 +102,24 @@ const Footer = () => {
                 </p>
             </aside>
         </footer>
+    )
+}
+
+const ErrorPage = () => {
+    return (
+        <div className="grid h-screen place-content-center px-4">
+            <div className="text-center space-y-7">
+                <h1 className="text-9xl font-black">404</h1>
+                <p className="text-2xl font-bold tracking-tight sm:text-4xl">
+                    Page Not Found!
+                </p>
+                <p className="text-base-content">We can't find that page.</p>
+                <button className="btn btn-primary">
+                    <Link to={'/'} className="">
+                        Go Back Home
+                    </Link>
+                </button>
+            </div>
+        </div>
     )
 }
