@@ -46,7 +46,7 @@ export const ProductList = memo((props: { products: typeof medicineInfo }) => {
                             sx={{ mb: '0%' }}
                             fullWidth
                             variant='contained'
-                            href={'products/' + item.index.toString()}
+                            href={'product/' + item.index.toString()}
                             onClick={e => {
                                 e.preventDefault()
                                 navigate(item.index.toString())

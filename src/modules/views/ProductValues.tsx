@@ -30,7 +30,7 @@ function ProductValues() {
                         xs={12}
                         md={4}
                         onClick={() => {
-                            navigate('products')
+                            navigate('product')
                         }}
                         sx={{ cursor: 'pointer' }}
                     >
@@ -52,7 +52,7 @@ function ProductValues() {
                         xs={12}
                         md={4}
                         onClick={() => {
-                            navigate('products')
+                            navigate('product')
                         }}
                         sx={{ cursor: 'pointer' }}
                     >
@@ -77,7 +77,7 @@ function ProductValues() {
                         md={4}
                         sx={{ cursor: 'pointer' }}
                         onClick={() => {
-                            navigate('products')
+                            navigate('product')
                         }}
                     >
                         <Box sx={item}>

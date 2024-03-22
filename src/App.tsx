@@ -23,7 +23,7 @@ function Index() {
                 <Routes>
                     <Route path='' element={<Home />} />
                     <Route
-                        path='products'
+                        path='product'
                         element={
                             <PaddedPage>
                                 <AllProducts />
@@ -31,7 +31,7 @@ function Index() {
                         }
                     />
                     <Route
-                        path='products/:id'
+                        path='product/:id'
                         element={
                             <PaddedPage>
                                 <Item />

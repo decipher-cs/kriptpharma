@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Button from '../components/Button'
 import Typography from '../components/Typography'
 import ProductHeroLayout from './ProductHeroLayout'
@@ -6,6 +7,7 @@ const backgroundImage =
     'https://images.unsplash.com/photo-1576671081837-49000212a370?q=80&w=1998&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'
 
 export default function ProductHero() {
+    const navigate = useNavigate()
     return (
         <ProductHeroLayout
             sxBackground={{
@@ -28,8 +30,12 @@ export default function ProductHero() {
                 variant='contained'
                 size='large'
                 component='a'
-                href='/products'
+                href='/product'
                 sx={{ minWidth: 200 }}
+                onClick={e => {
+                    e.preventDefault()
+                    navigate('/product')
+                }}
             >
                 Catalog
             </Button>
