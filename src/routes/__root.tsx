@@ -5,7 +5,7 @@ export const Route = createRootRoute({
     component: () => (
         <>
             <Navbar />
-            <div className="min-h-svh">
+            <div className="min-h-svh min-w-full">
                 <Outlet />
             </div>
             <Footer />
@@ -98,7 +98,7 @@ const Footer = () => {
             <aside>
                 <p>
                     Copyright © 2024 - All right reserved by ACME Industries
-                    Ltd
+                    Ltd. Icon by <a href="https://icons8.com">Icons8</a>
                 </p>
             </aside>
         </footer>
