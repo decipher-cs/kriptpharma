@@ -43,11 +43,15 @@ const Contact = () => {
                 {contact.map((data, i) => (
                     <a
                         key={i}
-                        className="block rounded-xl border border-gray-800 p-8 shadow-xl transition hover:border-primary hover:shadow-primary"
+                        className="block rounded-xl border border-gray-800 p-8 shadow-xl transition  hover:shadow-primary"
                         href={data.href}
                         target="_blank"
                     >
-                        <img className="size-10" src={data.logoUrl} alt="" />
+                        <img
+                            className="size-10"
+                            src={data.logoUrl}
+                            alt={data.title + ' logo'}
+                        />
 
                         <h2 className="mt-4 text-xl font-bold text-white">
                             {data.title.toUpperCase()}
