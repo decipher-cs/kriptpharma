@@ -17,12 +17,12 @@ import { Route as rootRoute } from './routes/__root'
 // Create Virtual Routes
 
 const ProductLazyImport = createFileRoute('/product')()
+const HomeLazyImport = createFileRoute('/home')()
 const GlobalPresenceLazyImport = createFileRoute('/globalPresence')()
 const ExhibitionLazyImport = createFileRoute('/exhibition')()
 const ContactLazyImport = createFileRoute('/contact')()
 const CertificateLazyImport = createFileRoute('/certificate')()
 const AboutLazyImport = createFileRoute('/about')()
-const LazyImport = createFileRoute('/*')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
@@ -31,6 +31,11 @@ const ProductLazyRoute = ProductLazyImport.update({
   path: '/product',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/product.lazy').then((d) => d.Route))
+
+const HomeLazyRoute = HomeLazyImport.update({
+  path: '/home',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/home.lazy').then((d) => d.Route))
 
 const GlobalPresenceLazyRoute = GlobalPresenceLazyImport.update({
   path: '/globalPresence',
@@ -59,11 +64,6 @@ const AboutLazyRoute = AboutLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
-const LazyRoute = LazyImport.update({
-  path: '/*',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/*.lazy').then((d) => d.Route))
-
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -75,10 +75,6 @@ declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/*': {
-      preLoaderRoute: typeof LazyImport
       parentRoute: typeof rootRoute
     }
     '/about': {
@@ -101,6 +97,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GlobalPresenceLazyImport
       parentRoute: typeof rootRoute
     }
+    '/home': {
+      preLoaderRoute: typeof HomeLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/product': {
       preLoaderRoute: typeof ProductLazyImport
       parentRoute: typeof rootRoute
@@ -112,12 +112,12 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  LazyRoute,
   AboutLazyRoute,
   CertificateLazyRoute,
   ContactLazyRoute,
   ExhibitionLazyRoute,
   GlobalPresenceLazyRoute,
+  HomeLazyRoute,
   ProductLazyRoute,
 ])
 
