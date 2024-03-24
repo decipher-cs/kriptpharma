@@ -9,7 +9,7 @@ export const Route = createRootRoute({
                 <Outlet />
             </div>
             <Footer />
-            <TanStackRouterDevtools />
+            {import.meta.env.DEV && <TanStackRouterDevtools />}
         </>
     ),
     notFoundComponent: () => <ErrorPage />,
