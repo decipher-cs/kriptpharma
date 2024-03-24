@@ -1,0 +1,779 @@
+[
+    {
+        "id": 1,
+        "type": "General",
+        "name": "Aceclofenac 200 mg SR",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/acloript-200/"
+    },
+    {
+        "id": 2,
+        "type": "General",
+        "name": "Aceclofenac & Trypsin Chymotrypsin 50,000 IU",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/acloript-tc/"
+    },
+    {
+        "id": 3,
+        "type": "General",
+        "name": "Aceclofenac I.P. 100 mg+Paracetamol I.P.325mg",
+        "packaging": "20*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/acloript-p/"
+    },
+    {
+        "id": 4,
+        "type": "General",
+        "name": "Aceclofenac I.P. 100 mg + Paracetamol I.P. 325 mg +Serratiopeptidase I.P. 15 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/acloript-sp/"
+    },
+    {
+        "id": 5,
+        "type": "General",
+        "name": "Aceclofenac I.P 100 Mg+ Thicolchicoside 4 Mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/acloript-th/"
+    },
+    {
+        "id": 6,
+        "type": "General",
+        "name": "Aceclofenac I.P 100 Mg+ Thicolchicoside 8 Mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/acloript-th-8mg/"
+    },
+    {
+        "id": 7,
+        "type": "General",
+        "name": "Aceclofenac I.P. 100 mg +\nParacetamol I.P. 325 mg + Chlorzoxazone IP 250MG",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/acloriptmr/"
+    },
+    {
+        "id": 8,
+        "type": "General",
+        "name": "Cefuroxime 250mg Tablets",
+        "packaging": "10x10 Alu Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/krirox-250/"
+    },
+    {
+        "id": 9,
+        "type": "General",
+        "name": "Cefuroxime 500 mg",
+        "packaging": "10*1*6 Alu Strip",
+        "oldUrl": "https://www.kriptpharma.com/product/krirox-500/"
+    },
+    {
+        "id": 10,
+        "type": "General",
+        "name": "Cefixime Trihydrate I.P 200mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": null
+    },
+    {
+        "id": 11,
+        "type": "General",
+        "name": "Cefixime 200mg + Clavulanic Acid125mg",
+        "packaging": "10*1*6 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/krip-cef-cv/"
+    },
+    {
+        "id": 12,
+        "type": "General",
+        "name": "Cefixime Trihydrate I.P. 200 mg + Ofloxacin I.P. 200 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": null
+    },
+    {
+        "id": 13,
+        "type": "General",
+        "name": "Citicoline 500 mg+piracetam 800 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/citiript-p-800/"
+    },
+    {
+        "id": 14,
+        "type": "General",
+        "name": "Citicoline 500 mg+piracetam400mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/citiript-p-400/"
+    },
+    {
+        "id": 15,
+        "type": "General",
+        "name": "Trypsin 48mg + Bromelain 90mg + Rutoside Trihydrate 100mg +Diclofenac 50mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/decoriptbr/"
+    },
+    {
+        "id": 16,
+        "type": "General",
+        "name": "Diclofenac 50 mg + Serratiopeptidase 10 mg Round Tablet",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/decoriptk/"
+    },
+    {
+        "id": 17,
+        "type": "General",
+        "name": "Diclofenac (100 mg) + Tolperisone(450 mg)",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/decoript-t/"
+    },
+    {
+        "id": 18,
+        "type": "General",
+        "name": "Diclofenac Sodium 50mg +Paracetamol 325 +Chlorzoxazone 250 mg",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/decoript-mr/"
+    },
+    {
+        "id": 19,
+        "type": "General",
+        "name": "Diclofenac Potassium B.P. 50 mg + PCM I.P 325 mg",
+        "packaging": "20*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/decoript-p/"
+    },
+    {
+        "id": 20,
+        "type": "General",
+        "name": "trypsin Chymotrypsin 50000 IU + Diclofenac Potassium 50MG + Paracetamol IP 325MG",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/decoript-tc/"
+    },
+    {
+        "id": 21,
+        "type": "General",
+        "name": "Diclofenac Potassium B.P. 50 mg + PCM I.P 325 mg + Serratiopeptidase I.P 10 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/decoript-sp/"
+    },
+    {
+        "id": 22,
+        "type": "General",
+        "name": "Deflazacort 6mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/deflaript-6mg/"
+    },
+    {
+        "id": 23,
+        "type": "General",
+        "name": "DROTAVERINE HYDROCHORIDE 80 MG + MEFENAMIC ACID 250 MG",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/dotoaript-m/"
+    },
+    {
+        "id": 24,
+        "type": "General",
+        "name": "Doxofylline 400mg + Montelukast 10MG",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/doxoript-m/"
+    },
+    {
+        "id": 25,
+        "type": "General",
+        "name": "Doxofylline 400mg",
+        "packaging": "10*10 BLISTER",
+        "oldUrl": "https://www.kriptpharma.com/product/doxoript-m/"
+    },
+    {
+        "id": 26,
+        "type": "General",
+        "name": "Doxylamine 10 mg + Pyridoxine 10\nmg + Folic Acid 2.5mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/doxoript-p/"
+    },
+    {
+        "id": 27,
+        "type": "General",
+        "name": "Esomeprazole 40 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/kri-esol-40-2/"
+    },
+    {
+        "id": 28,
+        "type": "General",
+        "name": "Fexofenadine 120 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/fexoript-120/"
+    },
+    {
+        "id": 29,
+        "type": "General",
+        "name": "Fexofenadine 180 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/fexoript-180/"
+    },
+    {
+        "id": 30,
+        "type": "General",
+        "name": "Betahistine 8mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/betaript-8mg/"
+    },
+    {
+        "id": 31,
+        "type": "General",
+        "name": "Betahistine 16 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/betaript-16mg/"
+    },
+    {
+        "id": 32,
+        "type": "General",
+        "name": "Fluconazole 200MG",
+        "packaging": "20*1 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/flukaript-200mg/"
+    },
+    {
+        "id": 33,
+        "type": "General",
+        "name": "Fluconazole 150 mg",
+        "packaging": "20*1 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/flukaript-150mg/"
+    },
+    {
+        "id": 34,
+        "type": "General",
+        "name": "Gabapentin 300 & methycobalamin 500mcg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/gabaript-g/"
+    },
+    {
+        "id": 35,
+        "type": "General",
+        "name": "Gabapentin 400mg +Nortriptyline Hydrochloride 10mg tab",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/gabaript-nt/"
+    },
+    {
+        "id": 36,
+        "type": "General",
+        "name": "Letrozole 5 mg",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/letroript-5mg/"
+    },
+    {
+        "id": 37,
+        "type": "General",
+        "name": "Levocetirizine Dihydrochloride I.P 5mg",
+        "packaging": "20*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/levoript-5/"
+    },
+    {
+        "id": 38,
+        "type": "General",
+        "name": "Linezolid 600mg",
+        "packaging": "10*1*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/linzoript-600/"
+    },
+    {
+        "id": 39,
+        "type": "General",
+        "name": "Trypsin 48 mg, Bromelain 90mg,\nRutoside trihydrate 100mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/kripsin-krypsin-krityp-tryript/"
+    },
+    {
+        "id": 40,
+        "type": "General",
+        "name": "Montelukast 10mg + Fexofenadine 120mg Chewable Tablet",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/monteript-fx/"
+    },
+    {
+        "id": 41,
+        "type": "General",
+        "name": "Levocetirizine I.P 5 mg + Montelukast\nSodium I.P 10 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/monteript-lc/"
+    },
+    {
+        "id": 42,
+        "type": "General",
+        "name": "Amoxycillin 500MG Capsules+ Calvulanate Potassium I.P. 125mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-cv-625/"
+    },
+    {
+        "id": 43,
+        "type": "General",
+        "name": "Amoxycillin I.P. 500 mg + Calvulanate Potassium I.P. 125mg with Lactic Acid Basicullus Film Coated Tablet",
+        "packaging": "10*1*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-cv-625-lb/"
+    },
+    {
+        "id": 44,
+        "type": "General",
+        "name": "\nMethylcobalamin+vitamin B+ zinc + Folic acid + chromium +calcium D Pantothenate",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": null
+    },
+    {
+        "id": 45,
+        "type": "General",
+        "name": "Pregabalin 75mg + Nortriptyline 10mg + Methylcobalamin 1500mcg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": null
+    },
+    {
+        "id": 46,
+        "type": "General",
+        "name": "Methylcobalamin 1500mg+L- Methylfolate 1gm+Pyridoxal 5 -\nPhosphate 0.5mg Tables",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/nurokript-xt/"
+    },
+    {
+        "id": 47,
+        "type": "General",
+        "name": "LEVOFLOXACIN 750",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/kriflox-750/"
+    },
+    {
+        "id": 48,
+        "type": "General",
+        "name": "LEVOFLOXACIN 500MG TABLET",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": null
+    },
+    {
+        "id": 49,
+        "type": "General",
+        "name": "Methylpredinosolone 4 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/methyript-4mg/"
+    },
+    {
+        "id": 50,
+        "type": "General",
+        "name": "Pantoprazole Sodium I.P 40 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/pantoript-40-2/"
+    },
+    {
+        "id": 51,
+        "type": "General",
+        "name": "PANTOPRAZOLE SODIUM 40MG + DOMPERIDONE 10MG",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/pantoript-d/"
+    },
+    {
+        "id": 52,
+        "type": "General",
+        "name": "Paracetamol 650mg",
+        "packaging": "20*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/parakript-650/"
+    },
+    {
+        "id": 53,
+        "type": "General",
+        "name": "RABEPRAZOLE I.P 20 MG",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "Rabiript\u2122 20 MG \u2013 Kript Pharmaceuticals"
+    },
+    {
+        "id": 54,
+        "type": "General",
+        "name": "Tamsulosin 0.4 mg Modified Release+ finasteride 5MG",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/tamuript-f/"
+    },
+    {
+        "id": 55,
+        "type": "General",
+        "name": "Terbinafine 250mg",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/terboript-250/"
+    },
+    {
+        "id": 56,
+        "type": "General",
+        "name": "Ursodeoxycholic Acid 300mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/udoript-300-mg/"
+    },
+    {
+        "id": 57,
+        "type": "General",
+        "name": "Ofloxacin I.P 200 mg",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/ofloxoript-200mg/"
+    },
+    {
+        "id": 58,
+        "type": "General",
+        "name": "Ofloxacin I.P 200 mg + Ornidazole I.P 500 mg",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/ofloxoript-oz/"
+    },
+    {
+        "id": 59,
+        "type": "General",
+        "name": "Mefnamic 10mg + Dicyclomine 250mg",
+        "packaging": "10*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/mefnaript/"
+    },
+    {
+        "id": 60,
+        "type": "General",
+        "name": "Onsansteron 4 mg mouth dissolving",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/ondaript-4mg/"
+    },
+    {
+        "id": 61,
+        "type": "General",
+        "name": "Onsansteron 8 mg mouth dissolving",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/ondaript-8mg/"
+    },
+    {
+        "id": 62,
+        "type": "General",
+        "name": "Albendazole 400mg",
+        "packaging": "10*5 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/albendaript/"
+    },
+    {
+        "id": 63,
+        "type": "General",
+        "name": "Albendazole 400mg+Ivermectin 6mg\ntab",
+        "packaging": "10*5 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/albendaript-iv/"
+    },
+    {
+        "id": 64,
+        "type": "General",
+        "name": "Azithromycin Dihydrate I.P. 250mg",
+        "packaging": "10*6 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/azeeript/"
+    },
+    {
+        "id": 65,
+        "type": "General",
+        "name": "Azithromycin Dihydrate I.P. 500mg",
+        "packaging": "10*5 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/azeeript-500mg/"
+    },
+    {
+        "id": 66,
+        "type": "General",
+        "name": "RABEPRAZOLE 20MG+ DOMPERIDONE 30MG",
+        "packaging": "10*10",
+        "oldUrl": "https://www.kriptpharma.com/product/rabiriptdsr/"
+    },
+    {
+        "id": 67,
+        "type": "General",
+        "name": "NORTRIPTYLINE + PREGABALIN",
+        "packaging": "10*10 ALU ALU",
+        "oldUrl": "https://www.kriptpharma.com/product/nurokript-pg/"
+    },
+    {
+        "id": 68,
+        "type": "Injections & Infusion",
+        "name": "Cefoperazone I.P. 500 mg + Sulbactam U.S.P. 500 mg",
+        "packaging": "VIAL+ WATER",
+        "oldUrl": "https://www.kriptpharma.com/product/krip-cef-s1gm/"
+    },
+    {
+        "id": 69,
+        "type": "Injections & Infusion",
+        "name": "Cefoperazone I.P. 1000 mg +Sulbactam U.S.P. 500 mg",
+        "packaging": "VIAL+ WATER",
+        "oldUrl": "https://www.kriptpharma.com/product/krip-cef-s1-5gm/"
+    },
+    {
+        "id": 70,
+        "type": "Injections & Infusion",
+        "name": "Piperacillin 4GM + Tazobactam 0.5MG",
+        "packaging": "VIAL+ WATER +\nTray",
+        "oldUrl": "https://www.kriptpharma.com/product/pipraript-4-5/"
+    },
+    {
+        "id": 71,
+        "type": "Injections & Infusion",
+        "name": "CEFTRIAXONE 250MG +TAZOBACTUM31.25MG/VIAL",
+        "packaging": "VIAL+ WATER",
+        "oldUrl": "https://www.kriptpharma.com/product/cetroript-tz/"
+    },
+    {
+        "id": 72,
+        "type": "Injections & Infusion",
+        "name": "Citicoline 250mg/ml Injection",
+        "packaging": "2 ml with Tray",
+        "oldUrl": "https://www.kriptpharma.com/product/citiript-250/"
+    },
+    {
+        "id": 73,
+        "type": "Injections & Infusion",
+        "name": "Clindamycin 300mg ",
+        "packaging": "Tray pack",
+        "oldUrl": "https://www.kriptpharma.com/product/clindaript-300/"
+    },
+    {
+        "id": 74,
+        "type": "Injections & Infusion",
+        "name": "Clindamycin 600mg ",
+        "packaging": "Tray pack",
+        "oldUrl": "https://www.kriptpharma.com/product/clindaript-600/"
+    },
+    {
+        "id": 75,
+        "type": "Injections & Infusion",
+        "name": "Diclofenac Sodium B.P. 75 mg (Tray Pack) Aqueous Base PainlessInjection",
+        "packaging": "10*1 ml",
+        "oldUrl": "https://www.kriptpharma.com/product/dicloript-75/"
+    },
+    {
+        "id": 76,
+        "type": "Injections & Infusion",
+        "name": "Hydroxyprogesteron 250 mg Injection",
+        "packaging": "2ml Dispo Pack",
+        "oldUrl": "https://www.kriptpharma.com/product/kripro-250/"
+    },
+    {
+        "id": 77,
+        "type": "Injections & Infusion",
+        "name": "Hydroxyprogesteron 500 mg Injection",
+        "packaging": "2ml Dispo Pack",
+        "oldUrl": "https://www.kriptpharma.com/product/kripro-500/"
+    },
+    {
+        "id": 78,
+        "type": "Injections & Infusion",
+        "name": "Pantoprazole Sodium I.P. 40 mg",
+        "packaging": "VIAL+ WATER",
+        "oldUrl": "https://www.kriptpharma.com/product/pantoript-40/"
+    },
+    {
+        "id": 79,
+        "type": "Injections & Infusion",
+        "name": "RABEPRAZOLE I.P 20 MG",
+        "packaging": "VIAL+ WATER",
+        "oldUrl": "https://www.kriptpharma.com/product/rabiript/"
+    },
+    {
+        "id": 80,
+        "type": "Injections & Infusion",
+        "name": "AMOXYCILLIN AND POTASSIUM CLAVULANATE IP",
+        "packaging": "vial +water",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-1-2/"
+    },
+    {
+        "id": 81,
+        "type": "Injections & Infusion",
+        "name": "Ceftriaxone Injection IP 1gm",
+        "packaging": "vial +water",
+        "oldUrl": "https://www.kriptpharma.com/product/cetroript-1gm/"
+    },
+    {
+        "id": 82,
+        "type": "Injections & Infusion",
+        "name": "Ceftriaxone Injection IP 2gm",
+        "packaging": "vial +water",
+        "oldUrl": "https://www.kriptpharma.com/product/cetroript-2gm/"
+    },
+    {
+        "id": 83,
+        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "name": "Vitamin D3 U.S.P . 60,000 IU Nano\nShots Butter Scotch Flavour",
+        "packaging": "4*5 ml",
+        "oldUrl": "https://www.kriptpharma.com/product/calzoript-d3-shot/"
+    },
+    {
+        "id": 84,
+        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "name": "Vitamin D3 U.S.P . 60,000 IU Sachet",
+        "packaging": "20*1gm",
+        "oldUrl": "https://www.kriptpharma.com/product/calzoript-d3-sachet/"
+    },
+    {
+        "id": 85,
+        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "name": "Choco Flavour ( Plastic Long Jar)",
+        "packaging": "200 Gm",
+        "oldUrl": "https://www.kriptpharma.com/product/krimax-pro-choco/"
+    },
+    {
+        "id": 86,
+        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "name": "Protein Powder Sugar Free with DHA (Vanila Flavour)\nSuperior Plastic Jar with Silver line",
+        "packaging": "200 gm",
+        "oldUrl": "https://www.kriptpharma.com/product/krimax-pro-2/"
+    },
+    {
+        "id": 87,
+        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "name": "L-ARGININE, PROANTHOCYANIDINS Sachet",
+        "packaging": "10*10 gm",
+        "oldUrl": "https://www.kriptpharma.com/product/krimax-g9/"
+    },
+    {
+        "id": 88,
+        "type": "OINTMENTS/SHAMPOO/DERMA/TOPICAL PREPERATION",
+        "name": "DICLOFENAC DIETHYLAMINE1.16% w/w + LINSEED OIL 3% w/w + METHYLSALICYLATE 10% w/w + MENTHOL 5% w/w+BENZYL ALCOHOL GEL",
+        "packaging": "30 GM",
+        "oldUrl": "https://www.kriptpharma.com/product/decoript-gel/"
+    },
+    {
+        "id": 89,
+        "type": "OINTMENTS/SHAMPOO/DERMA/TOPICAL PREPERATION",
+        "name": "Luliconazole 1% W/W",
+        "packaging": "15 GM",
+        "oldUrl": "https://www.kriptpharma.com/product/luript-cream/"
+    },
+    {
+        "id": 90,
+        "type": "EYE/EAR/NASAL RANGE",
+        "name": "Xylometazoline 0.1% Nasal Spary &\nDrop in Spray Bottle",
+        "packaging": "10 ML",
+        "oldUrl": "https://www.kriptpharma.com/product/nasript/"
+    },
+    {
+        "id": 91,
+        "type": "EYE/EAR/NASAL RANGE",
+        "name": "Xylometazoline 0.05% Nasal Spary & Drop in Spray Bottle",
+        "packaging": "10 ML",
+        "oldUrl": "https://www.kriptpharma.com/product/nasript-p/"
+    },
+    {
+        "id": 92,
+        "type": "EYE/EAR/NASAL RANGE",
+        "name": "Disodium Hydrogen Citrate 1.53 Gm",
+        "packaging": "100ml",
+        "oldUrl": "https://www.kriptpharma.com/product/citraript/"
+    },
+    {
+        "id": 93,
+        "type": "Syrup",
+        "name": "Calcium Carbonate 625 mg + Magnesium 180 mg + Zinc 14 mg +Vit. D3 200 IU",
+        "packaging": "200 ml",
+        "oldUrl": "https://www.kriptpharma.com/product/calzoriptd3/"
+    },
+    {
+        "id": 94,
+        "type": "Syrup",
+        "name": "Omega 3 & Combination Syrup",
+        "packaging": "200 ml",
+        "oldUrl": "https://www.kriptpharma.com/product/onziript/"
+    },
+    {
+        "id": 95,
+        "type": "Syrup",
+        "name": "Methylcobalamin And Combination Syrup",
+        "packaging": "200 ml",
+        "oldUrl": "https://www.kriptpharma.com/product/nurokript-plus/"
+    },
+    {
+        "id": 96,
+        "type": "Syrup",
+        "name": "Ambroxol I.P.15 mg + TerbutalineI.P.1.25 mg+Guaiphenesin I.P.50 mg + Menthol 2.5 mg (Dome Bottle)",
+        "packaging": "100 ml",
+        "oldUrl": "https://www.kriptpharma.com/product/cuffript-am/"
+    },
+    {
+        "id": 97,
+        "type": "Syrup",
+        "name": "Sodium Picosulphate 5mg",
+        "packaging": "100 ml",
+        "oldUrl": "https://www.kriptpharma.com/product/picoript/"
+    },
+    {
+        "id": 98,
+        "type": "Syrup",
+        "name": "DEXTROMETYORPHAN HYDROBROMIDE 10MG+ CHLORPHENIRAMINE MALEATE 2MG + PHENYLEPHRINE HCL 5MG",
+        "packaging": "100ML WITH CARTON",
+        "oldUrl": null
+    },
+    {
+        "id": 99,
+        "type": "Softgel",
+        "name": "Calcitriol 0.25 mcg+Calcium Carbonate 500 mg+zinc 7.5 mg + Megnesium Softgel",
+        "packaging": "10*1*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/calziript-plus/"
+    },
+    {
+        "id": 100,
+        "type": "Softgel",
+        "name": "Calcitriol 0.25 mcg+Calcium Carbonate 500 mg+zinc 7.5 mg",
+        "packaging": "10*1*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/calzoript-ct/"
+    },
+    {
+        "id": 101,
+        "type": "Softgel",
+        "name": "Vitamin D3 U.S.P. 60,000 IU Softgel",
+        "packaging": "10*1*4 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/calzoript-d3/"
+    },
+    {
+        "id": 102,
+        "type": "Softgel",
+        "name": "Methylcobalamin 1500 mcg + Alpha Lipoic Acid 100 mg + Pyridoxine Hydrochloride 3 mg + Folic Acid 1.5 mg",
+        "packaging": "10*1*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/nurokript-od/"
+    },
+    {
+        "id": 103,
+        "type": "Softgel",
+        "name": " Antioxidants+Ginseng+ Multivitamin+Multimineral+Antioxidants",
+        "packaging": "10*1*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/vitavil-g/"
+    },
+    {
+        "id": 104,
+        "type": "Softgel",
+        "name": "Omega 3-6-9 Softgel Capsules",
+        "packaging": "10*1*10 Blister",
+        "oldUrl": "https://www.kriptpharma.com/product/onziriptd3/"
+    },
+    {
+        "id": 105,
+        "type": "CAPSULES",
+        "name": "ITRACONAZOLE 100 MG",
+        "packaging": "10*10 ALU ALU",
+        "oldUrl": "https://www.kriptpharma.com/product/itraript-100/"
+    },
+    {
+        "id": 106,
+        "type": "CAPSULES",
+        "name": "ITRACONAZOLE 200 MG",
+        "packaging": "10*10 ALU ALU",
+        "oldUrl": "https://www.kriptpharma.com/product/itraript-200/"
+    },
+    {
+        "id": 107,
+        "type": "CAPSULES",
+        "name": "CLINDAMYCIN HCL 300 MG",
+        "packaging": "10*10 ALU ALU",
+        "oldUrl": "https://www.kriptpharma.com/product/clindaript/"
+    },
+    {
+        "id": 108,
+        "type": "CAPSULES",
+        "name": "methylcobalmin 10MG + METHYLCOBALMIN 750 MG",
+        "packaging": "10*10",
+        "oldUrl": "https://www.kriptpharma.com/product/nurokriptm/"
+    },
+    {
+        "id": 109,
+        "type": "CAPSULES",
+        "name": "Amoxycillin 500MG Capsules",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-500/"
+    },
+    {
+        "id": 110,
+        "type": "CAPSULES",
+        "name": "Sodium + H20",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-500/"
+    },
+    {
+        "id": 111,
+        "type": "CAPSULES",
+        "name": "Sodium + H20",
+        "packaging": "10*10 Alu-Alu",
+        "oldUrl": "https://www.kriptpharma.com/product/amoxyript-500/"
+    }
+]
