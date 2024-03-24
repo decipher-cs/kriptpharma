@@ -1,10 +1,11 @@
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
+import { useState } from 'react'
 
 export const Route = createRootRoute({
     component: () => (
         <>
-            <Navbar />
+            <Header />
             <div className="min-h-svh min-w-full relative">
                 <Outlet />
             </div>
@@ -15,7 +16,31 @@ export const Route = createRootRoute({
     notFoundComponent: () => <ErrorPage />,
 })
 
-const Navbar = () => {
+const Nav = () => {
+    return (
+        <ul className="menu md:menu-horizontal px-1 gap-1">
+            {[
+                'Home',
+                'About',
+                'Product',
+                'Contact',
+                'Certificate',
+                'Global Presence',
+                'Exhibition',
+            ].map((path) => (
+                <li key={path}>
+                    <Link
+                        to={'/' + path.replace(' ', '')}
+                        className="[&.active]:font-bold"
+                    >
+                        {path}
+                    </Link>
+                </li>
+            ))}
+        </ul>
+    )
+}
+const Header = () => {
     return (
         <div className="navbar bg-base-100">
             <div className="flex-1">
@@ -23,29 +48,59 @@ const Navbar = () => {
                     Kriptpharma
                 </Link>
             </div>
-            <div className="flex-none">
-                <ul className="menu menu-horizontal px-1 gap-1">
-                    {[
-                        'Home',
-                        'About',
-                        'Product',
-                        'Contact',
-                        'Certificate',
-                        'Global Presence',
-                        'Exhibition',
-                    ].map((path) => (
-                        <li key={path}>
-                            <Link
-                                to={'/' + path.replace(' ', '')}
-                                className="[&.active]:font-bold"
-                            >
-                                {path}
-                            </Link>
-                        </li>
-                    ))}
-                </ul>
+            <div className="hidden md:block flex-none">
+                <Nav />
+            </div>
+            <div className="md:hidden flex-none">
+                <Drawer />
             </div>
         </div>
+    )
+}
+
+const Drawer = () => {
+    const [drawerOpen, setDrawerOpen] = useState(false)
+    return (
+        <>
+            <div className="drawer drawer-end z-40">
+                <input
+                    id="my-drawer-4"
+                    type="checkbox"
+                    checked={drawerOpen}
+                    onChange={(e) => setDrawerOpen(e.target.checked)}
+                    className="drawer-toggle"
+                />
+                <div className=" drawer-content">
+                    <label
+                        htmlFor="my-drawer-4"
+                        className="drawer-button btn btn-md"
+                    >
+                        <svg
+                            className="swap-off fill-current"
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="32"
+                            height="32"
+                            viewBox="0 0 512 512"
+                        >
+                            <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                        </svg>
+                    </label>
+                </div>
+                <div className="drawer-side">
+                    <label
+                        htmlFor="my-drawer-4"
+                        aria-label="close sidebar"
+                        className="drawer-overlay"
+                    ></label>
+                    <div
+                        className="p-4 w-80 min-h-full bg-base-200"
+                        onClick={() => setDrawerOpen(false)}
+                    >
+                        <Nav />
+                    </div>
+                </div>
+            </div>
+        </>
     )
 }
 
