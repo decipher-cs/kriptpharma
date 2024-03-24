@@ -18,7 +18,7 @@ export const Route = createRootRoute({
 
 const Nav = () => {
     return (
-        <ul className="menu md:menu-horizontal px-1 gap-1">
+        <>
             {[
                 'Home',
                 'About',
@@ -37,7 +37,7 @@ const Nav = () => {
                     </Link>
                 </li>
             ))}
-        </ul>
+        </>
     )
 }
 const Header = () => {
@@ -48,10 +48,10 @@ const Header = () => {
                     Kriptpharma
                 </Link>
             </div>
-            <div className="hidden md:block flex-none">
+            <ul className="menu lg:menu-horizontal hidden px-1 gap-1">
                 <Nav />
-            </div>
-            <div className="md:hidden flex-none">
+            </ul>
+            <div className="lg:hidden flex-none">
                 <Drawer />
             </div>
         </div>
@@ -92,12 +92,13 @@ const Drawer = () => {
                         aria-label="close sidebar"
                         className="drawer-overlay"
                     ></label>
-                    <div
-                        className="p-4 w-80 min-h-full bg-base-200"
+
+                    <ul
+                        className="w-80 p-3 min-h-full bg-base-200 menu px-2 gap-2"
                         onClick={() => setDrawerOpen(false)}
                     >
                         <Nav />
-                    </div>
+                    </ul>
                 </div>
             </div>
         </>
