@@ -6,7 +6,7 @@ export const Route = createRootRoute({
     component: () => (
         <>
             <Header />
-            <div className="min-h-svh min-w-full relative">
+            <div className="px-breath lg:px-breath-lg relative min-h-svh max-w-10xl mx-auto">
                 <Outlet />
             </div>
             <Footer />
@@ -42,16 +42,16 @@ const Nav = () => {
 }
 const Header = () => {
     return (
-        <div className="navbar bg-base-100">
+        <div className="navbar mb-6 bg-base-100">
             <div className="flex-1">
                 <Link to="/" className="btn btn-ghost text-xl">
                     Kriptpharma
                 </Link>
             </div>
-            <ul className="menu lg:menu-horizontal hidden px-1 gap-1">
+            <ul className="menu hidden gap-1 px-1 lg:menu-horizontal">
                 <Nav />
             </ul>
-            <div className="lg:hidden flex-none">
+            <div className="flex-none lg:hidden">
                 <Drawer />
             </div>
         </div>
@@ -73,7 +73,7 @@ const Drawer = () => {
                 <div className=" drawer-content">
                     <label
                         htmlFor="my-drawer-4"
-                        className="drawer-button btn btn-md"
+                        className="btn drawer-button btn-md"
                     >
                         <svg
                             className="swap-off fill-current"
@@ -94,7 +94,7 @@ const Drawer = () => {
                     ></label>
 
                     <ul
-                        className="w-80 p-3 min-h-full bg-base-200 menu px-2 gap-2"
+                        className="menu min-h-full w-80 gap-2 bg-base-200 p-3 px-2"
                         onClick={() => setDrawerOpen(false)}
                     >
                         <Nav />
@@ -107,12 +107,12 @@ const Drawer = () => {
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center p-10 bg-base-200 text-base-content rounded mt-14">
+        <footer className="footer footer-center mt-14 rounded bg-base-200 p-10 text-base-content">
             <nav className="grid grid-flow-col gap-4">
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
+                <a className="link-hover link">About us</a>
+                <a className="link-hover link">Contact</a>
+                <a className="link-hover link">Jobs</a>
+                <a className="link-hover link">Press kit</a>
             </nav>
             <nav>
                 <div className="grid grid-flow-col gap-4">
@@ -164,7 +164,7 @@ const Footer = () => {
 const ErrorPage = () => {
     return (
         <div className="grid h-screen place-content-center px-4">
-            <div className="text-center space-y-7">
+            <div className="space-y-7 text-center">
                 <h1 className="text-9xl font-black">404</h1>
                 <p className="text-2xl font-bold tracking-tight sm:text-4xl">
                     Page Not Found!
