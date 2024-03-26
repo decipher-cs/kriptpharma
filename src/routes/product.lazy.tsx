@@ -1,10 +1,4 @@
-import {
-    Router,
-    createFileRoute,
-    useNavigate,
-    createLazyFileRoute,
-    createRouter,
-} from '@tanstack/react-router'
+import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import medicineData from '../assets/medicine.json'
 import Fuse from 'fuse.js'
 import { useState } from 'react'
@@ -36,7 +30,7 @@ const category = [
 
 const Item = () => {
     return (
-        <div className="card w-96 bg-base-100 shadow-xl image-full">
+        <div className="card image-full w-96 bg-base-100 shadow-xl">
             <figure>
                 <img
                     src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
@@ -86,11 +80,11 @@ const Product = () => {
             : medicineData
 
     return (
-        <section>
+        <section className="grid justify-items-center gap-6">
             <input
                 type="text"
                 placeholder="Search..."
-                className="input input-bordered w-full max-w-xs mx-auto block"
+                className="input input-bordered block w-full max-w-md"
                 value={searchString}
                 maxLength={50}
                 onChange={(e) => {
@@ -100,7 +94,7 @@ const Product = () => {
                     })
                 }}
             />
-            <div className="overflow-x-auto">
+            <div className="-mx-breath lg:-mx-breath-lg max-w-10xl overflow-x-auto">
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
