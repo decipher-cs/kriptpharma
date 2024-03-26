@@ -575,70 +575,70 @@
     },
     {
         "id": 83,
-        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "type": "Powder / sachet / granuals / nano shot",
         "name": "Vitamin D3 U.S.P . 60,000 IU Nano\nShots Butter Scotch Flavour",
         "packaging": "4*5 ml",
         "oldUrl": "https://www.kriptpharma.com/product/calzoript-d3-shot/"
     },
     {
         "id": 84,
-        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "type": "Powder / sachet / granuals / nano shot",
         "name": "Vitamin D3 U.S.P . 60,000 IU Sachet",
         "packaging": "20*1gm",
         "oldUrl": "https://www.kriptpharma.com/product/calzoript-d3-sachet/"
     },
     {
         "id": 85,
-        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "type": "Powder / sachet / granuals / nano shot",
         "name": "Choco Flavour ( Plastic Long Jar)",
         "packaging": "200 Gm",
         "oldUrl": "https://www.kriptpharma.com/product/krimax-pro-choco/"
     },
     {
         "id": 86,
-        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "type": "Powder / sachet / granuals / nano shot",
         "name": "Protein Powder Sugar Free with DHA (Vanila Flavour)\nSuperior Plastic Jar with Silver line",
         "packaging": "200 gm",
         "oldUrl": "https://www.kriptpharma.com/product/krimax-pro-2/"
     },
     {
         "id": 87,
-        "type": "Powder / Sachet/Granuals/Nano Shot",
+        "type": "Powder / sachet / granuals / nano shot",
         "name": "L-ARGININE, PROANTHOCYANIDINS Sachet",
         "packaging": "10*10 gm",
         "oldUrl": "https://www.kriptpharma.com/product/krimax-g9/"
     },
     {
         "id": 88,
-        "type": "OINTMENTS/SHAMPOO/DERMA/TOPICAL PREPERATION",
+        "type": "Ointments",
         "name": "DICLOFENAC DIETHYLAMINE1.16% w/w + LINSEED OIL 3% w/w + METHYLSALICYLATE 10% w/w + MENTHOL 5% w/w+BENZYL ALCOHOL GEL",
         "packaging": "30 GM",
         "oldUrl": "https://www.kriptpharma.com/product/decoript-gel/"
     },
     {
         "id": 89,
-        "type": "OINTMENTS/SHAMPOO/DERMA/TOPICAL PREPERATION",
+        "type": "Ointments",
         "name": "Luliconazole 1% W/W",
         "packaging": "15 GM",
         "oldUrl": "https://www.kriptpharma.com/product/luript-cream/"
     },
     {
         "id": 90,
-        "type": "EYE/EAR/NASAL RANGE",
+        "type": "eye / ear / nasal",
         "name": "Xylometazoline 0.1% Nasal Spary &\nDrop in Spray Bottle",
         "packaging": "10 ML",
         "oldUrl": "https://www.kriptpharma.com/product/nasript/"
     },
     {
         "id": 91,
-        "type": "EYE/EAR/NASAL RANGE",
+        "type": "eye / ear / nasal",
         "name": "Xylometazoline 0.05% Nasal Spary & Drop in Spray Bottle",
         "packaging": "10 ML",
         "oldUrl": "https://www.kriptpharma.com/product/nasript-p/"
     },
     {
         "id": 92,
-        "type": "EYE/EAR/NASAL RANGE",
+        "type": "eye / ear / nasal",
         "name": "Disodium Hydrogen Citrate 1.53 Gm",
         "packaging": "100ml",
         "oldUrl": "https://www.kriptpharma.com/product/citraript/"
