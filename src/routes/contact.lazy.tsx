@@ -34,12 +34,12 @@ const contact = [
 
 const Contact = () => {
     return (
-        <section className="mx-auto max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16">
+        <section className="mx-auto max-w-screen-xl px-4">
             <div className="mx-auto max-w-lg text-center">
                 <h2 className="text-3xl font-bold sm:text-4xl">Get In Touch</h2>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
                 {contact.map((data, i) => (
                     <a
                         key={i}

@@ -6,12 +6,12 @@ export const Route = createLazyFileRoute('/about')({
 
 const About = () => {
     return (
-        <section className="mt-8 gap-10 grid justify-center">
+        <section className="grid justify-center gap-10">
             <h1 className="bg-clip-text text-3xl font-extrabold sm:text-5xl">
                 About Us
             </h1>
 
-            <p className="text-xl/relaxed max-w-4xl">
+            <p className="max-w-4xl text-xl/relaxed">
                 Top Indian Pharmaceuticals Company. Kript Pharmaceuticals is ISO
                 certified with self owned manufacturing units in excise-free
                 zones. The company has dedicated itself to bring fine quality
