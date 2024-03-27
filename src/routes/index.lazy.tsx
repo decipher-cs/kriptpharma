@@ -1,6 +1,7 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router'
 import heroImg from '../assets/pexels-chokniti-khongchum-2280549.jpg'
 import medicineData from '../assets/medicine.json'
+import { memo } from 'react'
 
 export const Route = createLazyFileRoute('/')({
     component: () => <Index />,
@@ -22,33 +23,10 @@ const Index = () => {
                 <h2 className="text-center text-3xl font-bold lg:text-5xl">
                     Categories
                 </h2>
-                <div className="flex flex-wrap justify-center gap-8">
-                    {[
-                        'Anesthesia',
-                        'Dialysis',
-                        'General Surgery',
-                        'Auxiliary Services',
-                        'ENT',
-                        'Medical Cardiology',
-                        'Dressing And Wound Care',
-                        'IV Access',
-                        'Medical Cardiology',
-                        'Gastroenterology',
-                        'Medical Respiratory',
-                        'Needles',
-                    ].map((type, i) => (
-                        <Link
-                            to="/product"
-                            key={i}
-                            className="prose relative flex size-56 items-center justify-center rounded-xl border border-base-300 p-4 text-center shadow-xl transition hover:shadow-primary"
-                        >
-                            <h2>{type}</h2>
-                        </Link>
-                    ))}
-                </div>
+                <Mason />
             </section>
             <Testimonial />
-            <section className="-mx-breath lg:-mx-breath-lg space-y-12 bg-base-200 py-10">
+            <section className="-mx-breath space-y-12 bg-base-200 py-10 lg:-mx-breath-lg">
                 <h2 className="text-center text-3xl font-bold lg:text-5xl">
                     Why Choose Us?
                 </h2>
@@ -104,7 +82,7 @@ const Index = () => {
 const Hero = () => {
     return (
         <section
-            className="-mx-breath lg:-mx-breath-lg relative grid min-h-[70svh] place-items-center overflow-x-hidden bg-cover bg-center *:col-start-1  *:row-start-1"
+            className="relative -mx-breath grid min-h-[70svh] place-items-center overflow-x-hidden bg-cover bg-center *:col-start-1 *:row-start-1  lg:-mx-breath-lg"
             style={{
                 backgroundImage: `url(${heroImg})`,
                 clipPath:
@@ -192,6 +170,46 @@ const Testimonial = () => {
         </section>
     )
 }
+
+const Mason = memo(() => {
+    return (
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5 [&>*:nth-child(3+9)]:border-8">
+            {[
+                'Anesthesia',
+                'Dialysis',
+                'General Surgery',
+                'Auxiliary Services',
+                'ENT',
+                'Medical Cardiology',
+                'Dressing And Wound Care',
+                'IV Access',
+                'Medical Cardiology',
+                'Gastroenterology',
+                'Medical Respiratory',
+                'Needles',
+            ].map((data, i) => (
+                <Link
+                    to="/product"
+                    key={i}
+                    className="relative grid min-h-48 min-w-48 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110"
+                >
+                    <img
+                        className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
+                        src={
+                            'https://picsum.photos/seed/' +
+                            Math.floor(Math.random() * 100) +
+                            '/200'
+                        }
+                        alt=""
+                    />
+                    <h3 className="z-0 text-center text-2xl font-bold text-neutral-100">
+                        {data}
+                    </h3>
+                </Link>
+            ))}
+        </div>
+    )
+})
 
 const reasonsToChooseUs = [
     {
