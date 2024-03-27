@@ -6,9 +6,9 @@ export const Route = createRootRoute({
     component: () => (
         <>
             <Header />
-            <div className="px-breath lg:px-breath-lg relative min-h-svh max-w-10xl mx-auto">
+            <main className="relative mx-auto min-h-svh max-w-10xl px-breath lg:px-breath-lg">
                 <Outlet />
-            </div>
+            </main>
             <Footer />
             {import.meta.env.DEV && <TanStackRouterDevtools />}
         </>
