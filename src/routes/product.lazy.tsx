@@ -87,102 +87,98 @@ const Product = () => {
 
     return (
         <section className="grid gap-10">
-            <div className="-mx-breath max-w-10xl overflow-x-auto lg:-mx-breath-lg">
-                <span className="flex items-start gap-7">
-                    <label className="flex items-center gap-2">
-                        <span className="sr-only">Search</span>
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            className="input input-ghost block w-full placeholder:italic"
-                            value={searchString}
-                            maxLength={50}
-                            onChange={(e) => {
-                                setSearchString(e.target.value)
-                                navigate({
-                                    search: (prev) => ({
-                                        ...prev,
-                                        searchString: e.target.value,
-                                    }),
-                                })
-                            }}
+            <span className="flex items-start gap-7">
+                <label className="flex items-center gap-2">
+                    <span className="sr-only">Search</span>
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        className="input input-ghost block w-full placeholder:italic"
+                        value={searchString}
+                        maxLength={50}
+                        onChange={(e) => {
+                            setSearchString(e.target.value)
+                            navigate({
+                                search: (prev) => ({
+                                    ...prev,
+                                    searchString: e.target.value,
+                                }),
+                            })
+                        }}
+                    />
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 16 16"
+                        fill="currentColor"
+                        className="size-4 opacity-70"
+                    >
+                        <path
+                            fillRule="evenodd"
+                            d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                            clipRule="evenodd"
                         />
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            className="size-4 opacity-70"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                clipRule="evenodd"
-                            />
-                        </svg>
-                    </label>
-                    <div className="collapse collapse-arrow basis-1/2 bg-base-200">
-                        <input type="checkbox" />
-                        <h5 className="collapse-title text-xl font-medium">
-                            Filter
-                        </h5>
-                        <div className="collapse-content">
-                            {categories.map((item, i) => (
-                                <div className="form-control" key={i}>
-                                    <label className="label cursor-pointer">
-                                        <span className="label-text">
-                                            {item}
-                                        </span>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => {
-                                                if (e.target.checked) {
-                                                    navigate({
-                                                        search: (prev) => ({
-                                                            ...prev,
-                                                            categoryFilter: [
-                                                                ...visibleCategories,
-                                                                item,
-                                                            ],
-                                                        }),
-                                                    })
-                                                    setVisibleCategories((p) =>
-                                                        p.includes(item)
-                                                            ? p
-                                                            : [...p, item]
-                                                    )
-                                                } else if (!e.target.checked) {
-                                                    navigate({
-                                                        search: (prev) => ({
-                                                            ...prev,
-                                                            categoryFilter:
-                                                                visibleCategories.filter(
-                                                                    (v) =>
-                                                                        item !==
-                                                                        v
-                                                                ),
-                                                        }),
-                                                    })
-                                                    setVisibleCategories((p) =>
-                                                        p.includes(item)
-                                                            ? p.filter(
-                                                                  (v) =>
-                                                                      v !== item
-                                                              )
-                                                            : p
-                                                    )
-                                                }
-                                            }}
-                                            checked={visibleCategories.includes(
-                                                item
-                                            )}
-                                        />
-                                    </label>
-                                </div>
-                            ))}
-                        </div>
+                    </svg>
+                </label>
+                <div className="collapse collapse-arrow basis-1/2 bg-base-200">
+                    <input type="checkbox" />
+                    <h5 className="collapse-title text-xl font-medium">
+                        Filter
+                    </h5>
+                    <div className="collapse-content">
+                        {categories.map((item, i) => (
+                            <div className="form-control" key={i}>
+                                <label className="label cursor-pointer">
+                                    <span className="label-text">{item}</span>
+                                    <input
+                                        type="checkbox"
+                                        className="checkbox"
+                                        onChange={(e) => {
+                                            if (e.target.checked) {
+                                                navigate({
+                                                    search: (prev) => ({
+                                                        ...prev,
+                                                        categoryFilter: [
+                                                            ...visibleCategories,
+                                                            item,
+                                                        ],
+                                                    }),
+                                                })
+                                                setVisibleCategories((p) =>
+                                                    p.includes(item)
+                                                        ? p
+                                                        : [...p, item]
+                                                )
+                                            } else if (!e.target.checked) {
+                                                navigate({
+                                                    search: (prev) => ({
+                                                        ...prev,
+                                                        categoryFilter:
+                                                            visibleCategories.filter(
+                                                                (v) =>
+                                                                    item !== v
+                                                            ),
+                                                    }),
+                                                })
+                                                setVisibleCategories((p) =>
+                                                    p.includes(item)
+                                                        ? p.filter(
+                                                              (v) => v !== item
+                                                          )
+                                                        : p
+                                                )
+                                            }
+                                        }}
+                                        checked={visibleCategories.includes(
+                                            item
+                                        )}
+                                    />
+                                </label>
+                            </div>
+                        ))}
                     </div>
-                </span>
+                </div>
+            </span>
+            <article className="-mx-breath max-h-svh  max-w-10xl overflow-x-auto lg:-mx-breath-lg">
                 <table className="table table-zebra">
                     {/* head */}
                     <thead>
@@ -204,7 +200,7 @@ const Product = () => {
                         ))}
                     </tbody>
                 </table>
-            </div>
+            </article>
         </section>
     )
 }

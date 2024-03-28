@@ -6,7 +6,7 @@ export const Route = createRootRoute({
     component: () => (
         <>
             <Header />
-            <main className="relative mx-auto min-h-svh max-w-10xl px-breath lg:px-breath-lg">
+            <main className="relative mx-auto size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
                 <Outlet />
             </main>
             <Footer />
