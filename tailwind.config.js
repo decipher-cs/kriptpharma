@@ -16,5 +16,8 @@ export default {
             },
         },
     },
+    daisyui: {
+        themes: ['light', 'dark', 'dim', 'bumblebee'],
+    },
     plugins: ['prettier-plugin-tailwindcss', daisyui, twt],
 }

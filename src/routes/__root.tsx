@@ -54,7 +54,7 @@ const Header = () => {
             <div className="flex-none lg:hidden">
                 <Drawer />
             </div>
-            <div className="dropdown hidden">
+            <div className="dropdown ">
                 <div tabIndex={0} role="button" className="btn m-1">
                     Theme
                     <svg
@@ -71,51 +71,17 @@ const Header = () => {
                     tabIndex={0}
                     className="dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow-2xl"
                 >
-                    <li>
-                        <input
-                            type="radio"
-                            name="theme-dropdown"
-                            className="theme-controller btn btn-ghost btn-sm btn-block justify-start"
-                            aria-label="Default"
-                            value="default"
-                        />
-                    </li>
-                    <li>
-                        <input
-                            type="radio"
-                            name="theme-dropdown"
-                            className="theme-controller btn btn-ghost btn-sm btn-block justify-start"
-                            aria-label="Retro"
-                            value="retro"
-                        />
-                    </li>
-                    <li>
-                        <input
-                            type="radio"
-                            name="theme-dropdown"
-                            className="theme-controller btn btn-ghost btn-sm btn-block justify-start"
-                            aria-label="Cyberpunk"
-                            value="cyberpunk"
-                        />
-                    </li>
-                    <li>
-                        <input
-                            type="radio"
-                            name="theme-dropdown"
-                            className="theme-controller btn btn-ghost btn-sm btn-block justify-start"
-                            aria-label="Valentine"
-                            value="valentine"
-                        />
-                    </li>
-                    <li>
-                        <input
-                            type="radio"
-                            name="theme-dropdown"
-                            className="theme-controller btn btn-ghost btn-sm btn-block justify-start"
-                            aria-label="Aqua"
-                            value="aqua"
-                        />
-                    </li>
+                    {['light', 'dark', 'dim', 'bumblebee'].map((theme, i) => (
+                        <li key={theme}>
+                            <input
+                                type="radio"
+                                name="theme-dropdown"
+                                className="theme-controller btn btn-ghost btn-sm btn-block justify-start"
+                                aria-label={theme}
+                                value={theme}
+                            />
+                        </li>
+                    ))}
                 </ul>
             </div>
         </div>
@@ -218,7 +184,7 @@ const Footer = () => {
             <aside>
                 <p>
                     Copyright © 2024 - All right reserved by ACME Industries
-                    Ltd. Icon by <a href="https://icons8.com">Icons8</a>
+                    Ltd. Icon by <a href="https://svgmix.com/">svgmix</a>
                 </p>
             </aside>
         </footer>
