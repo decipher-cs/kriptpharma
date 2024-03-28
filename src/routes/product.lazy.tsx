@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import medicineData from '../assets/medicine.json'
 import Fuse from 'fuse.js'
 import { useMemo, useState } from 'react'
+import { Link } from '@tanstack/react-router'
 
 const fuse = new Fuse(medicineData, { keys: ['name', 'type'] })
 
@@ -86,14 +87,94 @@ const Product = () => {
     )
 
     return (
-        <section className="grid gap-10">
-            <span className="flex items-start gap-7">
+        <section className="-mx-breath grid gap-10  lg:-mx-breath-lg">
+            <section
+                className="flex gap-4 overflow-x-auto px-2 py-5 md:px-7"
+                style={{
+                    mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
+                }}
+            >
+                {categories.map((data, i) => (
+                    <Link
+                        search={(prev) => ({ ...prev, categoryFilter: data })}
+                        key={i}
+                        className="relative grid aspect-[2/1] shrink-0 basis-1/4 place-content-center rounded-lg"
+                    >
+                        <h4 className="z-0 p-1 text-sm font-bold text-neutral-100 md:text-2xl">
+                            {data.toUpperCase()}
+                        </h4>
+                        <img
+                            className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
+                            src={
+                                'https://picsum.photos/seed/' +
+                                Math.floor(Math.random() * 100) +
+                                '/200'
+                            }
+                            alt=""
+                        />
+                    </Link>
+                ))}
+            </section>
+            <div className="collapse collapse-arrow basis-1/2 bg-base-200">
+                <input type="checkbox" />
+                <h5 className="collapse-title text-xl font-medium">Filter</h5>
+                <div className="collapse-content">
+                    {categories.map((item, i) => (
+                        <div className="form-control" key={i}>
+                            <label className="label cursor-pointer">
+                                <span className="label-text">{item}</span>
+                                <input
+                                    type="checkbox"
+                                    className="checkbox"
+                                    onChange={(e) => {
+                                        if (e.target.checked) {
+                                            navigate({
+                                                search: (prev) => ({
+                                                    ...prev,
+                                                    categoryFilter: [
+                                                        ...visibleCategories,
+                                                        item,
+                                                    ],
+                                                }),
+                                            })
+                                            setVisibleCategories((p) =>
+                                                p.includes(item)
+                                                    ? p
+                                                    : [...p, item]
+                                            )
+                                        } else if (!e.target.checked) {
+                                            navigate({
+                                                search: (prev) => ({
+                                                    ...prev,
+                                                    categoryFilter:
+                                                        visibleCategories.filter(
+                                                            (v) => item !== v
+                                                        ),
+                                                }),
+                                            })
+                                            setVisibleCategories((p) =>
+                                                p.includes(item)
+                                                    ? p.filter(
+                                                          (v) => v !== item
+                                                      )
+                                                    : p
+                                            )
+                                        }
+                                    }}
+                                    checked={visibleCategories.includes(item)}
+                                />
+                            </label>
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <article className=" max-h-svh max-w-10xl  overflow-x-auto">
                 <label className="flex items-center gap-2">
-                    <span className="sr-only">Search</span>
+                    <span className="sr-only">Search the table</span>
                     <input
                         type="text"
-                        placeholder="Search..."
-                        className="input input-ghost block w-full placeholder:italic"
+                        placeholder="Search the table..."
+                        className="input block placeholder:italic"
                         value={searchString}
                         maxLength={50}
                         onChange={(e) => {
@@ -119,67 +200,7 @@ const Product = () => {
                         />
                     </svg>
                 </label>
-                <div className="collapse collapse-arrow basis-1/2 bg-base-200">
-                    <input type="checkbox" />
-                    <h5 className="collapse-title text-xl font-medium">
-                        Filter
-                    </h5>
-                    <div className="collapse-content">
-                        {categories.map((item, i) => (
-                            <div className="form-control" key={i}>
-                                <label className="label cursor-pointer">
-                                    <span className="label-text">{item}</span>
-                                    <input
-                                        type="checkbox"
-                                        className="checkbox"
-                                        onChange={(e) => {
-                                            if (e.target.checked) {
-                                                navigate({
-                                                    search: (prev) => ({
-                                                        ...prev,
-                                                        categoryFilter: [
-                                                            ...visibleCategories,
-                                                            item,
-                                                        ],
-                                                    }),
-                                                })
-                                                setVisibleCategories((p) =>
-                                                    p.includes(item)
-                                                        ? p
-                                                        : [...p, item]
-                                                )
-                                            } else if (!e.target.checked) {
-                                                navigate({
-                                                    search: (prev) => ({
-                                                        ...prev,
-                                                        categoryFilter:
-                                                            visibleCategories.filter(
-                                                                (v) =>
-                                                                    item !== v
-                                                            ),
-                                                    }),
-                                                })
-                                                setVisibleCategories((p) =>
-                                                    p.includes(item)
-                                                        ? p.filter(
-                                                              (v) => v !== item
-                                                          )
-                                                        : p
-                                                )
-                                            }
-                                        }}
-                                        checked={visibleCategories.includes(
-                                            item
-                                        )}
-                                    />
-                                </label>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </span>
-            <article className="-mx-breath max-h-svh  max-w-10xl overflow-x-auto lg:-mx-breath-lg">
-                <table className="table table-zebra">
+                <table className="table table-zebra table-pin-rows">
                     {/* head */}
                     <thead>
                         <tr>
