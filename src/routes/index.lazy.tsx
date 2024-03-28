@@ -6,10 +6,6 @@ import { memo } from 'react'
 export const Route = createLazyFileRoute('/')({
     component: () => <Index />,
 })
-/*
- *
- *
- * */
 
 const Index = () => {
     const medicineTypes = Array.from(
