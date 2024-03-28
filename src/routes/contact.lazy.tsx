@@ -1,4 +1,8 @@
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
+import mailLogo from '../assets/glyphs/mail.svg'
+import dialerLogo from '../assets/glyphs/dialer.svg'
+import instaLogo from '../assets/glyphs/Instagram.svg'
+import linkedinLogo from '../assets/glyphs/linkedin.svg'
 
 export const Route = createLazyFileRoute('/contact')({
     component: () => <Contact />,
@@ -6,24 +10,28 @@ export const Route = createLazyFileRoute('/contact')({
 
 const contact = [
     {
-        logoUrl: 'https://img.icons8.com/ios-filled/50/cccccc/linkedin.png',
+        logoUrl: linkedinLogo,
         title: 'linkedin',
         href: 'https://in.linkedin.com/in/parth-bansal-05b908256',
         value: 'linkedin.com/in/parth-bansal-05b908256',
     },
     {
-        logoUrl:
-            'https://img.icons8.com/fluency-systems-regular/48/cccccc/email--v1.png',
+        logoUrl: mailLogo,
         title: 'email',
         href: 'mailto:info@kriptpharma.com',
         value: 'info@kriptpharma.com',
     },
     {
-        logoUrl:
-            'https://img.icons8.com/parakeet-line/48/cccccc/phone-disconnected.png',
+        logoUrl: dialerLogo,
         title: 'phone no.',
         href: 'tel:+91857-191-3753',
         value: '(+91) 857-191-3753',
+    },
+    {
+        logoUrl: instaLogo,
+        title: 'Instagram',
+        href: 'https://www.instagram.com/kriptpharmaceuticals/',
+        value: '@kriptpharmaceuticals',
     },
 ] satisfies {
     logoUrl: string
@@ -34,16 +42,16 @@ const contact = [
 
 const Contact = () => {
     return (
-        <section className="mx-auto max-w-screen-xl px-4">
+        <section className="mx-auto max-w-screen-xl space-y-8">
             <div className="mx-auto max-w-lg text-center">
                 <h2 className="text-3xl font-bold sm:text-4xl">Get In Touch</h2>
             </div>
 
-            <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3">
+            <div className="flex flex-wrap justify-center gap-8 ">
                 {contact.map((data, i) => (
                     <a
                         key={i}
-                        className="block rounded-xl border border-gray-800 p-8 shadow-xl transition  hover:shadow-primary"
+                        className="block basis-1/3 space-y-4 rounded-xl border border-gray-800 p-8 shadow-xl transition  hover:shadow-primary"
                         href={data.href}
                         target="_blank"
                     >
@@ -53,13 +61,11 @@ const Contact = () => {
                             alt={data.title + ' logo'}
                         />
 
-                        <h2 className="mt-4 text-xl font-bold text-white">
+                        <h2 className="text-xl font-bold text-white">
                             {data.title.toUpperCase()}
                         </h2>
 
-                        <p className="mt-1 text-sm text-gray-300">
-                            {data.value}
-                        </p>
+                        <p className="text-sm text-gray-300">{data.value}</p>
                     </a>
                 ))}
             </div>
