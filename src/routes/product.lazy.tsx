@@ -108,7 +108,7 @@ const Product = () => {
                             src={
                                 'https://picsum.photos/seed/' +
                                 Math.floor(Math.random() * 100) +
-                                '/200'
+                                '/300/200'
                             }
                             alt=""
                         />

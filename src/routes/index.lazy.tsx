@@ -33,6 +33,7 @@ const Index = () => {
                 <article className="flex flex-wrap justify-center gap-10">
                     {reasonsToChooseUs.map((data) => (
                         <Link
+                            key={data.title}
                             to="/about"
                             className="card w-96 border border-base-300"
                         >
@@ -190,8 +191,9 @@ const Mason = memo(() => {
             ].map((data, i) => (
                 <Link
                     to="/product"
+                    search={{ categoryFilter: data }}
                     key={i}
-                    className="relative grid min-h-48 min-w-48 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110"
+                    className="relative grid min-h-48 min-w-40 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110"
                 >
                     <img
                         className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
