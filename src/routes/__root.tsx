@@ -54,8 +54,8 @@ const Header = () => {
             <div className="flex-none lg:hidden">
                 <Drawer />
             </div>
-            <div className="dropdown ">
-                <div tabIndex={0} role="button" className="btn m-1">
+            <div className="dropdown dropdown-end flex-none">
+                <div tabIndex={0} role="button" className="btn">
                     Theme
                     <svg
                         width="12px"
