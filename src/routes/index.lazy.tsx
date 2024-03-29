@@ -1,7 +1,18 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router'
-import heroImg from '../assets/pexels-chokniti-khongchum-2280549.jpg'
+import heroImg from '../assets/backgrounds/surgery-1822458_1920.webp'
 import medicineData from '../assets/medicine.json'
 import { memo } from 'react'
+
+const modules = import.meta.glob('../assets/backgrounds/*.webp', {
+    eager: true,
+})
+
+const imagePaths = Object.values(modules).map((module) => {
+    if (typeof module === 'object' && module && 'default' in module) {
+        return module.default as string
+    }
+    return undefined
+})
 
 export const Route = createLazyFileRoute('/')({
     component: () => <Index />,
@@ -193,11 +204,7 @@ const Mason = memo(() => {
                 >
                     <img
                         className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
-                        src={
-                            'https://picsum.photos/seed/' +
-                            Math.floor(Math.random() * 100) +
-                            '/200'
-                        }
+                        src={imagePaths[i]}
                         alt=""
                     />
                     <h3 className="z-0 text-center text-2xl font-bold text-neutral-100">

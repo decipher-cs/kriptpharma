@@ -4,6 +4,16 @@ import Fuse from 'fuse.js'
 import { useMemo, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 
+const modules = import.meta.glob('../assets/backgrounds/*.webp', {
+    eager: true,
+})
+
+const imagePaths = Object.values(modules).map((module) => {
+    if (typeof module === 'object' && module && 'default' in module){
+        return (module.default as string)
+    } return undefined
+})
+
 const fuse = new Fuse(medicineData, { keys: ['name', 'type'] })
 
 const categories = [
@@ -105,11 +115,7 @@ const Product = () => {
                         </h4>
                         <img
                             className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
-                            src={
-                                'https://picsum.photos/seed/' +
-                                Math.floor(Math.random() * 100) +
-                                '/300/200'
-                            }
+                            src={imagePaths[i]}
                             alt=""
                         />
                     </Link>
