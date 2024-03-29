@@ -42,7 +42,7 @@ const Nav = () => {
 }
 const Header = () => {
     return (
-        <div className="navbar mb-6 bg-base-100">
+        <div className="navbar mb-6 gap-2 bg-base-100">
             <div className="flex-1">
                 <Link to="/" className="btn btn-ghost text-xl">
                     Kriptpharma
