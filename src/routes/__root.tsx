@@ -69,7 +69,7 @@ const Header = () => {
                 </div>
                 <ul
                     tabIndex={0}
-                    className="dropdown-content z-[1] w-52 rounded-box bg-base-300 p-2 shadow-2xl"
+                    className="dropdown-content z-[1] mt-1 w-52 rounded-box bg-base-300 p-2 shadow-2xl"
                 >
                     {['light', 'dark', 'dim', 'bumblebee'].map((theme, i) => (
                         <li key={theme}>
