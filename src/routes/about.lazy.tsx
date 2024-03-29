@@ -1,4 +1,14 @@
 import { createLazyFileRoute, Link } from '@tanstack/react-router'
+const modules = import.meta.glob('../assets/backgrounds/*.webp', {
+    eager: true,
+})
+
+const imagePaths = Object.values(modules).map((module) => {
+    if (typeof module === 'object' && module && 'default' in module) {
+        return module.default as string
+    }
+    return undefined
+})
 
 export const Route = createLazyFileRoute('/about')({
     component: () => <About />,
@@ -30,6 +40,43 @@ const About = () => {
             <Link className="btn btn-info" to="/contact">
                 Get In Touch With Us
             </Link>
+            <article className="grid">
+                {[
+                    {
+                        title: 'Our Vision',
+                        description:
+                            'To uphold our social responsibilities of delivering highest standard healthcare services.',
+                    },
+                    {
+                        title: 'Our Value',
+                        description:
+                            'Our Business Values with clients are as simple as LIFELONG “Business Relations “,',
+                    },
+                    {
+                        title: 'Our Mission',
+                        description:
+                            'We at Kript Pharmaceuticals believes that complete customer satisfaction is the key to expand business everywhere.',
+                    },
+                ].map((data, i) => (
+                    <div
+                        key={i}
+                        className="grid grid-cols-3 grid-rows-1 border-2 "
+                    >
+                        <h4 className={'text-2xl font-bold'}>{data.title}</h4>
+                        <p className="text-lg leading-relaxed">
+                            {data.description}
+                        </p>
+                        <div className='object-cover h-min'>
+                            <img
+                                src={imagePaths[i]}
+                                className={
+                                    '' + (i === 1 ? ' -order-1' : '')
+                                }
+                            />
+                        </div>
+                    </div>
+                ))}
+            </article>
         </section>
     )
 }
