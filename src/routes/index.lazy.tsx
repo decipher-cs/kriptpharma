@@ -1,5 +1,6 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router'
-import heroImg from '../assets/backgrounds/surgery-1822458_1920.webp'
+import heroImg from '../assets/backgrounds/hero.webp'
+import businessOpportunitiesImg from '../assets/backgrounds/business-opportunities.webp'
 import medicineData from '../assets/medicine.json'
 import { memo } from 'react'
 
@@ -7,7 +8,7 @@ const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
 })
 
-const imagePaths = Object.values(modules).map((module) => {
+const backgroundImagePaths = Object.values(modules).map((module) => {
     if (typeof module === 'object' && module && 'default' in module) {
         return module.default as string
     }
@@ -55,7 +56,7 @@ const Index = () => {
             <section className="grid grid-rows-1 items-center gap-10 sm:grid-flow-col">
                 <div className="h-full">
                     <img
-                        src={imagePaths[0]}
+                        src={businessOpportunitiesImg}
                         alt=""
                         className="size-full rounded-xl object-cover"
                     />
@@ -150,7 +151,7 @@ const Testimonial = () => {
                                                 <svg
                                                     key={i}
                                                     xmlns="http://www.w3.org/2000/svg"
-                                                    className="h-5 w-5"
+                                                    className="size-5"
                                                     viewBox="0 0 20 20"
                                                     fill="currentColor"
                                                 >
@@ -181,7 +182,7 @@ const Testimonial = () => {
 
 const Mason = memo(() => {
     return (
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5 [&>*:nth-child(3+9)]:border-8">
+        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
             {[
                 'Anesthesia',
                 'Dialysis',
@@ -199,12 +200,12 @@ const Mason = memo(() => {
                 <Link
                     to="/product"
                     search={{ categoryFilter: data }}
-                    key={i}
+                    key={data}
                     className="relative grid min-h-48 min-w-40 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110"
                 >
                     <img
                         className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
-                        src={imagePaths[i]}
+                        src={backgroundImagePaths[i]}
                         alt=""
                     />
                     <h3 className="z-0 text-center text-2xl font-bold text-neutral-100">
