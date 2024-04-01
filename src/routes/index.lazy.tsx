@@ -189,7 +189,6 @@ const Mason = memo(() => {
                 'General Surgery',
                 'Auxiliary Services',
                 'ENT',
-                'Medical Cardiology',
                 'Dressing And Wound Care',
                 'IV Access',
                 'Medical Cardiology',
