@@ -1,4 +1,5 @@
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import kriptPharmaLogo from '../assets/kriptpharma-logo.png'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { useState } from 'react'
 
@@ -45,6 +46,10 @@ const Header = () => {
         <div className="navbar mb-6 gap-2 bg-base-100">
             <div className="flex-1">
                 <Link to="/" className="btn btn-ghost text-xl">
+                    <img
+                        src={kriptPharmaLogo}
+                        alt="Kript Pharmaceuticals logo"
+                    />
                     Kriptpharma
                 </Link>
             </div>
