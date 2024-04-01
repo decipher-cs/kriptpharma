@@ -1,7 +1,6 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router'
 import heroImg from '../assets/backgrounds/hero.webp'
 import businessOpportunitiesImg from '../assets/backgrounds/business-opportunities.webp'
-import medicineData from '../assets/medicine.json'
 import { memo } from 'react'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
@@ -20,10 +19,6 @@ export const Route = createLazyFileRoute('/')({
 })
 
 const Index = () => {
-    const medicineTypes = Array.from(
-        new Set(medicineData.map((m) => m.type).values())
-    )
-
     return (
         <div className="-mt-6 space-y-36">
             <Hero />
