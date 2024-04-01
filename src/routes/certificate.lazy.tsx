@@ -1,22 +1,23 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
+import certificateImg from '../assets/certificate.webp'
 
 export const Route = createLazyFileRoute('/certificate')({
     component: () => (
-        <section className="text-center space-y-8">
-            <h2 className="text-5xl text-center">Certificates</h2>
+        <section className="space-y-8 text-center">
+            <h2 className="text-center text-5xl">Certificates</h2>
 
-            <article className="grid gap-10 justify-items-center">
+            <article className="grid justify-items-center gap-10">
                 {Array(3)
                     .fill(null)
                     .map((data, i) => (
                         <a
-                            href="https://www.geckoandfly.com/wp-content/uploads/2019/07/certificate-template-41.jpg"
+                            href={certificateImg}
                             target="_blank"
                             key={i}
-                            className="w-1/2"
+                            className="w-2/3 md:w-1/2"
                         >
                             <img
-                                src="https://www.geckoandfly.com/wp-content/uploads/2019/07/certificate-template-41.jpg"
+                                src={certificateImg}
                                 className="size-full"
                                 alt="certificate of excellence"
                             />
