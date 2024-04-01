@@ -51,7 +51,7 @@ const Contact = () => {
                 {contact.map((data, i) => (
                     <a
                         key={i}
-                        className="block basis-1/3 space-y-4 rounded-xl border border-gray-800 p-8 shadow-xl transition  hover:shadow-primary"
+                        className="block grow basis-1/3 space-y-4 rounded-xl border border-gray-800 p-8 shadow-xl transition  hover:shadow-primary"
                         href={data.href}
                         target="_blank"
                     >
@@ -61,7 +61,7 @@ const Contact = () => {
                             alt={data.title + ' logo'}
                         />
 
-                        <h2 className="text-xl font-bold text-white">
+                        <h2 className="text-nowrap text-xl font-bold text-white">
                             {data.title.toUpperCase()}
                         </h2>
 
