@@ -74,7 +74,7 @@ const About = () => {
                     ].map((data, i) => (
                         <div
                             key={i}
-                            className="mx-auto flex flex-col gap-6 rounded-lg border border-base-content text-center md:flex-row md:items-center md:text-left md:*:basis-1/3 lg:text-left"
+                            className="mx-auto flex flex-col gap-6 rounded-lg border border-neutral text-center md:flex-row md:items-center md:text-left md:*:basis-1/3 lg:text-left"
                         >
                             <h4 className={'text-center text-2xl font-bold'}>
                                 {data.title}
@@ -100,9 +100,9 @@ const About = () => {
                     ))}
                 </article>
             </Breakout>
-            <article className="mx-auto flex h-40 gap-10">
+            <article className="mx-auto flex flex-wrap justify-center gap-10">
                 {stampUrls.map((url) => (
-                    <img src={url} key={url} className="w-auto" />
+                    <img src={url} key={url} className="h-28 md:h-40" alt="" />
                 ))}
             </article>
         </section>
