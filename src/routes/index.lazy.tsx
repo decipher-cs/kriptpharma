@@ -55,7 +55,7 @@ const Index = () => {
             <section className="grid grid-rows-1 items-center gap-10 sm:grid-flow-col">
                 <div className="h-full">
                     <img
-                        src="https://picsum.photos/1800"
+                        src={imagePaths[0]}
                         alt=""
                         className="size-full rounded-xl object-cover"
                     />
