@@ -1,5 +1,6 @@
-import { createLazyFileRoute, Link } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router'
 import Breakout from '../components/Breakout'
+import useTheme from '../hooks/useTheme'
 
 const stamps = import.meta.glob('../assets/stamps/*.*', {
     eager: true,
@@ -28,6 +29,8 @@ export const Route = createLazyFileRoute('/about')({
 })
 
 const About = () => {
+    const { theme } = useTheme()
+
     return (
         <section className="mx-auto grid gap-10">
             <div className="flex w-full flex-wrap items-center justify-around gap-8 justify-self-center">
@@ -102,7 +105,12 @@ const About = () => {
             </Breakout>
             <article className="mx-auto flex flex-wrap justify-center gap-10">
                 {stampUrls.map((url) => (
-                    <img src={url} key={url} className="h-28 md:h-40" alt="" />
+                    <img
+                        src={url}
+                        key={url}
+                        className={`h-28 md:h-40 ${theme === 'light' ? 'invert' : 'invert-0'}`}
+                        alt=""
+                    />
                 ))}
             </article>
         </section>
