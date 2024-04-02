@@ -95,9 +95,11 @@ const Hero = () => {
         >
             <div className="hero-overlay bg-opacity-85"></div>
             <div className="hero-content text-center">
-                <div className="prose">
-                    <h1 className="">Kript Pharmaceuticals</h1>
-                    <p className="">
+                <div className="space-y-4">
+                    <h1 className="text-3xl font-bold text-neutral-200">
+                        Kript Pharmaceuticals
+                    </h1>
+                    <p className="w-[50ch] text-lg leading-relaxed text-neutral-300">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut
                         assumenda excepturi exercitationem quasi. In deleniti
                         eaque aut repudiandae et a id nisi.
@@ -106,7 +108,7 @@ const Hero = () => {
                         role="button"
                         href="#Category"
                         type="submit"
-                        className="btn btn-primary text-primary-content no-underline"
+                        className="btn btn-primary"
                     >
                         MORE
                     </a>
@@ -198,7 +200,7 @@ const Mason = memo(() => {
                     className="relative grid min-h-48 min-w-40 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110"
                 >
                     <img
-                        className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
+                        className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
                         src={backgroundImagePaths[i]}
                         alt=""
                     />
