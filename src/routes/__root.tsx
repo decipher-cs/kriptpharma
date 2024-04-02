@@ -2,16 +2,20 @@ import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import kriptPharmaLogo from '../assets/kriptpharma-logo.png'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { memo, useState } from 'react'
+import useTheme from '../hooks/useTheme'
+import ThemeProvider from '../context/theme'
 
 export const Route = createRootRoute({
     component: () => (
         <>
-            <Header />
-            <main className="relative mx-auto size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
-                <Outlet />
-            </main>
-            <Footer />
-            {import.meta.env.DEV && <TanStackRouterDevtools />}
+            <ThemeProvider>
+                <Header />
+                <main className="relative mx-auto size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
+                    <Outlet />
+                </main>
+                <Footer />
+                {import.meta.env.DEV && <TanStackRouterDevtools />}
+            </ThemeProvider>
         </>
     ),
     notFoundComponent: () => <ErrorPage />,
@@ -42,6 +46,8 @@ const Nav = memo(() => {
     )
 })
 const Header = memo(() => {
+    const { theme, changeTheme } = useTheme()
+
     return (
         <div className="navbar mb-6 gap-2 bg-base-100">
             <div className="flex-1">
@@ -64,6 +70,10 @@ const Header = memo(() => {
                     type="checkbox"
                     className="theme-controller"
                     value="light"
+                    checked={theme === 'light'}
+                    onChange={(e) => {
+                        changeTheme(e.target.checked ? 'light' : 'dark')
+                    }}
                 />
 
                 {/* moon icon */}
