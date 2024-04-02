@@ -96,10 +96,10 @@ const Hero = () => {
             <div className="hero-overlay bg-opacity-85"></div>
             <div className="hero-content text-center">
                 <div className="space-y-4">
-                    <h1 className="text-xl md:text-3xl font-bold text-neutral-200">
+                    <h1 className="text-xl font-bold text-neutral-200 md:text-3xl">
                         Kript Pharmaceuticals
                     </h1>
-                    <p className="max-w-[50ch] text-sm md:text-lg leading-relaxed text-neutral-300">
+                    <p className="max-w-[50ch] text-sm leading-relaxed text-neutral-300 md:text-lg">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut
                         assumenda excepturi exercitationem quasi. In deleniti
                         eaque aut repudiandae et a id nisi.
@@ -143,7 +143,7 @@ const Testimonial = () => {
                                 <div>
                                     <div className="flex justify-center gap-0.5 text-primary">
                                         <span className="sr-only">5 star</span>
-                                        {Array(5)
+                                        {Array(4)
                                             .fill(null)
                                             .map((d, i) => (
                                                 <svg
@@ -180,7 +180,7 @@ const Testimonial = () => {
 
 const Mason = memo(() => {
     return (
-        <div className="grid grid-cols-2 gap-6 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
             {[
                 'Anesthesia',
                 'Dialysis',
@@ -198,14 +198,14 @@ const Mason = memo(() => {
                     to="/product"
                     search={{ categoryFilter: data }}
                     key={data}
-                    className="relative grid min-h-48 min-w-40 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110"
+                    className="relative grid min-h-32 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110 sm:min-h-40"
                 >
                     <img
                         className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
                         src={backgroundImagePaths[i]}
                         alt=""
                     />
-                    <h3 className="z-0 text-center text-2xl font-bold text-neutral-100">
+                    <h3 className="z-0 text-center text-xl font-bold text-neutral-100 sm:text-2xl">
                         {data}
                     </h3>
                 </Link>
