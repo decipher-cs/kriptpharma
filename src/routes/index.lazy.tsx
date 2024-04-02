@@ -120,20 +120,20 @@ const Hero = () => {
 
 const Testimonial = () => {
     return (
-        <section className="mx-auto max-w-screen-xl space-y-12 px-10">
+        <section className="mx-auto space-y-12">
             <h2 className="text-center text-3xl font-bold lg:text-5xl">
                 Read trusted reviews from our customers
             </h2>
 
-            <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-8">
+            <div className="grid grid-cols-1 gap-4 lg:grid-cols-3 lg:gap-5">
                 {Array(3)
                     .fill(null)
                     .map((_, i) => (
                         <blockquote
                             key={i}
-                            className="rounded-lg bg-gray-50 p-6 shadow-sm sm:p-8"
+                            className="space-y-5 rounded-lg bg-neutral p-6 text-neutral-content shadow-sm md:p-8"
                         >
-                            <div className="flex items-center gap-4">
+                            <div className="flex items-center gap-5">
                                 <img
                                     alt=""
                                     src="https://images.unsplash.com/photo-1595152772835-219674b2a8a6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1180&q=80"
@@ -141,7 +141,8 @@ const Testimonial = () => {
                                 />
 
                                 <div>
-                                    <div className="flex justify-center gap-0.5 text-green-500">
+                                    <div className="flex justify-center gap-0.5 text-primary">
+                                        <span className="sr-only">5 star</span>
                                         {Array(5)
                                             .fill(null)
                                             .map((d, i) => (
@@ -157,18 +158,18 @@ const Testimonial = () => {
                                             ))}
                                     </div>
 
-                                    <p className="mt-0.5 text-lg font-medium text-gray-900">
+                                    <p className="mt-0.5 text-lg font-medium text-neutral-content">
                                         Paul Starr
                                     </p>
                                 </div>
                             </div>
 
-                            <p className="text-gray-700">
-                                Lorem ipsum dolor sit, amet consectetur
-                                adipisicing elit. Culpa sit rerum incidunt, a
-                                consequuntur recusandae ab saepe illo est quia
-                                obcaecati neque quibusdam eius accusamus error
-                                officiis atque voluptates magnam!
+                            <p className="italic">
+                                "The services provided are of very high quality
+                                and service provided very comfortable and
+                                friendly to make the customer feel at home and
+                                want to go back for treatment again, really very
+                                interesting experience and lots of fun "
                             </p>
                         </blockquote>
                     ))}
