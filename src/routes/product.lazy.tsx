@@ -81,7 +81,7 @@ const Product = () => {
         Route.useSearch()
     const [searchString, setSearchString] = useState(urlSearchString ?? '')
     const [visibleCategories, setVisibleCategories] = useState<Category[]>(
-        urlCategoryFilter ?? [...categories]
+        urlCategoryFilter.length ? urlCategoryFilter : [...categories]
     )
 
     const filteredMedicineData = useMemo(() => {
@@ -148,7 +148,7 @@ const Product = () => {
                             />
                         </svg>
                     </label>
-                    <details className="dropdown dropdown-end basis-1/3">
+                    <details className="dropdown dropdown-end grow-[0.5]">
                         <summary className="btn btn-ghost btn-outline w-full">
                             Filter
                             <svg
