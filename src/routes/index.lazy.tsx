@@ -96,10 +96,10 @@ const Hero = () => {
             <div className="hero-overlay bg-opacity-85"></div>
             <div className="hero-content text-center">
                 <div className="space-y-4">
-                    <h1 className="text-3xl font-bold text-neutral-200">
+                    <h1 className="text-xl md:text-3xl font-bold text-neutral-200">
                         Kript Pharmaceuticals
                     </h1>
-                    <p className="w-[50ch] text-lg leading-relaxed text-neutral-300">
+                    <p className="max-w-[50ch] text-sm md:text-lg leading-relaxed text-neutral-300">
                         Provident cupiditate voluptatem et in. Quaerat fugiat ut
                         assumenda excepturi exercitationem quasi. In deleniti
                         eaque aut repudiandae et a id nisi.
