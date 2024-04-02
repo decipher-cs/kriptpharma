@@ -109,14 +109,14 @@ const Product = () => {
                         key={i}
                         className="relative grid aspect-[2/1] shrink-0 basis-1/4 place-content-center rounded-lg"
                     >
-                        <h4 className="z-0 truncate p-1 text-sm font-bold text-neutral-100 md:text-xl">
-                            {data.toUpperCase()}
-                        </h4>
                         <img
-                            className="absolute inset-0 size-full rounded-lg object-cover object-center opacity-30"
+                            className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
                             src={imagePaths[i]}
                             alt=""
                         />
+                        <h4 className="z-10 truncate p-1 text-sm font-bold text-neutral-100 md:text-xl">
+                            {data.toUpperCase()}
+                        </h4>
                     </Link>
                 ))}
             </section>
