@@ -66,7 +66,7 @@ const Header = memo(() => {
             <div className="flex-none lg:hidden">
                 <Drawer />
             </div>
-            <label className="swap swap-rotate">
+            <label className="swap swap-rotate scale-50 md:scale-100">
                 <input
                     type="checkbox"
                     className="theme-controller"
