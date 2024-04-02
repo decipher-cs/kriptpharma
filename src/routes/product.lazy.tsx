@@ -81,7 +81,7 @@ const Product = () => {
         Route.useSearch()
     const [searchString, setSearchString] = useState(urlSearchString ?? '')
     const [visibleCategories, setVisibleCategories] = useState<Category[]>(
-        urlCategoryFilter.length ? urlCategoryFilter : [...categories]
+        urlCategoryFilter?.length ? urlCategoryFilter : [...categories]
     )
 
     const filteredMedicineData = useMemo(() => {
@@ -95,7 +95,8 @@ const Product = () => {
     const [maxRows, setMaxRows] = useState(11)
 
     return (
-        <section className="-mx-breath grid gap-10  lg:-mx-breath-lg">
+        <section className="space-y-10">
+            {/* <section className="-mx-breath grid gap-10  lg:-mx-breath-lg"> */}
             <section
                 className="flex gap-4 overflow-x-auto px-2 py-5 md:px-7"
                 style={{
@@ -120,9 +121,9 @@ const Product = () => {
                     </Link>
                 ))}
             </section>
-            <article className="container mx-auto">
-                <section className="flex flex-wrap justify-center gap-2 sm:justify-between">
-                    <label className="input input-bordered flex items-center gap-2">
+            <article className="mx-auto">
+                <section className="grid justify-center gap-3 sm:grid-cols-2  sm:justify-between">
+                    <label className="input input-md input-bordered flex items-center gap-2 justify-self-start">
                         <span className="sr-only">Search the table</span>
                         <input
                             type="text"
@@ -148,7 +149,7 @@ const Product = () => {
                             />
                         </svg>
                     </label>
-                    <details className="dropdown dropdown-end grow-[0.5]">
+                    <details className="dropdown dropdown-end w-full">
                         <summary className="btn btn-ghost btn-outline w-full">
                             Filter
                             <svg
@@ -212,28 +213,31 @@ const Product = () => {
                         </ul>
                     </details>
                 </section>
-                <table className="table table-zebra table-pin-rows">
-                    {/* head */}
-                    <thead>
-                        <tr>
-                            <th>S.No</th>
-                            <th>Name</th>
-                            <th>Type</th>
-                            <th>Packaging</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {filteredMedicineData.slice(0, maxRows).map((data) => (
-                            <tr key={data.id} className="hover">
-                                <th>{data.id}</th>
-                                <td>{data.name}</td>
-                                <td>{data.type}</td>
-                                <td>{data.packaging}</td>
+                <div className="overflow-x-auto">
+                    <table className="table table-zebra table-pin-rows">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>Name</th>
+                                <th>Type</th>
+                                <th>Packaging</th>
                             </tr>
-                        ))}
-                    </tbody>
-                </table>
-                <div className="join flex *:basis-1/3">
+                        </thead>
+                        <tbody>
+                            {filteredMedicineData
+                                .slice(0, maxRows)
+                                .map((data) => (
+                                    <tr key={data.id} className="hover">
+                                        <th>{data.id}</th>
+                                        <td>{data.name}</td>
+                                        <td>{data.type}</td>
+                                        <td>{data.packaging}</td>
+                                    </tr>
+                                ))}
+                        </tbody>
+                    </table>
+                </div>
+                <div className="join mt-4 flex *:basis-1/3">
                     <button
                         className="btn btn-ghost btn-outline join-item"
                         onClick={() =>
