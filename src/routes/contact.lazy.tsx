@@ -3,6 +3,7 @@ import mailLogo from '../assets/glyphs/mail.svg'
 import dialerLogo from '../assets/glyphs/dialer.svg'
 import instaLogo from '../assets/glyphs/Instagram.svg'
 import linkedinLogo from '../assets/glyphs/linkedin.svg'
+import useTheme from '../hooks/useTheme'
 
 export const Route = createLazyFileRoute('/contact')({
     component: () => <Contact />,
@@ -41,6 +42,7 @@ const contact = [
 }[]
 
 const Contact = () => {
+    const { theme } = useTheme()
     return (
         <section className="mx-auto max-w-screen-xl space-y-8">
             <div className="mx-auto max-w-lg text-center">
@@ -51,21 +53,23 @@ const Contact = () => {
                 {contact.map((data, i) => (
                     <a
                         key={i}
-                        className="block grow basis-1/3 space-y-4 rounded-xl border border-gray-800 p-8 shadow-xl transition  hover:shadow-primary"
+                        className="block grow basis-1/3 space-y-4 rounded-xl border border-gray-800 p-8 shadow-xl transition  hover:shadow"
                         href={data.href}
                         target="_blank"
                     >
                         <img
-                            className="size-10"
+                            className={
+                                'size-10' + (theme === 'light' ? ' invert' : '')
+                            }
                             src={data.logoUrl}
                             alt={data.title + ' logo'}
                         />
 
-                        <h2 className="text-nowrap text-xl font-bold text-white">
+                        <h2 className="text-nowrap text-xl font-bold text-base-content">
                             {data.title.toUpperCase()}
                         </h2>
 
-                        <p className="text-sm text-gray-300">{data.value}</p>
+                        <p className=" text-sm">{data.value}</p>
                     </a>
                 ))}
             </div>
