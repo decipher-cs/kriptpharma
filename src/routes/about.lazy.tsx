@@ -34,11 +34,11 @@ const About = () => {
     return (
         <section className="mx-auto grid gap-10">
             <div className="flex w-full flex-wrap items-center justify-around gap-8 justify-self-center">
-                <h1 className="text-nowrap  text-3xl font-extrabold sm:text-5xl">
+                <h1 className="text-nowrap text-3xl font-extrabold sm:text-5xl">
                     About Us
                 </h1>
 
-                <p className="max-w-[80ch] text-xl/relaxed">
+                <p className="max-w-[80ch] text-lg/relaxed md:text-xl/relaxed">
                     Top Indian Pharmaceuticals Company. Kript Pharmaceuticals is
                     ISO certified with self owned manufacturing units in
                     excise-free zones. The company has dedicated itself to bring
