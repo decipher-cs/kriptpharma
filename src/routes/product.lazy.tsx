@@ -96,7 +96,6 @@ const Product = () => {
 
     return (
         <section className="space-y-10">
-            {/* <section className="-mx-breath grid gap-10  lg:-mx-breath-lg"> */}
             <section
                 className="flex gap-4 overflow-x-auto px-2 py-5 md:px-7"
                 style={{
@@ -108,7 +107,7 @@ const Product = () => {
                         search={(prev) => ({ ...prev, categoryFilter: data })}
                         onClick={() => setVisibleCategories([data])}
                         key={i}
-                        className="relative grid aspect-[2/1] shrink-0 basis-1/4 place-content-center rounded-lg"
+                        className="relative grid aspect-[2/1] shrink-0 basis-2/5 place-content-center rounded-lg sm:basis-1/4"
                     >
                         <img
                             className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
