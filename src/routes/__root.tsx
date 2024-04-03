@@ -66,7 +66,7 @@ const Header = () => {
                     Kriptpharma
                 </Link>
             </div>
-            <ul className="menu hidden gap-1 px-1 lg:menu-horizontal">
+            <ul className="menu hidden gap-1 lg:menu-horizontal">
                 <Nav />
             </ul>
             <div className="flex-none lg:hidden">
@@ -124,8 +124,8 @@ const Drawer = () => {
                         <svg
                             className="swap-off fill-current"
                             xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
+                            width="16"
+                            height="16"
                             viewBox="0 0 512 512"
                         >
                             <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
