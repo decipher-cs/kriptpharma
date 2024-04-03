@@ -5,6 +5,7 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { memo, useState } from 'react'
 import useTheme from '../hooks/useTheme'
 import ThemeProvider from '../context/theme'
+import { ErrorPage } from '../view/PageNotFount'
 
 export const Route = createRootRoute({
     component: () => (
@@ -22,7 +23,7 @@ export const Route = createRootRoute({
     notFoundComponent: () => <ErrorPage />,
 })
 
-const Nav = memo(() => {
+const Nav = () => {
     return (
         <>
             {[
@@ -45,17 +46,22 @@ const Nav = memo(() => {
             ))}
         </>
     )
-})
-const Header = memo(() => {
+}
+
+const Header = () => {
     const { theme, changeTheme } = useTheme()
 
     return (
         <div className="navbar mb-6 gap-2 bg-base-100">
             <div className="flex-1">
-                <Link to="/" className="btn btn-ghost text-xl">
+                <Link
+                    to="/"
+                    className="btn btn-ghost btn-sm text-lg md:btn-md sm:text-xl"
+                >
                     <img
                         src={kriptPharmaLogo}
                         alt="Kript Pharmaceuticals logo"
+                        className="size-5 md:size-8"
                     />
                     Kriptpharma
                 </Link>
@@ -66,7 +72,7 @@ const Header = memo(() => {
             <div className="flex-none lg:hidden">
                 <Drawer />
             </div>
-            <label className="swap swap-rotate scale-50 md:scale-100">
+            <label className="swap swap-rotate">
                 <input
                     type="checkbox"
                     className="theme-controller"
@@ -79,7 +85,7 @@ const Header = memo(() => {
 
                 {/* moon icon */}
                 <svg
-                    className="swap-off size-10 fill-current"
+                    className="swap-off size-6 fill-current sm:size-8 lg:size-9"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >
@@ -87,7 +93,7 @@ const Header = memo(() => {
                 </svg>
                 {/* sun icon */}
                 <svg
-                    className="swap-on size-10 fill-current"
+                    className="swap-on size-6 fill-current sm:size-8 lg:size-9"
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 24 24"
                 >
@@ -96,9 +102,9 @@ const Header = memo(() => {
             </label>
         </div>
     )
-})
+}
 
-const Drawer = memo(() => {
+const Drawer = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     return (
         <>
@@ -110,16 +116,16 @@ const Drawer = memo(() => {
                     onChange={(e) => setDrawerOpen(e.target.checked)}
                     className="drawer-toggle"
                 />
-                <div className=" drawer-content">
+                <div className="drawer-content">
                     <label
                         htmlFor="my-drawer-4"
-                        className="btn drawer-button btn-md"
+                        className="btn drawer-button btn-sm"
                     >
                         <svg
                             className="swap-off fill-current"
                             xmlns="http://www.w3.org/2000/svg"
-                            width="32"
-                            height="32"
+                            width="24"
+                            height="24"
                             viewBox="0 0 512 512"
                         >
                             <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
@@ -134,7 +140,7 @@ const Drawer = memo(() => {
                     ></label>
 
                     <ul
-                        className="menu min-h-full w-80 gap-2 bg-base-200 p-3 px-2"
+                        className="menu h-full w-1/2 gap-2 bg-base-200 p-3 px-2"
                         onClick={() => setDrawerOpen(false)}
                     >
                         <Nav />
@@ -143,9 +149,9 @@ const Drawer = memo(() => {
             </div>
         </>
     )
-})
+}
 
-const Footer = memo(() => {
+const Footer = () => {
     return (
         <footer className="footer footer-center mt-14 rounded bg-base-200 p-10 text-base-content">
             <nav className="grid grid-flow-col gap-4">
@@ -154,11 +160,21 @@ const Footer = memo(() => {
                 <Link to="/contact">Contact</Link>
             </nav>
             <p className="block">
-                <img
-                    src={locationPin}
-                    alt=""
-                    className="mr-2 inline-block h-5"
-                />
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    className="mr-1 inline-block h-4"
+                >
+                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+                    <circle cx="12" cy="10" r="3" />
+                </svg>
                 Sector-27/A, Plot No. 419, Pradhikaran, Nigdi, Pune,
                 Maharashtra, 411044
             </p>
@@ -169,22 +185,5 @@ const Footer = memo(() => {
                 </p>
             </aside>
         </footer>
-    )
-})
-
-const ErrorPage = () => {
-    return (
-        <div className="grid h-screen place-content-center px-4">
-            <div className="space-y-7 text-center">
-                <h1 className="text-9xl font-black">404</h1>
-                <p className="text-2xl font-bold tracking-tight sm:text-4xl">
-                    Page Not Found!
-                </p>
-                <p className="text-base-content">We can't find that page.</p>
-                <Link to={'/'} className="btn btn-primary">
-                    Go Back Home
-                </Link>
-            </div>
-        </div>
     )
 }
