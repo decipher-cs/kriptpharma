@@ -121,8 +121,8 @@ const Product = () => {
                 ))}
             </section>
             <article className="mx-auto">
-                <section className="grid justify-center gap-3 sm:grid-cols-2  sm:justify-between">
-                    <label className="input input-md input-bordered flex items-center gap-2 justify-self-start">
+                <section className="grid grid-cols-1 justify-items-center gap-2 sm:grid-cols-2">
+                    <label className="input input-md input-bordered flex w-min items-center gap-2 sm:justify-self-start">
                         <span className="sr-only">Search the table</span>
                         <input
                             type="text"
@@ -148,8 +148,8 @@ const Product = () => {
                             />
                         </svg>
                     </label>
-                    <details className="dropdown dropdown-end w-full">
-                        <summary className="btn btn-ghost btn-outline w-full">
+                    <details className="dropdown dropdown-end w-1/2 sm:justify-self-end">
+                        <summary className="btn btn-ghost w-full border-neutral">
                             Filter
                             <svg
                                 width="12px"
