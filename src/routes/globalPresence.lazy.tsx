@@ -7,11 +7,11 @@ export const Route = createLazyFileRoute('/globalPresence')({
 
 const GlobalPresence = () => {
     return (
-        <section className="text-center space-y-8">
-            <h2 className="text-5xl">Global Presence</h2>
+        <section className="space-y-8 text-center">
+            <h2 className="text-2xl md:text-5xl">Global Presence</h2>
             <img
                 src={map}
-                className="w-4/5 border-2 border-base-300 rounded-xl mx-auto p-4"
+                className="mx-auto w-full rounded-xl border-2 border-base-300 p-4 md:w-4/5"
             />
         </section>
     )

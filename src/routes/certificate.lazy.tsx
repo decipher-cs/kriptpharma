@@ -9,12 +9,12 @@ export const Route = createLazyFileRoute('/certificate')({
             <article className="grid justify-items-center gap-10">
                 {Array(3)
                     .fill(null)
-                    .map((data, i) => (
+                    .map((i) => (
                         <a
                             href={certificateImg}
                             target="_blank"
                             key={i}
-                            className="w-2/3 md:w-1/2"
+                            className="w-full md:w-2/3"
                         >
                             <img
                                 src={certificateImg}
