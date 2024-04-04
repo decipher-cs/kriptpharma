@@ -33,8 +33,8 @@ const About = () => {
 
     return (
         <section className="mx-auto grid gap-10">
-            <div className="flex w-full flex-wrap items-center justify-around gap-8 justify-self-center">
-                <h1 className="text-nowrap text-3xl font-extrabold sm:text-5xl">
+            <div className="flex w-full flex-wrap items-center gap-8 justify-self-center sm:justify-around">
+                <h1 className="justify-self-start text-nowrap text-3xl font-extrabold sm:text-5xl">
                     About Us
                 </h1>
 
