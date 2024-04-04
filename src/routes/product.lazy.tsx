@@ -1,8 +1,9 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
 import medicineData from '../assets/medicine.json'
 import Fuse from 'fuse.js'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
+import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -61,6 +62,15 @@ export const Route = createFileRoute('/product')({
 })
 
 const Product = () => {
+    const horizontalMenu = useRef<HTMLDivElement>(null)
+    const middleMenuCard = useRef<HTMLAnchorElement>(null)
+
+    useEffect(() => {
+        const card = middleMenuCard.current
+        if (!card) return
+        card.scrollIntoView()
+    }, [])
+
     const navigate = useNavigate()
 
     const changeUrlParams = (
@@ -96,30 +106,97 @@ const Product = () => {
 
     return (
         <section className="space-y-10">
-            <section
-                className="flex gap-4 overflow-x-auto px-2 py-5 md:px-7"
-                style={{
-                    mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
-                }}
-            >
-                {categories.map((data, i) => (
-                    <Link
-                        search={(prev) => ({ ...prev, categoryFilter: data })}
-                        onClick={() => setVisibleCategories([data])}
-                        key={i}
-                        className="relative grid aspect-[2/1] shrink-0 basis-2/5 place-content-center rounded-lg sm:basis-1/4"
+            <Breakout>
+                <section
+                    className="relative flex gap-4 overflow-x-auto px-2 py-5 md:px-7"
+                    style={{
+                        mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
+                    }}
+                    ref={horizontalMenu}
+                >
+                    <button
+                        className="btn btn-primary self-center"
+                        aria-label='Go to end of list'
+                        onClick={() => {
+                            const menuContainer = horizontalMenu.current
+                            if (!menuContainer) return
+                            menuContainer.scroll({
+                                behavior: 'smooth',
+                                left: 99999,
+                            })
+                        }}
                     >
-                        <img
-                            className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
-                            src={imagePaths[i]}
-                            alt=""
-                        />
-                        <h4 className="z-10 truncate p-1 text-sm font-bold text-neutral-100 md:text-xl">
-                            {data.toUpperCase()}
-                        </h4>
-                    </Link>
-                ))}
-            </section>
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="M3 5v14" />
+                            <path d="M21 12H7" />
+                            <path d="m15 18 6-6-6-6" />
+                        </svg>
+                    </button>
+                    {categories.map((data, i) => (
+                        <Link
+                            search={(prev) => ({
+                                ...prev,
+                                categoryFilter: data,
+                            })}
+                            onClick={() => setVisibleCategories([data])}
+                            key={i}
+                            className="relative grid aspect-[2/1] shrink-0 basis-2/5 place-content-center rounded-lg sm:basis-1/4"
+                            ref={
+                                i === Math.floor(categories.length / 2) + 1
+                                    ? middleMenuCard
+                                    : null
+                            }
+                        >
+                            <img
+                                className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
+                                src={imagePaths[i]}
+                                alt=""
+                            />
+                            <h4 className="z-10 truncate p-1 text-sm font-bold text-neutral-100 md:text-xl">
+                                {data.toUpperCase()}
+                            </h4>
+                        </Link>
+                    ))}
+                    <button
+                        className="btn btn-primary self-center"
+                        aria-label='Go to start of list'
+                        onClick={() => {
+                            const menuContainer = horizontalMenu.current
+                            if (!menuContainer) return
+                            menuContainer.scroll({
+                                behavior: 'smooth',
+                                left: -99999,
+                            })
+                        }}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <path d="m9 6-6 6 6 6" />
+                            <path d="M3 12h14" />
+                            <path d="M21 19V5" />
+                        </svg>
+                    </button>
+                </section>
+            </Breakout>
             <article className="mx-auto">
                 <section className="grid grid-cols-1 justify-items-center gap-2 sm:grid-cols-2">
                     <label className="input input-md input-bordered flex w-min items-center gap-2 sm:justify-self-start">
@@ -238,7 +315,7 @@ const Product = () => {
                 </div>
                 <div className="join mt-4 flex *:basis-1/3">
                     <button
-                        className="btn btn-ghost btn-outline join-item"
+                        className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
                         onClick={() =>
                             maxRows < filteredMedicineData.length
                                 ? setMaxRows((p) => p + 11)
@@ -248,13 +325,13 @@ const Product = () => {
                         Show More +
                     </button>
                     <button
-                        className="btn btn-ghost btn-outline join-item"
+                        className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
                         onClick={() => setMaxRows(filteredMedicineData.length)}
                     >
                         Show All
                     </button>
                     <button
-                        className="btn btn-ghost btn-outline join-item"
+                        className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
                         onClick={() => setMaxRows(11)}
                     >
                         Show Less
