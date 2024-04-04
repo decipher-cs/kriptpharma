@@ -72,7 +72,7 @@ const Header = () => {
             <div className="flex-none lg:hidden">
                 <Drawer />
             </div>
-            <label className="swap swap-rotate">
+            <label className="swap swap-rotate focus-within:[&:has(:focus-visible)]:outline">
                 <input
                     type="checkbox"
                     className="theme-controller"
@@ -81,8 +81,8 @@ const Header = () => {
                     onChange={(e) => {
                         changeTheme(e.target.checked ? 'light' : 'dark')
                     }}
+                    aria-label="switch theme"
                 />
-
                 {/* moon icon */}
                 <svg
                     className="swap-off size-6 fill-current sm:size-8 lg:size-9"
@@ -108,45 +108,54 @@ const Drawer = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
     return (
         <>
-            <div className="drawer drawer-end z-40">
-                <input
-                    id="my-drawer-4"
-                    type="checkbox"
-                    checked={drawerOpen}
-                    onChange={(e) => setDrawerOpen(e.target.checked)}
-                    className="drawer-toggle"
-                />
-                <div className="drawer-content">
-                    <label
-                        htmlFor="my-drawer-4"
-                        className="btn drawer-button btn-sm"
+            <button
+                aria-label="open nav menu"
+                className="btn"
+                onClick={() => setDrawerOpen(true)}
+            >
+                <svg
+                    className="swap-off fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 512 512"
+                >
+                    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                </svg>
+            </button>
+            <section
+                className={
+                    'fixed inset-0 z-50 rounded-lg' +
+                    (drawerOpen ? '' : ' hidden')
+                }
+                onClick={() => setDrawerOpen(false)}
+            >
+                <div className="absolute left-0 size-full backdrop-blur" />
+                <div className="absolute right-0 h-full w-3/4 bg-base-100 p-2 md:w-1/2">
+                    <button
+                        aria-label="close menu"
+                        className="btn btn-ghost ml-1"
                     >
                         <svg
-                            className="swap-off fill-current"
                             xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 512 512"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
                         >
-                            <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
                         </svg>
-                    </label>
-                </div>
-                <div className="drawer-side">
-                    <label
-                        htmlFor="my-drawer-4"
-                        aria-label="close sidebar"
-                        className="drawer-overlay"
-                    ></label>
-
-                    <ul
-                        className="menu h-full w-1/2 gap-2 bg-base-200 p-3 px-2"
-                        onClick={() => setDrawerOpen(false)}
-                    >
+                    </button>
+                    <ul className="menu gap-2">
                         <Nav />
                     </ul>
                 </div>
-            </div>
+            </section>
         </>
     )
 }
