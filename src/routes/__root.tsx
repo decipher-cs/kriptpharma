@@ -143,7 +143,7 @@ const Drawer = () => {
                     setDrawerOpen(false)
                 }}
                 className={
-                    'fixed inset-x-0 sm:inset-x-1/3 md:inset-x-1/2 inset-y-0 z-50 size-full transition-transform duration-500 ease-in-out' +
+                    'fixed inset-x-0 inset-y-0 z-50 size-full transition-transform duration-500 ease-in-out sm:inset-x-1/3 md:inset-x-1/2' +
                     (drawerOpen ? ' translate-x-0' : ' translate-x-full') +
                     (drawerMounted ? ' visible' : ' invisible')
                 }
