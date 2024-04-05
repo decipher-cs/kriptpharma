@@ -2,7 +2,7 @@ import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
 import kriptPharmaLogo from '../assets/kriptpharma-logo.png'
 import locationPin from '../assets/location-pin.svg'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
-import { memo, useState } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import useTheme from '../hooks/useTheme'
 import ThemeProvider from '../context/theme'
 import { ErrorPage } from '../view/PageNotFount'
@@ -106,6 +106,84 @@ const Header = () => {
 
 const Drawer = () => {
     const [drawerOpen, setDrawerOpen] = useState(false)
+    const [drawerMounted, setDrawerMounted] = useState(false)
+    return (
+        <>
+            <button
+                aria-label="open nav menu"
+                className="btn"
+                onClick={() => {
+                    setDrawerOpen(true)
+                    setDrawerMounted(true)
+                }}
+            >
+                <svg
+                    className="swap-off fill-current"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 512 512"
+                >
+                    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
+                </svg>
+            </button>
+
+            <section
+                className={
+                    'fixed inset-0 z-40 size-full transition' +
+                    (drawerOpen ? ' backdrop-blur' : ' backdrop-blur-0') +
+                    (drawerMounted ? ' visible' : ' invisible')
+                }
+                onClick={() => {
+                    setDrawerOpen(false)
+                }}
+            />
+            <section
+                onClick={() => {
+                    setDrawerOpen(false)
+                }}
+                className={
+                    'fixed inset-x-0 sm:inset-x-1/3 md:inset-x-1/2 inset-y-0 z-50 size-full transition-transform duration-500 ease-in-out' +
+                    (drawerOpen ? ' translate-x-0' : ' translate-x-full') +
+                    (drawerMounted ? ' visible' : ' invisible')
+                }
+                onTransitionEnd={(e) => {
+                    const currTarget = e.currentTarget
+                    const target = e.target
+                    if (currTarget === target) {
+                        if (drawerMounted && !drawerOpen)
+                            setDrawerMounted(false)
+                    }
+                }}
+            >
+                <div className={'size-full bg-base-100 p-2'}>
+                    <button
+                        aria-label="close menu"
+                        className="btn btn-ghost ml-1"
+                        onClick={() => setDrawerOpen(false)}
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        >
+                            <path d="M18 6 6 18" />
+                            <path d="m6 6 12 12" />
+                        </svg>
+                    </button>
+                    <ul className="menu gap-2">
+                        <Nav />
+                    </ul>
+                </div>
+            </section>
+        </>
+    )
     return (
         <>
             <button
@@ -124,14 +202,15 @@ const Drawer = () => {
                 </svg>
             </button>
             <section
-                className={
-                    'fixed inset-0 z-50 rounded-lg' +
-                    (drawerOpen ? '' : ' hidden')
-                }
+                // className={'fixed inset-0 z-50 rounded-lg backdrop-blur'}
                 onClick={() => setDrawerOpen(false)}
             >
-                <div className="absolute left-0 size-full backdrop-blur" />
-                <div className="absolute right-0 h-full w-3/4 bg-base-100 p-2 md:w-1/2">
+                <div
+                    className={
+                        'absolute right-0 h-full w-3/4 bg-base-100 p-2 transition-transform md:w-1/2' +
+                        (drawerOpen ? ' translate-x-0' : ' translate-x-full')
+                    }
+                >
                     <button
                         aria-label="close menu"
                         className="btn btn-ghost ml-1"
@@ -143,9 +222,9 @@ const Drawer = () => {
                             viewBox="0 0 24 24"
                             fill="none"
                             stroke="currentColor"
-                            stroke-width="2"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
+                            strokeWidth="2"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
                         >
                             <path d="M18 6 6 18" />
                             <path d="m6 6 12 12" />
@@ -176,9 +255,9 @@ const Footer = () => {
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     className="mr-1 inline-block h-4"
                 >
                     <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
