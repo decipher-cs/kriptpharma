@@ -3,6 +3,7 @@ import heroImg from '../assets/backgrounds/hero.webp'
 import businessOpportunitiesImg from '../assets/backgrounds/business-opportunities.webp'
 import { memo } from 'react'
 import Breakout from '../components/Breakout'
+import furnitureCatalogue from '../assets/furniture-catalogue.pdf'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -178,23 +179,18 @@ const MissionSection = () => {
 
 const Mason = memo(() => {
     return (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-5">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
             {[
-                'Anesthesia',
-                'Dialysis',
-                'General Surgery',
-                'Auxiliary Services',
-                'ENT',
-                'Dressing And Wound Care',
-                'IV Access',
-                'Medical Cardiology',
-                'Gastroenterology',
-                'Medical Respiratory',
-                'Needles',
+                'Hospital Beds',
+                'Ward Equipment',
+                'Patient Transfer Trolley',
+                'OT Table & Modular OT',
+                'Wheelchairs',
+                'Delivery',
             ].map((data, i) => (
-                <Link
-                    to="/product"
-                    search={{ categoryFilter: data }}
+                <a
+                    href={furnitureCatalogue}
+                    target="_blank"
                     key={data}
                     className="relative grid min-h-32 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110 sm:min-h-40"
                 >
@@ -206,7 +202,7 @@ const Mason = memo(() => {
                     <h3 className="z-0 text-center text-xl font-bold text-neutral-100 sm:text-2xl">
                         {data}
                     </h3>
-                </Link>
+                </a>
             ))}
         </div>
     )
