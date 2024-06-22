@@ -2,6 +2,7 @@ import { Link, createLazyFileRoute } from '@tanstack/react-router'
 import heroImg from '../assets/backgrounds/hero.webp'
 import businessOpportunitiesImg from '../assets/backgrounds/business-opportunities.webp'
 import { memo } from 'react'
+import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -48,6 +49,11 @@ const Index = () => {
                     ))}
                 </article>
             </section>
+
+            <section>
+                <MissionSection />
+            </section>
+
             <section className="grid grid-rows-1 items-center gap-10 sm:grid-flow-col">
                 <div className="h-full">
                     <img
@@ -175,6 +181,58 @@ const Testimonial = () => {
                     ))}
             </div>
         </section>
+    )
+}
+
+const MissionSection = () => {
+    return (
+        <Breakout className="justify-self-stretch bg-base-200">
+            <article className="mx-auto max-w-screen-xl space-y-8 px-breath py-10">
+                {[
+                    {
+                        title: 'Our Vision',
+                        description:
+                            'To uphold our social responsibilities of delivering highest standard healthcare services.',
+                    },
+                    {
+                        title: 'Our Value',
+                        description:
+                            'Our Business Values with clients are as simple as LIFELONG “Business Relations',
+                    },
+                    {
+                        title: 'Our Mission',
+                        description:
+                            'We at Kript Pharmaceuticals believes that complete customer satisfaction is the key to expand business everywhere.',
+                    },
+                ].map((data, i) => (
+                    <div
+                        key={i}
+                        className="mx-auto flex flex-col gap-6 rounded-lg border border-neutral text-center md:flex-row md:items-center md:text-left md:*:basis-1/3 lg:text-left"
+                    >
+                        <h4 className={'text-center text-2xl font-bold'}>
+                            {data.title}
+                        </h4>
+                        <p className="text-lg leading-relaxed">
+                            {data.description}
+                        </p>
+                        <div
+                            className={
+                                'relative order-first h-48 ' +
+                                (i === 1 ? ' md:order-last' : '')
+                            }
+                        >
+                            <img
+                                // src={imagePaths[i]}
+                                alt=""
+                                className={
+                                    'absolute inset-0 size-full rounded-lg object-cover'
+                                }
+                            />
+                        </div>
+                    </div>
+                ))}
+            </article>
+        </Breakout>
     )
 }
 
