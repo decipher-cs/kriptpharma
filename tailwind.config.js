@@ -22,6 +22,8 @@ export default {
                 '8xl': '85rem',
                 '9xl': '90rem',
                 '10xl': '100rem',
+                '11xl': '120rem',
+                '12xl': '150rem',
             },
         },
     },
