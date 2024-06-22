@@ -136,9 +136,9 @@ const MissionSection = () => {
                             'To uphold our social responsibilities of delivering highest standard healthcare services.',
                     },
                     {
-                        title: 'Our Value',
+                        title: 'Our Commitment',
                         description:
-                            'Our Business Values with clients are as simple as LIFELONG “Business Relations',
+                            "Dedicated to exceeding our clients' expectations with unwavering support.",
                     },
                     {
                         title: 'Our Mission',
@@ -163,7 +163,7 @@ const MissionSection = () => {
                             }
                         >
                             <img
-                                // src={imagePaths[i]}
+                                src={backgroundImagePaths[i]}
                                 alt=""
                                 className={
                                     'absolute inset-0 size-full rounded-lg object-cover'
@@ -186,7 +186,7 @@ const Mason = memo(() => {
                 'Patient Transfer Trolley',
                 'OT Table & Modular OT',
                 'Wheelchairs',
-                'Delivery',
+                'Delivery Beds',
             ].map((data, i) => (
                 <a
                     href={furnitureCatalogue}
