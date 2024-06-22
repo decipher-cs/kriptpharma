@@ -100,9 +100,9 @@ const Hero = () => {
                         Kript Pharmaceuticals
                     </h1>
                     <p className="max-w-[50ch] text-sm leading-relaxed text-neutral-300 md:text-lg">
-                        Discover trusted medications at [Business Name], where
-                        quality meets care. Empowering health and wellness with
-                        our comprehensive range of pharmaceutical solutions.
+                        Discover trusted medications where quality meets care.
+                        Empowering health and wellness with our comprehensive
+                        range of pharmaceutical solutions.
                     </p>
                     <a
                         role="button"
