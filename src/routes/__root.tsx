@@ -17,7 +17,7 @@ export const Route = createRootRoute({
                     August 2024 Booth No. IP08
                 </Alert>
 
-                <main className="relative mx-auto mt-8 size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
+                <main className="relative mx-auto mt-8 size-full min-h-svh max-w-12xl px-breath lg:px-breath-lg">
                     <Outlet />
                 </main>
 
@@ -34,13 +34,14 @@ const Nav = () => {
         <>
             {[
                 'Home',
-                'Equipment',
-                'About',
                 'Product',
-                'Contact',
+                'Equipment',
+                'Downloads',
                 'Certificate',
                 'Global Presence',
+                'Gallery',
                 'Exhibition',
+                'Contact',
             ].map((path) => (
                 <li key={path}>
                     <Link
@@ -168,59 +169,6 @@ const Drawer = () => {
                         aria-label="close menu"
                         className="btn btn-ghost ml-1"
                         onClick={() => setDrawerOpen(false)}
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M18 6 6 18" />
-                            <path d="m6 6 12 12" />
-                        </svg>
-                    </button>
-                    <ul className="menu gap-2">
-                        <Nav />
-                    </ul>
-                </div>
-            </section>
-        </>
-    )
-    return (
-        <>
-            <button
-                aria-label="open nav menu"
-                className="btn"
-                onClick={() => setDrawerOpen(true)}
-            >
-                <svg
-                    className="swap-off fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 512 512"
-                >
-                    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-                </svg>
-            </button>
-            <section
-                // className={'fixed inset-0 z-50 rounded-lg backdrop-blur'}
-                onClick={() => setDrawerOpen(false)}
-            >
-                <div
-                    className={
-                        'absolute right-0 h-full w-3/4 bg-base-100 p-2 transition-transform md:w-1/2' +
-                        (drawerOpen ? ' translate-x-0' : ' translate-x-full')
-                    }
-                >
-                    <button
-                        aria-label="close menu"
-                        className="btn btn-ghost ml-1"
                     >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"

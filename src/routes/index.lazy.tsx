@@ -1,6 +1,5 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router'
 import heroImg from '../assets/backgrounds/hero.webp'
-import { memo } from 'react'
 import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
@@ -104,7 +103,7 @@ const FeaturedProducts = () => {
                     mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
                 }}
             >
-                <div className="animate-horizontal-scroll grid w-fit grid-flow-col">
+                <div className="grid w-fit animate-horizontal-scroll grid-flow-col">
                     {[...featuredProductNames, ...featuredProductNames].map(
                         (data, i) => (
                             <a
