@@ -1,6 +1,5 @@
 import { Link, createLazyFileRoute } from '@tanstack/react-router'
 import heroImg from '../assets/backgrounds/hero.webp'
-import businessOpportunitiesImg from '../assets/backgrounds/business-opportunities.webp'
 import { memo } from 'react'
 import Breakout from '../components/Breakout'
 import furnitureCatalogue from '../assets/furniture-catalogue.pdf'
@@ -53,38 +52,6 @@ const Index = () => {
 
             <section>
                 <MissionSection />
-            </section>
-
-            <section className="grid grid-rows-1 items-center gap-10 sm:grid-flow-col">
-                <div className="h-full">
-                    <img
-                        src={businessOpportunitiesImg}
-                        alt=""
-                        className="size-full rounded-xl object-cover"
-                    />
-                </div>
-                <div className="space-y-8">
-                    <h2 className="text-2xl font-bold lg:text-4xl">
-                        Business Opportunities
-                    </h2>
-                    <p className="leading-relaxed">
-                        Top Indian Pharmaceuticals Company. Kript
-                        Pharmaceuticals is ISO certified with self owned
-                        manufacturing units in excise-free zones. The company
-                        has dedicated itself to bring fine quality drug
-                        formulations catering to wider demands. Being
-                        patient-centric in our approach, we have always kept the
-                        needs of consumer’s priority. This has enabled us to
-                        meet demands across nation. We welcome people across
-                        India to become our Business associate. It is our proud
-                        earning that we’re a family of 200+. Currently, we look
-                        forward to expand greater healthcare facilities in
-                        uncovered locations. Our associates have been enjoying
-                        the best advantages by owning over 350+ products that
-                        cover multiple segments of nutraceuticals, neurology,
-                        derma, ophthalmic, cardiac diabetic etc.
-                    </p>
-                </div>
             </section>
         </div>
     )
