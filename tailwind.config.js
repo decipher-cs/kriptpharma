@@ -4,6 +4,15 @@ import twt from '@tailwindcss/typography'
 export default {
     content: ['./src/**/*.{html,js,jsx,tsx}', './src/main.tsx'],
     theme: {
+        keyframes: {
+            horizontalScroll: {
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(-50%)' },
+            },
+        },
+        animation: {
+            'horizontal-scroll': 'horizontalScroll linear 60s infinite',
+        },
         extend: {
             spacing: {
                 breath: '1.5rem',

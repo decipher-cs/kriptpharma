@@ -2,7 +2,6 @@ import { Link, createLazyFileRoute } from '@tanstack/react-router'
 import heroImg from '../assets/backgrounds/hero.webp'
 import { memo } from 'react'
 import Breakout from '../components/Breakout'
-import furnitureCatalogue from '../assets/furniture-catalogue.pdf'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -21,14 +20,10 @@ export const Route = createLazyFileRoute('/')({
 
 const Index = () => {
     return (
-        <div className="-mt-6 space-y-36">
+        <div className="-mt-8 space-y-36">
             <Hero />
-            <section className="space-y-12" id="Category">
-                <h2 className="text-center text-3xl font-bold lg:text-5xl">
-                    Categories
-                </h2>
-                <Mason />
-            </section>
+
+            <FeaturedProducts />
 
             <section className="-mx-breath space-y-12 bg-base-200 py-10 lg:-mx-breath-lg">
                 <h2 className="text-center text-3xl font-bold lg:text-5xl">
@@ -92,6 +87,47 @@ const Hero = () => {
     )
 }
 
+const featuredProductNames = [
+    'Tablets',
+    'Injection',
+    'ICU Bed',
+    'OT',
+    'Wheelchair',
+    'Bed',
+]
+const FeaturedProducts = () => {
+    return (
+        <Breakout>
+            <section
+                className="w-full overflow-hidden border py-6"
+                style={{
+                    mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
+                }}
+            >
+                <div className="animate-horizontal-scroll grid w-fit grid-flow-col">
+                    {[...featuredProductNames, ...featuredProductNames].map(
+                        (data, i) => (
+                            <a
+                                key={i}
+                                className="relative mx-3 grid aspect-square w-20 place-items-center rounded-full sm:w-56 sm:p-3"
+                            >
+                                <img
+                                    className="absolute inset-0 size-full rounded-full object-cover object-center brightness-50"
+                                    src={backgroundImagePaths[5]}
+                                    alt=""
+                                />
+                                <h4 className="z-10 truncate p-1 text-xs font-bold text-neutral-100 sm:text-sm md:text-xl">
+                                    {data.toUpperCase()}
+                                </h4>
+                            </a>
+                        )
+                    )}
+                </div>
+            </section>
+        </Breakout>
+    )
+}
+
 const MissionSection = () => {
     return (
         <Breakout className="justify-self-stretch bg-base-200">
@@ -143,37 +179,6 @@ const MissionSection = () => {
         </Breakout>
     )
 }
-
-const Mason = memo(() => {
-    return (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
-            {[
-                'Hospital Beds',
-                'Ward Equipment',
-                'Patient Transfer Trolley',
-                'OT Table & Modular OT',
-                'Wheelchairs',
-                'Delivery Beds',
-            ].map((data, i) => (
-                <a
-                    href={furnitureCatalogue}
-                    target="_blank"
-                    key={data}
-                    className="relative grid min-h-32 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110 sm:min-h-40"
-                >
-                    <img
-                        className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
-                        src={backgroundImagePaths[i]}
-                        alt=""
-                    />
-                    <h3 className="z-0 text-center text-xl font-bold text-neutral-100 sm:text-2xl">
-                        {data}
-                    </h3>
-                </a>
-            ))}
-        </div>
-    )
-})
 
 const reasonsToChooseUs = [
     {
