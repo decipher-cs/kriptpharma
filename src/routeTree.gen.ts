@@ -25,7 +25,6 @@ const EquipmentLazyImport = createFileRoute('/equipment')()
 const DownloadsLazyImport = createFileRoute('/downloads')()
 const ContactLazyImport = createFileRoute('/contact')()
 const CertificateLazyImport = createFileRoute('/certificate')()
-const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
@@ -77,11 +76,6 @@ const CertificateLazyRoute = CertificateLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/certificate.lazy').then((d) => d.Route))
 
-const AboutLazyRoute = AboutLazyImport.update({
-  path: '/about',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
-
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -93,10 +87,6 @@ declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
       preLoaderRoute: typeof IndexLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/about': {
-      preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
     '/certificate': {
@@ -142,7 +132,6 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
-  AboutLazyRoute,
   CertificateLazyRoute,
   ContactLazyRoute,
   DownloadsLazyRoute,

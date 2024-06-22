@@ -1,29 +1,39 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import certificateImg from '../assets/certificate.webp'
+import useTheme from '../hooks/useTheme'
+const stamps = import.meta.glob('../assets/stamps/*.*', {
+    eager: true,
+})
+
+const stampUrls = Object.values(stamps).map((module) => {
+    if (typeof module === 'object' && module && 'default' in module) {
+        return module.default as string
+    }
+    return undefined
+})
 
 export const Route = createLazyFileRoute('/certificate')({
-    component: () => (
+    component: () => <Certificate />,
+})
+
+const Certificate = () => {
+    const { theme } = useTheme()
+
+    return (
         <section className="space-y-8 text-center">
             <h2 className="text-center text-2xl sm:text-5xl">Certificates</h2>
 
-            <article className="grid justify-items-center gap-10">
-                {Array(3)
-                    .fill(null)
-                    .map((i) => (
-                        <a
-                            href={certificateImg}
-                            target="_blank"
-                            key={i}
-                            className="w-full md:w-2/3"
-                        >
-                            <img
-                                src={certificateImg}
-                                className="size-full"
-                                alt="certificate of excellence"
-                            />
-                        </a>
+            <section className="mx-auto grid gap-10">
+                <article className="mx-auto flex flex-wrap justify-center gap-10">
+                    {stampUrls.map((url) => (
+                        <img
+                            src={url}
+                            key={url}
+                            className={`h-28 md:h-40 ${theme === 'light' ? 'invert' : 'invert-0'}`}
+                            alt=""
+                        />
                     ))}
-            </article>
+                </article>
+            </section>
         </section>
-    ),
-})
+    )
+}
