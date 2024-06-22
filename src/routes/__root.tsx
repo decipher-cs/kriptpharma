@@ -5,6 +5,7 @@ import { useState } from 'react'
 import useTheme from '../hooks/useTheme'
 import ThemeProvider from '../context/theme'
 import { ErrorPage } from '../view/PageNotFount'
+import { Alert } from '../components/Alert'
 
 export const Route = createRootRoute({
     component: () => (
@@ -12,6 +13,12 @@ export const Route = createRootRoute({
             <ThemeProvider>
                 <Header />
                 <main className="relative mx-auto size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
+                <Alert>
+                    Medivietnam pharmaexpo 2024 Saigon Exhibition 1st - 3rd
+                    August 2024 Booth No. IP08
+                </Alert>
+
+                <main className="relative mx-auto mt-8 size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
                     <Outlet />
                 </main>
                 <Footer />
