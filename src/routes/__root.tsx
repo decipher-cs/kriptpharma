@@ -12,7 +12,6 @@ export const Route = createRootRoute({
         <>
             <ThemeProvider>
                 <Header />
-                <main className="relative mx-auto size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
                 <Alert>
                     Medivietnam pharmaexpo 2024 Saigon Exhibition 1st - 3rd
                     August 2024 Booth No. IP08
@@ -21,6 +20,7 @@ export const Route = createRootRoute({
                 <main className="relative mx-auto mt-8 size-full min-h-svh max-w-10xl px-breath lg:px-breath-lg">
                     <Outlet />
                 </main>
+
                 <Footer />
                 {import.meta.env.DEV && <TanStackRouterDevtools />}
             </ThemeProvider>
@@ -34,6 +34,7 @@ const Nav = () => {
         <>
             {[
                 'Home',
+                'Equipment',
                 'About',
                 'Product',
                 'Contact',
@@ -58,7 +59,7 @@ const Header = () => {
     const { theme, changeTheme } = useTheme()
 
     return (
-        <div className="navbar mb-6 gap-2 bg-base-100">
+        <div className="navbar gap-2 bg-base-100">
             <div className="flex-1">
                 <Link
                     to="/"

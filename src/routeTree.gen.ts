@@ -20,6 +20,7 @@ const ProductLazyImport = createFileRoute('/product')()
 const HomeLazyImport = createFileRoute('/home')()
 const GlobalPresenceLazyImport = createFileRoute('/globalPresence')()
 const ExhibitionLazyImport = createFileRoute('/exhibition')()
+const EquipmentLazyImport = createFileRoute('/equipment')()
 const ContactLazyImport = createFileRoute('/contact')()
 const CertificateLazyImport = createFileRoute('/certificate')()
 const AboutLazyImport = createFileRoute('/about')()
@@ -48,6 +49,11 @@ const ExhibitionLazyRoute = ExhibitionLazyImport.update({
   path: '/exhibition',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/exhibition.lazy').then((d) => d.Route))
+
+const EquipmentLazyRoute = EquipmentLazyImport.update({
+  path: '/equipment',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/equipment.lazy').then((d) => d.Route))
 
 const ContactLazyRoute = ContactLazyImport.update({
   path: '/contact',
@@ -89,6 +95,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactLazyImport
       parentRoute: typeof rootRoute
     }
+    '/equipment': {
+      preLoaderRoute: typeof EquipmentLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/exhibition': {
       preLoaderRoute: typeof ExhibitionLazyImport
       parentRoute: typeof rootRoute
@@ -115,6 +125,7 @@ export const routeTree = rootRoute.addChildren([
   AboutLazyRoute,
   CertificateLazyRoute,
   ContactLazyRoute,
+  EquipmentLazyRoute,
   ExhibitionLazyRoute,
   GlobalPresenceLazyRoute,
   HomeLazyRoute,
