@@ -1,14 +1,20 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import useTheme from '../hooks/useTheme'
-const stamps = import.meta.glob('../assets/stamps/*.*', {
+const stampImport = import.meta.glob('../assets/stamps/*.*', {
     eager: true,
 })
 
-const stampUrls = Object.values(stamps).map((module) => {
+const stamps = Object.values(stampImport).map((module) => {
     if (typeof module === 'object' && module && 'default' in module) {
-        return module.default as string
+        const path = module.default
+        if (typeof path === 'string') {
+            const parts = path.split('/')
+            const filename = parts[parts.length - 1]
+                .replace('.webp', '')
+                .replace(/%20/g, ' ')
+            return { path, filename }
+        }
     }
-    return undefined
 })
 
 export const Route = createLazyFileRoute('/certificate')({
@@ -24,14 +30,17 @@ const Certificate = () => {
 
             <section className="mx-auto grid gap-10">
                 <article className="mx-auto flex flex-wrap justify-center gap-10">
-                    {stampUrls.map((url) => (
-                        <img
-                            src={url}
-                            key={url}
-                            className={`h-28 md:h-40 ${theme === 'light' ? 'invert' : 'invert-0'}`}
-                            alt=""
-                        />
-                    ))}
+                    {stamps.map((stamp) => {
+                        if (stamp)
+                            return (
+                                <img
+                                    src={stamp.path}
+                                    key={stamp.path}
+                                    className={`h-28 last:max-w-80 md:h-40 ${theme === 'light' ? 'invert' : 'invert-0'}`}
+                                    alt={stamp.filename}
+                                />
+                            )
+                    })}
                 </article>
             </section>
         </section>
