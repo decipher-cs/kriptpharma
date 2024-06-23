@@ -19,11 +19,8 @@ export const Route = createLazyFileRoute('/equipment')({
 
 const Equipment = () => {
     return (
-        <div className="-mt-6 space-y-36">
+        <div className="space-y-36">
             <section className="space-y-12" id="Category">
-                <h2 className="text-center text-3xl font-bold lg:text-5xl">
-                    Categories
-                </h2>
                 <Mason />
             </section>
         </div>
