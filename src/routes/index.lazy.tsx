@@ -30,23 +30,20 @@ const Index = () => {
                 </h2>
                 <article className="flex flex-wrap justify-center gap-10">
                     {reasonsToChooseUs.map((data) => (
-                        <Link
+                        <div
                             key={data.title}
-                            to="/about"
-                            className="card w-96 border border-base-300"
+                            className="card w-96 border border-neutral-700"
                         >
                             <div className="card-body prose">
                                 <h2 className="card-title">{data.title}</h2>
                                 <p>{data.description}</p>
                             </div>
-                        </Link>
+                        </div>
                     ))}
                 </article>
             </section>
 
-            <section>
-                <MissionSection />
-            </section>
+            <MissionSection />
         </div>
     )
 }
@@ -74,7 +71,7 @@ const Hero = () => {
                     </p>
                     <a
                         role="button"
-                        href="#Category"
+                        href="#vision"
                         type="submit"
                         className="btn btn-primary"
                     >
@@ -98,7 +95,7 @@ const FeaturedProducts = () => {
     return (
         <Breakout>
             <section
-                className="w-full overflow-hidden border py-6"
+                className="w-full overflow-hidden border border-neutral-400 py-6"
                 style={{
                     mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
                 }}
@@ -130,7 +127,10 @@ const FeaturedProducts = () => {
 const MissionSection = () => {
     return (
         <Breakout className="justify-self-stretch bg-base-200">
-            <article className="mx-auto max-w-screen-xl space-y-8 px-breath py-10">
+            <article
+                className="mx-auto max-w-screen-xl space-y-8 px-breath py-10"
+                id="vision"
+            >
                 {[
                     {
                         title: 'Our Vision',
@@ -150,7 +150,7 @@ const MissionSection = () => {
                 ].map((data, i) => (
                     <div
                         key={i}
-                        className="mx-auto flex flex-col gap-6 rounded-lg border border-neutral text-center md:flex-row md:items-center md:text-left md:*:basis-1/3 lg:text-left"
+                        className="mx-auto flex flex-col gap-6 rounded-lg border border-neutral-700 text-center md:flex-row md:items-center md:text-left md:*:basis-1/3 lg:text-left"
                     >
                         <h4 className={'text-center text-2xl font-bold'}>
                             {data.title}
