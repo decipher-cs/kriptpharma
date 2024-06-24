@@ -207,18 +207,6 @@ const Footer = () => {
     return (
         <>
             <footer className="footer mt-14 rounded bg-base-200 p-10">
-                <aside>
-                    <img
-                        src={kriptPharmaLogo}
-                        alt="Kript Pharmaceuticals logo"
-                        className="size-10 md:size-36"
-                    />
-                    <p>
-                        Kript Pharmaceuticals
-                        <br />
-                        Top Indian Pharmaceuticals Company
-                    </p>
-                </aside>
                 <div className="grid gap-2">
                     <h6 className="footer-title">Navigation</h6>
                     <nav className="grid gap-2">
