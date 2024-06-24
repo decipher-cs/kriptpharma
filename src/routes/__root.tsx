@@ -21,7 +21,7 @@ export const Route = createRootRoute({
         <>
             <ThemeProvider>
                 <Header />
-                <Alert>
+                <Alert alertFor="pharmaexpo">
                     Medivietnam pharmaexpo 2024 Saigon Exhibition 1st - 3rd
                     August 2024 Booth No. IP08
                 </Alert>

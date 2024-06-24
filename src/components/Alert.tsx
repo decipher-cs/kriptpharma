@@ -1,7 +1,16 @@
-import { PropsWithChildren, useState } from 'react'
+import { PropsWithChildren, useEffect, useState } from 'react'
 
-export const Alert = (props: PropsWithChildren) => {
-    const [showAlert, setShowAlert] = useState(true)
+export const Alert = (props: PropsWithChildren & { alertFor: string }) => {
+    const { alertFor, children } = props
+
+    const [showAlert, setShowAlert] = useState(
+        window.localStorage.getItem(alertFor) !== 'false'
+    )
+
+    useEffect(() => {
+        if (!showAlert) window.localStorage.setItem(alertFor, String(showAlert))
+    }, [showAlert, alertFor])
+
     return (
         <div
             className={
@@ -9,7 +18,7 @@ export const Alert = (props: PropsWithChildren) => {
                 ' relative z-50 flex items-center justify-between gap-4 bg-primary px-4 py-3 text-primary-content '
             }
         >
-            {props.children}
+            {children}
 
             <button
                 aria-label="Dismiss"
