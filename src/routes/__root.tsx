@@ -6,6 +6,15 @@ import useTheme from '../hooks/useTheme'
 import ThemeProvider from '../context/theme'
 import { ErrorPage } from '../view/PageNotFount'
 import { Alert } from '../components/Alert'
+import {
+    PiPrinter,
+    PiInstagramLogo,
+    PiLinkedinLogo,
+    PiMapPin,
+    PiPhone,
+    PiMailbox,
+    PiFacebookLogo,
+} from 'react-icons/pi'
 
 export const Route = createRootRoute({
     component: () => (
@@ -196,37 +205,143 @@ const Drawer = () => {
 
 const Footer = () => {
     return (
-        <footer className="footer footer-center mt-14 rounded bg-base-200 p-10 text-base-content">
-            <nav className="grid grid-flow-col gap-4">
-                <Link to="/about">About us</Link>
-                <Link to="/product">Catelog</Link>
-                <Link to="/contact">Contact</Link>
-            </nav>
-            <p className="block">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="mr-1 inline-block h-4"
+        <>
+            <footer className="footer mt-14 rounded bg-base-200 p-10">
+                <aside>
+                    <img
+                        src={kriptPharmaLogo}
+                        alt="Kript Pharmaceuticals logo"
+                        className="size-10 md:size-36"
+                    />
+                    <p>
+                        Kript Pharmaceuticals
+                        <br />
+                        Top Indian Pharmaceuticals Company
+                    </p>
+                </aside>
+                <div className="grid gap-2">
+                    <h6 className="footer-title">Navigation</h6>
+                    <nav className="grid gap-2">
+                        {[
+                            'Home',
+                            'Product',
+                            'Equipment',
+                            'Downloads',
+                            'Certificate',
+                            'Global Presence',
+                            'Gallery',
+                            'Exhibition',
+                            'Contact',
+                        ].map((path) => (
+                            <Link className="link-hover link" to={'/' + path}>
+                                {path}
+                            </Link>
+                        ))}
+                    </nav>
+                </div>
+
+                <div className="grid gap-2">
+                    <h6 className="footer-title">Quick Link</h6>
+                    <nav className="grid gap-2">
+                        <Link className="link-hover link" to="/downloads">
+                            Catelogue
+                        </Link>
+                        <Link className="link-hover link" to="/product">
+                            Medication
+                        </Link>
+                        <Link className="link-hover link" to="/contact">
+                            Enquiry
+                        </Link>
+                        <Link className="link-hover link" to="/gallery">
+                            Gallery
+                        </Link>
+                    </nav>
+                </div>
+
+                <div className="grid gap-2">
+                    <h6 className="footer-title">Contact Details</h6>
+                    <div className="grid gap-2 *:flex *:items-center *:gap-2">
+                        {/* TODO: populate info */}
+                        <a href="mailto:">
+                            {' '}
+                            <PiMailbox /> support@kriptpharmaceuticals.com{' '}
+                        </a>
+                        <a href="fax:">
+                            {' '}
+                            <PiPrinter /> +000-000-000{' '}
+                        </a>
+                        <a href="tel:">
+                            {' '}
+                            <PiPhone /> (+91)000-000-0000{' '}
+                        </a>
+                        <div>
+                            <PiMapPin />
+                            <p>
+                                Sector-27/A, Plot No. 419, Pradhikaran,
+                                <br />
+                                Nigdi, Pune, Maharashtra, 411044
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <form
+                    className="grid gap-2"
+                    onSubmit={(e) => {
+                        e.preventDefault()
+                        alert('you will hear from us soon :)')
+                    }}
                 >
-                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                    <circle cx="12" cy="10" r="3" />
-                </svg>
-                Sector-27/A, Plot No. 419, Pradhikaran, Nigdi, Pune,
-                Maharashtra, 411044
-            </p>
-            <aside>
-                <p>
-                    Copyright © 2024 - All right reserved. Icons by
-                    <a href="https://svgmix.com/">svgmix</a>
-                </p>
-            </aside>
-        </footer>
+                    <label htmlFor="inquiry" className="footer-title">
+                        Get in touch
+                    </label>
+                    <div className="join">
+                        <input
+                            id="inquiry"
+                            className="input input-sm join-item input-bordered"
+                            placeholder="Enter your email"
+                            type="email"
+                        />
+                        {/* TODO: submit email somewhere */}
+                        <button
+                            className="btn join-item btn-neutral btn-sm"
+                            type="submit"
+                        >
+                            Submit
+                        </button>
+                    </div>
+                </form>
+
+                <div className="grid gap-2">
+                    <h6 className="footer-title">Socials</h6>
+                    <div className="flex gap-2">
+                        <a className="link-hover link" href="" target="_blank">
+                            {' '}
+                            <PiInstagramLogo className="size-8" />{' '}
+                        </a>
+                        <a className="link-hover link" href="" target="_blank">
+                            {' '}
+                            <PiLinkedinLogo className="size-8" />{' '}
+                        </a>
+                        <a className="link-hover link" href="" target="_blank">
+                            {' '}
+                            <PiFacebookLogo className="size-8" />{' '}
+                        </a>
+                    </div>
+                </div>
+            </footer>
+
+            <footer className="footer footer-center rounded bg-base-200 px-10">
+                <aside className="col-start-1 row-start-2">
+                    <a
+                        className="link-hover link"
+                        href="https://github.com/decipher-cs/"
+                        target="_blank"
+                    >
+                        Copyright © 2024 Decipher . All rights reserved.
+                    </a>
+                </aside>
+            </footer>
+        </>
     )
 }
