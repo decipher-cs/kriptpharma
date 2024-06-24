@@ -303,15 +303,27 @@ const Footer = () => {
                 <div className="grid gap-2">
                     <h6 className="footer-title">Socials</h6>
                     <div className="flex gap-2">
-                        <a className="link-hover link" href="" target="_blank">
+                        <a
+                            className="link-hover link"
+                            href="https://www.instagram.com/kriptpharmaceuticals/"
+                            target="_blank"
+                        >
                             {' '}
                             <PiInstagramLogo className="size-8" />{' '}
                         </a>
-                        <a className="link-hover link" href="" target="_blank">
+                        <a
+                            className="link-hover link"
+                            href="https://www.linkedin.com/in/komal-singla-45a516239/"
+                            target="_blank"
+                        >
                             {' '}
                             <PiLinkedinLogo className="size-8" />{' '}
                         </a>
-                        <a className="link-hover link" href="" target="_blank">
+                        <a
+                            className="link-hover link"
+                            href="https://www.facebook.com/share/vLSvjtQ5igwYRuP1/?mibextid=LQQJ4d"
+                            target="_blank"
+                        >
                             {' '}
                             <PiFacebookLogo className="size-8" />{' '}
                         </a>
@@ -319,7 +331,7 @@ const Footer = () => {
                 </div>
             </footer>
 
-            <footer className="footer footer-center rounded bg-base-200 px-10">
+            <footer className="footer footer-center rounded bg-base-200 px-10 pb-6">
                 <aside className="col-start-1 row-start-2">
                     <a
                         className="link-hover link"
