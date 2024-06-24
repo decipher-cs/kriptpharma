@@ -3,6 +3,7 @@ import mailLogo from '../assets/glyphs/email.png'
 import dialerLogo from '../assets/glyphs/dialer.png'
 import instaLogo from '../assets/glyphs/insta.png'
 import linkedinLogo from '../assets/glyphs/linkedin.png'
+import facebookLogo from '../assets/glyphs/facebook.png'
 
 export const Route = createLazyFileRoute('/contact')({
     component: () => <Contact />,
@@ -12,26 +13,38 @@ const contact = [
     {
         logoUrl: linkedinLogo,
         title: 'linkedin',
+        href: 'https://www.linkedin.com/in/komal-singla-45a516239/',
+        value: 'linkedin.com/in/komal-singla-45a516239/',
+    },
+    {
+        logoUrl: linkedinLogo,
+        title: 'linkedin',
         href: 'https://in.linkedin.com/in/parth-bansal-05b908256',
         value: 'linkedin.com/in/parth-bansal-05b908256',
     },
     {
         logoUrl: mailLogo,
         title: 'email',
-        href: 'mailto:info@kriptpharma.com',
-        value: 'info@kriptpharma.com',
+        href: 'mailto:kriptpharma@gmail.com',
+        value: 'kriptpharma@gmail.com',
     },
     {
         logoUrl: dialerLogo,
         title: 'phone no.',
-        href: 'tel:+91857-191-3753',
-        value: '(+91) 857-191-3753',
+        href: 'tel:+917988522311',
+        value: '(+91) 798-852-2311',
     },
     {
         logoUrl: instaLogo,
         title: 'Instagram',
         href: 'https://www.instagram.com/kriptpharmaceuticals/',
         value: '@kriptpharmaceuticals',
+    },
+    {
+        logoUrl: facebookLogo,
+        title: 'Facebook',
+        href: 'https://www.facebook.com/share/vLSvjtQ5igwYRuP1/?mibextid=LQQJ4d',
+        value: 'Kript Pharmaceuticals ',
     },
 ] satisfies {
     logoUrl: string
