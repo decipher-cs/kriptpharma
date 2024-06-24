@@ -221,7 +221,11 @@ const Footer = () => {
                             'Exhibition',
                             'Contact',
                         ].map((path) => (
-                            <Link className="link-hover link" to={'/' + path}>
+                            <Link
+                                className="link-hover link"
+                                key={path}
+                                to={'/' + path}
+                            >
                                 {path}
                             </Link>
                         ))}
@@ -249,18 +253,11 @@ const Footer = () => {
                 <div className="grid gap-2">
                     <h6 className="footer-title">Contact Details</h6>
                     <div className="grid gap-2 *:flex *:items-center *:gap-2">
-                        {/* TODO: populate info */}
-                        <a href="mailto:">
-                            {' '}
-                            <PiMailbox /> support@kriptpharmaceuticals.com{' '}
+                        <a href="mailto:kriptpharma@gmail.com">
+                            <PiMailbox /> kriptpharma@gmail.com
                         </a>
-                        <a href="fax:">
-                            {' '}
-                            <PiPrinter /> +000-000-000{' '}
-                        </a>
-                        <a href="tel:">
-                            {' '}
-                            <PiPhone /> (+91)000-000-0000{' '}
+                        <a href="tel:+917988522311">
+                            <PiPhone /> (+91) 798-852-2311
                         </a>
                         <div>
                             <PiMapPin />
@@ -286,13 +283,13 @@ const Footer = () => {
                     <div className="join">
                         <input
                             id="inquiry"
-                            className="input input-sm join-item input-bordered"
+                            className="input  join-item input-bordered"
                             placeholder="Enter your email"
                             type="email"
                         />
                         {/* TODO: submit email somewhere */}
                         <button
-                            className="btn join-item btn-neutral btn-sm"
+                            className="btn join-item btn-neutral"
                             type="submit"
                         >
                             Submit
