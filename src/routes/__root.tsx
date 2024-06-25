@@ -328,7 +328,6 @@ const Footer = () => {
                             <p className="sr-only">Facebook</p>
                         </a>
                         <a
-                            // TODO: Add link to whatsapp
                             className="link-hover link"
                             href="https://wa.me/message/ZLJXQKQPM75IL1"
                             target="_blank"
