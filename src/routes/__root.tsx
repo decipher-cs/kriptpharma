@@ -27,6 +27,8 @@ export const Route = createRootRoute({
                     August 2024 Booth No. IP08
                 </Alert>
 
+                {/* "px-breath lg:px-breath-lg" is here to globally create breathing room for the content*/}
+                {/* The effects of this class can be negated by using the <Breakout/> component */}
                 <main className="relative mx-auto mt-8 size-full min-h-svh max-w-12xl px-breath lg:px-breath-lg">
                     <Outlet />
                 </main>
@@ -284,13 +286,13 @@ const Footer = () => {
                     <div className="join">
                         <input
                             id="inquiry"
-                            className="input  join-item input-bordered"
+                            className="input join-item input-bordered max-sm:input-sm max-sm:max-w-40"
                             placeholder="Enter your email"
                             type="email"
                         />
                         {/* TODO: submit email somewhere */}
                         <button
-                            className="btn join-item btn-neutral"
+                            className="btn join-item btn-neutral max-sm:btn-sm"
                             type="submit"
                         >
                             Submit
@@ -328,7 +330,7 @@ const Footer = () => {
                         <a
                             // TODO: Add link to whatsapp
                             className="link-hover link"
-                            href="https://www.whatsapp.com"
+                            href="https://wa.me/message/ZLJXQKQPM75IL1"
                             target="_blank"
                         >
                             <PiWhatsappLogo className="size-8" />
