@@ -14,6 +14,7 @@ import {
     PiPhone,
     PiMailbox,
     PiFacebookLogo,
+    PiWhatsappLogo,
 } from 'react-icons/pi'
 
 export const Route = createRootRoute({
@@ -305,24 +306,33 @@ const Footer = () => {
                             href="https://www.instagram.com/kriptpharmaceuticals/"
                             target="_blank"
                         >
-                            {' '}
-                            <PiInstagramLogo className="size-8" />{' '}
+                            <PiInstagramLogo className="size-8" />
+                            <p className="sr-only">Instagram</p>
                         </a>
                         <a
                             className="link-hover link"
                             href="https://www.linkedin.com/in/komal-singla-45a516239/"
                             target="_blank"
                         >
-                            {' '}
-                            <PiLinkedinLogo className="size-8" />{' '}
+                            <PiLinkedinLogo className="size-8" />
+                            <p className="sr-only">Linkedin</p>
                         </a>
                         <a
                             className="link-hover link"
                             href="https://www.facebook.com/share/vLSvjtQ5igwYRuP1/?mibextid=LQQJ4d"
                             target="_blank"
                         >
-                            {' '}
-                            <PiFacebookLogo className="size-8" />{' '}
+                            <PiFacebookLogo className="size-8" />
+                            <p className="sr-only">Facebook</p>
+                        </a>
+                        <a
+                            // TODO: Add link to whatsapp
+                            className="link-hover link"
+                            href="https://www.whatsapp.com"
+                            target="_blank"
+                        >
+                            <PiWhatsappLogo className="size-8" />
+                            <p className="sr-only">Whatsapp</p>
                         </a>
                     </div>
                 </div>
@@ -335,7 +345,9 @@ const Footer = () => {
                         href="https://github.com/decipher-cs/"
                         target="_blank"
                     >
-                        Copyright © 2024 Decipher . All rights reserved.
+                        Copyright © 2024{' '}
+                        <em className="font-bold text-primary">Decipher</em> .
+                        All rights reserved.
                     </a>
                 </aside>
             </footer>
