@@ -1,9 +1,16 @@
-import { createLazyFileRoute, Link } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router'
 import mailLogo from '../assets/glyphs/email.png'
 import dialerLogo from '../assets/glyphs/dialer.png'
 import instaLogo from '../assets/glyphs/insta.png'
 import linkedinLogo from '../assets/glyphs/linkedin.png'
 import facebookLogo from '../assets/glyphs/facebook.png'
+import qrCode from '../assets/kriptpharmaceuticals-whatsapp-qrcode.jpeg'
+import qrCodeNoBg from '../assets/kriptpharmaceuticals-whatsapp-qrcode-removebg-preview.png'
+// import qrCode from '../assets/WhatsApp-QR-code.jpeg'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { PiEnvelope, PiPhone, PiTextAa, PiUser } from 'react-icons/pi'
+import { PropsWithChildren, ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
 export const Route = createLazyFileRoute('/contact')({
     component: () => <Contact />,
@@ -53,18 +60,62 @@ const contact = [
     value: string
 }[]
 
+const InputWrapper = (
+    props: PropsWithChildren & { label: ReactNode; className?: string }
+) => {
+    return (
+        <label className={twMerge('form-control w-full', props.className)}>
+            <div className="label">
+                <span className="label-text flex items-center gap-2">
+                    {props.label}
+                </span>
+            </div>
+            {props.children}
+        </label>
+    )
+}
+
+type ContactForm = {
+    name: string
+    email: string
+    phone: string
+    message: string
+}
+
 const Contact = () => {
+    const {
+        register,
+        handleSubmit,
+        setError,
+        formState: { errors },
+    } = useForm<ContactForm>({ reValidateMode: 'onBlur' })
+
+    const onSubmit: SubmitHandler<ContactForm> = (data) => {
+        const { name, email, phone, message } = data
+        if (!email && !phone) {
+            setError('email', {
+                type: 'required',
+                message: 'Please provide at least one method of contact',
+            })
+            setError('phone', {
+                type: 'required',
+                message: 'Please provide at least one method of contact',
+            })
+        }
+        console.log(data)
+    }
+
     return (
         <section className="mx-auto max-w-screen-xl space-y-8">
             <div className="mx-auto max-w-lg text-center">
                 <h2 className="text-3xl font-bold sm:text-4xl">Get In Touch</h2>
             </div>
 
-            <div className="grid justify-around gap-8 md:grid-cols-2">
+            <div className="grid gap-8 md:grid-cols-2">
                 {contact.map((data, i) => (
                     <a
                         key={i}
-                        className="flex items-center gap-5 rounded-lg border border-neutral-500 p-4 shadow-xl transition-all hover:scale-105 hover:bg-primary hover:text-primary-content"
+                        className="flex items-center gap-5 rounded-lg border border-neutral-700 p-4 shadow-xl transition-all hover:scale-105 hover:bg-primary hover:text-primary-content"
                         href={data.href}
                         target="_blank"
                     >
@@ -84,6 +135,104 @@ const Contact = () => {
                     </a>
                 ))}
             </div>
+
+            <form
+                className="mx-auto grid w-full gap-3 rounded-lg border border-neutral-700 p-6 focus-within:border-primary md:grid-cols-2 [&_*]:placeholder:italic"
+                onSubmit={handleSubmit(onSubmit)}
+                data-netlify="true"
+            >
+                <InputWrapper
+                    label={
+                        <>
+                            <PiUser /> Name
+                        </>
+                    }
+                >
+                    <input
+                        type="text"
+                        placeholder="Path Bansal"
+                        className={
+                            'input input-bordered w-full' +
+                            (errors.name ? ' input-error' : '')
+                        }
+                        {...register('name', {
+                            required: true,
+                            maxLength: 100,
+                            minLength: 1,
+                        })}
+                    />
+                </InputWrapper>
+
+                <InputWrapper
+                    label={
+                        <>
+                            <PiPhone /> Phone
+                        </>
+                    }
+                >
+                    <input
+                        type="tel"
+                        placeholder="000-000-000"
+                        className={
+                            'input input-bordered w-full' +
+                            (errors.phone ? ' input-error' : '')
+                        }
+                        {...register('phone')}
+                    />
+                </InputWrapper>
+
+                <InputWrapper
+                    label={
+                        <>
+                            <PiEnvelope /> Email
+                        </>
+                    }
+                    className="col-span-full"
+                >
+                    <input
+                        type="email"
+                        placeholder="example@mail.com"
+                        className={
+                            'input input-bordered w-full' +
+                            (errors.email ? ' input-error' : '')
+                        }
+                        {...register('email')}
+                    />
+                </InputWrapper>
+                <InputWrapper
+                    label={
+                        <>
+                            <PiTextAa /> Message
+                        </>
+                    }
+                    className="col-span-full"
+                >
+                    <textarea
+                        rows={6}
+                        className={
+                            'textarea textarea-bordered w-full ' +
+                            (errors.message ? ' input-error' : '')
+                        }
+                        {...register('message', { maxLength: 400 })}
+                    />
+                </InputWrapper>
+
+                <button
+                    className="btn btn-primary col-span-full justify-self-end"
+                    type="submit"
+                >
+                    Submit
+                </button>
+            </form>
+
+            <a
+                className="tooltip"
+                data-tip="Click to go to WhatsApp"
+                href="https://wa.me/message/ZLJXQKQPM75IL1"
+                id="whatsapp"
+            >
+                <img src={qrCodeNoBg} className="rounded-2xl" />
+            </a>
         </section>
     )
 }
