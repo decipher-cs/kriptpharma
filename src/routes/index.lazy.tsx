@@ -1,6 +1,12 @@
-import { Link, createLazyFileRoute } from '@tanstack/react-router'
+import { createLazyFileRoute } from '@tanstack/react-router'
 import heroImg from '../assets/backgrounds/hero.webp'
 import Breakout from '../components/Breakout'
+import {
+    PiHandshake,
+    PiShieldStar,
+    PiShootingStar,
+    PiSparkle,
+} from 'react-icons/pi'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -24,24 +30,8 @@ const Index = () => {
 
             <FeaturedProducts />
 
-            <section className="-mx-breath space-y-12 bg-base-200 py-10 lg:-mx-breath-lg">
-                <h2 className="text-center text-3xl font-bold lg:text-5xl">
-                    Why Choose Us?
-                </h2>
-                <article className="flex flex-wrap justify-center gap-10">
-                    {reasonsToChooseUs.map((data) => (
-                        <div
-                            key={data.title}
-                            className="card w-96 border border-neutral-700"
-                        >
-                            <div className="card-body prose">
-                                <h2 className="card-title">{data.title}</h2>
-                                <p>{data.description}</p>
-                            </div>
-                        </div>
-                    ))}
-                </article>
-            </section>
+            <ReasonsToChooseUse />
+
             <About />
 
             <MissionSection />
@@ -92,11 +82,12 @@ const featuredProductNames = [
     'Wheelchair',
     'Bed',
 ]
+
 const FeaturedProducts = () => {
     return (
         <Breakout>
             <section
-                className="w-full overflow-hidden border border-neutral-400 py-6"
+                className="w-full overflow-hidden py-6"
                 style={{
                     mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
                 }}
@@ -160,6 +151,53 @@ const About = () => {
     )
 }
 
+const reasonsToChooseUs = [
+    {
+        logo: <PiShootingStar className="size-8" />,
+        title: `Accreditations for Business Operations`,
+        description: `We have required accreditations to conduct business in regulated, semi-regulated, and non-regulated markets.`,
+    },
+
+    {
+        logo: <PiShieldStar className="size-8" />,
+        title: `Expert Regulatory Support`,
+        description: `We have a highly qualified regulatory team to fulfill registration requirements, prioritizing expedited registration processes.`,
+    },
+
+    {
+        logo: <PiHandshake className="size-8" />,
+        title: `Building Lasting Relationships`,
+        description: `We believe in building healthy and lasting relationships with our partners and customers, earning their loyalty to our brand. It is with this single belief that all our products, categorized into different segments, provide medical help to customers.`,
+    },
+
+    {
+        logo: <PiSparkle className="size-8" />,
+        title: `Commitment to Quality and Accessibility`,
+        description: `We firmly believe in quality, and our goal is to make products accessible in every market at an affordable price to meet market needs.`,
+    },
+]
+const ReasonsToChooseUse = () => {
+    return (
+        <section className="-mx-breath space-y-12 bg-base-200 py-10 lg:-mx-breath-lg">
+            <h2 className="text-center text-3xl font-bold lg:text-5xl">
+                Why Choose Us?
+            </h2>
+            <article className="mx-auto grid max-w-screen-lg justify-between gap-10 px-breath-sm md:grid-cols-2">
+                {reasonsToChooseUs.map((data) => (
+                    <div
+                        key={data.title}
+                        className="group card card-body border border-neutral-700 shadow-xl transition-all hover:bg-primary hover:text-primary-content"
+                    >
+                        {data.logo}
+                        <h2 className="card-title">{data.title}</h2>
+                        <p className="">{data.description}</p>
+                    </div>
+                ))}
+            </article>
+        </section>
+    )
+}
+
 const MissionSection = () => {
     return (
         <Breakout className="justify-self-stretch bg-base-200">
@@ -214,45 +252,3 @@ const MissionSection = () => {
         </Breakout>
     )
 }
-
-const reasonsToChooseUs = [
-    {
-        title: `ISO 9001:2015 Certified`,
-        description: `life care is an ISO certified Pharma company, committed to high quality Caridiac Daibetic products. We have also earned the right amount of trust, respect in the market.`,
-        logoUrl: '',
-    },
-
-    {
-        title: `Our Quality Approach`,
-        description: `We are committed to follow the quality norms for manufactuing Cardiac Diabetic products. We formulate all our offered medicines as per the set quality norms.`,
-        logoUrl: '',
-    },
-
-    {
-        title: `Dedicated Workforce`,
-        description: `Our team members are quite diverse to create a comprehensive, high-performance culture in our company, which will affect our business outcome`,
-        logoUrl: '',
-    },
-
-    {
-        title: `Ethics and Compliance`,
-        description: `Our policies and procedure are carefully designed that our company and partners conduct business in a legal, ethical and responsible manner.`,
-        logoUrl: '',
-    },
-
-    {
-        title: `Packaging`,
-        description: `We make use of the proven techniques for packaging all the medicines. By using such advanced techniques, we aim to ensure the leakage &amp; breakage proof delivery.`,
-        logoUrl: '',
-    },
-
-    {
-        title: `Awards & Achievements`,
-        description: `life care is an ISO certified Pharma company, committed to high quality Caridiac Daibetic products. We have also earned the right amount of trust, respect in the market.`,
-        logoUrl: '',
-    },
-] satisfies {
-    title: string
-    description: string
-    logoUrl: string
-}[]
