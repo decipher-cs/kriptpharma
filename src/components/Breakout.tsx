@@ -1,5 +1,10 @@
 import { PropsWithChildren } from 'react'
 
+/*
+ * This component negates the effects of the following code:
+ * className="px-breath lg:px-breath"
+ * which is set in the <main/> tag of __root
+ */
 export default function Breakout(
     props: { className?: string | undefined } & PropsWithChildren
 ) {
