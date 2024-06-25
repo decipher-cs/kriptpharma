@@ -88,7 +88,7 @@ const Contact = () => {
         formState: { errors },
     } = useForm<ContactForm>({ reValidateMode: 'onBlur' })
 
-    const onSubmit: SubmitHandler<ContactForm> = (data) => {
+    const onSubmit: SubmitHandler<ContactForm> = (data, e) => {
         const { name, email, phone, message } = data
         if (!email && !phone) {
             setError('email', {
@@ -100,7 +100,21 @@ const Contact = () => {
                 message: 'Please provide at least one method of contact',
             })
         }
+        const formData = new FormData(e?.target)
         console.log(data)
+        formData.forEach((val, key) => console.log(key, val))
+        if (formData !== undefined)
+            fetch('/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                /* TODO: fix this error instead of supressing it */
+                /* eslint-disable @typescript-eslint/no-explicit-any */
+                body: new URLSearchParams(formData as any).toString(),
+            })
+                .then(() => console.log('Form successfully submitted'))
+                .catch((error) => alert(error))
     }
 
     return (
