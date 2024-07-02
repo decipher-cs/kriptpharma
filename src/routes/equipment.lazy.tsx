@@ -29,7 +29,7 @@ const Equipment = () => {
 
 const Mason = memo(() => {
     return (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {[
                 'Hospital Beds',
                 'Ward Equipment',
@@ -37,19 +37,22 @@ const Mason = memo(() => {
                 'OT Table & Modular OT',
                 'Wheelchairs',
                 'Delivery Beds',
+                'OT Table & Modular OT',
+                'Wheelchairs',
+                'Delivery Beds',
             ].map((data, i) => (
                 <a
                     href={furnitureCatalogue}
                     target="_blank"
-                    key={data}
+                    key={i}
                     className="relative grid min-h-32 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110 sm:min-h-40"
                 >
                     <img
-                        className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-50"
+                        className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-[60%]"
                         src={backgroundImagePaths[i]}
                         alt=""
                     />
-                    <h3 className="z-0 text-center text-xl font-bold text-neutral-100 sm:text-2xl">
+                    <h3 className="z-0 text-center text-xl font-bold text-white sm:text-2xl">
                         {data}
                     </h3>
                 </a>
