@@ -9,13 +9,15 @@ import { Footer } from '../components/Footer'
 
 export const Route = createRootRoute({
     component: () => (
-        <>
+        <div className="selection:bg-primary selection:text-primary-content">
             <ThemeProvider>
-                <Header />
                 <Alert alertFor="pharmaexpo">
-                    Medivietnam pharmaexpo 2024 Saigon Exhibition 1st - 3rd
-                    August 2024 Booth No. IP08
+                    Medi Vietnam PharmaExpo 2024 Saigon Exhibition 1st - 3rd
+                    August 2024 Booth No. IP08 Saigon exhibition and convention
+                    centre at 799 Mguyeb Van Linh Street, Ho Chi Minah City
                 </Alert>
+
+                <Header />
 
                 {/* "px-breath lg:px-breath-lg" is here to globally create breathing room for the content*/}
                 {/* The effects of this class can be negated by using the <Breakout/> component */}
@@ -26,7 +28,7 @@ export const Route = createRootRoute({
                 <Footer />
                 {import.meta.env.DEV && <TanStackRouterDevtools />}
             </ThemeProvider>
-        </>
+        </div>
     ),
     notFoundComponent: () => <ErrorPage />,
 })
