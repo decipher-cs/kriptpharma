@@ -1,4 +1,9 @@
-import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
+import {
+    createRootRoute,
+    Link,
+    Outlet,
+    useRouterState,
+} from '@tanstack/react-router'
 import kriptPharmaLogo from '../assets/company-logo.svg'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { useState } from 'react'
@@ -6,6 +11,7 @@ import ThemeProvider from '../context/theme'
 import { ErrorPage } from '../view/PageNotFount'
 import { Alert } from '../components/Alert'
 import { Footer } from '../components/Footer'
+import clsx from 'clsx'
 
 export const Route = createRootRoute({
     component: () => (
@@ -34,14 +40,16 @@ export const Route = createRootRoute({
 })
 
 const Nav = () => {
+    const routerState = useRouterState()
+    const currentRoute = routerState.location.pathname
     return (
         <>
             {[
                 'Home',
+                'About',
                 'Product',
                 'Equipment',
                 'Downloads',
-                'Certificate',
                 'Global Presence',
                 'Gallery',
                 'Exhibition',
@@ -50,7 +58,10 @@ const Nav = () => {
                 <li key={path}>
                     <Link
                         to={'/' + path.replace(' ', '')}
-                        className="[&.active]:font-bold"
+                        className={clsx(
+                            currentRoute.slice(1).toLowerCase() ===
+                                path.toLowerCase() && 'active font-bold'
+                        )}
                     >
                         {path}
                     </Link>
@@ -61,21 +72,18 @@ const Nav = () => {
 }
 
 const Header = () => {
-    const { theme, changeTheme } = useTheme()
-
     return (
-        <div className="navbar gap-2 bg-base-100">
+        <div className="navbar gap-2 bg-base-100 py-8">
             <div className="flex-1">
                 <Link
                     to="/"
-                    className="btn btn-ghost btn-sm text-lg md:btn-md sm:text-xl"
+                    className="btn btn-ghost btn-sm border text-lg md:btn-md sm:text-xl"
                 >
                     <img
                         src={kriptPharmaLogo}
                         alt="Kript Pharmaceuticals logo"
-                        className="size-5 md:size-8"
+                        className="inline-block h-auto w-full"
                     />
-                    Kriptpharma
                 </Link>
             </div>
             <ul className="menu hidden gap-1 lg:menu-horizontal">
