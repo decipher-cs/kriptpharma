@@ -13,8 +13,8 @@ export const Route = createLazyFileRoute('/exhibition')({
                         description:
                             'Saigon exhibition and convention centre at 799 Mguyeb Van Linh Street, Ho Chi Minah City',
                     },
-                ].map((data) => (
-                    <li>
+                ].map((data, i) => (
+                    <li key={i}>
                         <hr />
                         <div className="timeline-middle">
                             <PiCheckCircle size={24} />
