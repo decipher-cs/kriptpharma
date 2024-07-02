@@ -1,4 +1,6 @@
 /** @type {import('tailwindcss').Config} */
+
+import { bumblebee } from 'daisyui/src/theming/themes'
 import daisyui from 'daisyui'
 import twt from '@tailwindcss/typography'
 export default {
@@ -28,7 +30,17 @@ export default {
         },
     },
     daisyui: {
-        themes: ['light', 'dark', 'dim', 'bumblebee'],
+        themes: [
+            {
+                kript: {
+                    ...bumblebee,
+                    primary: '#ee7f1c',
+                    'primary-content': '#fff',
+                    secondary: '#ffb41e',
+                    'secondary-content': '#fff',
+                },
+            },
+        ],
     },
     plugins: ['prettier-plugin-tailwindcss', daisyui, twt],
 }
