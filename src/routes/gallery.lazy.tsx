@@ -1,5 +1,9 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 
 export const Route = createLazyFileRoute('/gallery')({
-  component: () => <div>Hello /gallery!</div>
+    component: () => <Gallery />,
 })
+
+const Gallery = () => {
+    return <section></section>
+}
