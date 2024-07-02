@@ -4,7 +4,6 @@ import dialerLogo from '../assets/glyphs/dialer.png'
 import instaLogo from '../assets/glyphs/insta.png'
 import linkedinLogo from '../assets/glyphs/linkedin.png'
 import facebookLogo from '../assets/glyphs/facebook.png'
-import qrCode from '../assets/WhatsApp-QR-code.jpeg'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { PiEnvelope, PiPhone, PiTextAa, PiUser } from 'react-icons/pi'
 import { PropsWithChildren, ReactNode } from 'react'
@@ -100,6 +99,7 @@ const Contact = () => {
                 message: 'Please provide at least one method of contact',
             })
         }
+
         const formData = new FormData(e?.target)
         console.log(data)
         formData.forEach((val, key) => console.log(key, val))
@@ -236,25 +236,6 @@ const Contact = () => {
                     Submit
                 </button>
             </form>
-
-            <article className="flex w-full flex-wrap items-center justify-center gap-16">
-                <a
-                    className="inline-block basis-1/4 rounded-2xl bg-white p-5"
-                    href="https://wa.me/message/ZLJXQKQPM75IL1"
-                    id="whatsapp"
-                    aria-label="Whatsapp"
-                >
-                    <img
-                        src={qrCode}
-                        className="inline-block size-full object-contain"
-                        alt="whatsapp QR code"
-                    />
-                </a>
-                <p className="text-xl">
-                    Scan or click the QR code to
-                    <br /> connect with us on WhatsApp.
-                </p>
-            </article>
         </section>
     )
 }
