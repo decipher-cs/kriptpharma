@@ -1,23 +1,26 @@
-import { createLazyFileRoute } from '@tanstack/react-router'
-import heroImg from '../assets/backgrounds/hero.webp'
+import { Link, createLazyFileRoute } from '@tanstack/react-router'
+import heroVideo from '../assets/hero-video.mp4'
 import Breakout from '../components/Breakout'
+import video1 from '../assets/videos/video1.mp4'
+import video2 from '../assets/videos/video2.mp4'
+import video3 from '../assets/videos/video3.mp4'
+import video4 from '../assets/videos/video4.mp4'
 import {
+    PiEye,
     PiHandshake,
+    PiMegaphone,
+    PiRoadHorizon,
     PiShieldStar,
     PiShootingStar,
     PiSparkle,
 } from 'react-icons/pi'
-
-const modules = import.meta.glob('../assets/backgrounds/*.webp', {
-    eager: true,
-})
-
-const backgroundImagePaths = Object.values(modules).map((module) => {
-    if (typeof module === 'object' && module && 'default' in module) {
-        return module.default as string
-    }
-    return undefined
-})
+import icuBed2 from '../assets/featured/icu bed 2.webp'
+import injections from '../assets/featured/injections.webp'
+import tablet from '../assets/featured/tablet.webp'
+import icuBed from '../assets/featured/icu bed.webp'
+import otRoom from '../assets/featured/ot room.webp'
+import wheelchair from '../assets/featured/wheelchair.webp'
+import clsx from 'clsx'
 
 export const Route = createLazyFileRoute('/')({
     component: () => <Index />,
@@ -32,8 +35,6 @@ const Index = () => {
 
             <ReasonsToChooseUse />
 
-            <About />
-
             <MissionSection />
         </div>
     )
@@ -42,20 +43,31 @@ const Index = () => {
 const Hero = () => {
     return (
         <section
-            className="relative -mx-breath grid min-h-[70svh] place-items-center overflow-x-hidden bg-cover bg-center *:col-start-1 *:row-start-1  lg:-mx-breath-lg"
+            className="relative -mx-breath grid min-h-[80svh] items-start overflow-x-hidden bg-primary bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg"
             style={{
-                backgroundImage: `url(${heroImg})`,
-                clipPath:
-                    'polygon(100% 0%, 0% 0% , 0.00% 79.20%, 2.00% 79.93%, 4.00% 80.82%, 6.00% 81.85%, 8.00% 82.98%, 10.00% 84.20%, 12.00% 85.47%, 14.00% 86.78%, 16.00% 88.08%, 18.00% 89.35%, 20.00% 90.56%, 22.00% 91.68%, 24.00% 92.69%, 26.00% 93.57%, 28.00% 94.29%, 30.00% 94.83%, 32.00% 95.19%, 34.00% 95.36%, 36.00% 95.34%, 38.00% 95.11%, 40.00% 94.70%, 42.00% 94.10%, 44.00% 93.34%, 46.00% 92.43%, 48.00% 91.38%, 50.00% 90.23%, 52.00% 89.00%, 54.00% 87.72%, 56.00% 86.41%, 58.00% 85.12%, 60.00% 83.85%, 62.00% 82.66%, 64.00% 81.55%, 66.00% 80.56%, 68.00% 79.71%, 70.00% 79.02%, 72.00% 78.51%, 74.00% 78.17%, 76.00% 78.04%, 78.00% 78.10%, 80.00% 78.35%, 82.00% 78.80%, 84.00% 79.42%, 86.00% 80.21%, 88.00% 81.15%, 90.00% 82.21%, 92.00% 83.38%, 94.00% 84.62%, 96.00% 85.91%, 98.00% 87.21%, 100.00% 88.51%)',
+                mask: 'linear-gradient(180deg, white 85%, transparent)',
             }}
         >
-            <div className="hero-overlay bg-opacity-85"></div>
-            <div className="hero-content text-center">
-                <div className="space-y-4">
-                    <h1 className="text-xl font-bold text-neutral-200 md:text-3xl">
+            <div className="absolute inset-x-0 size-full brightness-[60%]">
+                <video
+                    muted
+                    autoPlay
+                    loop
+                    id="hero-video"
+                    className="inline-block size-full object-cover"
+                    // TODO: Add poster which appears while video is loading
+                    poster=""
+                >
+                    <source src={heroVideo} type="video/mp4" />
+                </video>
+            </div>
+
+            <div className="hero-content mt-16 justify-self-center text-center">
+                <div className="space-x-4 space-y-3 sm:space-y-8">
+                    <h1 className="text-xl font-bold text-primary sm:text-3xl md:text-5xl">
                         Kript Pharmaceuticals
                     </h1>
-                    <p className="max-w-[50ch] text-sm leading-relaxed text-neutral-300 md:text-lg">
+                    <p className="max-w-[50ch] text-xs font-bold text-neutral-200 sm:text-sm md:text-lg">
                         Discover trusted medications where quality meets care.
                         Empowering health and wellness with our comprehensive
                         range of pharmaceutical solutions.
@@ -63,11 +75,17 @@ const Hero = () => {
                     <a
                         role="button"
                         href="#vision"
-                        type="submit"
-                        className="btn btn-primary"
+                        className="btn btn-primary btn-sm sm:btn-md md:btn-lg"
                     >
-                        MORE
+                        KNOW MORE
                     </a>
+                    <Link
+                        role="button"
+                        to="/downloads"
+                        className="btn btn-secondary btn-sm sm:btn-md md:btn-lg"
+                    >
+                        CATALOGUE
+                    </Link>
                 </div>
             </div>
         </section>
@@ -75,19 +93,21 @@ const Hero = () => {
 }
 
 const featuredProductNames = [
-    'Tablets',
-    'Injection',
-    'ICU Bed',
-    'OT',
-    'Wheelchair',
-    'Bed',
+    { name: 'Tablets', img: tablet },
+    { name: 'Injection', img: injections },
+    { name: 'ICU Bed', img: icuBed },
+    { name: 'OT Equipment', img: otRoom },
+    { name: 'Wheelchair', img: wheelchair },
+    { name: 'Soft-Gel Capsules', img: icuBed2 },
+    { name: 'Ointments', img: icuBed2 },
+    { name: 'Delivery Bed', img: icuBed2 },
 ]
 
 const FeaturedProducts = () => {
     return (
         <Breakout>
             <section
-                className="w-full overflow-hidden py-6"
+                className="w-full overflow-hidden"
                 style={{
                     mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
                 }}
@@ -95,19 +115,18 @@ const FeaturedProducts = () => {
                 <div className="grid w-fit animate-horizontal-scroll grid-flow-col">
                     {[...featuredProductNames, ...featuredProductNames].map(
                         (data, i) => (
-                            <a
-                                key={i}
-                                className="relative mx-3 grid aspect-square w-20 place-items-center rounded-full sm:w-56 sm:p-3"
-                            >
-                                <img
-                                    className="absolute inset-0 size-full rounded-full object-cover object-center brightness-50"
-                                    src={backgroundImagePaths[5]}
-                                    alt=""
-                                />
-                                <h4 className="z-10 truncate p-1 text-xs font-bold text-neutral-100 sm:text-sm md:text-xl">
-                                    {data.toUpperCase()}
+                            <Link key={i} className="mx-7 grid" to="/downloads">
+                                <div className="relative aspect-square w-28 rounded-full border-4 border-primary sm:w-56">
+                                    <img
+                                        className="absolute inset-0 size-full rounded-full object-cover object-center"
+                                        src={data.img}
+                                        alt=""
+                                    />
+                                </div>
+                                <h4 className="mt-3 whitespace-nowrap text-center">
+                                    {data.name.toUpperCase()}
                                 </h4>
-                            </a>
+                            </Link>
                         )
                     )}
                 </div>
@@ -116,85 +135,75 @@ const FeaturedProducts = () => {
     )
 }
 
-const About = () => {
-    return (
-        <article
-            className="mx-auto flex w-max flex-wrap items-center justify-center gap-16"
-            id="about-us"
-        >
-            <h2 className="text-3xl font-bold lg:text-5xl">About Us</h2>
-            <p className="max-w-prose text-lg/relaxed sm:text-xl/loose">
-                A promise for healthy life Kript pharmaceuticals pvt Ltd was
-                established with the motive of adding values to the million of
-                lives through its best quality products , we are here for the
-                people as we serve in the persuit of their healthy lives . We
-                nurture innovation , offers excellent quality and always
-                stretches to inspire confidence in our customer . Our primary
-                objective is to proved high end medical products. At kript
-                pharmaceuticals, we believe in weaving business ethics in all
-                our endeavours and continually updating and upgrading to deliver
-                a uniform quality that surpasses industry benchmarks .
-                <br /> <br />
-                Kript Pharmaceuticals Private Limited is a Registered Indian
-                Pharma Company engaged in the manufacture and marketing of
-                Pharmaceutical formulations. Located in the largest Pharma Hub
-                of Asia, the Company has made a name for itself for its quality
-                and range of products . Supplying not just pharmaceutical,
-                nutraceuticals but also marking their presence into hospital
-                furniture and equipment services . We are equipping multiple
-                hospitals from scratch with our equipment across the globe .
-                Kript pharmaceuticals is a fast expanding Pharma organization
-                having over 400+ registered brands, and is steadily working to
-                make a presence across the Globe.
-            </p>
-        </article>
-    )
-}
-
 const reasonsToChooseUs = [
     {
-        logo: <PiShootingStar className="size-8" />,
+        logo: <PiSparkle className="size-16" />,
+        content: video1,
+        title: `Commitment to Quality and Accessibility`,
+        description: `We firmly believe in quality, and our goal is to make products accessible in every market at an affordable price to meet market needs.`,
+    },
+    {
+        logo: <PiShootingStar className="size-16" />,
+        content: video2,
         title: `Accreditations for Business Operations`,
-        description: `We have required accreditations to conduct business in regulated, semi-regulated, and non-regulated markets.`,
+        description: `We have required accreditations to conduct business in regulated, semi-regulated, and non-regulated markets. We are WHO-GMP-ISO certified`,
     },
 
     {
-        logo: <PiShieldStar className="size-8" />,
+        logo: <PiShieldStar className="size-16" />,
+        content: video3,
         title: `Expert Regulatory Support`,
         description: `We have a highly qualified regulatory team to fulfill registration requirements, prioritizing expedited registration processes.`,
     },
 
     {
-        logo: <PiHandshake className="size-8" />,
+        logo: <PiHandshake className="size-16" />,
+        content: video4,
         title: `Building Lasting Relationships`,
         description: `We believe in building healthy and lasting relationships with our partners and customers, earning their loyalty to our brand. It is with this single belief that all our products, categorized into different segments, provide medical help to customers.`,
-    },
-
-    {
-        logo: <PiSparkle className="size-8" />,
-        title: `Commitment to Quality and Accessibility`,
-        description: `We firmly believe in quality, and our goal is to make products accessible in every market at an affordable price to meet market needs.`,
     },
 ]
 const ReasonsToChooseUse = () => {
     return (
-        <section className="-mx-breath space-y-12 bg-base-200 py-10 lg:-mx-breath-lg">
-            <h2 className="text-center text-3xl font-bold lg:text-5xl">
+        <Breakout className="space-y-12 bg-base-200 py-10">
+            <h2 className="mb-32 text-center text-4xl font-bold lg:text-6xl">
                 Why Choose Us?
             </h2>
-            <article className="mx-auto grid max-w-screen-lg justify-between gap-10 px-breath-sm md:grid-cols-2">
-                {reasonsToChooseUs.map((data) => (
+            <article className="space-y-64 border-blue-400">
+                {reasonsToChooseUs.map((data, i) => (
                     <div
                         key={data.title}
-                        className="group card card-body border border-neutral-700 shadow-xl transition-all hover:bg-primary hover:text-primary-content"
+                        className={`flex min-h-[70svh] flex-wrap md:flex-nowrap ${i % 2 === 0 ? 'flex-row-reverse' : ''}`}
                     >
-                        {data.logo}
-                        <h2 className="card-title">{data.title}</h2>
-                        <p className="">{data.description}</p>
+                        <video
+                            src={data.content}
+                            className={clsx(
+                                `inline-block h-[50svh] w-full min-w-[50%] border-yellow-500 object-cover max-md:rounded-t-3xl`,
+                                i % 2 === 0
+                                    ? 'md:rounded-r-3xl'
+                                    : 'md:rounded-l-3xl',
+                                i % 2 === 0
+                                    ? 'md:[mask:linear-gradient(-90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
+                                    : 'md:[mask:linear-gradient(90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]',
+                                '[mask:linear-gradient(180deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
+                            )}
+                            autoPlay
+                            loop
+                            muted
+                        />
+                        <div className="space-y-8 px-8 max-md:text-center">
+                            <div className="w-min max-md:mx-auto">
+                                {data.logo}
+                            </div>
+                            <h2 className="text-3xl/none font-bold">
+                                {data.title}
+                            </h2>
+                            <p className="text-xl">{data.description}</p>
+                        </div>
                     </div>
                 ))}
             </article>
-        </section>
+        </Breakout>
     )
 }
 
@@ -202,49 +211,75 @@ const MissionSection = () => {
     return (
         <Breakout className="justify-self-stretch bg-base-200">
             <article
-                className="mx-auto max-w-screen-xl space-y-8 px-breath py-10"
+                className="mx-auto grid max-w-screen-xl auto-rows-fr items-stretch justify-items-center px-breath py-10 lg:grid-cols-3"
                 id="vision"
             >
                 {[
                     {
                         title: 'Our Vision',
-                        description:
-                            'To uphold our social responsibilities of delivering highest standard healthcare services.',
+                        logo: <PiEye className="size-8" />,
+                        description: (
+                            <>
+                                <li>
+                                    To be one of the reliable, innovative,
+                                    customer oriented and most admired
+                                    Pharmaceutical Company in the global arena.
+                                </li>
+                                <li>
+                                    To continually create value, bring pride to
+                                    our customers and partners at large.
+                                </li>
+
+                                <li>
+                                    To provide quality products with concern to
+                                    Safety for human health.
+                                </li>
+                            </>
+                        ),
                     },
                     {
-                        title: 'Our Commitment',
-                        description:
-                            "Dedicated to exceeding our clients' expectations with unwavering support.",
+                        title: 'Our Value',
+                        logo: <PiRoadHorizon className="size-8" />,
+                        description: (
+                            <p>
+                                We are committed to offer you wide variety of
+                                quality pharmaceutical preparations of various
+                                segments along with all desired documentation
+                                for your regulatory requirements.
+                            </p>
+                        ),
                     },
                     {
                         title: 'Our Mission',
-                        description:
-                            'We at Kript Pharmaceuticals believes that complete customer satisfaction is the key to expand business everywhere.',
+                        logo: <PiMegaphone className="size-8" />,
+                        description: (
+                            <>
+                                <li>
+                                    Manufacturing quality products with concern
+                                    for safety, environment and health.
+                                </li>
+                                <li>
+                                    Following best management practices and
+                                    build success with excellence.
+                                </li>
+                                <li>
+                                    To strive ceaselessly with a commitment
+                                    towards Customer satisfaction.
+                                </li>
+                            </>
+                        ),
                     },
                 ].map((data, i) => (
                     <div
+                        className="group max-w-prose border border-neutral-300 bg-base-100 transition-all hover:bg-primary hover:text-primary-content max-lg:first:rounded-t-3xl max-lg:last:rounded-b-3xl lg:first:rounded-l-3xl lg:last:rounded-r-3xl"
                         key={i}
-                        className="mx-auto flex flex-col gap-6 rounded-lg border border-neutral-700 text-center md:flex-row md:items-center md:text-left md:*:basis-1/3 lg:text-left"
                     >
-                        <h4 className={'text-center text-2xl font-bold'}>
-                            {data.title}
-                        </h4>
-                        <p className="text-lg leading-relaxed">
-                            {data.description}
-                        </p>
-                        <div
-                            className={
-                                'relative order-first h-48 ' +
-                                (i === 1 ? ' md:order-last' : '')
-                            }
-                        >
-                            <img
-                                src={backgroundImagePaths[i]}
-                                alt=""
-                                className={
-                                    'absolute inset-0 size-full rounded-lg object-cover'
-                                }
-                            />
+                        <div className="grid h-full content-center space-y-5 p-8 transition-all group-hover:backdrop-blur-0 lg:content-start">
+                            {data.logo}
+                            <h2 className="text-2xl font-bold">{data.title}</h2>
+                            <ul className="list-inside list-disc text-lg/normal">
+                                {data.description}
+                            </ul>
                         </div>
                     </div>
                 ))}
