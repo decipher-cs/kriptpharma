@@ -41,6 +41,7 @@ type ProductSearch = {
 
 export const Route = createFileRoute('/product')({
     component: () => <Product />,
+
     validateSearch: (search: Record<string, unknown>): ProductSearch => {
         const { searchString, categoryFilter } = search
         const filter: Category[] = []
@@ -89,7 +90,9 @@ const Product = () => {
 
     const { searchString: urlSearchString, categoryFilter: urlCategoryFilter } =
         Route.useSearch()
+
     const [searchString, setSearchString] = useState(urlSearchString ?? '')
+
     const [visibleCategories, setVisibleCategories] = useState<Category[]>(
         urlCategoryFilter?.length ? urlCategoryFilter : [...categories]
     )
@@ -116,7 +119,7 @@ const Product = () => {
                 >
                     <button
                         className="btn btn-primary self-center"
-                        aria-label='Go to end of list'
+                        aria-label="Go to end of list"
                         onClick={() => {
                             const menuContainer = horizontalMenu.current
                             if (!menuContainer) return
@@ -169,7 +172,7 @@ const Product = () => {
                     ))}
                     <button
                         className="btn btn-primary self-center"
-                        aria-label='Go to start of list'
+                        aria-label="Go to start of list"
                         onClick={() => {
                             const menuContainer = horizontalMenu.current
                             if (!menuContainer) return
@@ -197,6 +200,7 @@ const Product = () => {
                     </button>
                 </section>
             </Breakout>
+
             <article className="mx-auto">
                 <section className="grid grid-cols-1 justify-items-center gap-2 sm:grid-cols-2">
                     <label className="input input-md input-bordered flex w-min items-center gap-2 sm:justify-self-start">
@@ -225,6 +229,7 @@ const Product = () => {
                             />
                         </svg>
                     </label>
+
                     <details className="dropdown dropdown-end w-1/2 sm:justify-self-end">
                         <summary className="btn btn-ghost w-full border-neutral">
                             Filter
@@ -238,6 +243,7 @@ const Product = () => {
                                 <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
                             </svg>
                         </summary>
+
                         <ul className="menu dropdown-content z-30 mt-2 w-full rounded-box bg-base-300 shadow">
                             {categories.map((item, i) => (
                                 <div className="form-control" key={i}>
@@ -289,6 +295,7 @@ const Product = () => {
                         </ul>
                     </details>
                 </section>
+
                 <div className="overflow-x-auto">
                     <table className="table table-zebra table-pin-rows">
                         <thead>
@@ -313,6 +320,7 @@ const Product = () => {
                         </tbody>
                     </table>
                 </div>
+
                 <div className="join mt-4 flex *:basis-1/3">
                     <button
                         className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
