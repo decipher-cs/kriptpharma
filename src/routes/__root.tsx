@@ -1,5 +1,5 @@
 import { createRootRoute, Link, Outlet } from '@tanstack/react-router'
-import kriptPharmaLogo from '../assets/kriptpharma-logo.png'
+import kriptPharmaLogo from '../assets/company-logo.svg'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import { useState } from 'react'
 import ThemeProvider from '../context/theme'
