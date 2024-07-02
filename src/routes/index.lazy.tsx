@@ -43,7 +43,7 @@ const Index = () => {
 const Hero = () => {
     return (
         <section
-            className="relative -mx-breath grid min-h-[80svh] items-start overflow-x-hidden bg-primary bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg"
+            className="relative -mx-breath grid min-h-[80svh] items-center overflow-x-hidden bg-primary bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg"
             style={{
                 mask: 'linear-gradient(180deg, white 85%, transparent)',
             }}
@@ -62,12 +62,12 @@ const Hero = () => {
                 </video>
             </div>
 
-            <div className="hero-content mt-16 justify-self-center text-center">
-                <div className="space-x-4 space-y-3 sm:space-y-8">
-                    <h1 className="text-xl font-bold text-primary sm:text-3xl md:text-5xl">
+            <div className="hero-content mb-14 justify-self-center text-center">
+                <div className="space-x-4 space-y-6 sm:space-y-10">
+                    <h1 className="text-3xl font-bold text-primary md:text-5xl">
                         Kript Pharmaceuticals
                     </h1>
-                    <p className="max-w-[50ch] text-xs font-bold text-neutral-200 sm:text-sm md:text-lg">
+                    <p className="max-w-[50ch] text-sm font-bold text-neutral-200 md:text-lg">
                         Discover trusted medications where quality meets care.
                         Empowering health and wellness with our comprehensive
                         range of pharmaceutical solutions.
@@ -75,14 +75,14 @@ const Hero = () => {
                     <a
                         role="button"
                         href="#vision"
-                        className="btn btn-primary btn-sm sm:btn-md md:btn-lg"
+                        className="btn btn-primary sm:btn-md md:btn-lg"
                     >
                         KNOW MORE
                     </a>
                     <Link
                         role="button"
                         to="/downloads"
-                        className="btn btn-secondary btn-sm sm:btn-md md:btn-lg"
+                        className="btn btn-secondary sm:btn-md md:btn-lg"
                     >
                         CATALOGUE
                     </Link>
