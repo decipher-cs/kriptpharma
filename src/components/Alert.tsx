@@ -20,6 +20,8 @@ export const Alert = (props: { alertFor: string; text: string }) => {
                 'flex items-center bg-primary py-5'
             )}
         >
+            {/* TODO: Give a horizontal scroll bar*/}
+            {/* TODO: Stop animation on hover*/}
             <div className={'overflow-hidden'}>
                 <div className="grid w-min animate-horizontal-scroll grid-flow-col text-nowrap font-bold text-primary-content">
                     {text} {text}
