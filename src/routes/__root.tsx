@@ -15,7 +15,7 @@ import clsx from 'clsx'
 
 export const Route = createRootRoute({
     component: () => (
-        <div className="selection:bg-primary selection:text-primary-content">
+        <div className="selection:bg-secondary selection:text-secondary-content">
             <ThemeProvider>
                 <Alert
                     alertFor="pharmaexpo"
