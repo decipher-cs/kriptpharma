@@ -78,24 +78,25 @@ export const Footer = () => {
 
                 <form
                     className="grid gap-2"
-                    onSubmit={(e) => {
-                        e.preventDefault()
-                        alert('you will hear from us soon :)')
-                    }}
+                    action={
+                        'https://send.pageclip.co/' +
+                        import.meta.env.VITE_PAGECLIP_API_KEY
+                    }
+                    method="post"
                 >
                     <label htmlFor="inquiry" className="footer-title">
                         Get in touch
                     </label>
                     <div className="join">
                         <input
+                            name="inquiry"
                             id="inquiry"
-                            className="input join-item input-bordered max-sm:input-sm max-sm:max-w-40"
-                            placeholder="Enter your email"
+                            className="input join-item input-bordered w-full"
+                            placeholder="Enter email"
                             type="email"
                         />
-                        {/* TODO: submit email somewhere */}
                         <button
-                            className="btn join-item btn-neutral max-sm:btn-sm"
+                            className="btn join-item btn-neutral"
                             type="submit"
                         >
                             Submit
