@@ -4,10 +4,14 @@ import dialerLogo from '../assets/glyphs/dialer.png'
 import instaLogo from '../assets/glyphs/insta.png'
 import linkedinLogo from '../assets/glyphs/linkedin.png'
 import facebookLogo from '../assets/glyphs/facebook.png'
-import { SubmitHandler, useForm } from 'react-hook-form'
-import { PiEnvelope, PiPhone, PiTextAa, PiUser } from 'react-icons/pi'
-import { PropsWithChildren, ReactNode } from 'react'
+import { FieldErrors, Resolver, SubmitHandler, useForm } from 'react-hook-form'
+import { PiEnvelope, PiFlag, PiPhone, PiTextAa, PiUser } from 'react-icons/pi'
+import { PropsWithChildren, ReactNode, useEffect } from 'react'
+import clsx from 'clsx'
 import { twMerge } from 'tailwind-merge'
+import countryCodeList from 'country-codes-list'
+
+const countryCodes = countryCodeList.all()
 
 export const Route = createLazyFileRoute('/contact')({
     component: () => <Contact />,
@@ -58,17 +62,26 @@ const contact = [
 }[]
 
 const InputWrapper = (
-    props: PropsWithChildren & { label: ReactNode; className?: string }
+    props: PropsWithChildren & {
+        label: ReactNode
+        className?: string
+        errorMessage: undefined | string
+    }
 ) => {
     return (
-        <label className={twMerge('form-control w-full', props.className)}>
-            <div className="label">
-                <span className="label-text flex items-center gap-2">
-                    {props.label}
-                </span>
-            </div>
-            {props.children}
-        </label>
+        <div className={twMerge('form-control w-full', props.className)}>
+            <label className={''}>
+                <div className="label">
+                    <span className="label-text flex items-center gap-2">
+                        {props.label}
+                    </span>
+                </div>
+                {props.children}
+            </label>
+            <p className="ml-1 mt-1 italic text-error">
+                {props.errorMessage}&nbsp;
+            </p>
+        </div>
     )
 }
 
@@ -77,57 +90,129 @@ type ContactForm = {
     email: string
     phone: string
     message: string
+    countryCode: string
+}
+
+const validateForm: Resolver<ContactForm> = async (values) => {
+    const { name, email, phone, message, countryCode } = values
+
+    const errors: FieldErrors<ContactForm> = {}
+
+    if (!name)
+        errors.name = { type: 'required', message: 'This is a required field' }
+    else if (name.length > 100)
+        errors.name = {
+            type: 'maxLength',
+            message: 'Name cannot be bigger then 100 characters',
+        }
+    else if (name.length < 1)
+        errors.name = {
+            type: 'minLength',
+            message: 'Name has to be at least 1 character long',
+        }
+
+    if (message.length > 300)
+        errors.message = {
+            type: 'maxLength',
+            message: 'Cannot be longer then 300 characters',
+        }
+
+    if (!email && !phone) {
+        errors.email = {
+            type: 'required',
+            message: 'Please provide at least one method of contact',
+        }
+        errors.phone = {
+            type: 'required',
+            message: 'Please provide at least one method of contact',
+        }
+    }
+
+    if (phone && !countryCode) {
+        errors.countryCode = {
+            type: 'required',
+            message: 'Please provide country code',
+        }
+    }
+
+    return { values, errors }
 }
 
 const Contact = () => {
     const {
         register,
         handleSubmit,
-        setError,
-        formState: { errors },
-    } = useForm<ContactForm>({ reValidateMode: 'onBlur' })
+        reset,
+        formState: {
+            errors,
+            isLoading,
+            isValidating,
+            isSubmitting,
+            isSubmitSuccessful,
+        },
+    } = useForm<ContactForm>({
+        reValidateMode: 'onBlur',
+        resolver: validateForm,
+        defaultValues: {
+            phone: '',
+            name: '',
+            message: '',
+            email: '',
+            countryCode: '',
+        },
+    })
 
-    const onSubmit: SubmitHandler<ContactForm> = (data, e) => {
-        const { name, email, phone, message } = data
-        if (!email && !phone) {
-            setError('email', {
-                type: 'required',
-                message: 'Please provide at least one method of contact',
-            })
-            setError('phone', {
-                type: 'required',
-                message: 'Please provide at least one method of contact',
-            })
+    const onSubmit: SubmitHandler<ContactForm> = async (data, e) => {
+        const formData = new URLSearchParams(Object.entries(data))
+
+        // TODO: check if key doesn't exist and maybe fire sentry if in prod
+        const apiKey = import.meta.env.VITE_PAGECLIP_API_KEY
+
+        if (!apiKey) {
+            console.error('You forgot to define the API key')
+            return
         }
 
-        const formData = new FormData(e?.target)
-        console.log(data)
-        formData.forEach((val, key) => console.log(key, val))
-        if (formData !== undefined)
-            fetch('/', {
+        if (import.meta.env.DEV) {
+            console.log('submitted data is:', formData)
+            return
+        }
+
+        try {
+            const res = await fetch('https://send.pageclip.co/' + apiKey, {
                 method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                },
-                /* TODO: fix this error instead of supressing it */
-                /* eslint-disable @typescript-eslint/no-explicit-any */
-                body: new URLSearchParams(formData as any).toString(),
+                body: formData,
             })
-                .then(() => console.log('Form successfully submitted'))
-                .catch((error) => alert(error))
+
+            console.log('response is:', res)
+
+            if (res.ok) {
+                // TODO: send daisyUI toast
+                alert('Successfully submitted your details')
+            } else throw Error('')
+        } catch (err) {
+            // TODO: send to sentry for detailed report on error
+            console.log('error', err)
+            alert(
+                '"We regret to inform you that an error occurred. Please resubmit the form or contact us via one of our social media channels for further assistance.'
+            )
+        }
     }
+
+    useEffect(() => {
+        reset(undefined, { keepValues: true })
+    }, [isSubmitSuccessful, reset])
 
     return (
         <section className="mx-auto max-w-screen-xl space-y-8">
             <div className="mx-auto max-w-lg text-center">
                 <h2 className="text-3xl font-bold sm:text-4xl">Get In Touch</h2>
             </div>
-
             <div className="grid gap-8 md:grid-cols-2">
                 {contact.map((data, i) => (
                     <a
                         key={i}
-                        className="flex items-center gap-5 rounded-lg border border-neutral-700 p-4 shadow-xl transition-all hover:scale-105 hover:bg-primary hover:text-primary-content"
+                        className="flex items-center gap-5 rounded-lg border border-neutral-300 p-4 shadow-sm transition-all hover:scale-105 hover:bg-primary hover:text-primary-content"
                         href={data.href}
                         target="_blank"
                     >
@@ -149,11 +234,11 @@ const Contact = () => {
             </div>
 
             <form
-                className="mx-auto grid w-full gap-3 rounded-lg border border-neutral-700 p-6 focus-within:border-primary md:grid-cols-2 [&_*]:placeholder:italic"
-                // onSubmit={handleSubmit(onSubmit)}
-                data-netlify="true"
+                className="mx-auto grid w-full gap-3 rounded-lg border border-neutral-300 p-6 focus-within:border-primary md:grid-cols-2 [&_*]:placeholder:italic"
+                onSubmit={handleSubmit(onSubmit)}
             >
                 <InputWrapper
+                    errorMessage={errors.name?.message}
                     label={
                         <>
                             <PiUser /> Name
@@ -163,10 +248,10 @@ const Contact = () => {
                     <input
                         type="text"
                         placeholder="Path Bansal"
-                        className={
-                            'input input-bordered w-full' +
-                            (errors.name ? ' input-error' : '')
-                        }
+                        className={clsx(
+                            'input input-bordered w-full',
+                            errors.name && ' input-error'
+                        )}
                         {...register('name', {
                             required: true,
                             maxLength: 100,
@@ -176,6 +261,65 @@ const Contact = () => {
                 </InputWrapper>
 
                 <InputWrapper
+                    errorMessage={errors.email?.message}
+                    label={
+                        <>
+                            <PiEnvelope /> Email
+                        </>
+                    }
+                    className=""
+                >
+                    <input
+                        type="email"
+                        placeholder="example@mail.com"
+                        className={clsx(
+                            'input input-bordered w-full',
+                            errors.email && 'input-error'
+                        )}
+                        {...register('email')}
+                    />
+                </InputWrapper>
+
+                <InputWrapper
+                    label={
+                        <>
+                            <PiFlag />
+                            Country
+                        </>
+                    }
+                    errorMessage={errors.countryCode?.message}
+                >
+                    <select
+                        className="select select-bordered w-full"
+                        {...register('countryCode')}
+                    >
+                        <option disabled value="">
+                            Pick country code
+                        </option>
+                        {countryCodes.map(
+                            (
+                                {
+                                    flag,
+                                    countryCode,
+                                    countryCallingCode,
+                                    countryNameEn,
+                                },
+                                i
+                            ) => (
+                                <option
+                                    key={i}
+                                    value={`${countryNameEn} (+${countryCallingCode})`}
+                                    aria-label={countryCallingCode}
+                                >
+                                    {`${flag} ${countryCode}  (+${countryCallingCode}) `}
+                                </option>
+                            )
+                        )}
+                    </select>
+                </InputWrapper>
+
+                <InputWrapper
+                    errorMessage={errors.phone?.message}
                     label={
                         <>
                             <PiPhone /> Phone
@@ -185,33 +329,16 @@ const Contact = () => {
                     <input
                         type="tel"
                         placeholder="000-000-000"
-                        className={
-                            'input input-bordered w-full' +
-                            (errors.phone ? ' input-error' : '')
-                        }
+                        className={clsx(
+                            'input input-bordered w-full',
+                            errors.phone && ' input-error'
+                        )}
                         {...register('phone')}
                     />
                 </InputWrapper>
 
                 <InputWrapper
-                    label={
-                        <>
-                            <PiEnvelope /> Email
-                        </>
-                    }
-                    className="col-span-full"
-                >
-                    <input
-                        type="email"
-                        placeholder="example@mail.com"
-                        className={
-                            'input input-bordered w-full' +
-                            (errors.email ? ' input-error' : '')
-                        }
-                        {...register('email')}
-                    />
-                </InputWrapper>
-                <InputWrapper
+                    errorMessage={errors.message?.message}
                     label={
                         <>
                             <PiTextAa /> Message
@@ -221,20 +348,44 @@ const Contact = () => {
                 >
                     <textarea
                         rows={6}
-                        className={
-                            'textarea textarea-bordered w-full ' +
-                            (errors.message ? ' input-error' : '')
-                        }
-                        {...register('message', { maxLength: 400 })}
+                        className={clsx(
+                            'textarea textarea-bordered w-full',
+                            errors.message && 'input-error'
+                        )}
+                        {...register('message', { maxLength: 300 })}
                     />
                 </InputWrapper>
 
-                <button
-                    className="btn btn-primary col-span-full justify-self-end"
-                    type="submit"
-                >
-                    Submit
-                </button>
+                <div className="join col-span-full justify-self-end">
+                    <button
+                        className={clsx(
+                            'btn btn-secondary join-item ',
+                            (isLoading || isSubmitting || isValidating) &&
+                                'btn-disabled'
+                        )}
+                        onClick={() => reset(undefined)}
+                    >
+                        {(isLoading || isSubmitting || isValidating) && (
+                            <span className="loading loading-spinner"></span>
+                        )}
+                        {'reset'.toUpperCase()}
+                    </button>
+
+                    <button
+                        className={clsx(
+                            'btn btn-primary join-item',
+                            (isLoading || isSubmitting || isValidating) &&
+                                'btn-disabled'
+                        )}
+                        type="submit"
+                    >
+                        {(isLoading || isSubmitting || isValidating) && (
+                            <span className="loading loading-spinner"></span>
+                        )}
+                        {'Submit'.toUpperCase()}
+                    </button>
+                </div>
+                <p className="italic text-error">{errors.root?.message}</p>
             </form>
         </section>
     )
