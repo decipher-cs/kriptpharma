@@ -1,7 +1,9 @@
-import { PropsWithChildren, useEffect, useState } from 'react'
+import clsx from 'clsx'
+import { useEffect, useState } from 'react'
+import { PiX } from 'react-icons/pi'
 
-export const Alert = (props: PropsWithChildren & { alertFor: string }) => {
-    const { alertFor, children } = props
+export const Alert = (props: { alertFor: string; text: string }) => {
+    const { alertFor, text } = props
 
     const [showAlert, setShowAlert] = useState(
         window.localStorage.getItem(alertFor) !== 'false'
@@ -12,32 +14,25 @@ export const Alert = (props: PropsWithChildren & { alertFor: string }) => {
     }, [showAlert, alertFor])
 
     return (
-        <div
-            className={
-                (!showAlert && ' hidden ') +
-                ' relative z-50 flex items-center justify-between gap-4 bg-primary px-4 py-3 text-primary-content '
-            }
+        <article
+            className={clsx(
+                !showAlert && 'hidden',
+                'flex items-center bg-primary py-5'
+            )}
         >
-            {children}
+            <div className={'overflow-hidden'}>
+                <div className="grid w-min animate-horizontal-scroll grid-flow-col text-nowrap font-bold text-primary-content">
+                    {text} {text}
+                </div>
+            </div>
 
             <button
                 aria-label="Dismiss"
                 className="btn-primary btn-sm"
                 onClick={() => setShowAlert(false)}
             >
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="size-5"
-                    viewBox="0 0 20 20"
-                    fill="currentColor"
-                >
-                    <path
-                        fillRule="evenodd"
-                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                        clipRule="evenodd"
-                    />
-                </svg>
+                <PiX size={30} />
             </button>
-        </div>
+        </article>
     )
 }

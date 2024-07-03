@@ -17,11 +17,12 @@ export const Route = createRootRoute({
     component: () => (
         <div className="selection:bg-primary selection:text-primary-content">
             <ThemeProvider>
-                <Alert alertFor="pharmaexpo">
-                    Medi Vietnam PharmaExpo 2024 Saigon Exhibition 1st - 3rd
+                <Alert
+                    alertFor="pharmaexpo"
+                    text="Medi Vietnam PharmaExpo 2024 Saigon Exhibition 1st - 3rd
                     August 2024 Booth No. IP08 Saigon exhibition and convention
-                    centre at 799 Mguyeb Van Linh Street, Ho Chi Minah City
-                </Alert>
+                    centre at 799 Mguyeb Van Linh Street, Ho Chi Minah City"
+                />
 
                 <Header />
 
