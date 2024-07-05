@@ -1,5 +1,5 @@
 import { createFileRoute, useNavigate } from '@tanstack/react-router'
-import medicineData from '../assets/medicine.json'
+import medicineProducts from '../assets/pharma-range.json'
 import Fuse from 'fuse.js'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
@@ -16,20 +16,28 @@ const imagePaths = Object.values(modules).map((module) => {
     return undefined
 })
 
-const fuse = new Fuse(medicineData, { keys: ['name', 'type'] })
+const fuse = new Fuse(medicineProducts, {
+    keys: ['category', 'composition', 'form'],
+})
 
-/* This value had to be hardcoded due to uncertainty in the structure of the underlying data.
- * It'll stay this way untill the client can make up their mind on what they want to cateloge.
- * The developer has no say in this. */
 const categories = [
-    'General',
-    'Injections & Infusion',
-    'Powder / sachet / granuals / nano shot',
-    'Ointments',
-    'eye / ear / nasal',
-    'Syrup',
-    'Softgel',
-    'CAPSULES',
+    'beta lactams and penicillin antibiotics range',
+    'cephalosporins range',
+    'other antibiotics and anti-infectives range',
+    'nsaidS ,painkillers , anti-pyretic muscle relaxants and anti-spasmodic range',
+    'anti-psychotics, anti-depressants, anxiolytics, neuropathy and neuropsychiatry range',
+    'cardiac, anti-hypertensives and diabetic range',
+    'diabetic range',
+    'antacids, anti-emetics range and ppi range',
+    'anti-cold , anti-allergic , mucolytics and anti-tussive range',
+    'vitamins and supplements range',
+    'statins and anti-cholestorol range',
+    'other approvals',
+    'cefa group list',
+    'pencillin group list',
+    'penem group approved list',
+    'dry non beta injections',
+    'general liquid injection',
 ] as const
 
 type Category = (typeof categories)[number]
@@ -99,9 +107,11 @@ const Product = () => {
 
     const filteredMedicineData = useMemo(() => {
         return searchString.length > 1
-            ? fuse.search(searchString).map((d) => d.item)
-            : medicineData.filter((item) =>
-                  visibleCategories.includes(item.type as Category)
+            ? fuse.search(searchString).map((v) => v.item)
+            : medicineProducts.filter((item) =>
+                  visibleCategories.includes(
+                      item.category.toLowerCase() as Category
+                  )
               )
     }, [searchString, visibleCategories])
 
@@ -201,151 +211,167 @@ const Product = () => {
                 </section>
             </Breakout>
 
-            <article className="mx-auto">
-                <section className="grid grid-cols-1 justify-items-center gap-2 sm:grid-cols-2">
-                    <label className="input input-md input-bordered flex w-min items-center gap-2 sm:justify-self-start">
-                        <span className="sr-only">Search the table</span>
-                        <input
-                            type="text"
-                            placeholder="Search the table..."
-                            className="placeholder:italic"
-                            value={searchString}
-                            maxLength={50}
-                            onChange={(e) => {
-                                setSearchString(e.target.value)
-                                changeUrlParams('searchString', e.target.value)
-                            }}
-                        />
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 16 16"
-                            fill="currentColor"
-                            className="size-4 opacity-70"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                                clipRule="evenodd"
+            <Breakout>
+                <article className="mx-auto">
+                    <section className="grid grid-cols-1 justify-items-center gap-2 sm:grid-cols-2">
+                        <label className="input input-md input-bordered flex w-min items-center gap-2 sm:justify-self-start">
+                            <span className="sr-only">Search the table</span>
+                            <input
+                                type="text"
+                                placeholder="Search the table..."
+                                className="placeholder:italic"
+                                value={searchString}
+                                maxLength={50}
+                                onChange={(e) => {
+                                    setSearchString(e.target.value)
+                                    changeUrlParams(
+                                        'searchString',
+                                        e.target.value
+                                    )
+                                }}
                             />
-                        </svg>
-                    </label>
-
-                    <details className="dropdown dropdown-end w-1/2 sm:justify-self-end">
-                        <summary className="btn btn-ghost w-full border-neutral">
-                            Filter
                             <svg
-                                width="12px"
-                                height="12px"
-                                className="inline-block size-2 fill-current opacity-60"
                                 xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 2048 2048"
+                                viewBox="0 0 16 16"
+                                fill="currentColor"
+                                className="size-4 opacity-70"
                             >
-                                <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                                <path
+                                    fillRule="evenodd"
+                                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                                    clipRule="evenodd"
+                                />
                             </svg>
-                        </summary>
+                        </label>
 
-                        <ul className="menu dropdown-content z-30 mt-2 w-full rounded-box bg-base-300 shadow">
-                            {categories.map((item, i) => (
-                                <div className="form-control" key={i}>
-                                    <label className="label cursor-pointer">
-                                        <span className="label-text">
-                                            {item}
-                                        </span>
-                                        <input
-                                            type="checkbox"
-                                            className="checkbox"
-                                            onChange={(e) => {
-                                                if (e.target.checked) {
-                                                    changeUrlParams(
-                                                        'categoryFilter',
-                                                        [
-                                                            ...visibleCategories,
-                                                            item,
-                                                        ]
-                                                    )
-                                                    setVisibleCategories((p) =>
-                                                        p.includes(item)
-                                                            ? p
-                                                            : [...p, item]
-                                                    )
-                                                } else if (!e.target.checked) {
-                                                    changeUrlParams(
-                                                        'categoryFilter',
-                                                        visibleCategories.filter(
-                                                            (v) => item !== v
+                        <details className="dropdown dropdown-end w-1/2 sm:justify-self-end">
+                            <summary className="btn btn-ghost w-full border-neutral">
+                                Filter
+                                <svg
+                                    width="12px"
+                                    height="12px"
+                                    className="inline-block size-2 fill-current opacity-60"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 2048 2048"
+                                >
+                                    <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                                </svg>
+                            </summary>
+
+                            <ul className="menu dropdown-content z-30 mt-2 w-full rounded-box bg-base-300 shadow">
+                                {categories.map((item, i) => (
+                                    <div className="form-control" key={i}>
+                                        <label className="label cursor-pointer">
+                                            <span className="label-text">
+                                                {item}
+                                            </span>
+                                            <input
+                                                type="checkbox"
+                                                className="checkbox"
+                                                onChange={(e) => {
+                                                    if (e.target.checked) {
+                                                        changeUrlParams(
+                                                            'categoryFilter',
+                                                            [
+                                                                ...visibleCategories,
+                                                                item,
+                                                            ]
                                                         )
-                                                    )
-                                                    setVisibleCategories((p) =>
-                                                        p.includes(item)
-                                                            ? p.filter(
-                                                                  (v) =>
-                                                                      v !== item
-                                                              )
-                                                            : p
-                                                    )
-                                                }
-                                            }}
-                                            checked={visibleCategories.includes(
-                                                item
-                                            )}
-                                        />
-                                    </label>
-                                </div>
-                            ))}
-                        </ul>
-                    </details>
-                </section>
-
-                <div className="overflow-x-auto">
-                    <table className="table table-zebra table-pin-rows">
-                        <thead>
-                            <tr>
-                                <th>S.No</th>
-                                <th>Name</th>
-                                <th>Type</th>
-                                <th>Packaging</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {filteredMedicineData
-                                .slice(0, maxRows)
-                                .map((data) => (
-                                    <tr key={data.id} className="hover">
-                                        <th>{data.id}</th>
-                                        <td>{data.name}</td>
-                                        <td>{data.type}</td>
-                                        <td>{data.packaging}</td>
-                                    </tr>
+                                                        setVisibleCategories(
+                                                            (p) =>
+                                                                p.includes(item)
+                                                                    ? p
+                                                                    : [
+                                                                          ...p,
+                                                                          item,
+                                                                      ]
+                                                        )
+                                                    } else if (
+                                                        !e.target.checked
+                                                    ) {
+                                                        changeUrlParams(
+                                                            'categoryFilter',
+                                                            visibleCategories.filter(
+                                                                (v) =>
+                                                                    item !== v
+                                                            )
+                                                        )
+                                                        setVisibleCategories(
+                                                            (p) =>
+                                                                p.includes(item)
+                                                                    ? p.filter(
+                                                                          (v) =>
+                                                                              v !==
+                                                                              item
+                                                                      )
+                                                                    : p
+                                                        )
+                                                    }
+                                                }}
+                                                checked={visibleCategories.includes(
+                                                    item
+                                                )}
+                                            />
+                                        </label>
+                                    </div>
                                 ))}
-                        </tbody>
-                    </table>
-                </div>
+                            </ul>
+                        </details>
+                    </section>
 
-                <div className="join mt-4 flex *:basis-1/3">
-                    <button
-                        className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
-                        onClick={() =>
-                            maxRows < filteredMedicineData.length
-                                ? setMaxRows((p) => p + 11)
-                                : null
-                        }
-                    >
-                        Show More +
-                    </button>
-                    <button
-                        className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
-                        onClick={() => setMaxRows(filteredMedicineData.length)}
-                    >
-                        Show All
-                    </button>
-                    <button
-                        className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
-                        onClick={() => setMaxRows(11)}
-                    >
-                        Show Less
-                    </button>
-                </div>
-            </article>
+                    <div className="overflow-x-auto">
+                        <table className="table table-zebra table-pin-rows">
+                            <thead>
+                                <tr>
+                                    <th>S.No</th>
+                                    <th>Compotition</th>
+                                    <th>Form</th>
+                                    <th>Category</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredMedicineData
+                                    .slice(0, maxRows)
+                                    .map((data) => (
+                                        <tr key={data.id} className="hover">
+                                            <th>{data.id}</th>
+                                            <td>{data.composition}</td>
+                                            <td>{data.form}</td>
+                                            <td>{data.category}</td>
+                                        </tr>
+                                    ))}
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div className="join mt-4 flex *:basis-1/3">
+                        <button
+                            className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
+                            onClick={() =>
+                                maxRows < filteredMedicineData.length
+                                    ? setMaxRows((p) => p + 11)
+                                    : null
+                            }
+                        >
+                            Show More +
+                        </button>
+                        <button
+                            className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
+                            onClick={() =>
+                                setMaxRows(filteredMedicineData.length)
+                            }
+                        >
+                            Show All
+                        </button>
+                        <button
+                            className="btn btn-ghost btn-outline join-item btn-sm sm:btn-md"
+                            onClick={() => setMaxRows(11)}
+                        >
+                            Show Less
+                        </button>
+                    </div>
+                </article>
+            </Breakout>
         </section>
     )
 }
