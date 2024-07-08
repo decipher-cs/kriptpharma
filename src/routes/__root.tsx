@@ -18,6 +18,10 @@ export const Route = createRootRoute({
         <div className="selection:bg-secondary selection:text-secondary-content">
             <ThemeProvider>
                 <Alert
+                    alertFor="wip"
+                    text="This website is a work in progress. Any discrepancy can reported to developer@kriptpharmaceuticals.com"
+                />
+                <Alert
                     alertFor="pharmaexpo"
                     text="Medi Vietnam PharmaExpo 2024 Saigon Exhibition 1st - 3rd
                     August 2024 Booth No. IP08 Saigon exhibition and convention
