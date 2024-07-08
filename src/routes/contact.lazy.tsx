@@ -164,7 +164,7 @@ const Contact = () => {
             name: '',
             message: '',
             email: '',
-            countryCode: '',
+            countryCode: 'India (+91)',
         },
     })
 
@@ -304,20 +304,15 @@ const Contact = () => {
                         </option>
                         {countryCodes.map(
                             (
-                                {
-                                    flag,
-                                    countryCode,
-                                    countryCallingCode,
-                                    countryNameEn,
-                                },
+                                { flag, countryCallingCode, countryNameEn },
                                 i
                             ) => (
                                 <option
                                     key={i}
                                     value={`${countryNameEn} (+${countryCallingCode})`}
-                                    aria-label={countryCallingCode}
+                                    aria-label={`${countryNameEn} (+${countryCallingCode})`}
                                 >
-                                    {`${flag} ${countryCode}  (+${countryCallingCode}) `}
+                                    {`${flag} ${countryNameEn}  (+${countryCallingCode}) `}
                                 </option>
                             )
                         )}
