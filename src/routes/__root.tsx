@@ -79,11 +79,8 @@ const Nav = () => {
 const Header = () => {
     return (
         <div className="navbar gap-2 bg-base-100 py-8">
-            <div className="flex-1">
-                <Link
-                    to="/"
-                    className="btn btn-ghost btn-sm border text-lg md:btn-md sm:text-xl"
-                >
+            <div className="max-w-56 shrink grow">
+                <Link to="/" className="w-full sm:text-xl">
                     <img
                         src={kriptPharmaLogo}
                         alt="Kript Pharmaceuticals logo"
@@ -91,10 +88,10 @@ const Header = () => {
                     />
                 </Link>
             </div>
-            <ul className="menu hidden gap-1 lg:menu-horizontal">
+            <ul className="menu hidden shrink grow flex-nowrap justify-end gap-1 lg:menu-horizontal">
                 <Nav />
             </ul>
-            <div className="flex-none lg:hidden">
+            <div className="flex-none grow justify-end justify-self-end lg:hidden">
                 <Drawer />
             </div>
         </div>
