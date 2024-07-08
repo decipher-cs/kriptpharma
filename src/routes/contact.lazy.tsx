@@ -54,6 +54,12 @@ const contact = [
         href: 'https://www.facebook.com/share/vLSvjtQ5igwYRuP1/?mibextid=LQQJ4d',
         value: 'Kript Pharmaceuticals ',
     },
+    {
+        logoUrl: dialerLogo,
+        title: 'phone no.',
+        href: 'tel:+918571913753',
+        value: '(+91) 857-191-3753',
+    },
 ] satisfies {
     logoUrl: string
     title: string
