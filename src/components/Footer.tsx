@@ -8,6 +8,8 @@ import {
     PiMailbox,
     PiFacebookLogo,
     PiWhatsappLogo,
+    PiGithubLogo,
+    PiSidebar,
 } from 'react-icons/pi'
 
 export const Footer = () => {
@@ -160,17 +162,37 @@ export const Footer = () => {
                 </article>
             </footer>
 
-            <footer className="footer footer-center rounded bg-base-200 px-10 pb-6">
-                <aside className="col-start-1 row-start-2">
+            <footer className="footer footer-center rounded bg-base-200 px-10 py-8">
+                <aside className="grid place-content-center">
+                    <span className="flex">
+                        <a
+                            className="link-hover link"
+                            href="https://github.com/decipher-cs/"
+                            target="_blank"
+                        >
+                            <PiGithubLogo size={35} />
+                        </a>
+                        <a
+                            className="link-hover link"
+                            href="https://decipher-portfolio.netlify.app/"
+                            target="_blank"
+                        >
+                            <PiSidebar size={35} />
+                        </a>
+                    </span>
                     <a
                         className="link-hover link"
-                        href="https://github.com/decipher-cs/"
+                        href="https://decipher-portfolio.netlify.app/"
                         target="_blank"
                     >
-                        Copyright © 2024{' '}
-                        <em className="font-bold text-primary">Decipher</em>.
-                        All rights reserved.
+                        <em className="font-bold text-primary">
+                            Website by decipher. Need one? Cick here to connect.
+                        </em>
+                        .
                     </a>
+                    <span className="">
+                        Copyright © 2024 All rights reserved.
+                    </span>
                 </aside>
             </footer>
         </>
