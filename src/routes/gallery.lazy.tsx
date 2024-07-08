@@ -9,9 +9,15 @@ const modules = import.meta.glob('../assets/gallery/*.*', {
 
 const imagePaths = Object.values(modules).map((module) => {
     if (typeof module === 'object' && module && 'default' in module) {
-        return module.default as string
+        const path = module.default
+        if (typeof path === 'string') {
+            const parts = path.split('/')
+            const filename = parts[parts.length - 1]
+                .replace(/\.[\w]*$/g, '')
+                .replace(/%20/g, ' ')
+            return { path, filename }
+        }
     }
-    return undefined
 })
 
 export const Route = createLazyFileRoute('/gallery')({
@@ -46,19 +52,23 @@ const Gallery = () => {
         <section className="flex flex-col gap-4">
             <div className="swiper h-[80svh] w-full">
                 <div className="swiper-wrapper">
-                    {imagePaths.map((path, i) => (
-                        <img
-                            className="swiper-slide inline-block object-contain"
-                            key={i}
-                            src={path}
-                            // TODO: better alt tag
-                            alt=""
-                            onMouseOver={() => slider.current?.autoplay.pause()}
-                            onMouseLeave={() =>
-                                slider.current?.autoplay.resume()
-                            }
-                        />
-                    ))}
+                    {imagePaths.map(
+                        (img, i) =>
+                            img && (
+                                <img
+                                    className="swiper-slide inline-block object-contain"
+                                    key={i}
+                                    src={img.path}
+                                    alt={img.filename}
+                                    onMouseOver={() =>
+                                        slider.current?.autoplay.pause()
+                                    }
+                                    onMouseLeave={() =>
+                                        slider.current?.autoplay.resume()
+                                    }
+                                />
+                            )
+                    )}
                 </div>
                 <div className="swiper-button-prev"></div>
                 <div className="swiper-button-next"></div>
