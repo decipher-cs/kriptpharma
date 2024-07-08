@@ -1,5 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import { PiCheckCircle, PiDotsThreeVertical, PiSmiley } from 'react-icons/pi'
+import pharmaExpoVietnam from '../assets/gallery/vietnam-pharmaexpo.webp'
 
 export const Route = createLazyFileRoute('/exhibition')({
     component: () => (
@@ -27,6 +28,9 @@ export const Route = createLazyFileRoute('/exhibition')({
                                 {data.heading}
                             </div>
                             {data.description}
+                            <a href={pharmaExpoVietnam} target="_blank">
+                                <img src={pharmaExpoVietnam} />
+                            </a>
                         </div>
                         <hr />
                     </li>
@@ -36,11 +40,19 @@ export const Route = createLazyFileRoute('/exhibition')({
                     <div className="timeline-middle">
                         <PiDotsThreeVertical size={37} />
                     </div>
-                    <div className="timeline-end mb-10">
-                        <time className="flex items-center gap-3 font-mono italic">
-                            More on the way <PiSmiley size={20} />
+                    <div className="timeline-start mb-10 md:text-end">
+                        <time className="font-mono italic">
+                            {new Date().toDateString().toString()}
                         </time>
+                        <div className="text-lg font-black">
+                            More on the way
+                        </div>
+                        <div className="text-lg ">
+                            Tune in at a later date to see more of our
+                            endeavours
+                        </div>
                     </div>
+                    <hr />
                 </li>
             </ul>
         </section>
