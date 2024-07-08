@@ -61,8 +61,8 @@ export const Footer = () => {
                 <div className="grid gap-2">
                     <h6 className="footer-title">Contact Details</h6>
                     <div className="grid gap-2 *:flex *:items-center *:gap-2">
-                        <a href="mailto:kriptpharma@gmail.com">
-                            <PiMailbox /> kriptpharma@gmail.com
+                        <a href="mailto:support@kriptpharmaceuticals.com">
+                            <PiMailbox /> support@kriptpharmaceuticals.com
                         </a>
                         <a href="tel:+917988522311">
                             <PiPhone /> (+91) 798-852-2311
