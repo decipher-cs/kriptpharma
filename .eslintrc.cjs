@@ -18,5 +18,6 @@ module.exports = {
         ],
 
         '@typescript-eslint/no-unused-vars': 'off',
+        'tailwindcss/no-custom-classname': 'off',
     },
 }

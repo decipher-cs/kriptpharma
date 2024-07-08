@@ -2,7 +2,7 @@
 
 import { bumblebee } from 'daisyui/src/theming/themes'
 import daisyui from 'daisyui'
-import twt from '@tailwindcss/typography'
+
 export default {
     content: ['./src/**/*.{html,js,jsx,tsx}', './src/main.tsx'],
     theme: {
@@ -42,5 +42,5 @@ export default {
             },
         ],
     },
-    plugins: ['prettier-plugin-tailwindcss', daisyui, twt],
+    plugins: ['prettier-plugin-tailwindcss', daisyui],
 }
