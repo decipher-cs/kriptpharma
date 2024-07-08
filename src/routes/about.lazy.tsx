@@ -1,20 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-const stampImport = import.meta.glob('../assets/stamps/*.*', {
-    eager: true,
-})
-
-const stamps = Object.values(stampImport).map((module) => {
-    if (typeof module === 'object' && module && 'default' in module) {
-        const path = module.default
-        if (typeof path === 'string') {
-            const parts = path.split('/')
-            const filename = parts[parts.length - 1]
-                .replace('.webp', '')
-                .replace(/%20/g, ' ')
-            return { path, filename }
-        }
-    }
-})
+import certificates from '../assets/certification.svg'
 
 export const Route = createLazyFileRoute('/about')({
     component: () => <AboutUs />,
@@ -54,30 +39,13 @@ const AboutUs = () => {
                     brands, and is steadily working to make a presence across
                     the Globe.
                 </p>
+
+                <img
+                    src={certificates}
+                    className={'mx-auto'}
+                    alt={'accreditations'}
+                />
             </article>
-
-            <section className="space-y-8 text-center">
-
-                <h2 className="text-center text-2xl sm:text-5xl">
-                    Certificates
-                </h2>
-
-                <section className="mx-auto grid gap-10">
-                    <article className="mx-auto flex flex-wrap justify-center gap-10">
-                        {stamps.map((stamp) => {
-                            if (stamp)
-                                return (
-                                    <img
-                                        src={stamp.path}
-                                        key={stamp.path}
-                                        className={`h-28 last:max-w-80 md:h-40 invert`}
-                                        alt={stamp.filename}
-                                    />
-                                )
-                        })}
-                    </article>
-                </section>
-            </section>
         </section>
     )
 }
