@@ -187,9 +187,10 @@ const ReasonsToChooseUse = () => {
                                     : 'md:[mask:linear-gradient(90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]',
                                 '[mask:linear-gradient(180deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
                             )}
-                            autoPlay
+                            autoPlay={true}
                             loop
                             muted
+                            playsInline
                         />
                         <div className="space-y-8 px-8 max-md:text-center">
                             <div className="w-min max-md:mx-auto">
