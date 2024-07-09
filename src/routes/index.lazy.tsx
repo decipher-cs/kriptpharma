@@ -50,13 +50,17 @@ const Hero = () => {
         >
             <div className="absolute inset-x-0 size-full brightness-[60%]">
                 <video
-                    muted
-                    autoPlay
-                    loop
                     id="hero-video"
                     className="inline-block size-full object-cover"
                     // TODO: Add poster which appears while video is loading
                     poster=""
+                    autoPlay
+                    disablePictureInPicture
+                    disableRemotePlayback
+                    loop
+                    muted
+                    preload="metadata"
+                    playsInline
                 >
                     <source src={heroVideo} type="video/mp4" />
                 </video>
@@ -187,10 +191,15 @@ const ReasonsToChooseUse = () => {
                                     : 'md:[mask:linear-gradient(90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]',
                                 '[mask:linear-gradient(180deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
                             )}
-                            autoPlay={true}
+                            autoPlay
+                            disablePictureInPicture
+                            disableRemotePlayback
                             loop
                             muted
+                            preload="metadata"
                             playsInline
+                            // TODO: Add poster which appears while video is loading
+                            poster=""
                         />
                         <div className="space-y-8 px-8 max-md:text-center">
                             <div className="w-min max-md:mx-auto">
