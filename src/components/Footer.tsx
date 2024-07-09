@@ -93,7 +93,7 @@ export const Footer = () => {
                         <input
                             name="inquiry"
                             id="inquiry"
-                            className="input join-item input-bordered w-full"
+                            className="input join-item input-bordered w-full max-w-96"
                             placeholder="Enter email"
                             type="email"
                         />
