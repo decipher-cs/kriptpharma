@@ -41,13 +41,12 @@ const Index = () => {
 }
 
 const Hero = () => {
+    const style = getComputedStyle(document.body)
+    const primaryColor = style.getPropertyValue('--p')
+    const secondaryColor = style.getPropertyValue('--s')
+
     return (
-        <section
-            className="relative -mx-breath grid min-h-[80svh] items-center overflow-x-hidden bg-primary bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg"
-            style={{
-                mask: 'linear-gradient(180deg, white 85%, transparent)',
-            }}
-        >
+        <section className="relative -mx-breath grid min-h-svh items-center overflow-x-hidden bg-white bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg">
             <div className="absolute inset-x-0 size-full brightness-[60%]">
                 <video
                     id="hero-video"
@@ -67,11 +66,19 @@ const Hero = () => {
             </div>
 
             <div className="hero-content mb-14 justify-self-center text-center">
-                <div className="space-x-4 space-y-6 sm:space-y-10">
-                    <h1 className="text-3xl font-bold text-primary md:text-5xl">
+                <div className="space-y-6 sm:space-y-10">
+                    <h1
+                        className="text-3xl font-bold text-transparent md:text-6xl"
+                        style={{
+                            backgroundImage: `linear-gradient(45deg,
+                                    oklch(${primaryColor}),
+                                    oklch(${secondaryColor}) )`,
+                            backgroundClip: 'text',
+                        }}
+                    >
                         Kript Pharmaceuticals
                     </h1>
-                    <p className="max-w-[50ch] text-sm font-bold text-neutral-200 md:text-lg">
+                    <p className="mx-auto max-w-[50ch] text-sm font-bold text-neutral-200 md:text-lg">
                         Discover trusted medications where quality meets care.
                         Empowering health and wellness with our comprehensive
                         range of pharmaceutical solutions.
@@ -79,7 +86,7 @@ const Hero = () => {
                     <a
                         role="button"
                         href="#vision"
-                        className="btn btn-primary sm:btn-md md:btn-lg"
+                        className="btn btn-primary mr-4 sm:btn-md md:btn-lg"
                     >
                         KNOW MORE
                     </a>
