@@ -169,20 +169,20 @@ const reasonsToChooseUs = [
 ]
 const ReasonsToChooseUse = () => {
     return (
-        <Breakout className="space-y-12 bg-base-200 py-10">
-            <h2 className="mb-32 text-center text-4xl font-bold lg:text-6xl">
+        <Breakout className="bg-base-200 py-24">
+            <h2 className="mb-48 text-center text-4xl font-bold lg:text-6xl">
                 Why Choose Us?
             </h2>
-            <article className="space-y-64 border-blue-400">
+
+            <article className="snap-start space-y-12 border-blue-400">
                 {reasonsToChooseUs.map((data, i) => (
                     <div
                         key={data.title}
-                        className={`flex min-h-[70svh] flex-wrap md:flex-nowrap ${i % 2 === 0 ? 'flex-row-reverse' : ''}`}
+                        className={`flex snap-start flex-wrap items-center md:flex-nowrap ${i % 2 === 0 ? 'flex-row-reverse' : ''}`}
                     >
                         <video
-                            src={data.content}
                             className={clsx(
-                                `inline-block h-[50svh] w-full min-w-[50%] border-yellow-500 object-cover max-md:rounded-t-3xl`,
+                                `md:object-conver inline-block w-full overflow-hidden bg-primary object-cover max-md:h-[50svh] max-md:rounded-t-3xl md:aspect-[12/16] md:w-full md:max-w-lg`,
                                 i % 2 === 0
                                     ? 'md:rounded-r-3xl'
                                     : 'md:rounded-l-3xl',
@@ -200,15 +200,18 @@ const ReasonsToChooseUse = () => {
                             playsInline
                             // TODO: Add poster which appears while video is loading
                             poster=""
-                        />
-                        <div className="space-y-8 px-8 max-md:text-center">
-                            <div className="w-min max-md:mx-auto">
+                        >
+                            <source src={data.content} type="video/mp4" />
+                            Unsupported video
+                        </video>
+                        <div className="mx-auto max-w-prose space-y-8 justify-self-center px-8 max-md:text-center">
+                            <div className="w-fit max-md:mx-auto">
                                 {data.logo}
                             </div>
-                            <h2 className="text-3xl/none font-bold">
+                            <h2 className="text-4xl/none font-bold">
                                 {data.title}
                             </h2>
-                            <p className="text-xl">{data.description}</p>
+                            <p className="text-2xl">{data.description}</p>
                         </div>
                     </div>
                 ))}
@@ -219,7 +222,7 @@ const ReasonsToChooseUse = () => {
 
 const MissionSection = () => {
     return (
-        <Breakout className="justify-self-stretch bg-base-200">
+        <Breakout className="justify-self-stretch">
             <article
                 className="mx-auto grid max-w-screen-xl auto-rows-fr items-stretch justify-items-center px-breath py-10 lg:grid-cols-3"
                 id="vision"
