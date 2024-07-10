@@ -253,7 +253,7 @@ const Contact = () => {
                 >
                     <input
                         type="text"
-                        placeholder="Path Bansal"
+                        placeholder="Jone Doe"
                         className={clsx(
                             'input input-bordered w-full',
                             errors.name && ' input-error'
