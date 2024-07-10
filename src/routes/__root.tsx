@@ -6,7 +6,7 @@ import {
 } from '@tanstack/react-router'
 import kriptPharmaLogo from '../assets/company-logo.svg'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import ThemeProvider from '../context/theme'
 import { ErrorPage } from '../view/PageNotFount'
 import { Alert } from '../components/Alert'
@@ -68,7 +68,7 @@ const Nav = () => {
                                 path.toLowerCase() && 'active font-bold'
                         )}
                     >
-                        {path}
+                        {path.toUpperCase()}
                     </Link>
                 </li>
             ))}
@@ -77,8 +77,33 @@ const Nav = () => {
 }
 
 const Header = () => {
+    const [scrolledToTop, setScrolledToTop] = useState(window.scrollY < 50)
+
+    const routerState = useRouterState()
+
+    const currentRoute = routerState.location.pathname
+
+    useEffect(() => {
+        const foo = (e: Event) => {
+            setScrolledToTop(window.scrollY < 50)
+        }
+        window.addEventListener('scroll', foo)
+
+        return () => {
+            window.removeEventListener('scroll', foo)
+        }
+    }, [])
+
     return (
-        <div className="navbar gap-2 bg-base-100 py-8">
+        <div
+            className={clsx(
+                scrolledToTop &&
+                    ['/home', '/'].includes(currentRoute.toLowerCase())
+                    ? 'fixed'
+                    : 'sticky top-0 bg-base-100 shadow-md',
+                'navbar z-30 gap-2 py-8'
+            )}
+        >
             <div className="max-w-56 shrink grow">
                 <Link to="/" className="w-full sm:text-xl">
                     <img
@@ -88,7 +113,14 @@ const Header = () => {
                     />
                 </Link>
             </div>
-            <ul className="menu hidden shrink grow flex-nowrap justify-end gap-1 lg:menu-horizontal">
+            <ul
+                className={clsx(
+                    scrolledToTop &&
+                        ['home', '/'].includes(currentRoute.toLowerCase()) &&
+                        'text-neutral-100',
+                    'menu hidden shrink grow flex-nowrap justify-end gap-1 lg:menu-horizontal'
+                )}
+            >
                 <Nav />
             </ul>
             <div className="flex-none grow justify-end justify-self-end lg:hidden">
