@@ -4,9 +4,9 @@ import pharmaExpoVietnam from '../assets/gallery/vietnam-pharmaexpo.webp'
 
 export const Route = createLazyFileRoute('/exhibition')({
     component: () => (
-        <section className="grid justify-center gap-8">
-            <h2 className="text-center text-5xl">Exhibition</h2>
-            <ul className="timeline timeline-vertical timeline-snap-icon max-md:timeline-compact">
+        <section className="grid justify-center gap-1">
+            <h2 className="mb-20 text-center text-5xl">Exhibition</h2>
+            <ul className="timeline timeline-vertical timeline-compact timeline-snap-icon">
                 {[
                     {
                         time: 'Aug 2024',
@@ -16,7 +16,6 @@ export const Route = createLazyFileRoute('/exhibition')({
                     },
                 ].map((data, i) => (
                     <li key={i}>
-                        <hr />
                         <div className="timeline-middle">
                             <PiCheckCircle size={24} />
                         </div>
@@ -28,19 +27,24 @@ export const Route = createLazyFileRoute('/exhibition')({
                                 {data.heading}
                             </div>
                             {data.description}
+                            <br />
                             <a href={pharmaExpoVietnam} target="_blank">
-                                <img src={pharmaExpoVietnam} />
+                                <img
+                                    src={pharmaExpoVietnam + ''}
+                                    className="my-8 inline-block h-auto w-1/2 rounded-xl bg-primary object-contain"
+                                />
                             </a>
                         </div>
                         <hr />
                     </li>
                 ))}
+
                 <li>
                     <hr />
                     <div className="timeline-middle">
-                        <PiDotsThreeVertical size={37} />
+                        <PiDotsThreeVertical size={24} />
                     </div>
-                    <div className="timeline-start mb-10 md:text-end">
+                    <div className="timeline-end mb-10">
                         <time className="font-mono italic">
                             {new Date().toDateString().toString()}
                         </time>
