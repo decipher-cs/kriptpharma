@@ -284,7 +284,7 @@ const MissionSection = () => {
                         className="group max-w-prose border border-neutral-300 bg-base-100 transition-all hover:bg-primary hover:text-primary-content max-lg:first:rounded-t-3xl max-lg:last:rounded-b-3xl lg:first:rounded-l-3xl lg:last:rounded-r-3xl"
                         key={i}
                     >
-                        <div className="grid h-full content-center space-y-5 p-8 transition-all group-hover:backdrop-blur-0 lg:content-start">
+                        <div className="grid h-full content-center space-y-5 p-8 lg:content-start">
                             {data.logo}
                             <h2 className="text-2xl font-bold">{data.title}</h2>
                             <ul className="list-inside list-disc text-lg/normal">
