@@ -26,7 +26,7 @@ export const Route = createRootRoute({
                     <Outlet />
                 </main>
 
-                <aside className="fixed bottom-0 z-50 w-full bg-red-500">
+                <aside className="fixed bottom-0 z-10 w-full bg-red-500">
                     <Alert
                         alertFor="pharmaexpo"
                         text="Medi Vietnam PharmaExpo 2024 Saigon Exhibition 1st - 3rd
@@ -113,7 +113,7 @@ const Header = () => {
                 isHeroVisible
                     ? 'bg-transparent shadow-none'
                     : 'bg-base-100 shadow-md',
-                'navbar top-0 z-30 gap-2 rounded-b-xl py-5 transition-colors'
+                'navbar top-0 z-50 gap-2 rounded-b-xl py-5 transition-colors'
             )}
         >
             <div className="max-w-56 shrink grow">
