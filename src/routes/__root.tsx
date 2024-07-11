@@ -88,10 +88,13 @@ const Header = () => {
         // hero-video will be found in the index file
         const heroEl = document.getElementById('hero-video')
 
-        const observer = new IntersectionObserver((entries) => {
-            const isVisible = entries[0].isIntersecting
-            setIsHeroVisible(isVisible)
-        }, {})
+        const observer = new IntersectionObserver(
+            (entries) => {
+                const isVisible = entries[0].isIntersecting
+                setIsHeroVisible(isVisible)
+            },
+            { rootMargin: '-90%' }
+        )
 
         if (heroEl) observer.observe(heroEl)
 
@@ -110,7 +113,7 @@ const Header = () => {
                 isHeroVisible
                     ? 'bg-transparent shadow-none'
                     : 'bg-base-100 shadow-md',
-                'navbar top-0 z-30 gap-2 py-8'
+                'navbar top-0 z-30 gap-2 py-8 transition-colors'
             )}
         >
             <div className="max-w-56 shrink grow">
