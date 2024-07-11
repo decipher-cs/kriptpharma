@@ -12,6 +12,7 @@ import { ErrorPage } from '../view/PageNotFount'
 import { Alert } from '../components/Alert'
 import { Footer } from '../components/Footer'
 import clsx from 'clsx'
+import { PiList } from 'react-icons/pi'
 
 export const Route = createRootRoute({
     component: () => (
@@ -77,29 +78,35 @@ const Nav = () => {
 }
 
 const Header = () => {
-    const [scrolledToTop, setScrolledToTop] = useState(window.scrollY < 50)
+    const [isHeroVisible, setIsHeroVisible] = useState(false)
 
     const routerState = useRouterState()
 
     const currentRoute = routerState.location.pathname
 
     useEffect(() => {
-        const foo = (e: Event) => {
-            setScrolledToTop(window.scrollY < 50)
-        }
-        window.addEventListener('scroll', foo)
+        // hero-video will be found in the index file
+        const heroEl = document.getElementById('hero-video')
+
+        const observer = new IntersectionObserver((entries) => {
+            const isVisible = entries[0].isIntersecting
+            setIsHeroVisible(isVisible)
+        }, {})
+
+        if (heroEl) observer.observe(heroEl)
 
         return () => {
-            window.removeEventListener('scroll', foo)
+            heroEl && observer.unobserve(heroEl)
+            observer.disconnect()
         }
     }, [])
 
     return (
         <div
             className={clsx(
-                scrolledToTop &&
+                isHeroVisible &&
                     ['/home', '/'].includes(currentRoute.toLowerCase())
-                    ? 'fixed'
+                    ? 'fixed top-0'
                     : 'sticky top-0 bg-base-100 shadow-md',
                 'navbar z-30 gap-2 py-8'
             )}
@@ -115,7 +122,7 @@ const Header = () => {
             </div>
             <ul
                 className={clsx(
-                    scrolledToTop &&
+                    isHeroVisible &&
                         ['home', '/'].includes(currentRoute.toLowerCase()) &&
                         'text-neutral-100',
                     'menu hidden shrink grow flex-nowrap justify-end gap-1 lg:menu-horizontal'
@@ -143,15 +150,7 @@ const Drawer = () => {
                     setDrawerMounted(true)
                 }}
             >
-                <svg
-                    className="swap-off fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 512 512"
-                >
-                    <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" />
-                </svg>
+                <PiList size={32} />
             </button>
 
             <section
