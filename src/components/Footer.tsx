@@ -14,8 +14,8 @@ import {
 
 export const Footer = () => {
     return (
-        <>
-            <footer className="mt-14 grid items-start justify-center gap-16 rounded-t-3xl bg-base-200 p-10 sm:grid-cols-2 md:grid-cols-3">
+        <section className="rounded-t-3xl bg-base-200">
+            <footer className="mx-auto mt-14 grid items-start gap-16 p-10 md:grid-cols-2 xl:grid-cols-3">
                 <div className="grid gap-2">
                     <h6 className="footer-title">Navigation</h6>
                     <nav className="grid gap-2">
@@ -70,9 +70,9 @@ export const Footer = () => {
                         <div>
                             <PiMapPin />
                             <p>
-                                Sector-27/A, Plot No. 419, Pradhikaran,
+                                Sector-27/A, Plot No. 419,
                                 <br />
-                                Nigdi, Pune, Maharashtra, 411044
+                                Pradhikaran, Nigdi, Pune, Maharashtra, 411044
                             </p>
                         </div>
                     </div>
@@ -145,9 +145,10 @@ export const Footer = () => {
                 </div>
 
                 <article className="grid gap-2">
-                    <h6 className="footer-title">WhatsApp QR Code</h6>
+                    <h6 className="footer-title ml-2">WhatsApp QR Code</h6>
                     <a
-                        className="inline-block max-w-64 rounded-2xl bg-white p-5"
+                        className="tooltip tooltip-bottom tooltip-open tooltip-primary inline-block max-w-64 rounded-2xl bg-white p-5 sm:tooltip-right"
+                        data-tip="CLICK THE CODE"
                         href="https://wa.me/message/ZLJXQKQPM75IL1"
                         id="whatsapp"
                         aria-label="Whatsapp QR code"
@@ -162,7 +163,7 @@ export const Footer = () => {
                 </article>
             </footer>
 
-            <footer className="footer footer-center rounded bg-base-200 px-10 py-8">
+            <footer className="footer footer-center rounded border-t-2 border-primary bg-base-200 px-10 py-8">
                 <aside className="grid place-content-center">
                     <span className="flex">
                         <a
@@ -188,13 +189,12 @@ export const Footer = () => {
                         <em className="font-bold text-primary">
                             Website by decipher. Need one? Cick here to connect.
                         </em>
-                        .
                     </a>
                     <span className="">
                         Copyright © 2024 All rights reserved.
                     </span>
                 </aside>
             </footer>
-        </>
+        </section>
     )
 }
