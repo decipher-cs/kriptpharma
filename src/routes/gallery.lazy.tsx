@@ -51,7 +51,7 @@ const Gallery = () => {
     return (
         <section className="flex flex-col gap-4">
             <div className="swiper-gallery h-[80svh] w-full">
-                <div className="swiper-wrapper">
+                <div className="swiper-wrapper select-none">
                     {imagePaths.map(
                         (img, i) =>
                             img && (
