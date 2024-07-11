@@ -99,16 +99,18 @@ const Header = () => {
             heroEl && observer.unobserve(heroEl)
             observer.disconnect()
         }
-    }, [])
+    }, [routerState])
 
     return (
         <div
             className={clsx(
-                isHeroVisible &&
-                    ['/home', '/'].includes(currentRoute.toLowerCase())
-                    ? 'fixed top-0'
-                    : 'sticky top-0 bg-base-100 shadow-md',
-                'navbar z-30 gap-2 py-8'
+                ['/home', '/'].includes(currentRoute.toLowerCase())
+                    ? 'fixed'
+                    : 'sticky',
+                isHeroVisible
+                    ? 'bg-transparent shadow-none'
+                    : 'bg-base-100 shadow-md',
+                'navbar top-0 z-30 gap-2 py-8'
             )}
         >
             <div className="max-w-56 shrink grow">
