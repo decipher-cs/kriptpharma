@@ -41,14 +41,20 @@ const Index = () => {
 }
 
 const Hero = () => {
-    const style = getComputedStyle(document.body)
-    const primaryColor = style.getPropertyValue('--p')
-    const secondaryColor = style.getPropertyValue('--s')
-
     return (
         <section className="relative -mx-breath grid min-h-svh items-center overflow-x-hidden bg-white bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg">
             <div className="absolute inset-x-0 size-full brightness-[60%]">
                 <video
+                    // Do not remove or alter the id.
+                    //
+                    // The header in the root file makes use of this id
+                    // in an intersection observer to
+                    // change the visibily of text on navbar.
+                    //
+                    // If it seems like an anti-pattern,
+                    // that's cause it is.
+                    //
+                    // TODO: Remove reliance of id attriubte for this.
                     id="hero-video"
                     className="inline-block size-full object-cover"
                     // TODO: Add poster which appears while video is loading
@@ -71,8 +77,8 @@ const Hero = () => {
                         className="text-3xl font-bold text-transparent md:text-6xl"
                         style={{
                             backgroundImage: `linear-gradient(45deg,
-                                    oklch(${primaryColor}),
-                                    oklch(${secondaryColor}) )`,
+                                    oklch(var(--p)),
+                                    oklch(var(--s) )`,
                             backgroundClip: 'text',
                         }}
                     >
