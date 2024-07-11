@@ -24,7 +24,7 @@ export const Alert = (props: { alertFor: string; text: string }) => {
             {/* TODO: Stop animation on hover*/}
             <div className={'overflow-hidden'}>
                 <div className="grid w-min animate-horizontal-scroll grid-flow-col text-nowrap font-bold text-primary-content">
-                    {text} {text}
+                    {text.toUpperCase()} {text.toUpperCase()}
                 </div>
             </div>
 
