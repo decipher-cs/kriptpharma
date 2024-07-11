@@ -145,7 +145,7 @@ export const Footer = () => {
                 </div>
 
                 <article className="grid gap-2">
-                    <h6 className="footer-title ml-2">WhatsApp QR Code</h6>
+                    <h6 className="footer-title ml-1">WhatsApp QR Code</h6>
                     <a
                         className="tooltip tooltip-bottom tooltip-open tooltip-primary inline-block max-w-64 rounded-2xl bg-white p-5 sm:tooltip-right"
                         data-tip="CLICK THE CODE"
@@ -163,8 +163,8 @@ export const Footer = () => {
                 </article>
             </footer>
 
-            <footer className="footer footer-center rounded border-t-2 border-primary bg-base-200 px-10 py-8">
-                <aside className="grid place-content-center">
+            <footer className="footer footer-center rounded border-y-2 border-primary bg-base-200 px-10 pb-20 pt-10">
+                <aside className="grid place-content-center gap-8">
                     <span className="flex">
                         <a
                             className="link-hover link"
@@ -182,14 +182,24 @@ export const Footer = () => {
                         </a>
                     </span>
                     <a
-                        className="link-hover link"
+                        className="link-hover link link-primary  w-full text-lg font-bold"
                         href="https://decipher-portfolio.netlify.app/"
                         target="_blank"
                     >
-                        <em className="font-bold text-primary">
-                            Website by decipher. Need one? Cick here to connect.
-                        </em>
+                        Website by
+                        <em className="text-primary">{' DECIPHER. '}</em>
+                        Need one? Cick here to connect.
                     </a>
+                    <span>
+                        This website is a work in progress. Any discrepancy can
+                        reported to
+                        <a
+                            className="link-hover link"
+                            href="mailto:developer@kriptpharmaceuticals.com"
+                        >
+                            {' developer@kriptpharmaceuticals.com '}
+                        </a>
+                    </span>
                     <span className="">
                         Copyright © 2024 All rights reserved.
                     </span>
