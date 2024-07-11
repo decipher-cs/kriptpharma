@@ -12,7 +12,7 @@ import { ErrorPage } from '../view/PageNotFount'
 import { Alert } from '../components/Alert'
 import { Footer } from '../components/Footer'
 import clsx from 'clsx'
-import { PiList } from 'react-icons/pi'
+import { PiCross, PiList, PiX } from 'react-icons/pi'
 
 export const Route = createRootRoute({
     component: () => (
@@ -130,12 +130,12 @@ const Header = () => {
                     isHeroVisible &&
                         ['home', '/'].includes(currentRoute.toLowerCase()) &&
                         'text-neutral-100',
-                    'menu hidden shrink grow flex-nowrap justify-end gap-1 lg:menu-horizontal'
+                    'menu hidden shrink grow flex-nowrap justify-end gap-1 xl:menu-horizontal'
                 )}
             >
                 <Nav />
             </ul>
-            <div className="flex-none grow justify-end justify-self-end lg:hidden">
+            <div className="flex-none grow justify-end justify-self-end xl:hidden">
                 <Drawer />
             </div>
         </div>
@@ -192,20 +192,7 @@ const Drawer = () => {
                         className="btn btn-ghost ml-1"
                         onClick={() => setDrawerOpen(false)}
                     >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="20"
-                            height="20"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                        >
-                            <path d="M18 6 6 18" />
-                            <path d="m6 6 12 12" />
-                        </svg>
+                        <PiX size={22} />
                     </button>
                     <ul className="menu gap-2">
                         <Nav />
