@@ -12,6 +12,8 @@ import {
     PiRoadHorizon,
     PiShieldStar,
     PiShootingStar,
+    PiSkipBack,
+    PiSkipForward,
     PiSparkle,
 } from 'react-icons/pi'
 import icuBed2 from '../assets/featured/icu bed 2.webp'
@@ -21,6 +23,10 @@ import icuBed from '../assets/featured/icu bed.webp'
 import otRoom from '../assets/featured/ot room.webp'
 import wheelchair from '../assets/featured/wheelchair.webp'
 import clsx from 'clsx'
+import { useEffect, useRef, useState } from 'react'
+import Swiper from 'swiper/bundle'
+import 'swiper/css/bundle'
+import { screens } from 'tailwindcss/defaultTheme'
 
 export const Route = createLazyFileRoute('/')({
     component: () => <Index />,
@@ -42,7 +48,7 @@ const Index = () => {
 
 const Hero = () => {
     return (
-        <section className="relative -mx-breath grid min-h-svh items-center overflow-x-hidden bg-white bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg">
+        <section className="relative z-40 -mx-breath grid min-h-svh items-center overflow-x-hidden bg-white bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg">
             <div className="absolute inset-x-0 size-full brightness-[60%]">
                 <video
                     // Do not remove or alter the id.
@@ -121,33 +127,90 @@ const featuredProductNames = [
 ]
 
 const FeaturedProducts = () => {
+    const lgScreenQuery = window.matchMedia(`(min-width: ${screens.lg})`)
+    const [isScreenLg, setIsScreenLg] = useState(lgScreenQuery.matches)
+    const slider = useRef<Swiper | null>(null)
+
+    useEffect(() => {
+        const syncScreenChange = (e: MediaQueryListEvent) =>
+            setIsScreenLg(e.matches)
+
+        lgScreenQuery.addEventListener('change', syncScreenChange)
+        return () => {
+            lgScreenQuery.removeEventListener('change', syncScreenChange)
+        }
+    }, [lgScreenQuery])
+
+    useEffect(() => {
+        slider.current = new Swiper('.swiper', {
+            loop: true,
+            slidesPerView: isScreenLg ? 5 : 3,
+            centeredSlides: true,
+            autoHeight: true,
+            spaceBetween: isScreenLg ? 50 : 30,
+            autoplay: { delay: isScreenLg ? 2000 : 1000 },
+            pagination: {
+                el: '.swiper-pagination',
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+            speed: isScreenLg ? 1000 : 2000,
+        })
+
+        return () => {
+            slider.current?.destroy()
+        }
+    }, [isScreenLg])
     return (
-        <Breakout>
-            <section
-                className="w-full overflow-hidden"
-                style={{
-                    mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
-                }}
-            >
-                <div className="grid w-fit animate-horizontal-scroll grid-flow-col">
-                    {[...featuredProductNames, ...featuredProductNames].map(
-                        (data, i) => (
-                            <Link key={i} className="mx-7 grid" to="/downloads">
-                                <div className="relative aspect-square w-28 rounded-full border-4 border-primary sm:w-56">
-                                    <img
-                                        className="absolute inset-0 size-full rounded-full object-cover object-center"
-                                        src={data.img}
-                                        alt=""
-                                    />
+        <Breakout
+            style={{
+                mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
+            }}
+        >
+            <div className="swiper w-full hover:cursor-grab">
+                <div className="swiper-wrapper select-none">
+                    {featuredProductNames.map(
+                        ({ name, img }, i) =>
+                            img && (
+                                <div className="swiper-slide" key={i}>
+                                    <Link
+                                        className="mb-7 grid justify-center"
+                                        to="/downloads"
+                                        onMouseOver={() =>
+                                            slider.current?.autoplay.pause()
+                                        }
+                                        onMouseLeave={() =>
+                                            slider.current?.autoplay.resume()
+                                        }
+                                    >
+                                        <div className="relative aspect-square w-28 rounded-full border-4 border-primary sm:w-56">
+                                            <img
+                                                className="absolute inset-0 size-full rounded-full object-cover object-center"
+                                                src={img}
+                                                alt=""
+                                            />
+                                        </div>
+                                        <h4 className="mt-3 whitespace-nowrap text-center">
+                                            {name.toUpperCase()}
+                                        </h4>
+                                    </Link>
                                 </div>
-                                <h4 className="mt-3 whitespace-nowrap text-center">
-                                    {data.name.toUpperCase()}
-                                </h4>
-                            </Link>
-                        )
+                            )
                     )}
                 </div>
-            </section>
+                <div className="swiper-button-prev">
+                    <PiSkipBack size={30} />
+                </div>
+                <div className="swiper-button-next">
+                    <PiSkipForward size={30} />
+                </div>
+                <div className="swiper-scrollbar"></div>
+            </div>
         </Breakout>
     )
 }
