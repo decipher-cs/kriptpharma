@@ -66,7 +66,8 @@ const Nav = () => {
                         to={'/' + path.replace(' ', '')}
                         className={clsx(
                             currentRoute.slice(1).toLowerCase() ===
-                                path.toLowerCase() && 'active font-bold'
+                                path.toLowerCase() && 'active font-bold',
+                            'font-semibold'
                         )}
                     >
                         {path.toUpperCase()}
@@ -97,6 +98,7 @@ const Header = () => {
         )
 
         if (heroEl) observer.observe(heroEl)
+        else setIsHeroVisible(false)
 
         return () => {
             heroEl && observer.unobserve(heroEl)
@@ -113,7 +115,7 @@ const Header = () => {
                 isHeroVisible
                     ? 'bg-transparent shadow-none'
                     : 'bg-base-100 shadow-md',
-                'navbar top-0 z-30 gap-2 py-8 transition-colors'
+                'navbar top-0 z-30 gap-2 rounded-b-xl py-5 transition-colors'
             )}
         >
             <div className="max-w-56 shrink grow">
