@@ -183,11 +183,11 @@ const reasonsToChooseUs = [
 const ReasonsToChooseUse = () => {
     return (
         <Breakout className="bg-base-200 py-24">
-            <h2 className="mb-48 text-center text-4xl font-bold lg:text-6xl">
+            <h2 className="mb-32 text-center text-4xl font-bold md:mb-48 lg:text-6xl">
                 Why Choose Us?
             </h2>
 
-            <article className="snap-start space-y-12 border-blue-400">
+            <article className="snap-start space-y-44 border-blue-400 md:space-y-12">
                 {reasonsToChooseUs.map((data, i) => (
                     <div
                         key={data.title}
