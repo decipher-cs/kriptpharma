@@ -27,7 +27,7 @@ export const Route = createLazyFileRoute('/gallery')({
 const Gallery = () => {
     const slider = useRef<Swiper | null>(null)
     useEffect(() => {
-        slider.current = new Swiper('.swiper', {
+        slider.current = new Swiper('.swiper-gallery', {
             loop: true,
             slidesPerView: 1,
             pagination: {
@@ -50,7 +50,7 @@ const Gallery = () => {
 
     return (
         <section className="flex flex-col gap-4">
-            <div className="swiper h-[80svh] w-full">
+            <div className="swiper-gallery h-[80svh] w-full">
                 <div className="swiper-wrapper">
                     {imagePaths.map(
                         (img, i) =>
