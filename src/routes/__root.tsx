@@ -94,7 +94,7 @@ const Header = () => {
                 const isVisible = entries[0].isIntersecting
                 setIsHeroVisible(isVisible)
             },
-            { rootMargin: '-90%' }
+            { threshold: 0.9 }
         )
 
         if (heroEl) observer.observe(heroEl)
