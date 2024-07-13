@@ -2,6 +2,7 @@ import {
     createRootRoute,
     Link,
     Outlet,
+    ScrollRestoration,
     useRouterState,
 } from '@tanstack/react-router'
 import kriptPharmaLogo from '../assets/company-logo.svg'
@@ -17,6 +18,7 @@ import { PiCross, PiList, PiX } from 'react-icons/pi'
 export const Route = createRootRoute({
     component: () => (
         <div className="selection:bg-secondary selection:text-secondary-content">
+            <ScrollRestoration />
             <ThemeProvider>
                 <Header />
 
