@@ -1,8 +1,12 @@
 import { Link, useRouterState } from '@tanstack/react-router'
-import kriptPharmaLogo from '../assets/company-logo.svg'
+import kriptPharmaLogoDark from '../assets/brand-logo/logo-dark.svg'
+import kriptPharmaLogoLight from '../assets/brand-logo/logo-light.webp'
+import kriptPharmaLogoCompact from '../assets/brand-logo/logo-dark-compact.webp'
 import { memo, useEffect, useState } from 'react'
 import clsx from 'clsx'
 import { PiList, PiX } from 'react-icons/pi'
+import useMediaQuery from '../hooks/useMediaQuery'
+import { screens } from 'tailwindcss/defaultTheme'
 
 const Nav = memo(() => {
     const {
@@ -40,6 +44,8 @@ const Nav = memo(() => {
 })
 
 export const Header = memo(() => {
+    const { queryMatches: isScreenSm } = useMediaQuery(`(max-width: ${screens.sm})`)
+
     const [isHeroVisible, setIsHeroVisible] = useState(false)
 
     const routerState = useRouterState()
@@ -72,16 +78,24 @@ export const Header = memo(() => {
             className={clsx(
                 ['/home', '/'].includes(currentRoute.toLowerCase()) ? 'fixed' : 'sticky',
                 isHeroVisible ? 'bg-transparent shadow-none' : 'bg-base-100 shadow-md',
-                'navbar top-0 z-50 gap-2 rounded-b-xl py-5 transition-colors'
+                'navbar top-0 z-50 gap-2 py-3 transition-colors md:py-5'
             )}
         >
             <div className="max-w-56 shrink grow">
-                <Link to="/" className="w-full sm:text-xl">
-                    <img
-                        src={kriptPharmaLogo}
-                        alt="Kript Pharmaceuticals logo"
-                        className="inline-block h-auto w-full"
-                    />
+                <Link to="/" className="w-full sm:text-xl" aria-label="go to home">
+                    {isScreenSm ? (
+                        <img
+                            src={kriptPharmaLogoCompact}
+                            alt="Kript Pharmaceuticals logo"
+                            className="inline-block h-auto max-w-16"
+                        />
+                    ) : (
+                        <img
+                            src={isHeroVisible ? kriptPharmaLogoLight : kriptPharmaLogoDark}
+                            alt="Kript Pharmaceuticals logo"
+                            className="inline-block h-auto w-full"
+                        />
+                    )}
                 </Link>
             </div>
             <ul
