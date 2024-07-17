@@ -13,10 +13,10 @@ import { createFileRoute } from '@tanstack/react-router'
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as ProductImport } from './routes/product'
 
 // Create Virtual Routes
 
-const ProductLazyImport = createFileRoute('/product')()
 const HomeLazyImport = createFileRoute('/home')()
 const GlobalPresenceLazyImport = createFileRoute('/globalPresence')()
 const GalleryLazyImport = createFileRoute('/gallery')()
@@ -28,11 +28,6 @@ const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 
 // Create/Update Routes
-
-const ProductLazyRoute = ProductLazyImport.update({
-  path: '/product',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/product.lazy').then((d) => d.Route))
 
 const HomeLazyRoute = HomeLazyImport.update({
   path: '/home',
@@ -76,6 +71,11 @@ const AboutLazyRoute = AboutLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/about.lazy').then((d) => d.Route))
 
+const ProductRoute = ProductImport.update({
+  path: '/product',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -86,43 +86,73 @@ const IndexLazyRoute = IndexLazyImport.update({
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
     '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
       parentRoute: typeof rootRoute
     }
+    '/product': {
+      id: '/product'
+      path: '/product'
+      fullPath: '/product'
+      preLoaderRoute: typeof ProductImport
+      parentRoute: typeof rootRoute
+    }
     '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
       preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
     '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
       preLoaderRoute: typeof ContactLazyImport
       parentRoute: typeof rootRoute
     }
     '/downloads': {
+      id: '/downloads'
+      path: '/downloads'
+      fullPath: '/downloads'
       preLoaderRoute: typeof DownloadsLazyImport
       parentRoute: typeof rootRoute
     }
     '/equipment': {
+      id: '/equipment'
+      path: '/equipment'
+      fullPath: '/equipment'
       preLoaderRoute: typeof EquipmentLazyImport
       parentRoute: typeof rootRoute
     }
     '/exhibition': {
+      id: '/exhibition'
+      path: '/exhibition'
+      fullPath: '/exhibition'
       preLoaderRoute: typeof ExhibitionLazyImport
       parentRoute: typeof rootRoute
     }
     '/gallery': {
+      id: '/gallery'
+      path: '/gallery'
+      fullPath: '/gallery'
       preLoaderRoute: typeof GalleryLazyImport
       parentRoute: typeof rootRoute
     }
     '/globalPresence': {
+      id: '/globalPresence'
+      path: '/globalPresence'
+      fullPath: '/globalPresence'
       preLoaderRoute: typeof GlobalPresenceLazyImport
       parentRoute: typeof rootRoute
     }
     '/home': {
+      id: '/home'
+      path: '/home'
+      fullPath: '/home'
       preLoaderRoute: typeof HomeLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/product': {
-      preLoaderRoute: typeof ProductLazyImport
       parentRoute: typeof rootRoute
     }
   }
@@ -130,8 +160,9 @@ declare module '@tanstack/react-router' {
 
 // Create and export the route tree
 
-export const routeTree = rootRoute.addChildren([
+export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
+  ProductRoute,
   AboutLazyRoute,
   ContactLazyRoute,
   DownloadsLazyRoute,
@@ -140,7 +171,58 @@ export const routeTree = rootRoute.addChildren([
   GalleryLazyRoute,
   GlobalPresenceLazyRoute,
   HomeLazyRoute,
-  ProductLazyRoute,
-])
+})
 
 /* prettier-ignore-end */
+
+/* ROUTE_MANIFEST_START
+{
+  "routes": {
+    "__root__": {
+      "filePath": "__root.tsx",
+      "children": [
+        "/",
+        "/product",
+        "/about",
+        "/contact",
+        "/downloads",
+        "/equipment",
+        "/exhibition",
+        "/gallery",
+        "/globalPresence",
+        "/home"
+      ]
+    },
+    "/": {
+      "filePath": "index.lazy.tsx"
+    },
+    "/product": {
+      "filePath": "product.tsx"
+    },
+    "/about": {
+      "filePath": "about.lazy.tsx"
+    },
+    "/contact": {
+      "filePath": "contact.lazy.tsx"
+    },
+    "/downloads": {
+      "filePath": "downloads.lazy.tsx"
+    },
+    "/equipment": {
+      "filePath": "equipment.lazy.tsx"
+    },
+    "/exhibition": {
+      "filePath": "exhibition.lazy.tsx"
+    },
+    "/gallery": {
+      "filePath": "gallery.lazy.tsx"
+    },
+    "/globalPresence": {
+      "filePath": "globalPresence.lazy.tsx"
+    },
+    "/home": {
+      "filePath": "home.lazy.tsx"
+    }
+  }
+}
+ROUTE_MANIFEST_END */
