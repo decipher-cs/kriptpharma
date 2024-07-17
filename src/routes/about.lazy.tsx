@@ -11,8 +11,8 @@ const AboutUs = () => {
     return (
         <section className="mx-auto max-w-screen-xl space-y-8">
             <article className="mx-auto grid items-center justify-center gap-16" id="about-us">
-                <h2 className="text-3xl font-bold lg:text-5xl">About Us</h2>
-                <p className="max-w-prose text-lg/relaxed sm:text-xl/loose">
+                <h2 className="max-w-prose text-3xl font-bold lg:text-5xl">About Us</h2>
+                <p className="text-lg/relaxed sm:text-xl/loose">
                     <Balancer>
                         A promise for healthy life Kript pharmaceuticals pvt Ltd was established
                         with the motive of adding values to the million of lives through its best
@@ -36,7 +36,11 @@ const AboutUs = () => {
                     </Balancer>
                 </p>
 
-                <img src={certificates} className={'mx-auto max-w-prose'} alt={'accreditations and certifications'} />
+                <img
+                    src={certificates}
+                    className={'mx-auto inline-block max-h-[60svh]'}
+                    alt={'accreditations and certifications'}
+                />
             </article>
         </section>
     )
