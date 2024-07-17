@@ -11,8 +11,10 @@ import {
     PiGithubLogo,
     PiSidebar,
 } from 'react-icons/pi'
+import Balancer from 'react-wrap-balancer'
+import { memo } from 'react'
 
-export const Footer = () => {
+export const Footer = memo(() => {
     return (
         <section className="rounded-t-3xl bg-base-200">
             <footer className="mx-auto mt-14 grid items-start gap-16 p-10 md:grid-cols-2 xl:grid-cols-3">
@@ -29,11 +31,7 @@ export const Footer = () => {
                             'Exhibition',
                             'Contact',
                         ].map((path) => (
-                            <Link
-                                className="link-hover link"
-                                key={path}
-                                to={'/' + path}
-                            >
+                            <Link className="link-hover link" key={path} to={'/' + path}>
                                 {path}
                             </Link>
                         ))}
@@ -80,10 +78,7 @@ export const Footer = () => {
 
                 <form
                     className="grid gap-2"
-                    action={
-                        'https://send.pageclip.co/' +
-                        import.meta.env.VITE_PAGECLIP_API_KEY
-                    }
+                    action={'https://send.pageclip.co/' + import.meta.env.VITE_PAGECLIP_API_KEY}
                     method="post"
                 >
                     <label htmlFor="inquiry" className="footer-title">
@@ -97,10 +92,7 @@ export const Footer = () => {
                             placeholder="Enter email"
                             type="email"
                         />
-                        <button
-                            className="btn join-item btn-neutral"
-                            type="submit"
-                        >
+                        <button className="btn join-item btn-neutral" type="submit">
                             Submit
                         </button>
                     </div>
@@ -186,13 +178,14 @@ export const Footer = () => {
                         href="https://decipher-portfolio.netlify.app/"
                         target="_blank"
                     >
-                        Website by
-                        <em className="text-primary">{' DECIPHER. '}</em>
-                        Need one? Cick here to connect.
+                        <Balancer>
+                            Website by
+                            <em className="text-primary">{' DECIPHER. '}</em>
+                            Need one? Cick here to connect.
+                        </Balancer>
                     </a>
                     <span>
-                        This website is a work in progress. Any discrepancy can
-                        reported to
+                        This website is a work in progress. Any discrepancy can reported to
                         <a
                             className="link-hover link"
                             href="mailto:developer@kriptpharmaceuticals.com"
@@ -200,11 +193,9 @@ export const Footer = () => {
                             {' developer@kriptpharmaceuticals.com '}
                         </a>
                     </span>
-                    <span className="">
-                        Copyright © 2024 All rights reserved.
-                    </span>
+                    <span className="">Copyright © 2024 All rights reserved.</span>
                 </aside>
             </footer>
         </section>
     )
-}
+})
