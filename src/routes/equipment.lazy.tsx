@@ -1,6 +1,7 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { memo } from 'react'
-import furnitureCatalogue from '../assets/furniture-catalogue.pdf'
+import { memo, useState } from 'react'
+import furnitureCatalogue from '../assets/downloadable-pdf/furniture-catalogue.pdf'
+import clsx from 'clsx'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -14,7 +15,7 @@ const backgroundImagePaths = Object.values(modules).map((module) => {
 })
 
 export const Route = createLazyFileRoute('/equipment')({
-    component: () => <Equipment />,
+    component: memo(() => <Equipment />),
 })
 
 const Equipment = () => {
@@ -27,36 +28,129 @@ const Equipment = () => {
     )
 }
 
+const equipments = [
+    {
+        name: 'Hospital Bed',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/hospital-beds/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'Hospital Bed accessories',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/hospital-bed-accessories/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'Delivery Bed',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/delivery-beds/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'Dialsysis Bed',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/dialsysis-bed/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'Examination Table',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/examination-tables/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'Modular OT',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/modular-ot/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'OT Table',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/ot-tables/*.{jpg,png,webp,jpeg}', { eager: true })
+        ),
+    },
+    {
+        name: 'patient transfer trolley',
+        images: Object.values(
+            import.meta.glob(
+                '../assets/equipment/patient-transfer-trolleys/*.{jpg,png,webp,jpeg}',
+                { eager: true }
+            )
+        ),
+    },
+    {
+        name: 'ward equipment',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/ward-equipments/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'wheelchair',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/wheelchairs/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+    {
+        name: 'ward ot opd equipment',
+        images: Object.values(
+            import.meta.glob('../assets/equipment/ward-ot-opd-equpment/*.{jpg,png,webp,jpeg}', {
+                eager: true,
+            })
+        ),
+    },
+]
+
 const Mason = memo(() => {
+    const [selectedEquipment, setSelectedEquipment] = useState<(typeof equipments)[number]>(
+        equipments[0]
+    )
+
     return (
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-            {[
-                'Hospital Beds',
-                'Ward Equipment',
-                'Patient Transfer Trolley',
-                'OT Table & Modular OT',
-                'Wheelchairs',
-                'Delivery Beds',
-                'OT Table & Modular OT',
-                'Wheelchairs',
-                'Delivery Beds',
-            ].map((data, i) => (
-                <a
-                    href={furnitureCatalogue}
-                    target="_blank"
-                    key={i}
-                    className="relative grid min-h-32 place-content-center rounded-lg px-3 transition odd:row-span-2 even:row-span-3 hover:scale-110 sm:min-h-40"
-                >
-                    <img
-                        className="absolute inset-0 size-full rounded-lg object-cover object-center brightness-[60%]"
-                        src={backgroundImagePaths[i]}
-                        alt=""
-                    />
-                    <h3 className="z-0 text-center text-xl font-bold text-white sm:text-2xl">
-                        {data}
-                    </h3>
-                </a>
-            ))}
-        </div>
+        <section>
+            <div role="tablist" className="tabs tabs-lifted">
+                {equipments.map((equipment) => (
+                    <a
+                        key={equipment.name}
+                        className={clsx(
+                            'tab truncate',
+                            selectedEquipment.name === equipment.name && 'tab-active'
+                        )}
+                        onClick={() => setSelectedEquipment(equipment)}
+                    >
+                        {equipment.name}
+                    </a>
+                ))}
+
+                {selectedEquipment.images.map((val) => {
+                    if (
+                        typeof val === 'object' &&
+                        val &&
+                        'default' in val &&
+                        typeof val.default === 'string'
+                    ) {
+                        return <img src={val.default} className="inline-block" key={val.default} />
+                    } else console.log(val)
+                    return null
+                })}
+            </div>
+        </section>
     )
 })
