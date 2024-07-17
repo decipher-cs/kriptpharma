@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "@glidejs/glide": "^3.6.2",
-    "@tanstack/react-router": "^1.22.2",
+    "@tanstack/react-router": "^1.23.9",
+    "@types/eslint": "^8.56.10",
     "@types/glidejs__glide": "^3.6.5",
     "clsx": "^2.1.1",
     "country-codes-list": "^1.6.11",
@@ -20,12 +21,13 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.52.0",
+    "react-wrap-balancer": "^1.1.1",
     "swiper": "^11.1.4",
     "tailwind-merge": "^2.3.0"
   },
   "devDependencies": {
-    "@tanstack/router-devtools": "^1.22.2",
-    "@tanstack/router-vite-plugin": "^1.20.5",
+    "@tanstack/router-devtools": "^1.23.9",
+    "@tanstack/router-plugin": "^1.23.9",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
