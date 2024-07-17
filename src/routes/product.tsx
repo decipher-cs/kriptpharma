@@ -197,7 +197,7 @@ const Product = () => {
             <Breakout>
                 <article className="mx-auto space-y-10">
                     <section className="flex justify-center gap-3 max-md:flex-wrap">
-                        <label className="input input-md input-bordered flex basis-1/2 items-center gap-2 sm:justify-self-start">
+                        <label className="input input-md input-bordered flex basis-full items-center gap-2 sm:justify-self-start">
                             <span className="sr-only">Search the table</span>
                             <input
                                 type="text"
@@ -213,7 +213,7 @@ const Product = () => {
                         </label>
 
                         <button
-                            className="btn basis-1/2 capitalize"
+                            className="btn shrink basis-full capitalize"
                             onClick={() => {
                                 const modal = document.getElementById('filter-modal')
                                 if (modal instanceof HTMLDialogElement) modal.showModal()
