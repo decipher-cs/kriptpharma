@@ -55,7 +55,7 @@ export const Header = memo(() => {
                 const isVisible = entries[0].isIntersecting
                 setIsHeroVisible(isVisible)
             },
-            { threshold: 0.9 }
+            { threshold: 0.8 }
         )
 
         if (heroEl) observer.observe(heroEl)
