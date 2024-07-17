@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import certificates from '../assets/certification.svg'
+import certificates from '../assets/certification.webp'
 import Balancer from 'react-wrap-balancer'
 import { memo } from 'react'
 
@@ -36,7 +36,7 @@ const AboutUs = () => {
                     </Balancer>
                 </p>
 
-                <img src={certificates} className={'mx-auto'} alt={'accreditations'} />
+                <img src={certificates} className={'mx-auto max-w-prose'} alt={'accreditations and certifications'} />
             </article>
         </section>
     )

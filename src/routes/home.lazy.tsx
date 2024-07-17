@@ -1,10 +1,15 @@
 import { createLazyFileRoute, Link, LinkProps } from '@tanstack/react-router'
 import heroVideo from '../assets/hero-video.webm'
+import heroVideoPoster from '../assets/hero-image-poster.webp'
 import Breakout from '../components/Breakout'
 import video1 from '../assets/videos/video1.webm'
 import video2 from '../assets/videos/video2.webm'
 import video3 from '../assets/videos/video3.webm'
 import video4 from '../assets/videos/video4.webm'
+import video1Poster from '../assets/videos/video-thumbnail1.webp'
+import video2Poster from '../assets/videos/video-thumbnail2.webp'
+import video3Poster from '../assets/videos/video-thumbnail3.webp'
+import video4Poster from '../assets/videos/video-thumbnail4.webp'
 import {
     PiEye,
     PiHandshake,
@@ -67,17 +72,16 @@ const Hero = () => {
                     // TODO: Remove reliance of id attriubte for this.
                     id="hero-video"
                     className="inline-block size-full object-cover"
-                    // TODO: Add poster which appears while video is loading
-                    poster=""
+                    poster={heroVideoPoster}
                     autoPlay
                     disablePictureInPicture
                     disableRemotePlayback
                     loop
                     muted
-                    preload="metadata"
+                    preload="none"
                     playsInline
                 >
-                    <source src={heroVideo} type="video/mp4" />
+                    <source src={heroVideo} type="video/webm" />
                 </video>
             </div>
 
@@ -231,12 +235,14 @@ const reasonsToChooseUs = [
     {
         logo: <PiSparkle className="size-16" />,
         content: video1,
+        poster: video1Poster,
         title: `Commitment to Quality and Accessibility`,
         description: `We firmly believe in quality, and our goal is to make products accessible in every market at an affordable price to meet market needs.`,
     },
     {
         logo: <PiShootingStar className="size-16" />,
         content: video2,
+        poster: video2Poster,
         title: `Accreditations for Business Operations`,
         description: `We have required accreditations to conduct business in regulated, semi-regulated, and non-regulated markets. We are WHO-GMP-ISO certified`,
     },
@@ -244,6 +250,7 @@ const reasonsToChooseUs = [
     {
         logo: <PiShieldStar className="size-16" />,
         content: video3,
+        poster: video3Poster,
         title: `Expert Regulatory Support`,
         description: `We have a highly qualified regulatory team to fulfill registration requirements, prioritizing expedited registration processes.`,
     },
@@ -251,6 +258,7 @@ const reasonsToChooseUs = [
     {
         logo: <PiHandshake className="size-16" />,
         content: video4,
+        poster: video4Poster,
         title: `Building Lasting Relationships`,
         description: `We believe in building healthy and lasting relationships with our partners and customers, earning their loyalty to our brand. It is with this single belief that all our products, categorized into different segments, provide medical help to customers.`,
     },
@@ -282,12 +290,11 @@ const ReasonsToChooseUse = () => {
                             disableRemotePlayback
                             loop
                             muted
-                            preload="metadata"
+                            preload="none"
                             playsInline
-                            // TODO: Add poster which appears while video is loading
-                            poster=""
+                            poster={data.poster}
                         >
-                            <source src={data.content} type="video/mp4" />
+                            <source src={data.content} type="video/webm" />
                             Unsupported video
                         </video>
                         <div className="mx-auto max-w-prose space-y-8 justify-self-center px-8 max-md:text-center">
