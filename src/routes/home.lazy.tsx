@@ -1,10 +1,10 @@
-import { createLazyFileRoute, Link, LinkComponent, LinkProps } from '@tanstack/react-router'
-import heroVideo from '../assets/hero-video.mp4'
+import { createLazyFileRoute, Link, LinkProps } from '@tanstack/react-router'
+import heroVideo from '../assets/hero-video.webm'
 import Breakout from '../components/Breakout'
-import video1 from '../assets/videos/video1.mp4'
-import video2 from '../assets/videos/video2.mp4'
-import video3 from '../assets/videos/video3.mp4'
-import video4 from '../assets/videos/video4.mp4'
+import video1 from '../assets/videos/video1.webm'
+import video2 from '../assets/videos/video2.webm'
+import video3 from '../assets/videos/video3.webm'
+import video4 from '../assets/videos/video4.webm'
 import {
     PiEye,
     PiHandshake,

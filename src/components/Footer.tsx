@@ -1,5 +1,5 @@
 import { Link } from '@tanstack/react-router'
-import qrCode from '../assets/WhatsApp-QR-code.jpeg'
+import qrCode from '../assets/WhatsApp-QR-code.webp'
 import {
     PiInstagramLogo,
     PiLinkedinLogo,
