@@ -29,13 +29,13 @@ import wheelchair from '../assets/featured/wheelchair.webp'
 import softGel from '../assets/featured/soft-gel.webp'
 import deliveryBed from '../assets/featured/delivery-bed.webp'
 import oitment from '../assets/featured/oitment.webp'
-
 import clsx from 'clsx'
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
 import { screens } from 'tailwindcss/defaultTheme'
 import Balancer from 'react-wrap-balancer'
+import useMediaQuery from '../hooks/useMediaQuery'
 
 export const Route = createLazyFileRoute('/home')({
     component: () => <Home />,
@@ -147,18 +147,8 @@ const featuredProductNames = [
 ] satisfies { href: LinkProps['to']; search?: LinkProps['search']; name: string; img: string }[]
 
 const FeaturedProducts = () => {
-    const lgScreenQuery = window.matchMedia(`(min-width: ${screens.lg})`)
-    const [isScreenLg, setIsScreenLg] = useState(lgScreenQuery.matches)
+    const { queryMatches: isScreenLg } = useMediaQuery(`(min-width: ${screens.lg})`)
     const slider = useRef<Swiper | null>(null)
-
-    useEffect(() => {
-        const syncScreenChange = (e: MediaQueryListEvent) => setIsScreenLg(e.matches)
-
-        lgScreenQuery.addEventListener('change', syncScreenChange)
-        return () => {
-            lgScreenQuery.removeEventListener('change', syncScreenChange)
-        }
-    }, [lgScreenQuery])
 
     useEffect(() => {
         slider.current = new Swiper('.swiper', {
