@@ -1,9 +1,10 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
 import { PiCheckCircle, PiDotsThreeVertical, PiSmiley } from 'react-icons/pi'
 import pharmaExpoVietnam from '../assets/gallery/vietnam-pharmaexpo.webp'
+import { memo } from 'react'
 
 export const Route = createLazyFileRoute('/exhibition')({
-    component: () => (
+    component: memo(() => (
         <section className="grid justify-center gap-1">
             <h2 className="mb-20 text-center text-5xl">Exhibition</h2>
             <ul className="timeline timeline-vertical timeline-compact timeline-snap-icon">
@@ -20,18 +21,14 @@ export const Route = createLazyFileRoute('/exhibition')({
                             <PiCheckCircle size={24} />
                         </div>
                         <div className="timeline-end mb-10">
-                            <time className="font-mono italic">
-                                {data.time}
-                            </time>
-                            <div className="text-lg font-black">
-                                {data.heading}
-                            </div>
+                            <time className="font-mono italic">{data.time}</time>
+                            <div className="max-w-prose text-lg font-black">{data.heading}</div>
                             {data.description}
                             <br />
                             <a href={pharmaExpoVietnam} target="_blank">
                                 <img
                                     src={pharmaExpoVietnam + ''}
-                                    className="my-8 inline-block h-auto w-1/2 rounded-xl bg-primary object-contain"
+                                    className="my-8 inline-block max-h-[70svh] w-auto rounded-xl bg-primary object-contain"
                                 />
                             </a>
                         </div>
@@ -48,17 +45,14 @@ export const Route = createLazyFileRoute('/exhibition')({
                         <time className="font-mono italic">
                             {new Date().toDateString().toString()}
                         </time>
-                        <div className="text-lg font-black">
-                            More on the way
-                        </div>
+                        <div className="text-lg font-black">More on the way</div>
                         <div className="text-lg ">
-                            Tune in at a later date to see more of our
-                            endeavours
+                            Tune in at a later date to see more of our endeavours
                         </div>
                     </div>
                     <hr />
                 </li>
             </ul>
         </section>
-    ),
+    )),
 })

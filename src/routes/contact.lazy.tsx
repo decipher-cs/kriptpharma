@@ -6,7 +6,7 @@ import linkedinLogo from '../assets/glyphs/linkedin.png'
 import facebookLogo from '../assets/glyphs/facebook.png'
 import { FieldErrors, Resolver, SubmitHandler, useForm } from 'react-hook-form'
 import { PiEnvelope, PiFlag, PiPhone, PiTextAa, PiUser } from 'react-icons/pi'
-import { PropsWithChildren, ReactNode, useEffect } from 'react'
+import { PropsWithChildren, ReactNode, memo, useEffect } from 'react'
 import clsx from 'clsx'
 import { twMerge } from 'tailwind-merge'
 import countryCodeList from 'country-codes-list'
@@ -14,7 +14,7 @@ import countryCodeList from 'country-codes-list'
 const countryCodes = countryCodeList.all()
 
 export const Route = createLazyFileRoute('/contact')({
-    component: () => <Contact />,
+    component: memo(() => <Contact />),
 })
 
 const contact = [

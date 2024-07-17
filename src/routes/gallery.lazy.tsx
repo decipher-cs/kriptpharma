@@ -1,7 +1,7 @@
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { useEffect, useRef } from 'react'
+import { memo, useEffect, useRef } from 'react'
 
 const modules = import.meta.glob('../assets/gallery/*.*', {
     eager: true,
@@ -12,16 +12,14 @@ const imagePaths = Object.values(modules).map((module) => {
         const path = module.default
         if (typeof path === 'string') {
             const parts = path.split('/')
-            const filename = parts[parts.length - 1]
-                .replace(/\.[\w]*$/g, '')
-                .replace(/%20/g, ' ')
+            const filename = parts[parts.length - 1].replace(/\.[\w]*$/g, '').replace(/%20/g, ' ')
             return { path, filename }
         }
     }
 })
 
 export const Route = createLazyFileRoute('/gallery')({
-    component: () => <Gallery />,
+    component: memo(() => <Gallery />),
 })
 
 const Gallery = () => {
@@ -60,12 +58,8 @@ const Gallery = () => {
                                     key={i}
                                     src={img.path}
                                     alt={img.filename}
-                                    onMouseOver={() =>
-                                        slider.current?.autoplay.pause()
-                                    }
-                                    onMouseLeave={() =>
-                                        slider.current?.autoplay.resume()
-                                    }
+                                    onMouseOver={() => slider.current?.autoplay.pause()}
+                                    onMouseLeave={() => slider.current?.autoplay.resume()}
                                 />
                             )
                     )}
