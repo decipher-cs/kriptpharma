@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router"
 
 export const ErrorPage = () => {
     return (
-        <div className="grid h-screen place-content-center px-4">
+        <div className="grid place-content-center px-4">
             <div className="space-y-7 text-center">
                 <h1 className="text-9xl font-black">404</h1>
                 <p className="text-2xl font-bold tracking-tight sm:text-4xl">
