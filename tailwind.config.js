@@ -6,15 +6,6 @@ import daisyui from 'daisyui'
 export default {
     content: ['./src/**/*.{html,js,jsx,tsx}', './src/main.tsx'],
     theme: {
-        keyframes: {
-            horizontalScroll: {
-                from: { transform: 'translateX(0)' },
-                to: { transform: 'translateX(-50%)' },
-            },
-        },
-        animation: {
-            'horizontal-scroll': 'horizontalScroll linear 60s infinite',
-        },
         extend: {
             spacing: {
                 breath: '1.5rem',
@@ -27,6 +18,15 @@ export default {
                 '11xl': '120rem',
                 '12xl': '150rem',
             },
+            keyframes: {
+                horizontalScroll: {
+                    from: { transform: 'translateX(0)' },
+                    to: { transform: 'translateX(-50%)' },
+                },
+            },
+            animation: {
+                'horizontal-scroll': 'horizontalScroll linear 60s infinite',
+            },
         },
     },
     daisyui: {
@@ -38,6 +38,7 @@ export default {
                     'primary-content': '#fff',
                     secondary: '#ffb41e',
                     'secondary-content': '#fff',
+                    'error-content': '#fff',
                 },
             },
         ],
