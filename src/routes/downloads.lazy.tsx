@@ -10,11 +10,11 @@ export const Route = createLazyFileRoute('/downloads')({
 const Download = () => {
     return (
         <section className="flex flex-wrap justify-center gap-8">
-            <div className="card card-compact w-96 bg-base-300">
+            <div className="card w-96 bg-base-300 transition-colors hover:bg-primary hover:text-primary-content">
                 <div className="card-body">
                     <h2 className="card-title">Pharmaceutical Range</h2>
                     <p>Check out our latest collection of pharmaceutical products</p>
-                    <div className="card-actions justify-end">
+                    <div className="card-actions justify-end border-primary">
                         <a
                             className="btn"
                             href={pharmaRangePdf}
@@ -27,7 +27,7 @@ const Download = () => {
                 </div>
             </div>
 
-            <div className="card card-compact w-96 bg-base-300">
+            <div className="card w-96 bg-base-300 transition-colors hover:bg-primary hover:text-primary-content">
                 <div className="card-body">
                     <h2 className="card-title">Furniture and Equipment</h2>
                     <p>Check out our latest collection of pharmaceutical equipment and furniture</p>
