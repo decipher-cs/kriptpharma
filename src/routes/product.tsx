@@ -196,8 +196,8 @@ const Product = () => {
         <section className="space-y-10">
             <Breakout>
                 <article className="mx-auto space-y-10">
-                    <section className="flex gap-3 *:basis-full max-md:flex-wrap">
-                        <label className="input input-md input-bordered flex items-center gap-2 sm:justify-self-start">
+                    <section className="flex justify-center gap-3 max-md:flex-wrap">
+                        <label className="input input-md input-bordered flex basis-1/2 items-center gap-2 sm:justify-self-start">
                             <span className="sr-only">Search the table</span>
                             <input
                                 type="text"
@@ -212,85 +212,93 @@ const Product = () => {
                             <PiMagnifyingGlass />
                         </label>
 
-                        <details className="dropdown dropdown-end sm:justify-self-end">
-                            <summary
-                                className={clsx(
-                                    twMerge(
-                                        'btn btn-ghost w-full border-neutral-300',
-                                        !Object.values(categoryVisibility).filter((v) => v)
-                                            .length && 'border-error'
-                                    )
-                                )}
-                            >
-                                Filter
-                                <span
-                                    className={clsx(
-                                        'badge badge-error indicator-start capitalize',
-                                        Object.values(categoryVisibility).filter((v) => v).length &&
-                                            'hidden'
+                        <button
+                            className="btn basis-1/2 capitalize"
+                            onClick={() => {
+                                const modal = document.getElementById('filter-modal')
+                                if (modal instanceof HTMLDialogElement) modal.showModal()
+                            }}
+                        >
+                            Filter by category
+                        </button>
+
+                        <dialog id="filter-modal" className="modal">
+                            <div className="modal-box w-full">
+                                <h3 className="px-5 text-lg font-bold">Categories</h3>
+
+                                {/* TODO: list container should auto focus on open */}
+                                <div
+                                    className="mt-3 max-h-[60svh] overflow-y-scroll px-3"
+                                    autoFocus={true}
+                                >
+                                    {Object.entries(categoryVisibility).map(
+                                        ([category, isChecked], i) => (
+                                            <div className="form-control" key={i}>
+                                                <label className="label cursor-pointer  rounded-lg px-2 hover:bg-base-200">
+                                                    <span className="label-text capitalize">
+                                                        {category}
+                                                    </span>
+                                                    <input
+                                                        type="checkbox"
+                                                        className="checkbox"
+                                                        value={category}
+                                                        onChange={(e) => {
+                                                            handleCheckboxChange(
+                                                                category,
+                                                                e.target.checked
+                                                            )
+                                                        }}
+                                                        checked={isChecked}
+                                                    />
+                                                </label>
+                                            </div>
+                                        )
                                     )}
-                                >
-                                    Select at least one option
-                                </span>
-                                <PiArrowDown />
-                            </summary>
+                                </div>
 
-                            <ul className="menu dropdown-content z-30 mt-2 w-full rounded-box bg-base-300 shadow">
-                                <li
-                                    onClick={() => {
-                                        setCategoryVisibility((p) =>
-                                            Object.fromEntries(
-                                                Object.keys(p).map((key) => [key, true])
+                                <div className="modal-action">
+                                    <button
+                                        onClick={() => {
+                                            setCategoryVisibility((p) =>
+                                                Object.fromEntries(
+                                                    Object.keys(p).map((key) => [key, true])
+                                                )
                                             )
-                                        )
-                                        changeUrlParams(
-                                            'categoryFilter',
-                                            Object.keys(categoryVisibility)
-                                        )
-                                    }}
-                                    className="font-semibold"
-                                >
-                                    <a> Select All</a>
-                                </li>
-                                <li
-                                    onClick={() => {
-                                        setCategoryVisibility((p) =>
-                                            Object.fromEntries(
-                                                Object.keys(p).map((key) => [key, false])
+                                            changeUrlParams(
+                                                'categoryFilter',
+                                                Object.keys(categoryVisibility)
                                             )
-                                        )
+                                        }}
+                                        className="btn"
+                                    >
+                                        Select All
+                                    </button>
 
-                                        changeUrlParams('categoryFilter', [])
-                                    }}
-                                    className="font-semibold"
-                                >
-                                    <a> Clear All</a>
-                                </li>
-                                {Object.entries(categoryVisibility).map(
-                                    ([category, isChecked], i) => (
-                                        <li className="form-control" key={i}>
-                                            <label className="label cursor-pointer">
-                                                <span className="label-text capitalize">
-                                                    {category}
-                                                </span>
-                                                <input
-                                                    type="checkbox"
-                                                    className="checkbox"
-                                                    value={category}
-                                                    onChange={(e) => {
-                                                        handleCheckboxChange(
-                                                            category,
-                                                            e.target.checked
-                                                        )
-                                                    }}
-                                                    checked={isChecked}
-                                                />
-                                            </label>
-                                        </li>
-                                    )
-                                )}
-                            </ul>
-                        </details>
+                                    <button
+                                        onClick={() => {
+                                            setCategoryVisibility((p) =>
+                                                Object.fromEntries(
+                                                    Object.keys(p).map((key) => [key, false])
+                                                )
+                                            )
+
+                                            changeUrlParams('categoryFilter', [])
+                                        }}
+                                        className="btn"
+                                    >
+                                        Clear All
+                                    </button>
+                                    <form method="dialog">
+                                        {/* if there is a button in form, it will close the modal */}
+                                        <button className="btn">Close</button>
+                                    </form>
+                                </div>
+                            </div>
+
+                            <form method="dialog" className="modal-backdrop">
+                                <button>close</button>
+                            </form>
+                        </dialog>
                     </section>
 
                     <div className="overflow-x-auto">
@@ -309,7 +317,7 @@ const Product = () => {
                                     .slice(0, maxRows)
                                     .map((data, i) => (
                                         <tr key={i} className="hover capitalize">
-                                            <th>{i + 1}</th>
+                                            <th className="font-normal">{i + 1}</th>
                                             <td>{data.composition}</td>
                                             <td>{data.form}</td>
                                             <td>{data.category}</td>
