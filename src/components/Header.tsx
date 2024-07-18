@@ -46,38 +46,16 @@ const Nav = memo(() => {
 export const Header = memo(() => {
     const { queryMatches: isScreenSm } = useMediaQuery(`(max-width: ${screens.sm})`)
 
-    const [isHeroVisible, setIsHeroVisible] = useState(false)
+    const {
+        location: { pathname },
+    } = useRouterState()
 
-    const routerState = useRouterState()
-
-    const currentRoute = routerState.location.pathname
-
-    useEffect(() => {
-        // hero-video will be found in the index file
-        const heroEl = document.getElementById('hero-video')
-
-        const observer = new IntersectionObserver(
-            (entries) => {
-                const isVisible = entries[0].isIntersecting
-                setIsHeroVisible(isVisible)
-            },
-            { threshold: 0.8 }
-        )
-
-        if (heroEl) observer.observe(heroEl)
-        else setIsHeroVisible(false)
-
-        return () => {
-            heroEl && observer.unobserve(heroEl)
-            observer.disconnect()
-        }
-    }, [routerState])
+    const isCurrRouteHome = ['/home', '/'].includes(pathname.toLowerCase())
 
     return (
         <div
             className={clsx(
-                ['/home', '/'].includes(currentRoute.toLowerCase()) ? 'fixed' : 'sticky',
-                isHeroVisible ? 'bg-transparent shadow-none' : 'bg-base-100 shadow-md',
+                isCurrRouteHome ? 'absolute bg-transparent shadow-none' : 'bg-base-100 shadow-md',
                 'navbar top-0 z-50 gap-2 py-3 transition-colors md:py-5'
             )}
         >
@@ -91,7 +69,7 @@ export const Header = memo(() => {
                         />
                     ) : (
                         <img
-                            src={isHeroVisible ? kriptPharmaLogoLight : kriptPharmaLogoDark}
+                            src={isCurrRouteHome ? kriptPharmaLogoLight : kriptPharmaLogoDark}
                             alt="Kript Pharmaceuticals logo"
                             className="inline-block h-auto w-full"
                         />
@@ -100,9 +78,7 @@ export const Header = memo(() => {
             </div>
             <ul
                 className={clsx(
-                    isHeroVisible &&
-                        ['/home', '/'].includes(currentRoute.toLowerCase()) &&
-                        'text-neutral-100',
+                    isCurrRouteHome && 'text-neutral-100',
                     'menu hidden shrink grow flex-nowrap justify-end gap-1 xl:menu-horizontal'
                 )}
             >
