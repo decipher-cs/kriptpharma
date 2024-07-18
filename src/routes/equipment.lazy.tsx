@@ -1,7 +1,10 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { memo, useState } from 'react'
-import furnitureCatalogue from '../assets/downloadable-pdf/furniture-catalogue.pdf'
+import { memo, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
+import Swiper from 'swiper/bundle'
+import 'swiper/css/bundle'
+import { PiSkipBack, PiSkipForward } from 'react-icons/pi'
+import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -17,16 +20,6 @@ const backgroundImagePaths = Object.values(modules).map((module) => {
 export const Route = createLazyFileRoute('/equipment')({
     component: memo(() => <Equipment />),
 })
-
-const Equipment = () => {
-    return (
-        <div className="space-y-36">
-            <section className="space-y-12" id="Category">
-                <Mason />
-            </section>
-        </div>
-    )
-}
 
 const equipments = [
     {
@@ -118,39 +111,137 @@ const equipments = [
     },
 ]
 
-const Mason = memo(() => {
+const Equipment = memo(() => {
     const [selectedEquipment, setSelectedEquipment] = useState<(typeof equipments)[number]>(
         equipments[0]
     )
 
-    return (
-        <section>
-            <div role="tablist" className="tabs tabs-lifted">
-                {equipments.map((equipment) => (
-                    <a
-                        key={equipment.name}
-                        className={clsx(
-                            'tab truncate',
-                            selectedEquipment.name === equipment.name && 'tab-active'
-                        )}
-                        onClick={() => setSelectedEquipment(equipment)}
-                    >
-                        {equipment.name}
-                    </a>
-                ))}
+    const slider = useRef<Swiper | null>(null)
 
-                {selectedEquipment.images.map((val) => {
-                    if (
-                        typeof val === 'object' &&
-                        val &&
-                        'default' in val &&
-                        typeof val.default === 'string'
-                    ) {
-                        return <img src={val.default} className="inline-block" key={val.default} />
-                    } else console.log(val)
-                    return null
-                })}
+    const sliderThumbnail = useRef<Swiper | null>(null)
+
+    const equipmentImageContainer = useRef<null | HTMLDivElement>(null)
+
+    useEffect(() => {
+        sliderThumbnail.current = new Swiper('.swiper-thumbnail', {
+            spaceBetween: 10,
+            slidesPerView: Math.ceil(selectedEquipment.images.length / 3),
+            freeMode: true,
+            watchSlidesProgress: true,
+        })
+
+        slider.current = new Swiper('.swiper-equipment', {
+            freeMode: true,
+            slidesPerView: selectedEquipment.images.length / 3 < 2 ? 1 : 2,
+            spaceBetween: 30,
+            centeredSlides: true,
+            thumbs: {
+                swiper: sliderThumbnail.current,
+            },
+        })
+
+        return () => {
+            slider.current?.destroy()
+            sliderThumbnail.current?.destroy()
+        }
+    }, [selectedEquipment.name, selectedEquipment.images.length])
+
+    return (
+        <section className="space-y-40">
+            <div
+                className={clsx(
+                    'grid grid-flow-dense auto-rows-[10rem] grid-cols-[repeat(auto-fit,10rem)] justify-around gap-3',
+                    '[&>*:nth-child(2n)]:col-span-2',
+                    '[&>*:nth-child(2n+1)]:col-span-2 [&>*:nth-child(2n+1)]:row-span-2'
+                )}
+            >
+                {equipments.map((equipment, i) => (
+                    <button
+                        className="btn relative size-full overflow-hidden p-0"
+                        key={equipment.name}
+                        onClick={() => {
+                            setSelectedEquipment(equipment)
+                            equipmentImageContainer.current?.scrollIntoView()
+                        }}
+                    >
+                        <img
+                            src={backgroundImagePaths[i]}
+                            alt=""
+                            className="absolute inset-0 size-full object-cover brightness-50"
+                        />
+                        <h2 className="absolute bottom-0 w-full bg-primary p-3  text-center text-lg font-bold capitalize text-primary-content">
+                            {equipment.name}
+                        </h2>
+                    </button>
+                ))}
             </div>
+
+            <Breakout className="grid gap-8 bg-base-200 py-20">
+                <div className="flex w-full">
+                    <div
+                        className="btn btn-square h-full bg-white"
+                        onClick={() => slider.current?.slidePrev()}
+                    >
+                        <PiSkipBack size={30} />
+                    </div>
+
+                    <div
+                        className="swiper swiper-equipment hover:cursor-grab"
+                        ref={equipmentImageContainer}
+                    >
+                        <div className="swiper-wrapper">
+                            {selectedEquipment.images.map((val) => {
+                                if (
+                                    typeof val === 'object' &&
+                                    val &&
+                                    'default' in val &&
+                                    typeof val.default === 'string'
+                                ) {
+                                    return (
+                                        <img
+                                            src={val.default}
+                                            className="swiper-slide inline-block"
+                                            key={val.default}
+                                        />
+                                    )
+                                } else console.log(val)
+                                return null
+                            })}
+                        </div>
+                    </div>
+
+                    <div
+                        className="btn btn-square h-full bg-white"
+                        onClick={() => slider.current?.slideNext()}
+                    >
+                        <PiSkipForward size={30} />
+                    </div>
+                </div>
+
+                <div className="flex w-full">
+                    <div className="swiper swiper-thumbnail hover:cursor-pointer" id="images">
+                        <div className="swiper-wrapper">
+                            {selectedEquipment.images.map((val) => {
+                                if (
+                                    typeof val === 'object' &&
+                                    val &&
+                                    'default' in val &&
+                                    typeof val.default === 'string'
+                                ) {
+                                    return (
+                                        <img
+                                            src={val.default}
+                                            className="swiper-slide inline-block opacity-50 [&:is(.swiper-slide-thumb-active)]:opacity-100"
+                                            key={val.default}
+                                        />
+                                    )
+                                } else console.log(val)
+                                return null
+                            })}
+                        </div>
+                    </div>
+                </div>
+            </Breakout>
         </section>
     )
 })
