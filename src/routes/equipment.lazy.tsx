@@ -165,6 +165,7 @@ const Equipment = memo(() => {
                         }}
                     >
                         <img
+                            loading="lazy"
                             src={backgroundImagePaths[i]}
                             alt=""
                             className="absolute inset-0 size-full object-cover brightness-50"
@@ -199,6 +200,7 @@ const Equipment = memo(() => {
                                 ) {
                                     return (
                                         <img
+                                            loading="lazy"
                                             src={val.default}
                                             className="swiper-slide inline-block"
                                             key={val.default}
@@ -230,6 +232,7 @@ const Equipment = memo(() => {
                                 ) {
                                     return (
                                         <img
+                                            loading="lazy"
                                             src={val.default}
                                             className="swiper-slide inline-block opacity-50 [&:is(.swiper-slide-thumb-active)]:opacity-100"
                                             key={val.default}

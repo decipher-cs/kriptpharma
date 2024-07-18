@@ -9,6 +9,7 @@ const GlobalPresence = () => {
     return (
         <section className="">
             <img
+                loading='lazy'
                 src={map}
                 className={'mx-auto rounded-xl'}
                 alt="global partners on world map"

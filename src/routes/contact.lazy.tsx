@@ -223,6 +223,7 @@ const Contact = () => {
                         target="_blank"
                     >
                         <img
+                            loading='lazy'
                             className={'size-10'}
                             src={data.logoUrl}
                             alt={data.title + ' logo'}

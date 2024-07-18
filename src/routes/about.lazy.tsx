@@ -37,6 +37,7 @@ const AboutUs = () => {
                 </p>
 
                 <img
+                    loading="lazy"
                     src={certificates}
                     className={'mx-auto inline-block max-h-[60svh]'}
                     alt={'accreditations and certifications'}

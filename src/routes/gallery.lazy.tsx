@@ -54,6 +54,7 @@ const Gallery = () => {
                         (img, i) =>
                             img && (
                                 <img
+                                    loading='lazy'
                                     className="swiper-slide inline-block object-contain"
                                     key={i}
                                     src={img.path}

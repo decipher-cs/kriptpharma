@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from '@tanstack/react-router'
-import { PiCheckCircle, PiDotsThreeVertical, PiSmiley } from 'react-icons/pi'
+import { PiCheckCircle, PiDotsThreeVertical } from 'react-icons/pi'
 import pharmaExpoVietnam from '../assets/gallery/vietnam-pharmaexpo.webp'
 import { memo } from 'react'
 
@@ -27,6 +27,7 @@ export const Route = createLazyFileRoute('/exhibition')({
                             <br />
                             <a href={pharmaExpoVietnam} target="_blank">
                                 <img
+                                    loading="lazy"
                                     src={pharmaExpoVietnam + ''}
                                     className="my-8 inline-block max-h-[70svh] w-auto rounded-xl bg-primary object-contain"
                                 />
