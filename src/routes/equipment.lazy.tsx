@@ -3,7 +3,7 @@ import { memo, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
-import { PiSkipBack, PiSkipForward } from 'react-icons/pi'
+import { PiSkipBack, PiSkipForward, PiX } from 'react-icons/pi'
 import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
@@ -118,36 +118,26 @@ const Equipment = memo(() => {
 
     const slider = useRef<Swiper | null>(null)
 
-    const sliderThumbnail = useRef<Swiper | null>(null)
-
-    const equipmentImageContainer = useRef<null | HTMLDivElement>(null)
-
     useEffect(() => {
-        sliderThumbnail.current = new Swiper('.swiper-thumbnail', {
-            spaceBetween: 10,
-            slidesPerView: Math.ceil(selectedEquipment.images.length / 3),
-            freeMode: true,
-            watchSlidesProgress: true,
-        })
-
         slider.current = new Swiper('.swiper-equipment', {
             freeMode: true,
-            slidesPerView: selectedEquipment.images.length / 3 < 2 ? 1 : 2,
+            slidesPerView: 1,
             spaceBetween: 30,
             centeredSlides: true,
-            thumbs: {
-                swiper: sliderThumbnail.current,
+            autoHeight: false,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
             },
         })
 
         return () => {
             slider.current?.destroy()
-            sliderThumbnail.current?.destroy()
         }
     }, [selectedEquipment.name, selectedEquipment.images.length])
 
     return (
-        <section className="space-y-40">
+        <section className="">
             <div
                 className={clsx(
                     'grid grid-flow-dense auto-rows-[10rem] grid-cols-[repeat(auto-fit,10rem)] justify-around gap-3',
@@ -161,7 +151,8 @@ const Equipment = memo(() => {
                         key={equipment.name}
                         onClick={() => {
                             setSelectedEquipment(equipment)
-                            equipmentImageContainer.current?.scrollIntoView()
+                            const el = document.getElementById('my-dialog')
+                            el instanceof HTMLDialogElement && el.showModal()
                         }}
                     >
                         <img
@@ -177,74 +168,58 @@ const Equipment = memo(() => {
                 ))}
             </div>
 
-            <Breakout className="grid gap-8 bg-base-200 py-20">
-                <div className="flex w-full">
-                    <div
-                        className="btn btn-square h-full bg-white"
-                        onClick={() => slider.current?.slidePrev()}
+            <dialog id="my-dialog" className="modal backdrop-blur-lg">
+                <form method="dialog">
+                    <button
+                        className="btn btn-circle absolute right-2 top-2 z-50"
+                        aria-label="close dialog"
                     >
-                        <PiSkipBack size={30} />
-                    </div>
+                        <PiX size={30} />
+                    </button>
+                </form>
 
-                    <div
-                        className="swiper swiper-equipment hover:cursor-grab"
-                        ref={equipmentImageContainer}
-                    >
-                        <div className="swiper-wrapper">
-                            {selectedEquipment.images.map((val) => {
-                                if (
-                                    typeof val === 'object' &&
-                                    val &&
-                                    'default' in val &&
-                                    typeof val.default === 'string'
-                                ) {
-                                    return (
-                                        <img
-                                            loading="lazy"
-                                            src={val.default}
-                                            className="swiper-slide inline-block"
-                                            key={val.default}
-                                        />
-                                    )
-                                } else console.log(val)
-                                return null
-                            })}
+                <Breakout className="grid h-svh w-screen gap-10 bg-base-200">
+                    <div className="flex max-h-svh w-full">
+                        <div
+                            className="btn h-full rounded-none bg-white"
+                            onClick={() => slider.current?.slidePrev()}
+                        >
+                            <PiSkipBack size={30} />
+                        </div>
+
+                        <div className="swiper swiper-equipment hover:cursor-grab">
+                            <div className="swiper-wrapper">
+                                {selectedEquipment.images.map((val) => {
+                                    if (
+                                        typeof val === 'object' &&
+                                        val &&
+                                        'default' in val &&
+                                        typeof val.default === 'string'
+                                    ) {
+                                        return (
+                                            <img
+                                                loading="lazy"
+                                                src={val.default}
+                                                className="swiper-slide inline-block object-contain"
+                                                key={val.default}
+                                            />
+                                        )
+                                    } else console.log(val)
+                                    return null
+                                })}
+                            </div>
+                            <div className="swiper-pagination"></div>
+                        </div>
+
+                        <div
+                            className="btn h-full rounded-none bg-white"
+                            onClick={() => slider.current?.slideNext()}
+                        >
+                            <PiSkipForward size={30} />
                         </div>
                     </div>
-
-                    <div
-                        className="btn btn-square h-full bg-white"
-                        onClick={() => slider.current?.slideNext()}
-                    >
-                        <PiSkipForward size={30} />
-                    </div>
-                </div>
-
-                <div className="flex w-full">
-                    <div className="swiper swiper-thumbnail hover:cursor-pointer" id="images">
-                        <div className="swiper-wrapper">
-                            {selectedEquipment.images.map((val) => {
-                                if (
-                                    typeof val === 'object' &&
-                                    val &&
-                                    'default' in val &&
-                                    typeof val.default === 'string'
-                                ) {
-                                    return (
-                                        <img
-                                            loading="lazy"
-                                            src={val.default}
-                                            className="swiper-slide inline-block opacity-50 [&:is(.swiper-slide-thumb-active)]:opacity-100"
-                                            key={val.default}
-                                        />
-                                    )
-                                } else console.log(val)
-                                return null
-                            })}
-                        </div>
-                    </div>
-                </div>
-            </Breakout>
+                </Breakout>
+            </dialog>
         </section>
     )
 })
