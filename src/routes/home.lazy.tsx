@@ -197,12 +197,7 @@ const FeaturedProducts = () => {
                 swipe
             </div>
             <div className="swiper swiper-home hover:cursor-grab">
-                <div
-                    className="swiper-wrapper select-none"
-                    style={{
-                        mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
-                    }}
-                >
+                <div className="swiper-wrapper select-none">
                     {featuredProductNames.map(
                         ({ name, img, href, search }, i) =>
                             img && (
