@@ -1,6 +1,6 @@
-import { createFileRoute, useNavigate } from '@tanstack/react-router'
+import { createFileRoute } from '@tanstack/react-router'
 import Fuse from 'fuse.js'
-import { useCallback, useEffect, useRef, useState } from 'react'
+import { memo, useCallback, useEffect, useRef, useState } from 'react'
 import Breakout from '../components/Breakout'
 import { ApiProductData, ProductDataField, TransformedProductData } from '../types'
 import { PiArrowDown, PiMagnifyingGlass } from 'react-icons/pi'
@@ -9,6 +9,8 @@ import clsx from 'clsx'
 import fallbackData from '../assets/fallbackProductData.json'
 import { twMerge } from 'tailwind-merge'
 import CustomError from '../components/Error'
+import ProductTable from '../components/ProductTable'
+import CategoryDialog from '../components/CategoryDialog'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -91,7 +93,7 @@ const TransformApiData = (data: ApiProductData): TransformedProductData => {
 }
 
 export const Route = createFileRoute('/product')({
-    component: () => <Product />,
+    component: memo(Product),
 
     /*
      * TODO:
@@ -109,16 +111,21 @@ export const Route = createFileRoute('/product')({
 
     errorComponent: () => <CustomError />,
 
-    validateSearch: (search: Record<string, unknown>): ProductSearch => {
-        const { searchString, categoryFilter } = search
-        return {
-            categoryFilter: Array.isArray(categoryFilter) ? categoryFilter : undefined,
-            searchString: typeof searchString === 'string' ? searchString : undefined,
-        }
-    },
+    // validateSearch: (search: Record<string, unknown>): ProductSearch => {
+    //     const { searchString, categoryFilter } = search
+    //     return {
+    //         categoryFilter: Array.isArray(categoryFilter) ? categoryFilter : undefined,
+    //         searchString: typeof searchString === 'string' ? searchString : undefined,
+    //     }
+    // },
 })
 
-const Product = () => {
+const fuse = new Fuse(fallbackData, {
+    keys: ['composition'] satisfies ProductDataField[],
+    // keys: ['category', 'composition', 'form'] satisfies ProductDataField[],
+})
+
+function Product() {
     /*
      * TODO:
      * Waiting for PR to merge which fixes bug with serial data
@@ -129,19 +136,27 @@ const Product = () => {
     //     select: (data) => {
     //         if (!data) return []
     // })
+    const categoryDialogRef = useRef<null | HTMLDialogElement>(null)
 
-    const [medicineList, setMedicineList] = useState<TransformedProductData>([])
+    // const [medicineList, setMedicineList] = useState<TransformedProductData>(fallbackData)
+    const medicineList = fallbackData
 
-    const [categoryVisibility, setCategoryVisibility] = useState<CategoryVisibility>({})
+    const [categoryVisibility, setCategoryVisibility] = useState<CategoryVisibility>(() => {
+        const obj: CategoryVisibility = {}
+        medicineList.forEach(({ category }) => {
+            obj[category] = true
+        })
+        return obj
+    })
 
-    const navigate = useNavigate({ from: Route.fullPath })
+    // const navigate = Route.useNavigate()
 
-    const changeUrlParams = useCallback(
-        (param: keyof ProductSearch, newValue: ProductSearch[keyof ProductSearch]) => {
-            navigate({ search: (prev) => ({ ...prev, [param]: newValue }) })
-        },
-        [navigate]
-    )
+    const changeUrlParams = (
+        param: keyof ProductSearch,
+        newValue: ProductSearch[keyof ProductSearch]
+    ) => {
+        // navigate({ search: (prev) => ({ ...prev, [param]: newValue }) })
+    }
 
     const handleCheckboxChange = (category: string, checked: boolean) => {
         const newValue = { ...categoryVisibility }
@@ -150,48 +165,52 @@ const Product = () => {
 
         setCategoryVisibility(newValue)
 
-        changeUrlParams(
-            'categoryFilter',
-            Object.keys(newValue).filter((v) => newValue[v])
-        )
+        // changeUrlParams(
+        //     'categoryFilter',
+        //     Object.keys(newValue).filter((v) => newValue[v])
+        // )
     }
+    // const { searchString: urlSearchString, categoryFilter: urlCategoryFilter } = Route.useSearch()
 
-    const { searchString: urlSearchString, categoryFilter: urlCategoryFilter } = Route.useSearch()
-
-    const [searchString, setSearchString] = useState(urlSearchString ?? '')
+    const [searchString, setSearchString] = useState('')
+    // const [searchString, setSearchString] = useState(urlSearchString ?? '')
 
     const [maxRows, setMaxRows] = useState(12)
 
-    const debounceValue = useDebounce(searchString, 100)
+    const debounceValue = useDebounce(searchString, 500)
 
-    useEffect(() => {
-        fetchData()
-            // .then((data) => TransformApiData(data))
-            .then((data) => {
-                setMedicineList(data)
+    // useEffect(() => {
+    //     fetchData()
+    //         // .then((data) => TransformApiData(data))
+    //         .then((data) => {
+    //             setMedicineList(data)
+    //
+    //             const obj: CategoryVisibility = {}
+    //             data.forEach(({ category }) => {
+    //                 obj[category] = true
+    //                 // urlCategoryFilter === undefined || urlCategoryFilter.includes(category)
+    //             })
+    //             setCategoryVisibility(obj)
+    //         })
+    // }, [])
 
-                const obj: CategoryVisibility = {}
-                data.forEach(({ category }) => {
-                    obj[category] =
-                        urlCategoryFilter === undefined || urlCategoryFilter.includes(category)
-                })
-                setCategoryVisibility(obj)
-            })
-    }, [urlCategoryFilter])
-
-    const fuse = useRef<Fuse<(typeof medicineList)[number]> | null>(null)
+    // const fuse = useRef<Fuse<(typeof medicineList)[number]> | null>(null)
 
     const filteredMedicineList =
-        fuse.current && debounceValue.length > 1
-            ? fuse.current.search(debounceValue).map((f) => f.item)
-            : medicineList
+        debounceValue.length > 1 ? fuse.search(debounceValue).map((f) => f.item) : medicineList
+    // const filteredMedicineList = medicineList
+    // const filteredMedicineList =
+    // fuse.current && debounceValue.length > 1
+    //     ? fuse.current.search(debounceValue).map((f) => f.item)
+    //     : medicineList
 
-    useEffect(() => {
-        fuse.current = new Fuse(medicineList, {
-            keys: ['category', 'composition', 'form'] satisfies ProductDataField[],
-        })
-    }, [medicineList])
-
+    // useEffect(() => {
+    // console.log('fuse')
+    // fuse.current = new Fuse(medicineList, {
+    // keys: ['composition'] satisfies ProductDataField[],
+    // keys: ['category', 'composition', 'form'] satisfies ProductDataField[],
+    //     })
+    // }, [medicineList])
     return (
         <section className="space-y-10">
             <Breakout>
@@ -208,6 +227,9 @@ const Product = () => {
                                 onChange={(e) => {
                                     setSearchString(e.target.value)
                                 }}
+                                onBlur={(e) => {
+                                    changeUrlParams('searchString', e.target.value)
+                                }}
                             />
                             <PiMagnifyingGlass />
                         </label>
@@ -215,136 +237,27 @@ const Product = () => {
                         <button
                             className="btn shrink basis-full capitalize"
                             onClick={() => {
-                                const modal = document.getElementById('filter-modal')
+                                const modal = categoryDialogRef.current
                                 if (modal instanceof HTMLDialogElement) modal.showModal()
                             }}
                         >
                             Filter by category
                         </button>
 
-                        <dialog id="filter-modal" className="modal">
-                            <div className="modal-box w-full">
-                                <h3 className="px-5 text-lg font-bold">Categories</h3>
-
-                                {/* TODO: list container should auto focus on open */}
-                                <div
-                                    className="mt-3 max-h-[60svh] overflow-y-scroll px-3"
-                                    autoFocus={true}
-                                >
-                                    {Object.entries(categoryVisibility).map(
-                                        ([category, isChecked], i) => (
-                                            <div className="form-control" key={i}>
-                                                <label className="label cursor-pointer  rounded-lg px-2 hover:bg-base-200">
-                                                    <span className="label-text capitalize">
-                                                        {category}
-                                                    </span>
-                                                    <input
-                                                        type="checkbox"
-                                                        className="checkbox"
-                                                        value={category}
-                                                        onChange={(e) => {
-                                                            handleCheckboxChange(
-                                                                category,
-                                                                e.target.checked
-                                                            )
-                                                        }}
-                                                        checked={isChecked}
-                                                    />
-                                                </label>
-                                            </div>
-                                        )
-                                    )}
-                                </div>
-
-                                <div className="modal-action">
-                                    <button
-                                        onClick={() => {
-                                            setCategoryVisibility((p) =>
-                                                Object.fromEntries(
-                                                    Object.keys(p).map((key) => [key, true])
-                                                )
-                                            )
-                                            changeUrlParams(
-                                                'categoryFilter',
-                                                Object.keys(categoryVisibility)
-                                            )
-                                        }}
-                                        className="btn"
-                                    >
-                                        Select All
-                                    </button>
-
-                                    <button
-                                        onClick={() => {
-                                            setCategoryVisibility((p) =>
-                                                Object.fromEntries(
-                                                    Object.keys(p).map((key) => [key, false])
-                                                )
-                                            )
-
-                                            changeUrlParams('categoryFilter', [])
-                                        }}
-                                        className="btn"
-                                    >
-                                        Clear All
-                                    </button>
-                                    <form method="dialog">
-                                        {/* if there is a button in form, it will close the modal */}
-                                        <button className="btn">Close</button>
-                                    </form>
-                                </div>
-                            </div>
-
-                            <form method="dialog" className="modal-backdrop">
-                                <button>close</button>
-                            </form>
-                        </dialog>
+                        <CategoryDialog
+                            categories={categoryVisibility}
+                            stateSetter={setCategoryVisibility}
+                            dialogRef={categoryDialogRef}
+                        />
                     </section>
 
-                    <div className="overflow-x-auto">
-                        <table className="table table-zebra table-pin-rows">
-                            <thead>
-                                <tr>
-                                    <th>S.No</th>
-                                    <th>Composition</th>
-                                    <th>Form</th>
-                                    <th>Category</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {filteredMedicineList
-                                    .filter(({ category }) => categoryVisibility[category])
-                                    .slice(0, maxRows)
-                                    .map((data, i) => (
-                                        <tr key={i} className="hover capitalize">
-                                            <th className="font-normal">{i + 1}</th>
-                                            <td>{data.composition}</td>
-                                            <td>{data.form}</td>
-                                            <td>{data.category}</td>
-                                        </tr>
-                                    ))}
+                    <ProductTable
+                        products={filteredMedicineList
+                            .filter(({ category }) => categoryVisibility[category])
+                            .slice(0, maxRows)}
+                    />
 
-                                {/* // ) : ( */}
-                                {/* //     <tr> */}
-                                {/* //         {Array(4) */}
-                                {/* //             .fill('') */}
-                                {/* //             .map(() => ( */}
-                                {/* //                 <th> */}
-                                {/* //                     <span className="loading loading-dots loading-md bg-neutral-500"></span> */}
-                                {/* //                 </th> */}
-                                {/* //             ))} */}
-                                {/* //     </tr> */}
-                                {/* //)} */}
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div
-                        className={clsx(
-                            'join flex *:btn-ghost *:basis-1/3 *:border-neutral-300'
-                            // medicineListFetchStatus === 'loading' && '*:btn-disabled'
-                        )}
-                    >
+                    <div className={clsx('join flex *:btn-ghost *:basis-1/3 *:border-neutral-300')}>
                         <button
                             className="btn join-item btn-sm sm:btn-md"
                             onClick={() =>
