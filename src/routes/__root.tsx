@@ -1,4 +1,4 @@
-import { createRootRoute, Outlet, ScrollRestoration } from '@tanstack/react-router'
+import { createRootRoute, Outlet, ScrollRestoration, useRouterState } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import ThemeProvider from '../context/theme'
 import { ErrorPage } from '../view/PageNotFount'
@@ -7,7 +7,14 @@ import { Footer } from '../components/Footer'
 import { Header } from '../components/Header'
 
 export const Route = createRootRoute({
-    component: () => (
+    component: () => <Root />,
+    notFoundComponent: () => <ErrorPage />,
+})
+
+function Root() {
+    const { isLoading } = useRouterState()
+
+    return (
         <div className="selection:bg-secondary selection:text-secondary-content">
             <ScrollRestoration />
             <ThemeProvider>
@@ -16,7 +23,11 @@ export const Route = createRootRoute({
                 {/* "px-breath lg:px-breath-lg" is here to globally create breathing room for the content*/}
                 {/* The effects of this class can be negated by using the <Breakout/> component */}
                 <main className="relative mx-auto mt-8 size-full min-h-svh max-w-12xl px-breath lg:px-breath-lg">
-                    <Outlet />
+                    {isLoading ? (
+                        <span className="loading loading-spinner loading-lg absolute left-1/2 bg-primary" />
+                    ) : (
+                        <Outlet />
+                    )}
                 </main>
 
                 <aside className="fixed bottom-0 z-10 w-full bg-red-500">
@@ -32,6 +43,5 @@ export const Route = createRootRoute({
                 {import.meta.env.DEV && <TanStackRouterDevtools />}
             </ThemeProvider>
         </div>
-    ),
-    notFoundComponent: () => <ErrorPage />,
-})
+    )
+}
