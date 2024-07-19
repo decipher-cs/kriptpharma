@@ -151,24 +151,22 @@ const FeaturedProducts = () => {
     const slider = useRef<Swiper | null>(null)
 
     useEffect(() => {
-        slider.current = new Swiper('.swiper', {
-            loop: true,
-            slidesPerView: isScreenLg ? 5 : 3,
-            centeredSlides: true,
-            autoHeight: true,
-            spaceBetween: isScreenLg ? 50 : 30,
-            autoplay: { delay: isScreenLg ? 2000 : 1000 },
-            pagination: {
-                el: '.swiper-pagination',
+        slider.current = new Swiper('.swiper-home', {
+            effect: 'coverflow',
+            slidesPerView: 3,
+            coverflowEffect: {
+                depth: 250,
+                modifier: 1,
+                rotate: 40,
+                scale: 1,
+                slideShadows: false,
+                stretch: 30,
             },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            scrollbar: {
-                el: '.swiper-scrollbar',
-            },
-            speed: isScreenLg ? 1000 : 2000,
+            initialSlide: Math.ceil(featuredProductNames.length / 2),
+            autoHeight: false,
+            height: 200,
+            autoplay: { pauseOnMouseEnter: true, reverseDirection: false },
+            loop: false,
         })
 
         return () => {
@@ -177,12 +175,23 @@ const FeaturedProducts = () => {
     }, [isScreenLg])
     return (
         <Breakout
-            style={{
-                mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
-            }}
+            className="tooltip tooltip-bottom flex"
+            data-tip="Auto Scroll Paused While Hovering"
         >
-            <div className="swiper w-full hover:cursor-grab">
-                <div className="swiper-wrapper select-none">
+            <div
+                className="btn btn-ghost self-center rounded-none"
+                onClick={() => slider.current?.slidePrev()}
+                data-tip="previous"
+            >
+                <PiSkipBack size={30} />
+            </div>
+            <div className="swiper swiper-home hover:cursor-grab">
+                <div
+                    className="swiper-wrapper select-none"
+                    style={{
+                        mask: 'linear-gradient(90deg, transparent, white 10%, white 90%, transparent)',
+                    }}
+                >
                     {featuredProductNames.map(
                         ({ name, img, href, search }, i) =>
                             img && (
@@ -196,6 +205,7 @@ const FeaturedProducts = () => {
                                     >
                                         <div className="relative aspect-square w-28 rounded-full border-4 border-primary sm:w-56">
                                             <img
+                                                loading="lazy"
                                                 className="absolute inset-0 size-full rounded-full object-cover object-center"
                                                 src={img}
                                                 alt=""
@@ -209,13 +219,13 @@ const FeaturedProducts = () => {
                             )
                     )}
                 </div>
-                <div className="swiper-button-prev">
-                    <PiSkipBack size={30} />
-                </div>
-                <div className="swiper-button-next">
-                    <PiSkipForward size={30} />
-                </div>
                 <div className="swiper-scrollbar"></div>
+            </div>
+            <div
+                className="btn btn-ghost self-center rounded-none"
+                onClick={() => slider.current?.slideNext()}
+            >
+                <PiSkipForward size={30} />
             </div>
         </Breakout>
     )
