@@ -78,15 +78,11 @@ const InputWrapper = (
         <div className={twMerge('form-control w-full', props.className)}>
             <label className={''}>
                 <div className="label">
-                    <span className="label-text flex items-center gap-2">
-                        {props.label}
-                    </span>
+                    <span className="label-text flex items-center gap-2">{props.label}</span>
                 </div>
                 {props.children}
             </label>
-            <p className="ml-1 mt-1 italic text-error">
-                {props.errorMessage}&nbsp;
-            </p>
+            <p className="ml-1 mt-1 italic text-error">{props.errorMessage}&nbsp;</p>
         </div>
     )
 }
@@ -104,8 +100,7 @@ const validateForm: Resolver<ContactForm> = async (values) => {
 
     const errors: FieldErrors<ContactForm> = {}
 
-    if (!name)
-        errors.name = { type: 'required', message: 'This is a required field' }
+    if (!name) errors.name = { type: 'required', message: 'This is a required field' }
     else if (name.length > 100)
         errors.name = {
             type: 'maxLength',
@@ -149,13 +144,7 @@ const Contact = () => {
         register,
         handleSubmit,
         reset,
-        formState: {
-            errors,
-            isLoading,
-            isValidating,
-            isSubmitting,
-            isSubmitSuccessful,
-        },
+        formState: { errors, isLoading, isValidating, isSubmitting, isSubmitSuccessful },
     } = useForm<ContactForm>({
         reValidateMode: 'onBlur',
         resolver: validateForm,
@@ -168,7 +157,7 @@ const Contact = () => {
         },
     })
 
-    const onSubmit: SubmitHandler<ContactForm> = async (data, e) => {
+    const onSubmit: SubmitHandler<ContactForm> = async (data) => {
         const formData = new URLSearchParams(Object.entries(data))
 
         // TODO: check if key doesn't exist and maybe fire sentry if in prod
@@ -223,7 +212,7 @@ const Contact = () => {
                         target="_blank"
                     >
                         <img
-                            loading='lazy'
+                            loading="lazy"
                             className={'size-10'}
                             src={data.logoUrl}
                             alt={data.title + ' logo'}
@@ -296,27 +285,19 @@ const Contact = () => {
                     }
                     errorMessage={errors.countryCode?.message}
                 >
-                    <select
-                        className="select select-bordered w-full"
-                        {...register('countryCode')}
-                    >
+                    <select className="select select-bordered w-full" {...register('countryCode')}>
                         <option disabled value="">
                             Pick country code
                         </option>
-                        {countryCodes.map(
-                            (
-                                { flag, countryCallingCode, countryNameEn },
-                                i
-                            ) => (
-                                <option
-                                    key={i}
-                                    value={`${countryNameEn} (+${countryCallingCode})`}
-                                    aria-label={`${countryNameEn} (+${countryCallingCode})`}
-                                >
-                                    {`${flag} ${countryNameEn}  (+${countryCallingCode}) `}
-                                </option>
-                            )
-                        )}
+                        {countryCodes.map(({ flag, countryCallingCode, countryNameEn }, i) => (
+                            <option
+                                key={i}
+                                value={`${countryNameEn} (+${countryCallingCode})`}
+                                aria-label={`${countryNameEn} (+${countryCallingCode})`}
+                            >
+                                {`${flag} ${countryNameEn}  (+${countryCallingCode}) `}
+                            </option>
+                        ))}
                     </select>
                 </InputWrapper>
 
@@ -362,8 +343,7 @@ const Contact = () => {
                     <button
                         className={clsx(
                             'btn btn-secondary join-item ',
-                            (isLoading || isSubmitting || isValidating) &&
-                                'btn-disabled'
+                            (isLoading || isSubmitting || isValidating) && 'btn-disabled'
                         )}
                         onClick={() => reset(undefined)}
                     >
@@ -376,8 +356,7 @@ const Contact = () => {
                     <button
                         className={clsx(
                             'btn btn-primary join-item',
-                            (isLoading || isSubmitting || isValidating) &&
-                                'btn-disabled'
+                            (isLoading || isSubmitting || isValidating) && 'btn-disabled'
                         )}
                         type="submit"
                     >
