@@ -3,7 +3,7 @@ import { memo, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
-import { PiHandSwipeLeft, PiHandSwipeRight, PiSkipBack, PiSkipForward, PiX } from 'react-icons/pi'
+import { PiHandSwipeRight, PiSkipBack, PiSkipForward, PiX } from 'react-icons/pi'
 import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
@@ -141,9 +141,10 @@ const Equipment = memo(() => {
         <section className="">
             <div
                 className={clsx(
-                    'grid grid-flow-dense auto-rows-[10rem] grid-cols-[repeat(auto-fit,10rem)] justify-around gap-3',
-                    '[&>*:nth-child(2n)]:col-span-2',
-                    '[&>*:nth-child(2n+1)]:col-span-2 [&>*:nth-child(2n+1)]:row-span-2'
+                    'grid auto-rows-[10rem] gap-3',
+                    'md:grid-flow-dense md:grid-cols-[repeat(auto-fit,10rem)] md:justify-center ',
+                    'md:[&>*:nth-child(2n)]:col-span-2',
+                    'md:[&>*:nth-child(2n+1)]:col-span-2 md:[&>*:nth-child(2n+1)]:row-span-2'
                 )}
             >
                 {equipments.map((equipment, i) => (
@@ -179,52 +180,52 @@ const Equipment = memo(() => {
                     </button>
                 </form>
 
-                <div className="absolute bottom-12 z-50 w-full justify-center gap-3 text-neutral-500 grid sm:hidden">
+                <div className="absolute bottom-12 z-50 grid w-full justify-center gap-3 text-neutral-500 sm:hidden">
                     <PiHandSwipeRight size={50} />
                     swipe
                 </div>
 
-                <Breakout className="grid h-svh w-screen gap-10 bg-base-200">
-                    <div className="flex max-h-svh w-full">
-                        <div
-                            className="btn h-full rounded-none bg-white max-sm:hidden"
-                            onClick={() => slider.current?.slidePrev()}
-                        >
-                            <PiSkipBack size={30} />
-                        </div>
+                <article className="flex h-svh w-screen gap-10 bg-base-200">
+                    <div
+                        className="btn h-full rounded-none bg-white max-sm:hidden"
+                        onClick={() => slider.current?.slidePrev()}
+                    >
+                        <PiSkipBack size={30} />
+                    </div>
 
-                        <div className="swiper swiper-equipment hover:cursor-grab">
-                            <div className="swiper-wrapper">
-                                {selectedEquipment.images.map((val) => {
-                                    if (
-                                        typeof val === 'object' &&
-                                        val &&
-                                        'default' in val &&
-                                        typeof val.default === 'string'
-                                    ) {
-                                        return (
+                    <div className="swiper swiper-equipment select-none hover:cursor-grab">
+                        <div className="swiper-wrapper">
+                            {selectedEquipment.images.map((val) => {
+                                if (
+                                    typeof val === 'object' &&
+                                    val &&
+                                    'default' in val &&
+                                    typeof val.default === 'string'
+                                ) {
+                                    return (
+                                        <div className="swiper-slide">
                                             <img
                                                 loading="lazy"
                                                 src={val.default}
-                                                className="swiper-slide inline-block object-contain"
+                                                className="inline-block size-full object-contain"
                                                 key={val.default}
                                             />
-                                        )
-                                    } else console.log(val)
-                                    return null
-                                })}
-                            </div>
-                            <div className="swiper-pagination"></div>
+                                        </div>
+                                    )
+                                } else console.log(val)
+                                return null
+                            })}
                         </div>
-
-                        <div
-                            className="btn h-full rounded-none bg-white max-sm:hidden"
-                            onClick={() => slider.current?.slideNext()}
-                        >
-                            <PiSkipForward size={30} />
-                        </div>
+                        <div className="swiper-pagination"></div>
                     </div>
-                </Breakout>
+
+                    <div
+                        className="btn h-full rounded-none bg-white max-sm:hidden"
+                        onClick={() => slider.current?.slideNext()}
+                    >
+                        <PiSkipForward size={30} />
+                    </div>
+                </article>
             </dialog>
         </section>
     )
