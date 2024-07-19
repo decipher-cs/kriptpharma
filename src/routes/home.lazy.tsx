@@ -162,7 +162,7 @@ const FeaturedProducts = () => {
                 rotate: 0,
                 scale: 1,
                 slideShadows: false,
-                stretch: isScreenLg ? 120 : 30,
+                stretch: isScreenLg ? 120 : -60,
             },
             pagination: {
                 el: '.swiper-pagination',
