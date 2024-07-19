@@ -3,7 +3,7 @@ import { memo, useEffect, useRef, useState } from 'react'
 import clsx from 'clsx'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
-import { PiSkipBack, PiSkipForward, PiX } from 'react-icons/pi'
+import { PiHandSwipeLeft, PiHandSwipeRight, PiSkipBack, PiSkipForward, PiX } from 'react-icons/pi'
 import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
@@ -129,6 +129,7 @@ const Equipment = memo(() => {
                 el: '.swiper-pagination',
                 clickable: true,
             },
+            centeredSlidesBounds: true,
         })
 
         return () => {
@@ -178,10 +179,15 @@ const Equipment = memo(() => {
                     </button>
                 </form>
 
+                <div className="absolute bottom-12 z-50 w-full justify-center gap-3 text-neutral-500 grid sm:hidden">
+                    <PiHandSwipeRight size={50} />
+                    swipe
+                </div>
+
                 <Breakout className="grid h-svh w-screen gap-10 bg-base-200">
                     <div className="flex max-h-svh w-full">
                         <div
-                            className="btn h-full rounded-none bg-white"
+                            className="btn h-full rounded-none bg-white max-sm:hidden"
                             onClick={() => slider.current?.slidePrev()}
                         >
                             <PiSkipBack size={30} />
@@ -212,7 +218,7 @@ const Equipment = memo(() => {
                         </div>
 
                         <div
-                            className="btn h-full rounded-none bg-white"
+                            className="btn h-full rounded-none bg-white max-sm:hidden"
                             onClick={() => slider.current?.slideNext()}
                         >
                             <PiSkipForward size={30} />
