@@ -203,14 +203,21 @@ const Equipment = memo(() => {
                                     typeof val.default === 'string'
                                 ) {
                                     return (
-                                        <div className="swiper-slide">
+                                        <a
+                                            className="swiper-slide"
+                                            href={val.default}
+                                            aria-label={
+                                                'detailed imaged of ' + selectedEquipment.name
+                                            }
+                                            target="_blank"
+                                        >
                                             <img
                                                 loading="lazy"
                                                 src={val.default}
                                                 className="inline-block size-full object-contain"
                                                 key={val.default}
                                             />
-                                        </div>
+                                        </a>
                                     )
                                 } else console.log(val)
                                 return null
