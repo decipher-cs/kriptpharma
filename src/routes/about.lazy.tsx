@@ -11,7 +11,9 @@ const AboutUs = () => {
     return (
         <section className="mx-auto max-w-screen-xl space-y-8">
             <article className="mx-auto grid items-center justify-center gap-16" id="about-us">
-                <h2 className="max-w-prose text-3xl font-bold lg:text-5xl">About Us</h2>
+                <h2 className="w-fit justify-self-center text-3xl font-bold lg:text-5xl">
+                    About Us
+                </h2>
                 <p className="text-lg/relaxed sm:text-xl/loose">
                     <Balancer>
                         A promise for healthy life Kript pharmaceuticals pvt Ltd was established
