@@ -1,4 +1,4 @@
-import { CSSProperties, PropsWithChildren, memo } from 'react'
+import { CSSProperties, DetailedHTMLProps, HTMLAttributes, PropsWithChildren, memo } from 'react'
 
 /*
  * This component negates the effects of the following code:
@@ -6,14 +6,10 @@ import { CSSProperties, PropsWithChildren, memo } from 'react'
  * which is set in the <main/> tag of __root
  */
 
-export default memo(function Breakout(
-    props: {
-        className?: string | undefined
-        style?: CSSProperties | undefined
-    } & PropsWithChildren
-) {
+export default memo(function Breakout(props: PropsWithChildren & HTMLAttributes<HTMLDivElement>) {
+    const { className, ...rest } = props
     return (
-        <div className={'-mx-breath lg:-mx-breath-lg ' + props.className} style={props.style}>
+        <div className={'-mx-breath lg:-mx-breath-lg ' + props.className} {...rest}>
             {props.children}
         </div>
     )
