@@ -13,6 +13,7 @@ import video4Poster from '../assets/videos/video-thumbnail4.webp'
 import {
     PiEye,
     PiHandshake,
+    PiHandSwipeRight,
     PiMegaphone,
     PiRoadHorizon,
     PiShieldStar,
@@ -148,6 +149,7 @@ const featuredProductNames = [
 
 const FeaturedProducts = () => {
     const { queryMatches: isScreenLg } = useMediaQuery(`(min-width: ${screens.lg})`)
+
     const slider = useRef<Swiper | null>(null)
 
     useEffect(() => {
@@ -155,14 +157,18 @@ const FeaturedProducts = () => {
             effect: 'coverflow',
             slidesPerView: 3,
             coverflowEffect: {
-                depth: 250,
+                depth: 350,
                 modifier: 1,
-                rotate: 40,
+                rotate: 0,
                 scale: 1,
                 slideShadows: false,
-                stretch: 30,
+                stretch: isScreenLg ? 120 : 30,
             },
-            initialSlide: Math.ceil(featuredProductNames.length / 2),
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            initialSlide: Math.floor(featuredProductNames.length / 2) - 1,
             autoHeight: false,
             height: 200,
             autoplay: { pauseOnMouseEnter: true, reverseDirection: false },
@@ -175,15 +181,20 @@ const FeaturedProducts = () => {
     }, [isScreenLg])
     return (
         <Breakout
-            className="tooltip tooltip-bottom flex"
+            className="tooltip tooltip-bottom relative flex"
             data-tip="Auto Scroll Paused While Hovering"
         >
             <div
-                className="btn btn-ghost self-center rounded-none"
+                className="btn btn-ghost hidden self-center rounded-none md:inline-flex"
                 onClick={() => slider.current?.slidePrev()}
                 data-tip="previous"
             >
                 <PiSkipBack size={30} />
+            </div>
+
+            <div className="absolute -top-20 w-full text-neutral-500 md:hidden">
+                <PiHandSwipeRight size={50} className="mx-auto" />
+                swipe
             </div>
             <div className="swiper swiper-home hover:cursor-grab">
                 <div
@@ -220,9 +231,10 @@ const FeaturedProducts = () => {
                     )}
                 </div>
                 <div className="swiper-scrollbar"></div>
+                <div className="swiper-pagination"></div>
             </div>
             <div
-                className="btn btn-ghost self-center rounded-none"
+                className="btn btn-ghost hidden self-center rounded-none md:inline-flex"
                 onClick={() => slider.current?.slideNext()}
             >
                 <PiSkipForward size={30} />
