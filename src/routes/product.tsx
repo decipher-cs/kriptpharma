@@ -111,18 +111,17 @@ export const Route = createFileRoute('/product')({
 
     errorComponent: () => <CustomError />,
 
-    // validateSearch: (search: Record<string, unknown>): ProductSearch => {
-    //     const { searchString, categoryFilter } = search
-    //     return {
-    //         categoryFilter: Array.isArray(categoryFilter) ? categoryFilter : undefined,
-    //         searchString: typeof searchString === 'string' ? searchString : undefined,
-    //     }
-    // },
+    validateSearch: (search: Record<string, unknown>): ProductSearch => {
+        const { searchString, categoryFilter } = search
+        return {
+            categoryFilter: Array.isArray(categoryFilter) ? categoryFilter : undefined,
+            searchString: typeof searchString === 'string' ? searchString : undefined,
+        }
+    },
 })
 
 const fuse = new Fuse(fallbackData, {
-    keys: ['composition'] satisfies ProductDataField[],
-    // keys: ['category', 'composition', 'form'] satisfies ProductDataField[],
+    keys: ['category', 'composition', 'form'] satisfies ProductDataField[],
 })
 
 function Product() {
@@ -138,13 +137,15 @@ function Product() {
     // })
     const categoryDialogRef = useRef<null | HTMLDialogElement>(null)
 
+    const { searchString: urlSearchString, categoryFilter: urlCategoryFilter } = Route.useSearch()
+
     // const [medicineList, setMedicineList] = useState<TransformedProductData>(fallbackData)
     const medicineList = fallbackData
 
     const [categoryVisibility, setCategoryVisibility] = useState<CategoryVisibility>(() => {
         const obj: CategoryVisibility = {}
         medicineList.forEach(({ category }) => {
-            obj[category] = true
+            obj[category] = urlCategoryFilter === undefined || urlCategoryFilter.includes(category)
         })
         return obj
     })
@@ -170,9 +171,8 @@ function Product() {
         //     Object.keys(newValue).filter((v) => newValue[v])
         // )
     }
-    // const { searchString: urlSearchString, categoryFilter: urlCategoryFilter } = Route.useSearch()
 
-    const [searchString, setSearchString] = useState('')
+    const [searchString, setSearchString] = useState(urlSearchString ?? '')
     // const [searchString, setSearchString] = useState(urlSearchString ?? '')
 
     const [maxRows, setMaxRows] = useState(12)
