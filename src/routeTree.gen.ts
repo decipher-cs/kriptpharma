@@ -14,6 +14,7 @@ import { createFileRoute } from '@tanstack/react-router'
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as ProductImport } from './routes/product'
+import { Route as EquipmentImport } from './routes/equipment'
 
 // Create Virtual Routes
 
@@ -21,7 +22,6 @@ const HomeLazyImport = createFileRoute('/home')()
 const GlobalPresenceLazyImport = createFileRoute('/globalPresence')()
 const GalleryLazyImport = createFileRoute('/gallery')()
 const ExhibitionLazyImport = createFileRoute('/exhibition')()
-const EquipmentLazyImport = createFileRoute('/equipment')()
 const DownloadsLazyImport = createFileRoute('/downloads')()
 const ContactLazyImport = createFileRoute('/contact')()
 const AboutLazyImport = createFileRoute('/about')()
@@ -51,11 +51,6 @@ const ExhibitionLazyRoute = ExhibitionLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/exhibition.lazy').then((d) => d.Route))
 
-const EquipmentLazyRoute = EquipmentLazyImport.update({
-  path: '/equipment',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/equipment.lazy').then((d) => d.Route))
-
 const DownloadsLazyRoute = DownloadsLazyImport.update({
   path: '/downloads',
   getParentRoute: () => rootRoute,
@@ -76,6 +71,11 @@ const ProductRoute = ProductImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const EquipmentRoute = EquipmentImport.update({
+  path: '/equipment',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexLazyRoute = IndexLazyImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -90,6 +90,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexLazyImport
+      parentRoute: typeof rootRoute
+    }
+    '/equipment': {
+      id: '/equipment'
+      path: '/equipment'
+      fullPath: '/equipment'
+      preLoaderRoute: typeof EquipmentImport
       parentRoute: typeof rootRoute
     }
     '/product': {
@@ -118,13 +125,6 @@ declare module '@tanstack/react-router' {
       path: '/downloads'
       fullPath: '/downloads'
       preLoaderRoute: typeof DownloadsLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/equipment': {
-      id: '/equipment'
-      path: '/equipment'
-      fullPath: '/equipment'
-      preLoaderRoute: typeof EquipmentLazyImport
       parentRoute: typeof rootRoute
     }
     '/exhibition': {
@@ -162,11 +162,11 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexLazyRoute,
+  EquipmentRoute,
   ProductRoute,
   AboutLazyRoute,
   ContactLazyRoute,
   DownloadsLazyRoute,
-  EquipmentLazyRoute,
   ExhibitionLazyRoute,
   GalleryLazyRoute,
   GlobalPresenceLazyRoute,
@@ -182,11 +182,11 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/equipment",
         "/product",
         "/about",
         "/contact",
         "/downloads",
-        "/equipment",
         "/exhibition",
         "/gallery",
         "/globalPresence",
@@ -195,6 +195,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/": {
       "filePath": "index.lazy.tsx"
+    },
+    "/equipment": {
+      "filePath": "equipment.tsx"
     },
     "/product": {
       "filePath": "product.tsx"
@@ -207,9 +210,6 @@ export const routeTree = rootRoute.addChildren({
     },
     "/downloads": {
       "filePath": "downloads.lazy.tsx"
-    },
-    "/equipment": {
-      "filePath": "equipment.lazy.tsx"
     },
     "/exhibition": {
       "filePath": "exhibition.lazy.tsx"
