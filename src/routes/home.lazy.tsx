@@ -61,17 +61,6 @@ const Hero = () => {
         <section className="relative z-40 -mx-breath grid min-h-svh items-center overflow-x-hidden bg-white bg-cover *:col-start-1 *:row-start-1 lg:-mx-breath-lg">
             <div className="absolute inset-x-0 size-full brightness-[60%]">
                 <video
-                    // Do not remove or alter the id.
-                    //
-                    // The header in the root file makes use of this id
-                    // in an intersection observer to
-                    // change the visibily of text on navbar.
-                    //
-                    // If it seems like an anti-pattern,
-                    // that's cause it is.
-                    //
-                    // TODO: Remove reliance of id attriubte for this.
-                    id="hero-video"
                     className="inline-block size-full object-cover"
                     poster={heroVideoPoster}
                     autoPlay
@@ -172,22 +161,22 @@ const FeaturedProducts = () => {
             effect: 'coverflow',
             slidesPerView: 3,
             coverflowEffect: {
-                depth: 350,
+                depth: 250,
                 modifier: 1,
                 rotate: 0,
                 scale: 1,
                 slideShadows: false,
-                stretch: isScreenLg ? 120 : -60,
+                stretch: isScreenLg ? 0 : -60,
             },
             pagination: {
                 el: '.swiper-pagination',
-                clickable: true,
             },
             initialSlide: Math.floor(featuredProductNames.length / 2) - 1,
             autoHeight: false,
-            height: 200,
             autoplay: { pauseOnMouseEnter: true, reverseDirection: false },
-            loop: true,
+            loop: false,
+            centeredSlides: true,
+            centeredSlidesBounds: true,
         })
 
         return () => {
@@ -197,14 +186,14 @@ const FeaturedProducts = () => {
     return (
         <Breakout
             className="tooltip tooltip-bottom relative flex"
-            data-tip="Auto Scroll Paused While Hovering"
+            data-tip={isScreenLg ? 'Auto Scroll Paused While Hovering' : 'Click to view more'}
         >
             <div
                 className="btn btn-ghost hidden self-center rounded-none md:inline-flex"
                 onClick={() => slider.current?.slidePrev()}
                 data-tip="previous"
             >
-                <PiSkipBack size={30} />
+                <PiSkipBack size={30} className="text-primary-content" />
             </div>
 
             <div className="absolute -top-20 w-full text-neutral-500 md:hidden">
@@ -212,27 +201,28 @@ const FeaturedProducts = () => {
                 swipe
             </div>
             <div className="swiper swiper-home hover:cursor-grab">
-                <div className="swiper-wrapper select-none">
+                <div className="swiper-wrapper select-none py-20">
                     {featuredProductNames.map(
                         ({ name, img, href, search }, i) =>
                             img && (
                                 <div className="swiper-slide" key={i}>
                                     <Link
-                                        className="mb-7 grid justify-center"
+                                        className="sm:w-54 mx-auto flex aspect-[9/10] w-40 flex-col justify-between overflow-hidden rounded-xl bg-base-100 lg:w-80"
                                         to={href}
                                         search={search}
-                                        onMouseOver={() => slider.current?.autoplay.pause()}
-                                        onMouseLeave={() => slider.current?.autoplay.resume()}
+                                        style={{
+                                            boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
+                                        }}
                                     >
-                                        <div className="relative aspect-square w-28 rounded-full border-4 border-primary sm:w-56">
+                                        <div className="grow overflow-hidden">
                                             <img
                                                 loading="lazy"
-                                                className="absolute inset-0 size-full rounded-full object-cover object-center"
+                                                className="inline-block size-full overflow-hidden rounded-t-xl object-cover"
                                                 src={img}
                                                 alt=""
                                             />
                                         </div>
-                                        <h4 className="mt-3 whitespace-nowrap text-center">
+                                        <h4 className="grid basis-1/4 place-content-center font-semibold">
                                             {name.toUpperCase()}
                                         </h4>
                                     </Link>
@@ -240,14 +230,13 @@ const FeaturedProducts = () => {
                             )
                     )}
                 </div>
-                <div className="swiper-scrollbar"></div>
                 <div className="swiper-pagination"></div>
             </div>
             <div
                 className="btn btn-ghost hidden self-center rounded-none md:inline-flex"
                 onClick={() => slider.current?.slideNext()}
             >
-                <PiSkipForward size={30} />
+                <PiSkipForward size={30} className="text-primary-content" />
             </div>
         </Breakout>
     )
