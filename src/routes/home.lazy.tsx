@@ -129,11 +129,21 @@ const featuredProductNames = [
 
     { name: 'Injection', img: injections, href: '/product', search: { searchString: 'injection' } },
 
-    { name: 'ICU Bed', img: icuBed, href: '/equipment' },
+    { name: 'ICU Bed', img: icuBed, href: '/equipment', search: { equipmentName: 'Hospital Bed' } },
 
-    { name: 'OT Equipment', img: otRoom, href: '/equipment' },
+    {
+        name: 'OT Equipment',
+        img: otRoom,
+        href: '/equipment',
+        search: { equipmentName: 'OT Table' },
+    },
 
-    { name: 'Wheelchair', img: wheelchair, href: '/equipment' },
+    {
+        name: 'Wheelchair',
+        img: wheelchair,
+        href: '/equipment',
+        search: { equipmentName: 'wheelchair' },
+    },
 
     {
         name: 'Soft-Gel Capsules',
@@ -144,7 +154,12 @@ const featuredProductNames = [
 
     { name: 'Ointments', img: oitment, href: '/product', search: { searchString: 'ointments' } },
 
-    { name: 'Delivery Bed', img: deliveryBed, href: '/equipment' },
+    {
+        name: 'Delivery Bed',
+        img: deliveryBed,
+        href: '/equipment',
+        search: { equipmentName: 'Delivery Bed' },
+    },
 ] satisfies { href: LinkProps['to']; search?: LinkProps['search']; name: string; img: string }[]
 
 const FeaturedProducts = () => {
@@ -172,7 +187,7 @@ const FeaturedProducts = () => {
             autoHeight: false,
             height: 200,
             autoplay: { pauseOnMouseEnter: true, reverseDirection: false },
-            loop: false,
+            loop: true,
         })
 
         return () => {
