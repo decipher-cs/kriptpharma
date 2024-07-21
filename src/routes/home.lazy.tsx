@@ -70,6 +70,7 @@ const Hero = () => {
                     muted
                     preload="none"
                     playsInline
+                    aria-hidden={true}
                 >
                     <source src={heroVideo} type="video/webm" />
                 </video>
@@ -357,11 +358,11 @@ const MissionSection = () => {
                         title: 'Our Value',
                         logo: <PiRoadHorizon className="size-8" />,
                         description: (
-                            <p>
+                            <li>
                                 We are committed to offer you wide variety of quality pharmaceutical
                                 preparations of various segments along with all desired
                                 documentation for your regulatory requirements.
-                            </p>
+                            </li>
                         ),
                     },
                     {
@@ -392,9 +393,9 @@ const MissionSection = () => {
                         <div className="grid h-full content-center space-y-5 p-8 lg:content-start">
                             {data.logo}
                             <h2 className="text-2xl font-bold">{data.title}</h2>
-                            <ul className="list-inside list-disc text-lg/normal">
+                            <div className="list-inside list-disc text-lg/normal">
                                 {data.description}
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 ))}

@@ -19,7 +19,7 @@ export const Footer = memo(() => {
         <section className="rounded-t-3xl bg-base-200">
             <footer className="mx-auto mt-14 grid items-start gap-16 p-10 md:grid-cols-2 xl:grid-cols-3">
                 <div className="grid gap-2">
-                    <h6 className="footer-title">Navigation</h6>
+                    <h4 className="footer-title">Navigation</h4>
                     <nav className="grid gap-2">
                         {[
                             'Home',
@@ -39,7 +39,7 @@ export const Footer = memo(() => {
                 </div>
 
                 <div className="grid gap-2">
-                    <h6 className="footer-title">Quick Link</h6>
+                    <h4 className="footer-title">Quick Link</h4>
                     <nav className="grid gap-2">
                         <Link className="link-hover link" to="/downloads">
                             Catalogue
@@ -57,7 +57,7 @@ export const Footer = memo(() => {
                 </div>
 
                 <div className="grid gap-2">
-                    <h6 className="footer-title">Contact Details</h6>
+                    <h4 className="footer-title">Contact Details</h4>
                     <div className="grid gap-2 *:flex *:items-center *:gap-2">
                         <a href="mailto:support@kriptpharmaceuticals.com">
                             <PiMailbox /> support@kriptpharmaceuticals.com
@@ -99,7 +99,7 @@ export const Footer = memo(() => {
                 </form>
 
                 <div className="grid gap-2">
-                    <h6 className="footer-title">Socials</h6>
+                    <h4 className="footer-title">Socials</h4>
                     <div className="flex gap-2">
                         <a
                             className="link-hover link"
@@ -137,7 +137,7 @@ export const Footer = memo(() => {
                 </div>
 
                 <article className="grid gap-2">
-                    <h6 className="footer-title ml-1">WhatsApp QR Code</h6>
+                    <h4 className="footer-title ml-1">WhatsApp QR Code</h4>
                     <a
                         className="tooltip tooltip-bottom tooltip-open tooltip-primary inline-block max-w-64 rounded-2xl bg-white p-5"
                         data-tip="CLICK THE CODE"
@@ -162,6 +162,7 @@ export const Footer = memo(() => {
                             className="link-hover link"
                             href="https://github.com/decipher-cs/"
                             target="_blank"
+                            aria-label="Website Developer Github"
                         >
                             <PiGithubLogo size={35} />
                         </a>
@@ -169,6 +170,7 @@ export const Footer = memo(() => {
                             className="link-hover link"
                             href="https://decipher-portfolio.netlify.app/"
                             target="_blank"
+                            aria-label="Website Developer Portfolio website"
                         >
                             <PiSidebar size={35} />
                         </a>

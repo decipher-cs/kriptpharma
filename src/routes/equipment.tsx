@@ -136,12 +136,10 @@ const Equipment = memo(() => {
                                         <a
                                             className="swiper-slide"
                                             href={val.default}
-                                            aria-label={
-                                                'detailed imaged of ' + selectedEquipment.name
-                                            }
                                             target="_blank"
                                         >
                                             <img
+                                                alt={'description on ' + selectedEquipment.name}
                                                 loading="lazy"
                                                 src={val.default}
                                                 className="inline-block size-full object-contain"
