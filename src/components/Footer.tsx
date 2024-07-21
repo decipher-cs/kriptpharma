@@ -139,7 +139,7 @@ export const Footer = memo(() => {
                 <article className="grid gap-2">
                     <h6 className="footer-title ml-1">WhatsApp QR Code</h6>
                     <a
-                        className="tooltip tooltip-bottom tooltip-open tooltip-primary inline-block max-w-64 rounded-2xl bg-white p-5 sm:tooltip-right"
+                        className="tooltip tooltip-bottom tooltip-open tooltip-primary inline-block max-w-64 rounded-2xl bg-white p-5"
                         data-tip="CLICK THE CODE"
                         href="https://wa.me/message/ZLJXQKQPM75IL1"
                         id="whatsapp"
