@@ -230,7 +230,9 @@ const Contact = () => {
 
             <form
                 className="mx-auto grid w-full gap-3 rounded-lg border border-neutral-300 p-6 focus-within:border-primary md:grid-cols-2 [&_*]:placeholder:italic"
-                onSubmit={handleSubmit(onSubmit)}
+                // onSubmit={handleSubmit(onSubmit)}
+                action={'https://send.pageclip.co/' + import.meta.env.VITE_PAGECLIP_API_KEY}
+                method="post"
             >
                 <InputWrapper
                     errorMessage={errors.name?.message}
