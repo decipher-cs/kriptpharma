@@ -158,22 +158,17 @@ const Contact = () => {
     })
 
     const onSubmit: SubmitHandler<ContactForm> = async (data) => {
-        const formData = new URLSearchParams(Object.entries(data))
-
-        // TODO: check if key doesn't exist and maybe fire sentry if in prod
-        const apiKey = import.meta.env.VITE_PAGECLIP_API_KEY
-
-        if (!apiKey) {
-            console.error('You forgot to define the API key')
-            return
-        }
-
-        if (import.meta.env.DEV) {
-            console.log('submitted data is:', formData)
-            return
-        }
-
         try {
+            const formData = new URLSearchParams(Object.entries(data))
+
+            // TODO: check if key doesn't exist and maybe fire sentry if in prod
+            const apiKey = import.meta.env.VITE_PAGECLIP_API_KEY
+
+            if (!apiKey) {
+                alert('Form temporarily offline. Contact support.')
+                return
+            }
+
             const res = await fetch('https://send.pageclip.co/' + apiKey, {
                 method: 'POST',
                 body: formData,
@@ -183,13 +178,17 @@ const Contact = () => {
 
             if (res.ok) {
                 // TODO: send daisyUI toast
+                reset(undefined)
                 alert('Successfully submitted your details')
-            } else throw Error('')
+            } else {
+                console.log(res)
+                throw Error('response set to not ok' + res)
+            }
         } catch (err) {
             // TODO: send to sentry for detailed report on error
             console.log('error', err)
             alert(
-                '"We regret to inform you that an error occurred. Please resubmit the form or contact us via one of our social media channels for further assistance.'
+                'We regret to inform you that an error occurred. Please resubmit the form or contact us via one of our social media channels for further assistance.'
             )
         }
     }
@@ -347,9 +346,6 @@ const Contact = () => {
                         )}
                         onClick={() => reset(undefined)}
                     >
-                        {(isLoading || isSubmitting || isValidating) && (
-                            <span className="loading loading-spinner"></span>
-                        )}
                         {'reset'.toUpperCase()}
                     </button>
 
