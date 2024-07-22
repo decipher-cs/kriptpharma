@@ -149,7 +149,8 @@ const Contact = () => {
                 return
             }
 
-            const URL = 'https://submit-form.com/' + import.meta.env.PROD ? apiKey : 'echo'
+            const URL = 'https://submit-form.com/' + (import.meta.env.PROD ? apiKey : 'echo')
+
             const res = await fetch(URL, {
                 method: 'POST',
                 body: JSON.stringify(formData),

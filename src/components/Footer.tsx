@@ -78,7 +78,12 @@ export const Footer = memo(() => {
 
                 <form
                     className="grid gap-2"
-                    action={'https://send.pageclip.co/' + import.meta.env.VITE_PAGECLIP_API_KEY}
+                    action={
+                        'https://submit-form.com/' +
+                        (import.meta.env.PROD
+                            ? import.meta.env.VITE_FORM_MANAGMENT_API_KEY
+                            : 'echo')
+                    }
                     method="post"
                 >
                     <label htmlFor="inquiry" className="footer-title">
