@@ -139,20 +139,17 @@ const Contact = () => {
 
     const onSubmit: SubmitHandler<ContactForm> = async (data) => {
         try {
-            const formData = new URLSearchParams(Object.entries(data))
-
             // TODO: check if key doesn't exist and maybe fire sentry if in prod
             const apiKey = import.meta.env.VITE_FORM_MANAGMENT_API_KEY
 
             if (!apiKey) {
                 throw new Error('No API key provided')
             }
-
             const URL = 'https://submit-form.com/' + (import.meta.env.PROD ? apiKey : 'echo')
 
             const res = await fetch(URL, {
                 method: 'POST',
-                body: JSON.stringify(formData),
+                body: JSON.stringify(data),
                 headers: {
                     'Content-Type': 'application/json',
                     Accept: 'application/json',
@@ -163,7 +160,8 @@ const Contact = () => {
 
             if (res.ok) {
                 // TODO: send daisyUI toast
-                alert('Successfully submitted your details')
+                import.meta.env.PROD && alert('Successfully submitted your details')
+                console.log(await res.json())
             } else {
                 console.log(res)
                 throw Error('response set to not ok' + res)
