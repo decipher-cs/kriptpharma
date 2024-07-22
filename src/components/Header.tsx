@@ -31,8 +31,7 @@ const Nav = memo(() => {
                         to={'/' + path.replace(' ', '')}
                         className={clsx(
                             pathname.slice(1).toLowerCase() === path.toLowerCase() &&
-                                'active font-bold',
-                            'font-semibold'
+                                'active font-bold'
                         )}
                     >
                         {path.toUpperCase()}
