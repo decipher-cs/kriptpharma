@@ -39,6 +39,7 @@ export default {
                     secondary: '#ffb41e',
                     'secondary-content': '#fff',
                     'error-content': '#fff',
+                    'success-content': '#fff',
                 },
             },
         ],
