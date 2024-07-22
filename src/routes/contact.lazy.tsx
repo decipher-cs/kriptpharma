@@ -145,8 +145,7 @@ const Contact = () => {
             const apiKey = import.meta.env.VITE_FORM_MANAGMENT_API_KEY
 
             if (!apiKey) {
-                alert('Form temporarily offline. Contact support.')
-                return
+                throw new Error('No API key provided')
             }
 
             const URL = 'https://submit-form.com/' + (import.meta.env.PROD ? apiKey : 'echo')
