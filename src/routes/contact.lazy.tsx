@@ -5,10 +5,9 @@ import instaLogo from '../assets/glyphs/insta.png'
 import linkedinLogo from '../assets/glyphs/linkedin.png'
 import facebookLogo from '../assets/glyphs/facebook.png'
 import { FieldErrors, Resolver, SubmitHandler, useForm } from 'react-hook-form'
-import { PiEnvelope, PiFlag, PiPhone, PiTextAa, PiUser } from 'react-icons/pi'
-import { PropsWithChildren, ReactNode, memo, useEffect } from 'react'
+import { PiCheckFatFill, PiEnvelope, PiFlag, PiPhone, PiTextAa, PiUser } from 'react-icons/pi'
+import { memo } from 'react'
 import clsx from 'clsx'
-import { twMerge } from 'tailwind-merge'
 import countryCodeList from 'country-codes-list'
 import InputWrapper from '../components/FormInputWrapper'
 
@@ -143,23 +142,27 @@ const Contact = () => {
             const formData = new URLSearchParams(Object.entries(data))
 
             // TODO: check if key doesn't exist and maybe fire sentry if in prod
-            const apiKey = import.meta.env.VITE_PAGECLIP_API_KEY
+            const apiKey = import.meta.env.VITE_FORM_MANAGMENT_API_KEY
 
             if (!apiKey) {
                 alert('Form temporarily offline. Contact support.')
                 return
             }
 
-            const res = await fetch('https://send.pageclip.co/' + apiKey, {
+            const URL = 'https://submit-form.com/' + import.meta.env.PROD ? apiKey : 'echo'
+            const res = await fetch(URL, {
                 method: 'POST',
-                body: formData,
+                body: JSON.stringify(formData),
+                headers: {
+                    'Content-Type': 'application/json',
+                    Accept: 'application/json',
+                },
             })
 
             console.log('response is:', res)
 
             if (res.ok) {
                 // TODO: send daisyUI toast
-                reset(undefined)
                 alert('Successfully submitted your details')
             } else {
                 console.log(res)
@@ -174,15 +177,12 @@ const Contact = () => {
         }
     }
 
-    useEffect(() => {
-        reset(undefined, { keepValues: true })
-    }, [isSubmitSuccessful, reset])
-
     return (
         <section className="mx-auto max-w-screen-xl space-y-8">
             <div className="mx-auto max-w-lg text-center">
                 <h2 className="text-3xl font-bold sm:text-4xl">Get In Touch</h2>
             </div>
+
             <div className="grid gap-8 md:grid-cols-2">
                 {contact.map((data, i) => (
                     <a
@@ -211,9 +211,7 @@ const Contact = () => {
 
             <form
                 className="mx-auto grid w-full gap-3 rounded-lg border border-neutral-300 p-6 focus-within:border-primary md:grid-cols-2 [&_*]:placeholder:italic"
-                // onSubmit={handleSubmit(onSubmit)}
-                action={'https://send.pageclip.co/' + import.meta.env.VITE_PAGECLIP_API_KEY}
-                method="post"
+                onSubmit={handleSubmit(onSubmit)}
             >
                 <InputWrapper
                     errorMessage={errors.name?.message}
@@ -346,6 +344,13 @@ const Contact = () => {
                     </button>
                 </div>
                 <p className="italic text-error">{errors.root?.message}</p>
+
+                {isSubmitSuccessful ? (
+                    <div className="col-span-full flex items-center justify-center gap-3 rounded-xl bg-success p-3 text-success-content">
+                        <p>Submitted Successfully. You'll hear from us soon.</p>
+                        <PiCheckFatFill size={20} />
+                    </div>
+                ) : null}
             </form>
         </section>
     )
