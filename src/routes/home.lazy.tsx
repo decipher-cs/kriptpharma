@@ -190,11 +190,11 @@ const FeaturedProducts = () => {
             data-tip={isScreenLg ? 'Auto Scroll Paused While Hovering' : 'Click to view more'}
         >
             <div
-                className="btn btn-ghost hidden self-center rounded-none md:inline-flex"
+                className="btn btn-ghost hidden self-center md:inline-flex"
                 onClick={() => slider.current?.slidePrev()}
                 data-tip="previous"
             >
-                <PiSkipBack size={30} className="text-primary-content" />
+                <PiSkipBack size={30} />
             </div>
 
             <div className="absolute -top-20 w-full text-neutral-500 md:hidden">
@@ -234,10 +234,10 @@ const FeaturedProducts = () => {
                 <div className="swiper-pagination"></div>
             </div>
             <div
-                className="btn btn-ghost hidden self-center rounded-none md:inline-flex"
+                className="btn btn-ghost hidden self-center md:inline-flex"
                 onClick={() => slider.current?.slideNext()}
             >
-                <PiSkipForward size={30} className="text-primary-content" />
+                <PiSkipForward size={30} />
             </div>
         </Breakout>
     )
