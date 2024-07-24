@@ -177,7 +177,6 @@ const FeaturedProducts = () => {
             autoplay: { pauseOnMouseEnter: true, reverseDirection: false },
             loop: false,
             centeredSlides: true,
-            centeredSlidesBounds: true,
         })
 
         return () => {
@@ -208,17 +207,14 @@ const FeaturedProducts = () => {
                             img && (
                                 <div className="swiper-slide" key={i}>
                                     <Link
-                                        className="sm:w-54 mx-auto flex aspect-[9/10] w-40 flex-col justify-between overflow-hidden rounded-xl bg-base-100 lg:w-80"
+                                        className="sm:w-54 mx-auto flex aspect-[9/10] w-40 flex-col justify-between gap-5 overflow-hidden rounded-xl bg-base-100 lg:w-80"
                                         to={href}
                                         search={search}
-                                        style={{
-                                            boxShadow: 'rgba(100, 100, 111, 0.2) 0px 7px 29px 0px',
-                                        }}
                                     >
                                         <div className="grow overflow-hidden">
                                             <img
                                                 loading="lazy"
-                                                className="inline-block size-full overflow-hidden rounded-t-xl object-cover"
+                                                className="inline-block aspect-square h-full rounded-full border border-primary object-cover"
                                                 src={img}
                                                 alt=""
                                             />
