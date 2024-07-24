@@ -11,7 +11,7 @@ export const Route = createLazyFileRoute('/exhibition')({
                 {[
                     {
                         time: 'Aug 2024',
-                        heading: 'Medi Vietnam PharmaExpo',
+                        heading: 'Medi Pharma-Expo, Vietnam ',
                         description:
                             'Saigon exhibition and convention centre at 799 Mguyeb Van Linh Street, Ho Chi Minah City',
                     },
