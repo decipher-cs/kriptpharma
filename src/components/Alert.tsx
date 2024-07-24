@@ -14,21 +14,17 @@ export const Alert = memo((props: { alertFor: string }) => {
 
     return (
         <aside className={clsx(!showAlert && 'hidden', 'fixed bottom-0 z-10 w-full')}>
-            <div
-                role="alert"
-                className="alert rounded-none border-none bg-primary text-primary-content"
-            >
-                <PiInfo size={25} />
-                <span className="font-semibold">
-                    Join Us at{' '}
-                    <Link className="link" to="/exhibition">
-                        Medi-Pharma Expo 2024
-                    </Link>
-                </span>
+            <div role="alert" className="flex items-center bg-secondary p-2 text-neutral-600">
+                <Link
+                    className="grow text-center text-lg font-semibold underline underline-offset-4 transition-transform hover:scale-125"
+                    to="/exhibition"
+                >
+                    join us at Medi-Pharma Expo 2024!
+                </Link>
 
                 <button
                     aria-label="Dismiss"
-                    className="btn-primary btn-sm"
+                    className="btn btn-ghost btn-sm"
                     onClick={() => setShowAlert(false)}
                 >
                     <PiX size={30} />
