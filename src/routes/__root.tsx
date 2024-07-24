@@ -30,14 +30,7 @@ function Root() {
                     )}
                 </main>
 
-                <aside className="fixed bottom-0 z-10 w-full bg-red-500">
-                    <Alert
-                        alertFor="pharmaexpo"
-                        text="Medi Vietnam PharmaExpo 2024 Saigon Exhibition 1st - 3rd
-                    August 2024 Booth No. IP08 Saigon exhibition and convention
-                    centre at 799 Mguyeb Van Linh Street, Ho Chi Minah City"
-                    />
-                </aside>
+                <Alert alertFor="pharmaexpo" />
 
                 <Footer />
                 {import.meta.env.DEV && <TanStackRouterDevtools />}
