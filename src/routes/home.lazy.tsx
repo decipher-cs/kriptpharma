@@ -274,23 +274,23 @@ const reasonsToChooseUs = [
 const ReasonsToChooseUse = () => {
     return (
         <Breakout className="bg-base-200 py-24">
-            <h2 className="mb-32 text-center text-4xl font-bold md:mb-48 lg:text-6xl">
+            <h2 className="mb-32 text-center text-4xl font-bold lg:text-6xl">
                 Why Choose Us?
             </h2>
 
-            <article className="snap-start space-y-44 border-blue-400 md:space-y-12">
+            <article className="snap-start space-y-44 border-blue-400 lg:space-y-12">
                 {reasonsToChooseUs.map((data, i) => (
                     <div
                         key={data.title}
-                        className={`flex snap-start flex-wrap items-center md:flex-nowrap ${i % 2 === 0 ? 'flex-row-reverse' : ''}`}
+                        className={`flex snap-start flex-wrap items-center lg:flex-nowrap ${i % 2 === 0 ? 'flex-row-reverse' : ''}`}
                     >
                         <video
                             className={clsx(
-                                `md:object-conver inline-block w-full overflow-hidden bg-primary object-cover max-md:h-[50svh] max-md:rounded-t-3xl md:aspect-[12/16] md:w-full md:max-w-lg`,
-                                i % 2 === 0 ? 'md:rounded-r-3xl' : 'md:rounded-l-3xl',
+                                `lg:object-conver inline-block w-full overflow-hidden bg-primary object-cover max-lg:h-[50svh] max-lg:rounded-t-3xl lg:aspect-[12/16] lg:w-full lg:max-w-lg`,
+                                i % 2 === 0 ? 'lg:rounded-r-3xl' : 'lg:rounded-l-3xl',
                                 i % 2 === 0
-                                    ? 'md:[mask:linear-gradient(-90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
-                                    : 'md:[mask:linear-gradient(90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]',
+                                    ? 'lg:[mask:linear-gradient(-90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
+                                    : 'lg:[mask:linear-gradient(90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]',
                                 '[mask:linear-gradient(180deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
                             )}
                             autoPlay
@@ -305,8 +305,8 @@ const ReasonsToChooseUse = () => {
                             <source src={data.content} type="video/webm" />
                             Unsupported video
                         </video>
-                        <div className="mx-auto max-w-prose space-y-8 justify-self-center px-8 max-md:text-center">
-                            <div className="w-fit max-md:mx-auto">{data.logo}</div>
+                        <div className="mx-auto max-w-prose space-y-8 justify-self-center px-8 max-lg:text-center">
+                            <div className="w-fit max-lg:mx-auto">{data.logo}</div>
                             <h2 className="text-4xl/none font-bold">
                                 <Balancer>{data.title}</Balancer>
                             </h2>
