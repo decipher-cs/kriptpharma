@@ -14,7 +14,10 @@ export const Alert = memo((props: { alertFor: string }) => {
 
     return (
         <aside className={clsx(!showAlert && 'hidden', 'fixed bottom-0 z-10 w-full')}>
-            <div role="alert" className="alert rounded-none bg-primary text-primary-content">
+            <div
+                role="alert"
+                className="alert rounded-none border-none bg-primary text-primary-content"
+            >
                 <PiInfo size={25} />
                 <span className="font-semibold">
                     Join Us at{' '}
