@@ -20,7 +20,7 @@ const Nav = memo(() => {
                 'About',
                 'Product',
                 'Equipment',
-                'Downloads',
+                'Catalogue',
                 'Global Presence',
                 'Gallery',
                 'Exhibition',

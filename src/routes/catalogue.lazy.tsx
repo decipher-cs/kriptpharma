@@ -3,7 +3,7 @@ import furniturePdf from '../assets/downloadable-pdf/furniture-catalogue.pdf'
 import pharmaRangePdf from '../assets/downloadable-pdf/pharma-range.pdf'
 import { memo } from 'react'
 
-export const Route = createLazyFileRoute('/downloads')({
+export const Route = createLazyFileRoute('/catalogue')({
     component: memo(() => <Download />),
 })
 
