@@ -473,7 +473,10 @@ const Specialties = () => {
                     title: 'WHO-GMP Registered',
                 },
             ].map((item, i) => (
-                <div key={i} className="place-center grid place-items-center gap-4">
+                <div
+                    key={i}
+                    className="place-center grid place-content-center place-items-center gap-4"
+                >
                     <span className="flex aspect-square max-w-32 place-content-center rounded-full bg-primary p-4 text-primary-content">
                         {item.icon}
                     </span>
