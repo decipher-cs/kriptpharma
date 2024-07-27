@@ -12,15 +12,21 @@ import video3Poster from '../assets/videos/video-thumbnail3.webp'
 import video4Poster from '../assets/videos/video-thumbnail4.webp'
 import {
     PiEye,
+    PiFactoryThin,
     PiHandshake,
+    PiHandshakeThin,
     PiHandSwipeRight,
     PiMegaphone,
+    PiNotePencilThin,
+    PiPaperPlaneThin,
+    PiPlanetThin,
     PiRoadHorizon,
     PiShieldStar,
     PiShootingStar,
     PiSkipBack,
     PiSkipForward,
     PiSparkle,
+    PiUsersThreeThin,
 } from 'react-icons/pi'
 import injections from '../assets/featured/injections.webp'
 import tablet from '../assets/featured/tablet.webp'
@@ -37,6 +43,7 @@ import 'swiper/css/bundle'
 import { screens } from 'tailwindcss/defaultTheme'
 import Balancer from 'react-wrap-balancer'
 import useMediaQuery from '../hooks/useMediaQuery'
+import { animate, inView } from 'motion'
 
 export const Route = createLazyFileRoute('/home')({
     component: () => <Home />,

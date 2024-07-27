@@ -14,6 +14,8 @@ export const Route = createLazyFileRoute('/exhibition')({
                         heading: 'Medi Pharma-Expo, Vietnam ',
                         description:
                             'Saigon exhibition and convention centre at 799 Mguyeb Van Linh Street, Ho Chi Minah City',
+                        imageDescription:
+                            'pamphlet with info on medi pharma expo. Held between 1st-3rd august 2024 in vietnam.',
                     },
                 ].map((data, i) => (
                     <li key={i}>
@@ -28,6 +30,7 @@ export const Route = createLazyFileRoute('/exhibition')({
                             <a href={pharmaExpoVietnam} target="_blank">
                                 <img
                                     loading="lazy"
+                                    alt={data.imageDescription}
                                     src={pharmaExpoVietnam + ''}
                                     className="my-8 inline-block max-h-[70svh] w-auto rounded-xl bg-primary object-contain"
                                 />
