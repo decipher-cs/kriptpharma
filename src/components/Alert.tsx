@@ -18,11 +18,11 @@ export const Alert = memo((props: { alertFor: string }) => {
                 role="alert"
                 className="relative flex items-center bg-secondary p-2 text-neutral-700"
             >
-                <span className="grow text-center text-lg font-semibold capitalize transition-transform hover:scale-110">
+                <span className="text-md grow text-center font-semibold capitalize transition-transform hover:scale-110 sm:text-lg">
                     Meet us at Medi-Pharma Expo 2024!{' '}
                     <Link
                         to="/exhibition"
-                        className="underline underline-offset-4"
+                        className="underline underline-offset-2"
                         aria-label="see details about medi-pharma expo 2024"
                     >
                         Know More
@@ -31,7 +31,7 @@ export const Alert = memo((props: { alertFor: string }) => {
 
                 <button
                     aria-label="Dismiss"
-                    className="btn btn-ghost btn-sm absolute right-2"
+                    className="btn btn-ghost btn-sm absolute right-2 max-sm:hidden"
                     onClick={() => setShowAlert(false)}
                 >
                     <PiX size={20} />
