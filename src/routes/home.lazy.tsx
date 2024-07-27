@@ -168,26 +168,19 @@ const FeaturedProducts = () => {
     const slider = useRef<Swiper | null>(null)
     useEffect(() => {
         slider.current = new Swiper('.swiper-home', {
-            effect: 'coverflow',
-            slidesPerView: 2,
+            slidesPerView: 3,
             breakpoints: {
                 [screens.md.replace('px', '')]: {
-                    slidesPerView: 3,
+                    slidesPerView: 4,
                 },
             },
-            coverflowEffect: {
-                depth: 250,
-                modifier: 1,
-                rotate: 0,
-                scale: 1,
-                slideShadows: false,
-            },
+            spaceBetween: 25,
             pagination: {
                 el: '.swiper-pagination',
             },
             initialSlide: Math.floor(featuredProductNames.length / 2) - 1,
             autoHeight: false,
-            autoplay: { pauseOnMouseEnter: true, reverseDirection: false, delay: 2500 },
+            autoplay: { pauseOnMouseEnter: true, reverseDirection: false, delay: 2000 },
             loop: false,
             centeredSlides: true,
         })
@@ -216,14 +209,15 @@ const FeaturedProducts = () => {
                             img && (
                                 <div className="swiper-slide" key={i}>
                                     <Link
-                                        className="sm: mx-auto flex aspect-[9/10] max-w-96 flex-col justify-between gap-5 overflow-hidden rounded-xl bg-transparent"
+                                        className="flex w-full flex-col justify-between gap-10"
+                                        // className="mx-auto flex aspect-[9/10] max-w-96 flex-col justify-between gap-5 overflow-hidden rounded-xl bg-transparent"
                                         to={href}
                                         search={search}
                                     >
-                                        <div className="grow overflow-hidden">
+                                        <div className="grow">
                                             <img
                                                 loading="lazy"
-                                                className="inline-block aspect-square h-full rounded-full border border-primary object-cover"
+                                                className="inline-block aspect-square h-auto w-full rounded-full border border-primary object-cover"
                                                 src={img}
                                                 alt=""
                                             />
