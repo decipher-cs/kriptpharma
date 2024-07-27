@@ -101,9 +101,9 @@ const Hero = () => {
                         Kript Pharmaceuticals
                     </h1>
                     <p className="mx-auto max-w-[55ch] text-sm font-bold text-neutral-200 md:text-lg">
-                        One of the leading pharmaceutical supplier from India that has been
-                        providing pharmaceutical , nutraceuticals OEM services for international
-                        well-known brands for over years
+                        One of the leading pharmaceutical suppliers from India that has been
+                        providing pharmaceutical and nutraceutical OEM services for international
+                        well-known brands for over
                     </p>
                     <Link
                         role="button"
