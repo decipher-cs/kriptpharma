@@ -22,8 +22,8 @@ const HomeLazyImport = createFileRoute('/home')()
 const GlobalPresenceLazyImport = createFileRoute('/globalPresence')()
 const GalleryLazyImport = createFileRoute('/gallery')()
 const ExhibitionLazyImport = createFileRoute('/exhibition')()
-const DownloadsLazyImport = createFileRoute('/downloads')()
 const ContactLazyImport = createFileRoute('/contact')()
+const CatalogueLazyImport = createFileRoute('/catalogue')()
 const AboutLazyImport = createFileRoute('/about')()
 const IndexLazyImport = createFileRoute('/')()
 
@@ -51,15 +51,15 @@ const ExhibitionLazyRoute = ExhibitionLazyImport.update({
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/exhibition.lazy').then((d) => d.Route))
 
-const DownloadsLazyRoute = DownloadsLazyImport.update({
-  path: '/downloads',
-  getParentRoute: () => rootRoute,
-} as any).lazy(() => import('./routes/downloads.lazy').then((d) => d.Route))
-
 const ContactLazyRoute = ContactLazyImport.update({
   path: '/contact',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/contact.lazy').then((d) => d.Route))
+
+const CatalogueLazyRoute = CatalogueLazyImport.update({
+  path: '/catalogue',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/catalogue.lazy').then((d) => d.Route))
 
 const AboutLazyRoute = AboutLazyImport.update({
   path: '/about',
@@ -113,18 +113,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutLazyImport
       parentRoute: typeof rootRoute
     }
+    '/catalogue': {
+      id: '/catalogue'
+      path: '/catalogue'
+      fullPath: '/catalogue'
+      preLoaderRoute: typeof CatalogueLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactLazyImport
-      parentRoute: typeof rootRoute
-    }
-    '/downloads': {
-      id: '/downloads'
-      path: '/downloads'
-      fullPath: '/downloads'
-      preLoaderRoute: typeof DownloadsLazyImport
       parentRoute: typeof rootRoute
     }
     '/exhibition': {
@@ -165,8 +165,8 @@ export const routeTree = rootRoute.addChildren({
   EquipmentRoute,
   ProductRoute,
   AboutLazyRoute,
+  CatalogueLazyRoute,
   ContactLazyRoute,
-  DownloadsLazyRoute,
   ExhibitionLazyRoute,
   GalleryLazyRoute,
   GlobalPresenceLazyRoute,
@@ -185,8 +185,8 @@ export const routeTree = rootRoute.addChildren({
         "/equipment",
         "/product",
         "/about",
+        "/catalogue",
         "/contact",
-        "/downloads",
         "/exhibition",
         "/gallery",
         "/globalPresence",
@@ -205,11 +205,11 @@ export const routeTree = rootRoute.addChildren({
     "/about": {
       "filePath": "about.lazy.tsx"
     },
+    "/catalogue": {
+      "filePath": "catalogue.lazy.tsx"
+    },
     "/contact": {
       "filePath": "contact.lazy.tsx"
-    },
-    "/downloads": {
-      "filePath": "downloads.lazy.tsx"
     },
     "/exhibition": {
       "filePath": "exhibition.lazy.tsx"
