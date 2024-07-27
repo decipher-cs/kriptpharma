@@ -41,7 +41,7 @@ export const Footer = memo(() => {
                 <div className="grid gap-2">
                     <h4 className="footer-title">Quick Link</h4>
                     <nav className="grid gap-2">
-                        <Link className="link-hover link" to="/downloads">
+                        <Link className="link-hover link" to="/catalogue">
                             Catalogue
                         </Link>
                         <Link className="link-hover link" to="/product">
