@@ -44,7 +44,7 @@ export const Route = createLazyFileRoute('/home')({
 
 const Home = () => {
     return (
-        <div className="-mt-8 space-y-36">
+        <div className="-mt-8 space-y-10">
             <Hero />
 
             <FeaturedProducts />
@@ -52,6 +52,10 @@ const Home = () => {
             <ReasonsToChooseUse />
 
             <MissionSection />
+
+            <Specialties />
+
+            <CompanyStats />
         </div>
     )
 }
@@ -396,6 +400,53 @@ const MissionSection = () => {
                     </div>
                 ))}
             </article>
+        </Breakout>
+    )
+}
+
+const Specialties = () => {
+    return (
+        <div className="grid gap-10 lg:grid-cols-3">
+            {[
+                { icon: <PiPlanetThin size={'100%'} />, title: 'Pharmaceuticals Export & Import' },
+                { icon: <PiPaperPlaneThin size={'100%'} />, title: 'Research & Development' },
+                {
+                    icon: <PiNotePencilThin size={'100%'} />,
+                    title: 'WHO-GMP Registered',
+                },
+            ].map((item, i) => (
+                <div key={i} className="place-center grid place-items-center gap-4">
+                    <span className="flex aspect-square max-w-32 place-content-center rounded-full bg-primary p-4 text-primary-content">
+                        {item.icon}
+                    </span>
+                    <h6> {item.title} </h6>
+                </div>
+            ))}
+        </div>
+    )
+}
+
+const CompanyStats = () => {
+    return (
+        <Breakout className="flex flex-col divide-solid bg-primary py-5 text-primary-content max-lg:divide-y lg:flex-row lg:divide-x">
+            {[
+                { icon: <PiUsersThreeThin size={65} />, stat: '100+', title: 'Current Employees' },
+                {
+                    icon: <PiFactoryThin size={65} />,
+                    stat: '3+',
+                    title: 'Invested Large Pharmaceeutical Manufacturing Company',
+                },
+                { icon: <PiHandshakeThin size={65} />, stat: '200+', title: 'Partners' },
+            ].map((item, i) => (
+                <div key={i} className="inline-flex basis-1/3 flex-col items-center text-center">
+                    <span> {item.icon} </span>
+                    <h6>
+                        <em className="text-6xl font-bold">{item.stat}</em>
+                        <br />
+                        {item.title}
+                    </h6>
+                </div>
+            ))}
         </Breakout>
     )
 }

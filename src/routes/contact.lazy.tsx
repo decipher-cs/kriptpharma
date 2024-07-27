@@ -208,6 +208,7 @@ const Contact = () => {
             </div>
 
             <form
+                id={'form'}
                 className="mx-auto grid w-full gap-3 rounded-lg border border-neutral-300 p-6 focus-within:border-primary md:grid-cols-2 [&_*]:placeholder:italic"
                 onSubmit={handleSubmit(onSubmit)}
             >
