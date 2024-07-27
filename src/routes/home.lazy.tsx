@@ -127,6 +127,13 @@ const Hero = () => {
 const featuredProductNames = [
     { name: 'Tablets', img: tablet, href: '/product', search: { searchString: 'tablets' } },
 
+    {
+        name: 'Soft-Gel Capsules',
+        img: softGel,
+        href: '/product',
+        search: { searchString: 'soft gel capsules' },
+    },
+
     { name: 'Injection', img: injections, href: '/product', search: { searchString: 'injection' } },
 
     { name: 'ICU Bed', img: icuBed, href: '/equipment', search: { equipmentName: 'Hospital Bed' } },
@@ -143,13 +150,6 @@ const featuredProductNames = [
         img: wheelchair,
         href: '/equipment',
         search: { equipmentName: 'wheelchair' },
-    },
-
-    {
-        name: 'Soft-Gel Capsules',
-        img: softGel,
-        href: '/product',
-        search: { searchString: 'soft gel capsules' },
     },
 
     { name: 'Ointments', img: oitment, href: '/product', search: { searchString: 'ointments' } },
