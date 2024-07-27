@@ -281,13 +281,47 @@ const reasonsToChooseUs = [
     },
 ]
 const ReasonsToChooseUse = () => {
-    return (
-        <Breakout className="bg-base-200 py-24">
-            <h2 className="mb-32 text-center text-4xl font-bold lg:text-6xl">
-                Why Choose Us?
-            </h2>
+    const transitionInOnScrollRef = useRef<(HTMLDivElement | null)[]>([null])
 
-            <article className="snap-start space-y-44 border-blue-400 lg:space-y-12">
+    const videoAppearOnScrollRef = useRef<(HTMLVideoElement | null)[]>([null])
+
+    useEffect(() => {
+        const container = videoAppearOnScrollRef.current
+        if (!container) return
+
+        container.forEach((el) => {
+            if (el !== null)
+                inView(el, (info) => {
+                    animate(
+                        info.target,
+                        { opacity: 1 },
+                        { delay: 0.4, duration: 0.9, easing: [0.17, 0.55, 0.55, 1] }
+                    )
+                })
+        })
+    }, [])
+
+    useEffect(() => {
+        const container = transitionInOnScrollRef.current
+        if (!container) return
+
+        container.forEach((el) => {
+            if (el !== null)
+                inView(el, (info) => {
+                    animate(
+                        info.target,
+                        { opacity: 1, transform: 'none' },
+                        { delay: 0.2, duration: 0.9, easing: [0.17, 0.55, 0.55, 1] }
+                    )
+                })
+        })
+    }, [])
+
+    return (
+        <Breakout className="bg-base-200 py-20">
+            <h2 className="mb-20 text-center text-4xl font-bold lg:text-5xl">Why Choose Us?</h2>
+
+            <article className="snap-start space-y-40 overflow-hidden border-blue-400 lg:space-y-0">
                 {reasonsToChooseUs.map((data, i) => (
                     <div
                         key={data.title}
@@ -295,13 +329,14 @@ const ReasonsToChooseUse = () => {
                     >
                         <video
                             className={clsx(
-                                `lg:object-conver inline-block w-full overflow-hidden bg-primary object-cover max-lg:h-[50svh] max-lg:rounded-t-3xl lg:aspect-[12/16] lg:w-full lg:max-w-lg`,
+                                `lg:object-conver inline-block w-full overflow-hidden bg-primary object-cover opacity-0 max-lg:h-[50svh] max-lg:rounded-t-3xl lg:aspect-[12/15] lg:w-full lg:max-w-lg`,
                                 i % 2 === 0 ? 'lg:rounded-r-3xl' : 'lg:rounded-l-3xl',
                                 i % 2 === 0
                                     ? 'lg:[mask:linear-gradient(-90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
                                     : 'lg:[mask:linear-gradient(90deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]',
                                 '[mask:linear-gradient(180deg,_rgb(0_0_0_/_100%)_10%,_transparent_90%)]'
                             )}
+                            ref={(ref) => videoAppearOnScrollRef.current.push(ref)}
                             autoPlay
                             disablePictureInPicture
                             disableRemotePlayback
@@ -314,12 +349,19 @@ const ReasonsToChooseUse = () => {
                             <source src={data.content} type="video/webm" />
                             Unsupported video
                         </video>
-                        <div className="mx-auto max-w-prose space-y-8 justify-self-center px-8 max-lg:text-center">
+                        <div
+                            className={clsx(
+                                'mx-auto max-w-prose space-y-8 justify-self-center px-8 text-neutral-800 max-lg:text-center',
+                                'opacity-0',
+                                i % 2 === 0 ? '-translate-x-full' : 'translate-x-full'
+                            )}
+                            ref={(ref) => transitionInOnScrollRef.current.push(ref)}
+                        >
                             <div className="w-fit max-lg:mx-auto">{data.logo}</div>
-                            <h2 className="text-4xl/none font-bold">
+                            <h2 className="text-4xl/none font-semibold">
                                 <Balancer>{data.title}</Balancer>
                             </h2>
-                            <p className="text-2xl">
+                            <p className="text-2xl text-neutral-700">
                                 <Balancer>{data.description}</Balancer>
                             </p>
                         </div>
@@ -334,7 +376,7 @@ const MissionSection = () => {
     return (
         <Breakout className="justify-self-stretch">
             <article
-                className="mx-auto grid max-w-screen-xl auto-rows-fr items-stretch justify-items-center px-breath py-10 lg:grid-cols-3"
+                className="mx-auto grid max-w-screen-xl auto-rows-fr items-stretch justify-items-center gap-5 px-breath py-10 lg:grid-cols-3"
                 id="vision"
             >
                 {[
@@ -363,11 +405,22 @@ const MissionSection = () => {
                         title: 'Our Value',
                         logo: <PiRoadHorizon className="size-8" />,
                         description: (
-                            <li>
-                                We are committed to offer you wide variety of quality pharmaceutical
-                                preparations of various segments along with all desired
-                                documentation for your regulatory requirements.
-                            </li>
+                            <>
+                                <li>
+                                    We are committed to offering you a wide variety of quality
+                                    pharmaceutical preparations of various segments.
+                                </li>
+
+                                <li>
+                                    We provide all desired documentation for your regulatory
+                                    requirements.
+                                </li>
+
+                                <li>
+                                    Our commitment includes ensuring that both the pharmaceutical
+                                    preparations and the documentation meet your needs.
+                                </li>
+                            </>
                         ),
                     },
                     {
@@ -392,13 +445,13 @@ const MissionSection = () => {
                     },
                 ].map((data, i) => (
                     <div
-                        className="group max-w-prose border border-neutral-300 bg-base-100 transition-all hover:bg-primary hover:text-primary-content max-lg:first:rounded-t-3xl max-lg:last:rounded-b-3xl lg:first:rounded-l-3xl lg:last:rounded-r-3xl"
+                        className="group max-w-prose rounded-lg border border-neutral-300 bg-base-100 shadow-md transition-all"
                         key={i}
                     >
                         <div className="grid h-full content-center space-y-5 p-8 lg:content-start">
                             {data.logo}
                             <h2 className="text-2xl font-bold">{data.title}</h2>
-                            <div className="list-inside list-disc text-lg/normal">
+                            <div className="grid list-inside list-none gap-6 text-lg/normal">
                                 {data.description}
                             </div>
                         </div>
