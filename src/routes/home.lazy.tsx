@@ -15,7 +15,6 @@ import {
     PiFactoryThin,
     PiHandshake,
     PiHandshakeThin,
-    PiHandSwipeRight,
     PiMegaphone,
     PiNotePencilThin,
     PiPaperPlaneThin,
@@ -167,25 +166,28 @@ const FeaturedProducts = () => {
     const { queryMatches: isScreenLg } = useMediaQuery(`(min-width: ${screens.lg})`)
 
     const slider = useRef<Swiper | null>(null)
-
     useEffect(() => {
         slider.current = new Swiper('.swiper-home', {
             effect: 'coverflow',
-            slidesPerView: 3,
+            slidesPerView: 2,
+            breakpoints: {
+                [screens.md.replace('px', '')]: {
+                    slidesPerView: 3,
+                },
+            },
             coverflowEffect: {
                 depth: 250,
                 modifier: 1,
                 rotate: 0,
                 scale: 1,
                 slideShadows: false,
-                stretch: isScreenLg ? 0 : -60,
             },
             pagination: {
                 el: '.swiper-pagination',
             },
             initialSlide: Math.floor(featuredProductNames.length / 2) - 1,
             autoHeight: false,
-            autoplay: { pauseOnMouseEnter: true, reverseDirection: false },
+            autoplay: { pauseOnMouseEnter: true, reverseDirection: false, delay: 2500 },
             loop: false,
             centeredSlides: true,
         })
@@ -207,10 +209,6 @@ const FeaturedProducts = () => {
                 <PiSkipBack size={30} />
             </div>
 
-            <div className="absolute -top-20 w-full text-neutral-500 md:hidden">
-                <PiHandSwipeRight size={50} className="mx-auto" />
-                swipe
-            </div>
             <div className="swiper swiper-home hover:cursor-grab">
                 <div className="swiper-wrapper select-none py-20">
                     {featuredProductNames.map(
@@ -218,7 +216,7 @@ const FeaturedProducts = () => {
                             img && (
                                 <div className="swiper-slide" key={i}>
                                     <Link
-                                        className="sm:w-54 mx-auto flex aspect-[9/10] w-40 flex-col justify-between gap-5 overflow-hidden rounded-xl bg-base-100 lg:w-80"
+                                        className="sm: mx-auto flex aspect-[9/10] max-w-96 flex-col justify-between gap-5 overflow-hidden rounded-xl bg-transparent"
                                         to={href}
                                         search={search}
                                     >
@@ -230,7 +228,7 @@ const FeaturedProducts = () => {
                                                 alt=""
                                             />
                                         </div>
-                                        <h4 className="grid basis-1/4 place-content-center font-semibold">
+                                        <h4 className="grid basis-1/4 place-content-center truncate text-xs sm:text-lg">
                                             {name.toUpperCase()}
                                         </h4>
                                     </Link>
