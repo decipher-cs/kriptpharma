@@ -90,7 +90,6 @@ const Hero = () => {
             <div className="hero-content mb-14 justify-self-center text-center">
                 <div className="space-y-6 sm:space-y-10">
                     <h1
-                        // className="text-3xl font-bold text-transparent md:text-6xl"
                         className="text-4xl font-bold text-transparent sm:text-6xl md:text-7xl"
                         style={{
                             backgroundImage: `linear-gradient(45deg,
@@ -101,20 +100,21 @@ const Hero = () => {
                     >
                         Kript Pharmaceuticals
                     </h1>
-                    <p className="mx-auto max-w-[50ch] text-sm font-bold text-neutral-200 md:text-lg">
-                        Discover trusted medications where quality meets care. Empowering health and
-                        wellness with our comprehensive range of pharmaceutical solutions.
+                    <p className="mx-auto max-w-[55ch] text-sm font-bold text-neutral-200 md:text-lg">
+                        One of the leading pharmaceutical supplier from India that has been
+                        providing pharmaceutical , nutraceuticals OEM services for international
+                        well-known brands for over years
                     </p>
-                    <a
-                        role="button"
-                        href="#vision"
-                        className="btn btn-primary mr-4 sm:btn-md md:btn-lg"
-                    >
-                        KNOW MORE
-                    </a>
                     <Link
                         role="button"
-                        to="/downloads"
+                        to={'/contact' + '#form'}
+                        className="btn btn-primary mr-4 uppercase sm:btn-md md:btn-lg"
+                    >
+                        Get a quote
+                    </Link>
+                    <Link
+                        role="button"
+                        to="/catalogue"
                         className="btn btn-secondary sm:btn-md md:btn-lg"
                     >
                         CATALOGUE

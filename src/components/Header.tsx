@@ -1,8 +1,9 @@
 import { Link, useRouterState } from '@tanstack/react-router'
 import kriptPharmaLogoDark from '../assets/brand-logo/logo-dark.svg'
-import kriptPharmaLogoLight from '../assets/brand-logo/logo-light.webp'
-import kriptPharmaLogoCompact from '../assets/brand-logo/logo-dark-compact.webp'
-import { memo, useEffect, useState } from 'react'
+import kriptPharmaLogoLight from '../assets/brand-logo/logo-light.svg'
+import kriptPharmaLogoCompactLight from '../assets/brand-logo/logo-light-compact.webp'
+import kriptPharmaLogoCompactDark from '../assets/brand-logo/logo-dark-compact.webp'
+import { memo, useState } from 'react'
 import clsx from 'clsx'
 import { PiList, PiX } from 'react-icons/pi'
 import useMediaQuery from '../hooks/useMediaQuery'
@@ -62,7 +63,11 @@ export const Header = memo(() => {
                 <Link to="/" className="w-full sm:text-xl" aria-label="go to home">
                     {isScreenSm ? (
                         <img
-                            src={kriptPharmaLogoCompact}
+                            src={
+                                isCurrRouteHome
+                                    ? kriptPharmaLogoCompactLight
+                                    : kriptPharmaLogoCompactDark
+                            }
                             alt="Kript Pharmaceuticals logo"
                             className="inline-block h-auto max-w-16"
                         />
