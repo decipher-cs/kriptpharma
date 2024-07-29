@@ -1,6 +1,6 @@
-import heroVideo from '../../assets/hero-video.webm'
-import heroVideoPoster from '../../assets/hero-image-poster.webp'
-import { Link } from '@tanstack/react-router';
+import heroVideo from '../../assets/hero/hero-video.webm'
+import heroVideoPoster from '../../assets/hero/hero-image-poster.webp'
+import { Link } from '@tanstack/react-router'
 
 export default function Hero() {
     return (
