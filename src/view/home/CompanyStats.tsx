@@ -8,15 +8,11 @@ export const CompanyStats = () => {
             {[
                 { icon: <PiUsersThreeThin size={65} />, stat: '100+', title: 'Current Employees' },
                 {
-                    icon: <PiFactoryThin size={65} />,
-                    stat: '3+',
-                    title: 'Collaboration with large pharmaceutical manufacturing company',
-                },
-                {
                     icon: <PiHandshakeThin size={65} />,
                     stat: '5+',
                     title: 'Rights and strategic collaboration with large pharmaceutical manufacturing company',
                 },
+                { icon: <PiHandshakeThin size={65} />, stat: '200+', title: 'Partners' },
             ].map((item, i) => (
                 <div
                     key={i}
