@@ -16,25 +16,35 @@ const AboutUs = () => {
                 </h2>
                 <p className="text-lg/relaxed sm:text-xl/loose">
                     <Balancer>
-                        A promise for healthy life Kript pharmaceuticals pvt Ltd was established
-                        with the motive of adding values to the million of lives through its best
-                        quality products , we are here for the people as we serve in the persuit of
-                        their healthy lives . We nurture innovation , offers excellent quality and
-                        always stretches to inspire confidence in our customer . Our primary
-                        objective is to proved high end medical products. At kript pharmaceuticals,
-                        we believe in weaving business ethics in all our endeavours and continually
-                        updating and upgrading to deliver a uniform quality that surpasses industry
-                        benchmarks .
-                        <br /> <br />
-                        Kript Pharmaceuticals Private Limited is a Registered Indian Pharma Company
-                        engaged in the manufacture and marketing of Pharmaceutical formulations.
-                        Located in the largest Pharma Hub of Asia, the Company has made a name for
-                        itself for its quality and range of products . Supplying not just
-                        pharmaceutical, nutraceuticals but also marking their presence into hospital
-                        furniture and equipment services . We are equipping multiple hospitals from
-                        scratch with our equipment across the globe . Kript pharmaceuticals is a
-                        fast expanding Pharma organization having over 400+ registered brands, and
-                        is steadily working to make a presence across the Globe.
+                        Kript Pharmaceuticals Private Limited stands at the forefront of the
+                        pharmaceutical industry as a premier Original Equipment Manufacturer (OEM).
+                        Established to enhance the quality of life, we add value to millions of
+                        lives through our exceptional pharmaceutical products.
+                        <br />
+                        <br />
+                        Our strength lies in sourcing the finest raw materials from international
+                        locations, ensuring top-quality formulations, nutraceuticals, and medical
+                        furniture. With right & strategic collaborations in various manufacturing
+                        plants, our integrated production and quality control team implements best
+                        practices and conducts rigorous inspections to meet stringent regulatory
+                        standards. Additionally, our central warehouse performs further quality
+                        control to ensure every product surpasses industry benchmarks.
+                        <br />
+                        <br />
+                        Kript Pharmaceuticals is a registered Indian company based in Asia's largest
+                        Pharma Hub, known for its diverse product range. In addition to
+                        pharmaceuticals and nutraceuticals, we excel in providing hospital furniture
+                        and equipment services, equipping hospitals globally.
+                        <br />
+                        <br />
+                        We deliver customized OEM solutions, ensuring our clients' success in the
+                        competitive healthcare market. Our commitment to innovation, quality, and
+                        ethical practices drives us to consistently surpass industry standards.
+                        <br />
+                        <br />
+                        Kript Pharmaceuticals is your trusted partner for excellence in
+                        pharmaceutical provision and comprehensive healthcare solutions. Together,
+                        we can build a healthier future.
                     </Balancer>
                 </p>
 

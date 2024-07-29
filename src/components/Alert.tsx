@@ -18,8 +18,8 @@ export const Alert = memo((props: { alertFor: string }) => {
                 role="alert"
                 className="relative flex items-center bg-secondary p-2 text-neutral-700"
             >
-                <span className="text-md grow text-center font-semibold capitalize transition-transform hover:scale-110 sm:text-lg">
-                    Meet us at Medi-Pharma Expo 2024!{' '}
+                <span className="grow text-center text-sm font-semibold capitalize transition-transform hover:scale-110 sm:text-lg">
+                    Meet us in Vietnam at The Medi-Pharma Expo 2024!{' '}
                     <Link
                         to="/exhibition"
                         className="underline underline-offset-2"
