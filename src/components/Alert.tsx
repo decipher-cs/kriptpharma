@@ -1,7 +1,7 @@
 import { Link } from '@tanstack/react-router'
 import clsx from 'clsx'
 import { memo, useEffect, useState } from 'react'
-import { PiInfo, PiX } from 'react-icons/pi'
+import { PiX } from 'react-icons/pi'
 
 export const Alert = memo((props: { alertFor: string }) => {
     const { alertFor } = props
