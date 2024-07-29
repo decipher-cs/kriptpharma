@@ -10,16 +10,17 @@ import {
     PiWhatsappLogo,
     PiGithubLogo,
     PiSidebar,
+    PiBuilding,
 } from 'react-icons/pi'
 import Balancer from 'react-wrap-balancer'
-import { memo } from 'react'
+import { PropsWithChildren, memo } from 'react'
 
 export const Footer = memo(() => {
     return (
         <section className="rounded-t-3xl bg-base-200">
             <footer className="mx-auto mt-14 grid items-start gap-16 p-10 md:grid-cols-2 xl:grid-cols-3">
                 <div className="grid gap-2">
-                    <h4 className="footer-title">Navigation</h4>
+                    <ItemHeading>Navigation</ItemHeading>
                     <nav className="grid gap-2">
                         {[
                             'Home',
@@ -39,7 +40,7 @@ export const Footer = memo(() => {
                 </div>
 
                 <div className="grid gap-2">
-                    <h4 className="footer-title">Quick Link</h4>
+                    <ItemHeading>Quick Link</ItemHeading>
                     <nav className="grid gap-2">
                         <Link className="link-hover link" to="/catalogue">
                             Catalogue
@@ -57,21 +58,40 @@ export const Footer = memo(() => {
                 </div>
 
                 <div className="grid gap-2">
-                    <h4 className="footer-title">Contact Details</h4>
+                    <ItemHeading>Contact Details</ItemHeading>
                     <div className="grid gap-2 *:flex *:items-center *:gap-2">
-                        <a href="mailto:support@kriptpharmaceuticals.com">
+                        <a
+                            href="mailto:support@kriptpharmaceuticals.com"
+                            className="hover:underline"
+                        >
                             <PiMailbox /> support@kriptpharmaceuticals.com
                         </a>
-                        <a href="tel:+917988522311">
+                        <a href="tel:+917988522311" className="hover:underline">
                             <PiPhone /> (+91) 798-852-2311
                         </a>
                         <div>
-                            <PiMapPin />
-                            <p>
-                                Sector-27/A, Plot No. 419,
+                            <PiBuilding />
+                            <a
+                                href="https://maps.app.goo.gl/Mc1hohWwuwPteDa69"
+                                target="_blank"
+                                className="hover:underline"
+                            >
+                                Branch Office: Sector-27/A,
                                 <br />
-                                Pradhikaran, Nigdi, Pune, Maharashtra, 411044
-                            </p>
+                                Plot No. 419 Pradhikaran, Nigdi, Pune, Maharashtra, 411044
+                            </a>
+                        </div>
+                        <div>
+                            <PiMapPin />
+                            <a
+                                href="https://maps.app.goo.gl/ggtXswCHxsiakJn88"
+                                className="hover:underline"
+                                target="_blank"
+                            >
+                                Head Office: SCO. 18, near hotel Celestial Beats,
+                                <br />
+                                Pipli road, Kurukshetra, 136118
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -86,8 +106,8 @@ export const Footer = memo(() => {
                     }
                     method="post"
                 >
-                    <label htmlFor="inquiry" className="footer-title">
-                        Get in touch
+                    <label htmlFor="inquiry">
+                        <ItemHeading>Get in touch</ItemHeading>
                     </label>
                     <div className="join">
                         <input
@@ -104,7 +124,7 @@ export const Footer = memo(() => {
                 </form>
 
                 <div className="grid gap-2">
-                    <h4 className="footer-title">Socials</h4>
+                    <ItemHeading>Socials</ItemHeading>
                     <div className="flex gap-2">
                         <a
                             className="link-hover link"
@@ -142,7 +162,7 @@ export const Footer = memo(() => {
                 </div>
 
                 <article className="grid gap-2">
-                    <h4 className="footer-title ml-1">WhatsApp QR Code</h4>
+                    <ItemHeading>WhatsApp QR Code</ItemHeading>
                     <a
                         className="tooltip tooltip-bottom tooltip-open tooltip-primary inline-block max-w-64 rounded-2xl bg-white p-5"
                         data-tip="CLICK THE CODE"
@@ -206,3 +226,7 @@ export const Footer = memo(() => {
         </section>
     )
 })
+
+const ItemHeading = (props: PropsWithChildren) => {
+    return <h4 className="mb-2 font-bold uppercase text-neutral-500">{props.children}</h4>
+}
