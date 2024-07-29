@@ -1,4 +1,4 @@
-import { PiFactoryThin, PiHandshakeThin, PiUsersThreeThin } from 'react-icons/pi'
+import { PiBuildingOfficeThin, PiHandshakeThin, PiUsersThreeThin } from 'react-icons/pi'
 import clsx from 'clsx'
 import Breakout from '../../components/Breakout'
 
@@ -8,7 +8,7 @@ export const CompanyStats = () => {
             {[
                 { icon: <PiUsersThreeThin size={65} />, stat: '100+', title: 'Current Employees' },
                 {
-                    icon: <PiHandshakeThin size={65} />,
+                    icon: <PiBuildingOfficeThin size={65} />,
                     stat: '5+',
                     title: 'Rights and strategic collaboration with large pharmaceutical manufacturing company',
                 },
