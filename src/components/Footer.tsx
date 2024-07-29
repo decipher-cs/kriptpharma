@@ -12,7 +12,6 @@ import {
     PiSidebar,
     PiBuilding,
 } from 'react-icons/pi'
-import Balancer from 'react-wrap-balancer'
 import { PropsWithChildren, memo } from 'react'
 
 export const Footer = memo(() => {
@@ -205,11 +204,9 @@ export const Footer = memo(() => {
                         href="https://decipher-portfolio.netlify.app/"
                         target="_blank"
                     >
-                        <Balancer>
-                            Website by
-                            <em className="text-primary">{' DECIPHER. '}</em>
-                            Need one? Cick here to connect.
-                        </Balancer>
+                        Website by
+                        <em className="text-primary">{' DECIPHER. '}</em>
+                        Need one? Cick here to connect.
                     </a>
                     <span>
                         This website is a work in progress. Any discrepancy can reported to

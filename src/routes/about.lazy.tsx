@@ -15,7 +15,6 @@ const AboutUs = () => {
                     About Us
                 </h2>
                 <p className="text-lg/relaxed sm:text-xl/loose">
-                    <Balancer>
                         Kript Pharmaceuticals Private Limited stands at the forefront of the
                         pharmaceutical industry as a premier Original Equipment Manufacturer (OEM).
                         Established to enhance the quality of life, we add value to millions of
@@ -45,7 +44,6 @@ const AboutUs = () => {
                         Kript Pharmaceuticals is your trusted partner for excellence in
                         pharmaceutical provision and comprehensive healthcare solutions. Together,
                         we can build a healthier future.
-                    </Balancer>
                 </p>
 
                 <img

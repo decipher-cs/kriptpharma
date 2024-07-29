@@ -1,7 +1,6 @@
 import Breakout from '../../components/Breakout'
 import clsx from 'clsx'
 import { useEffect, useRef } from 'react'
-import Balancer from 'react-wrap-balancer'
 import { animate, inView } from 'motion'
 import { PiHandshake, PiShieldStar, PiShootingStar, PiSparkle } from 'react-icons/pi'
 import video1 from '../../assets/videos/video1.webm'
@@ -124,12 +123,8 @@ export function ReasonsToChooseUse() {
                             ref={(ref) => transitionInOnScrollRef.current.push(ref)}
                         >
                             <div className="w-fit max-lg:mx-auto">{data.logo}</div>
-                            <h2 className="text-4xl/none font-semibold">
-                                <Balancer>{data.title}</Balancer>
-                            </h2>
-                            <p className="text-2xl text-neutral-700">
-                                <Balancer>{data.description}</Balancer>
-                            </p>
+                            <h2 className="text-4xl/none font-semibold">{data.title}</h2>
+                            <p className="text-2xl text-neutral-700">{data.description}</p>
                         </div>
                     </div>
                 ))}
