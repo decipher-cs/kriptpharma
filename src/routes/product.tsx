@@ -1,13 +1,12 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Fuse from 'fuse.js'
-import { memo, useCallback, useEffect, useRef, useState } from 'react'
+import { memo, useRef, useState } from 'react'
 import Breakout from '../components/Breakout'
 import { ApiProductData, ProductDataField, TransformedProductData } from '../types'
-import { PiArrowDown, PiMagnifyingGlass } from 'react-icons/pi'
+import { PiMagnifyingGlass } from 'react-icons/pi'
 import useDebounce from '../hooks/useDebounce'
 import clsx from 'clsx'
 import fallbackData from '../assets/fallbackProductData.json'
-import { twMerge } from 'tailwind-merge'
 import CustomError from '../components/Error'
 import ProductTable from '../components/ProductTable'
 import CategoryDialog from '../components/CategoryDialog'
@@ -96,7 +95,7 @@ export const Route = createFileRoute('/product')({
     component: memo(Product),
 
     /*
-     * TODO:
+     * TODO: upstream fix needed
      * Waiting for PR to merge which fixes bug with serial data
      * fetching before adding the beforeLoad method
      * https://github.com/TanStack/router/pull/1907
@@ -126,7 +125,7 @@ const fuse = new Fuse(fallbackData, {
 
 function Product() {
     /*
-     * TODO:
+     * TODO: upstream fix needed
      * Waiting for PR to merge which fixes bug with serial data
      * fetching before adding the beforeLoad method
      * https://github.com/TanStack/router/pull/1907
