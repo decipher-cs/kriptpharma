@@ -2,7 +2,6 @@ import { createLazyFileRoute } from '@tanstack/react-router'
 import Hero from '../view/home/Hero'
 import FeaturedProducts from '../view/home/FeaturedProducts'
 import { ReasonsToChooseUse } from '../view/home/ReasonsToChooseUse'
-import { MissionSection } from '../view/home/MissionSection'
 import { Specialties } from '../view/home/Specialties'
 import { CompanyStats } from '../view/home/CompanyStats'
 
@@ -18,8 +17,6 @@ const Home = () => {
             <FeaturedProducts />
 
             <ReasonsToChooseUse />
-
-            <MissionSection />
 
             <Specialties />
 
