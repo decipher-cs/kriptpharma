@@ -4,7 +4,6 @@ import clsx from 'clsx'
 import Swiper from 'swiper/bundle'
 import 'swiper/css/bundle'
 import { PiHandSwipeRight, PiSkipBack, PiSkipForward, PiX } from 'react-icons/pi'
-import Breakout from '../components/Breakout'
 
 const modules = import.meta.glob('../assets/backgrounds/*.webp', {
     eager: true,
@@ -50,7 +49,6 @@ const Equipment = memo(() => {
 
     useEffect(() => {
         slider.current = new Swiper('.swiper-equipment', {
-            freeMode: true,
             slidesPerView: 1,
             spaceBetween: 30,
             centeredSlides: true,
@@ -59,7 +57,6 @@ const Equipment = memo(() => {
                 el: '.swiper-pagination',
                 clickable: true,
             },
-            centeredSlidesBounds: true,
         })
 
         return () => {
