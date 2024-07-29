@@ -1,13 +1,13 @@
-import { PiNotePencilThin, PiPaperPlaneThin, PiPlanetThin } from 'react-icons/pi'
+import { PiCertificateThin, PiPencilRulerThin, PiTruckThin } from 'react-icons/pi'
 
 export const Specialties = () => {
     return (
         <div className="grid gap-10 lg:grid-cols-3">
             {[
-                { icon: <PiPlanetThin size={'100%'} />, title: 'Pharmaceuticals Export & Import' },
-                { icon: <PiPaperPlaneThin size={'100%'} />, title: 'Research & Development' },
+                { icon: <PiTruckThin size={'100%'} />, title: 'Pharmaceuticals Export & Import' },
+                { icon: <PiPencilRulerThin size={'100%'} />, title: 'Research & Development' },
                 {
-                    icon: <PiNotePencilThin size={'100%'} />,
+                    icon: <PiCertificateThin size={'100%'} />,
                     title: 'WHO-GMP Registered',
                 },
             ].map((item, i) => (

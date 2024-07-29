@@ -12,7 +12,11 @@ export const CompanyStats = () => {
                     stat: '3+',
                     title: 'Collaboration with large pharmaceutical manufacturing company',
                 },
-                { icon: <PiHandshakeThin size={65} />, stat: '200+', title: 'Partners' },
+                {
+                    icon: <PiHandshakeThin size={65} />,
+                    stat: '5+',
+                    title: 'Rights and strategic collaboration with large pharmaceutical manufacturing company',
+                },
             ].map((item, i) => (
                 <div
                     key={i}
