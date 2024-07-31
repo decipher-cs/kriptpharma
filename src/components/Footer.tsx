@@ -26,13 +26,17 @@ export const Footer = memo(() => {
                             ['Product', 'Product'],
                             ['about us', 'about'],
                             ['Equipment and furniture', 'Equipment'],
-                            ['Downloads', 'Downloads'],
-                            ['Global Presence', 'Global Presence'],
+                            ['Catalogue', 'catalogue'],
+                            ['Global Presence', 'GlobalPresence'],
                             ['Gallery', 'Gallery'],
                             ['Exhibition', 'Exhibition'],
                             ['Contact', 'Contact'],
                         ].map(([name, location]) => (
-                            <Link className="link-hover link" key={name} to={'/' + location}>
+                            <Link
+                                className="link-hover link"
+                                key={name}
+                                to={'/' + location.toLowerCase()}
+                            >
                                 {name}
                             </Link>
                         ))}
