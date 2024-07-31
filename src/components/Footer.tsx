@@ -22,17 +22,18 @@ export const Footer = memo(() => {
                     <ItemHeading>Navigation</ItemHeading>
                     <nav className="grid gap-2">
                         {[
-                            'Home',
-                            'Product',
-                            'Equipment',
-                            'Downloads',
-                            'Global Presence',
-                            'Gallery',
-                            'Exhibition',
-                            'Contact',
-                        ].map((path) => (
-                            <Link className="link-hover link" key={path} to={'/' + path}>
-                                {path}
+                            ['Home', 'Home'],
+                            ['Product', 'Product'],
+                            ['about us', 'about'],
+                            ['Equipment and furniture', 'Equipment'],
+                            ['Downloads', 'Downloads'],
+                            ['Global Presence', 'Global Presence'],
+                            ['Gallery', 'Gallery'],
+                            ['Exhibition', 'Exhibition'],
+                            ['Contact', 'Contact'],
+                        ].map(([name, location]) => (
+                            <Link className="link-hover link" key={name} to={'/' + location}>
+                                {name}
                             </Link>
                         ))}
                     </nav>
